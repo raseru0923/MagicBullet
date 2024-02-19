@@ -8,21 +8,27 @@ public class BattleLabel : MonoBehaviour
 {
     [SerializeField] private Text LabelText;
     [SerializeField] private float PlaySpeed;
-    public string[] words;
+    public word[] words;
 
-    public void PlayPrintLabel()
+    public void PlayPrintLabel(int index)
     {
-        StartCoroutine(PrintLabel(words));
+        StartCoroutine(PrintLabel(words[index]));
     }
 
-    private IEnumerator PrintLabel(string[] textDatas)
+    private IEnumerator PrintLabel(word textDatas)
     {
-        for (int i = 0; i < textDatas.Length; i++)
+        for (int i = 0; i < textDatas.words.Length; i++)
         {
-            LabelText.text = textDatas[i];
+            LabelText.text = textDatas.words[i];
             yield return new WaitForSeconds(PlaySpeed);
         }
         LabelText.text = null;
         this.gameObject.SetActive(false);
+    }
+
+    [System.Serializable]
+    public class word
+    {
+        public string[] words;
     }
 }

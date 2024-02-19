@@ -1009,8 +1009,9 @@ MonoBehaviour:
   LabelText: {fileID: 1038083197}
   PlaySpeed: 2
   words:
-  - "\u9003\u8D70\uFF01"
-  - "\u3057\u304B\u3057\u9003\u3052\u3089\u308C\u306A\u304B\u3063\u305F\uFF01"
+  - words:
+    - "\u9003\u8D70\uFF01"
+    - "\u3057\u304B\u3057\u9003\u3052\u3089\u308C\u306A\u304B\u3063\u305F\uFF01"
 --- !u!1 &1038083195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1677,7 @@ MonoBehaviour:
       - m_Target: {fileID: 974360756}
         m_TargetAssemblyTypeName: BattleLabel, Assembly-CSharp
         m_MethodName: PlayPrintLabel
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1737,7 +1738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
   m_EffectDistance: {x: 5, y: -5}
-  m_UseGraphicAlpha: 1
+  m_UseGraphicAlpha: 0
 --- !u!1 &1728242101
 GameObject:
   m_ObjectHideFlags: 0
