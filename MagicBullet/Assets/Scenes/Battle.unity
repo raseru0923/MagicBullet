@@ -2293,6 +2293,7 @@ GameObject:
   - component: {fileID: 2119633467}
   - component: {fileID: 2119633469}
   - component: {fileID: 2119633468}
+  - component: {fileID: 2119633470}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Untagged
@@ -2358,6 +2359,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2119633466}
   m_CullTransparentMesh: 1
+--- !u!114 &2119633470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119633466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a897c8a051f83cd4c9ca995c1cdc0eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2127453628
 GameObject:
   m_ObjectHideFlags: 0
