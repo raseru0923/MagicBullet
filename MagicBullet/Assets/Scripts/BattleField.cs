@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class BattleField : MonoBehaviour
 {
-    // ê‚Éo‚Ä‚¢‚é“G
-
-    // ê‚Éo‚Ä‚¢‚é–¡•û
 
 }

@@ -8,19 +8,22 @@ public class ImageAnimation : MonoBehaviour
 {
     [SerializeField] private float AnimationSpeed = 1;
 
-    private void Start()
-    {
-        StartAniamtion(AnimationSpeed);
-    }
-
     public void StartAniamtion(float animationSpeed)
     {
         StartCoroutine(ZeroToOneAnimation(animationSpeed));
+    }
+    public void StartAniamtion()
+    {
+        StartCoroutine(ZeroToOneAnimation(AnimationSpeed));
     }
 
     public void EndAnimation(float animationSpeed)
     {
         StartCoroutine(OneToZeroAnimation(animationSpeed));
+    }
+    public void EndAnimation()
+    {
+        StartCoroutine(OneToZeroAnimation(AnimationSpeed));
     }
 
     IEnumerator ZeroToOneAnimation(float animationSpeed)
