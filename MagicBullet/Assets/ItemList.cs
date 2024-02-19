@@ -74,7 +74,7 @@ public class ItemList : MonoBehaviour
         Debug.Log("チェック開始");
         bool onList = true;
 
-        DeleteButton.gameObject.SetActive(false);
+        //DeleteButton.gameObject.SetActive(false);
 
         while (onList)
         {
@@ -87,7 +87,6 @@ public class ItemList : MonoBehaviour
 
     private void SetDeleteButton()
     {
-        DeleteButton.gameObject.SetActive(true);
         DeleteButton.Select();
         Navigation navigation = DeleteButton.navigation;
         navigation.mode = Navigation.Mode.Explicit;

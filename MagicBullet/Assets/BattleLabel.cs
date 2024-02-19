@@ -19,7 +19,13 @@ public class BattleLabel : MonoBehaviour
     {
         for (int i = 0; i < textDatas.words.Length; i++)
         {
-            LabelText.text = textDatas.words[i];
+            //LabelText.text = textDatas.words[i];
+            LabelText.text = null;
+            foreach (var item in textDatas.words[i])
+            {
+                LabelText.text += item;
+                yield return new WaitForFixedUpdate();
+            }
             yield return new WaitForSeconds(PlaySpeed);
         }
         LabelText.text = null;
