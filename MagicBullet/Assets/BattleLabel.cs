@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class BattleLabel : MonoBehaviour
 {
     [SerializeField] private Text LabelText;
+    [SerializeField] private GameObject Label;
     [SerializeField] private float PlaySpeed;
     public word[] words;
 
@@ -15,8 +16,14 @@ public class BattleLabel : MonoBehaviour
         StartCoroutine(PrintLabel(words[index]));
     }
 
+    public IEnumerator PrintLabel(int index)
+    {
+        yield return StartCoroutine(PrintLabel(words[index]));
+    }
+
     private IEnumerator PrintLabel(word textDatas)
     {
+        Label.SetActive(true);
         for (int i = 0; i < textDatas.words.Length; i++)
         {
             //LabelText.text = textDatas.words[i];
@@ -29,7 +36,7 @@ public class BattleLabel : MonoBehaviour
             yield return new WaitForSeconds(PlaySpeed);
         }
         LabelText.text = null;
-        this.gameObject.SetActive(false);
+        Label.SetActive(false);
     }
 
     [System.Serializable]

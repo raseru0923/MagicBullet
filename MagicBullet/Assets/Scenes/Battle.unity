@@ -851,7 +851,6 @@ RectTransform:
   m_Children:
   - {fileID: 1103882783}
   - {fileID: 2014221147}
-  - {fileID: 974360752}
   m_Father: {fileID: 907426459}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -954,6 +953,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 840129380}
+  - {fileID: 2080095219}
   m_Father: {fileID: 1477520382}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1082,7 +1082,6 @@ GameObject:
   - component: {fileID: 974360755}
   - component: {fileID: 974360754}
   - component: {fileID: 974360753}
-  - component: {fileID: 974360756}
   m_Layer: 5
   m_Name: BattleLabel
   m_TagString: Untagged
@@ -1102,13 +1101,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1038083196}
-  m_Father: {fileID: 840129380}
-  m_RootOrder: 2
+  m_Father: {fileID: 2080095219}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 440}
-  m_SizeDelta: {x: -100, y: -980}
+  m_SizeDelta: {x: 1720, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &974360753
 MonoBehaviour:
@@ -1163,26 +1162,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974360751}
   m_CullTransparentMesh: 1
---- !u!114 &974360756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974360751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3057dfa8f4e7d040bd865ea6654a928, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LabelText: {fileID: 1038083197}
-  PlaySpeed: 2
-  words:
-  - words:
-    - "\u9003\u8D70\uFF01"
-    - "\u3057\u304B\u3057\u9003\u3052\u3089\u308C\u306A\u304B\u3063\u305F\uFF01"
-  - words:
-    - "\u6226\u95D8\u7D42\u4E86\uFF01"
 --- !u!1 &1038083195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1831,19 +1810,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 974360751}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 974360756}
+      - m_Target: {fileID: 2080095220}
         m_TargetAssemblyTypeName: BattleLabel, Assembly-CSharp
         m_MethodName: PlayPrintLabel
         m_Mode: 3
@@ -2282,6 +2249,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2080095218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2080095219}
+  - component: {fileID: 2080095220}
+  m_Layer: 5
+  m_Name: Label
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2080095219
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080095218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 974360752}
+  m_Father: {fileID: 907426459}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2080095220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080095218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3057dfa8f4e7d040bd865ea6654a928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LabelText: {fileID: 1038083197}
+  Label: {fileID: 974360751}
+  PlaySpeed: 2
+  words:
+  - words:
+    - "\u9003\u8D70\uFF01"
+    - "\u3057\u304B\u3057\u9003\u3052\u3089\u308C\u306A\u304B\u3063\u305F\uFF01"
+  - words:
+    - "\u6226\u95D8\u7D42\u4E86\uFF01"
 --- !u!1 &2119633466
 GameObject:
   m_ObjectHideFlags: 0
