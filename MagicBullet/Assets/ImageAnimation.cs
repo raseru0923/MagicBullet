@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class ImageAnimation : MonoBehaviour
 {
-    [SerializeField] private float AnimationSpeed;
+    [SerializeField] private float AnimationSpeed = 1;
 
     private void Start()
     {
