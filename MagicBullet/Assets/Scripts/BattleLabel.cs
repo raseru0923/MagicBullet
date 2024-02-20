@@ -9,7 +9,13 @@ public class BattleLabel : MonoBehaviour
     [SerializeField] private Text LabelText;
     [SerializeField] private GameObject Label;
     [SerializeField] private float PlaySpeed;
+    public static BattleLabel Instance;
     public word[] words;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void PlayPrintLabel(int index)
     {

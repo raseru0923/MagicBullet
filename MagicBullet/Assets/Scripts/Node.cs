@@ -11,4 +11,9 @@ public class Node : MonoBehaviour
     {
         Label.text = setText;
     }
+
+    public void Action()
+    {
+        Debug.Log("‘I‘ğ‚µ‚Ü‚µ‚½I");
+    }
 }
