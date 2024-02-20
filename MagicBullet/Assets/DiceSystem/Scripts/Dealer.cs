@@ -11,6 +11,36 @@ public class Dealer : MonoBehaviour
     // ダイスを置く場所
     [SerializeField] private GameObject DiceRollSpace;
 
+    public static Dealer Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private async void Start()
+    {
+        var result = await HundredDiceRoll(50);
+
+        switch (result)
+        {
+            case JudgementType.CRITICAL:
+                Debug.Log("ライフルを拾った！");
+                break;
+            case JudgementType.SUCCESS:
+                Debug.Log("ライフルを拾った！");
+                break;
+            case JudgementType.FAIL:
+                Debug.Log("銃を拾った！");
+                break;
+            case JudgementType.FUMBLE:
+                Debug.Log("銃を拾った！");
+                break;
+            default:
+                break;
+        }
+    }
+
     // ダイスロールの判定の種類です。
     public enum JudgementType
     {
@@ -26,11 +56,18 @@ public class Dealer : MonoBehaviour
         int value = await SumDealerDiceRoll(100);
 
         Debug.Log(value);
-
+        
         if (value <= 5) { return JudgementType.FUMBLE; }       // 大失敗
         if (value < successRate) { return JudgementType.FAIL; } // 失敗
         if (value > 95) { return JudgementType.CRITICAL; }     // クリティカル
+
         return JudgementType.SUCCESS;                           // 成功
+    }
+
+    private IEnumerator WaitDiceDelete(float WaitTime = 1)
+    {
+        yield return new WaitForSeconds(WaitTime);
+        DestroyAllDice();
     }
 
     // ダイスロールを振った順に配列に保存し、返却します。
@@ -44,6 +81,8 @@ public class Dealer : MonoBehaviour
         {
             result[i] = await OneDiceRoll(diceValue);
         }
+
+        StartCoroutine(WaitDiceDelete());
 
         return result;
     }

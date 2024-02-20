@@ -20,7 +20,6 @@ public class Dice : MonoBehaviour
 
     public async UniTask<int> DiceRoll(int diceMin)
     {
-        // 1ƒtƒŒ[ƒ€‘Ò‚Â
         await Roll(diceMin, diceValue);
         int result = DiceRollResult(diceMin, diceValue);
         DiceText.text = result.ToString();
