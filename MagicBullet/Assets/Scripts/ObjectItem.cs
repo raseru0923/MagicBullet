@@ -23,17 +23,18 @@ public class ObjectItem
     [SerializeField, TextArea] public string FlavorText;
     // 理解度
     [System.NonSerialized] public COMPREHENSION Comprehension = COMPREHENSION.ABOUT;
-    List<string> AssesmentText;
+    List<string> AssesmentText = new List<string>();
 
     private void SetAssesmentText()
     {
+        AssesmentText.Clear();
         AssesmentText.Add(Name + "を拾った。\n" + FlavorText);
         AssesmentText.Add(Name + "を拾った。");
         AssesmentText.Add(Type + "を拾った。");
     }
 
     // アイテムを鑑定して情報を返却
-    public string AssessmentItem()
+    public string AssesmentItem()
     {
         SetAssesmentText();
         return AssesmentText[(int)Comprehension];

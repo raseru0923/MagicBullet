@@ -13,23 +13,32 @@ public class Dealer : MonoBehaviour
 
     public static Dealer Instance;
 
+    [SerializeField] private Label ItemLabel;
+
     private void Awake()
     {
         Instance = this;
     }
 
-    private async void Start()
+    private async void Update()
     {
-        var result = await HundredDiceRoll(50);
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            var result = await HundredDiceRoll(50);
 
-        Item Rifle = GameObject.Find("Rifle").GetComponent<Item>();
-        ObjectItem RifleObject = Rifle.ItemManager.ItemData[Rifle.SelectItem];
+            // ライフルを取得
+            Item Rifle = GameObject.Find("Rifle").GetComponent<Item>();
+            ObjectItem RifleObject = Rifle.ItemManager.ItemData[Rifle.SelectItem];
+            // ObjectItem myItem = ItemManager.ItemData[SelectItem];
 
-        int level = Mathf.Clamp((int)result, 0, (int)COMPREHENSION.ABOUT);
-        Debug.Log((int)result + "Clamp = " + level);
-        RifleObject.Comprehension = (COMPREHENSION)level;
+            // ダイスロールの結果から理解度を変更
+            int level = Mathf.Clamp((int)result, 0, (int)COMPREHENSION.ABOUT);
+            Debug.Log((int)result + "Clamp = " + level);
+            RifleObject.Comprehension = (COMPREHENSION)level;
 
-        Debug.Log(RifleObject.AssessmentItem());
+            // 理解度からテキストを表示
+            ItemLabel.PlayLabel(RifleObject.AssesmentItem());
+        }
     }
 
     // ダイスロールの判定の種類です。

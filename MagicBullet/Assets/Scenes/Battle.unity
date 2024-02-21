@@ -1938,11 +1938,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 25
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3064,6 +3064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DicePrefab: {fileID: 6993972929474116758, guid: cf29086c47fc13148947b027331f7fe4, type: 3}
   DiceRollSpace: {fileID: 368543214559577272}
+  ItemLabel: {fileID: 128003689}
 --- !u!114 &368543214559577270
 MonoBehaviour:
   m_ObjectHideFlags: 0
