@@ -929,7 +929,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemManager: {fileID: 11400000, guid: 3d8c9b99326d22244a91bb4b9dad37ab, type: 2}
-  SelectItem: 0
 --- !u!1 &840129379
 GameObject:
   m_ObjectHideFlags: 0

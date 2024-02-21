@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum COMPREHENSION
+{
+    About = 0,
+    Normal,
+    Detail,
+}
+
 [System.Serializable]
 public struct ObjectItem
 {
@@ -13,4 +20,6 @@ public struct ObjectItem
     public string Type;
     [Header("フレーバーテキスト▼")]
     [SerializeField, TextArea] public string FlavorText;
+    // 理解度
+    [System.NonSerialized] public COMPREHENSION Comprehension;
 }
