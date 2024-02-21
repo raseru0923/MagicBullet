@@ -317,22 +317,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Content:
-  - Name: ewfsd
-    Sprite: {fileID: 21300000, guid: d0d3db0f662ec9d4c81c923b8c42ed57, type: 3}
-  - Name: fds
-    Sprite: {fileID: 21300000, guid: d0d3db0f662ec9d4c81c923b8c42ed57, type: 3}
-  - Name: s
-    Sprite: {fileID: 21300000, guid: d0d3db0f662ec9d4c81c923b8c42ed57, type: 3}
-  - Name: sda
-    Sprite: {fileID: 21300000, guid: d0d3db0f662ec9d4c81c923b8c42ed57, type: 3}
-  - Name: fsda
-    Sprite: {fileID: 21300000, guid: d0d3db0f662ec9d4c81c923b8c42ed57, type: 3}
-  - Name: fdss
-    Sprite: {fileID: 21300000, guid: d0d3db0f662ec9d4c81c923b8c42ed57, type: 3}
-  - Name: sfdas
-    Sprite: {fileID: 21300000, guid: d0d3db0f662ec9d4c81c923b8c42ed57, type: 3}
-  - Name: fasdf
-    Sprite: {fileID: 21300000, guid: d0d3db0f662ec9d4c81c923b8c42ed57, type: 3}
+  - ItemBody: {fileID: 0}
+    Type: 
+    Name: ewfsd
+    FlavorText: 
+  - ItemBody: {fileID: 0}
+    Type: 
+    Name: fds
+    FlavorText: 
+  - ItemBody: {fileID: 0}
+    Type: 
+    Name: s
+    FlavorText: 
+  - ItemBody: {fileID: 0}
+    Type: 
+    Name: sda
+    FlavorText: 
+  - ItemBody: {fileID: 0}
+    Type: 
+    Name: fsda
+    FlavorText: 
+  - ItemBody: {fileID: 0}
+    Type: 
+    Name: fdss
+    FlavorText: 
+  - ItemBody: {fileID: 0}
+    Type: 
+    Name: sfdas
+    FlavorText: 
+  - ItemBody: {fileID: 0}
+    Type: 
+    Name: fasdf
+    FlavorText: 
   List: {fileID: 5447684866151776069}
 --- !u!1 &118139327
 GameObject:

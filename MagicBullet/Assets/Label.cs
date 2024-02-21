@@ -10,12 +10,7 @@ public class Label : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown)
-        {
-            PlayLabel("é¿çsÅI");
-        }
 
-        
     }
 
     public void PlayLabel(string text)

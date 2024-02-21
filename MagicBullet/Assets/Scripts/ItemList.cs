@@ -15,7 +15,7 @@ public class ItemList : MonoBehaviour
     private Button defaultButton;
     private string contentTag = "Node";
 
-    public void SetContent(Item[] contents)
+    public void SetContent(ObjectItem[] contents)
     {
         StartCoroutine(CreateNodes(contents));
     }
@@ -24,7 +24,7 @@ public class ItemList : MonoBehaviour
         StartCoroutine(CreateNodes(texts));
     }
 
-    private IEnumerator CreateNodes(Item[] contents)
+    private IEnumerator CreateNodes(ObjectItem[] contents)
     {
         string[] texts = new string[contents.Length];
         int i = 0;

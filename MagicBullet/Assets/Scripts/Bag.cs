@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bag : MonoBehaviour
 {
     // Š“‚Ì’†g
-    public Item[] Content;
+    public ObjectItem[] Content;
     private ItemList itemList;
     [SerializeField] private GameObject List;
 
