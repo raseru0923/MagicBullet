@@ -22,23 +22,14 @@ public class Dealer : MonoBehaviour
     {
         var result = await HundredDiceRoll(50);
 
-        switch (result)
-        {
-            case JudgementType.CRITICAL:
-                Debug.Log("ライフルを拾った！");
-                break;
-            case JudgementType.SUCCESS:
-                Debug.Log("ライフルを拾った！");
-                break;
-            case JudgementType.FAIL:
-                Debug.Log("銃を拾った！");
-                break;
-            case JudgementType.FUMBLE:
-                Debug.Log("銃を拾った！");
-                break;
-            default:
-                break;
-        }
+        Item Rifle = GameObject.Find("Rifle").GetComponent<Item>();
+        ObjectItem RifleObject = Rifle.ItemManager.ItemData[Rifle.SelectItem];
+
+        int level = Mathf.Clamp((int)result, 0, (int)COMPREHENSION.ABOUT);
+        Debug.Log((int)result + "Clamp = " + level);
+        RifleObject.Comprehension = (COMPREHENSION)level;
+
+        Debug.Log(RifleObject.AssessmentItem());
     }
 
     // ダイスロールの判定の種類です。
@@ -54,9 +45,8 @@ public class Dealer : MonoBehaviour
     public async UniTask<JudgementType> HundredDiceRoll(int successRate)
     {
         int value = await SumDealerDiceRoll(100);
-
         Debug.Log(value);
-        
+
         if (value <= 5) { return JudgementType.FUMBLE; }       // 大失敗
         if (value < successRate) { return JudgementType.FAIL; } // 失敗
         if (value > 95) { return JudgementType.CRITICAL; }     // クリティカル

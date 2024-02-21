@@ -4,13 +4,14 @@ using UnityEngine;
 
 public enum COMPREHENSION
 {
-    About = 0,
-    Normal,
-    Detail,
+    DETAIL = 0,
+    NORMAL,
+    ABOUT,
+    NUM
 }
 
 [System.Serializable]
-public struct ObjectItem
+public class ObjectItem
 {
     [Header("名前▼")]
     public string Name;
@@ -21,5 +22,20 @@ public struct ObjectItem
     [Header("フレーバーテキスト▼")]
     [SerializeField, TextArea] public string FlavorText;
     // 理解度
-    [System.NonSerialized] public COMPREHENSION Comprehension;
+    [System.NonSerialized] public COMPREHENSION Comprehension = COMPREHENSION.ABOUT;
+    List<string> AssesmentText;
+
+    private void SetAssesmentText()
+    {
+        AssesmentText.Add(Name + "を拾った。\n" + FlavorText);
+        AssesmentText.Add(Name + "を拾った。");
+        AssesmentText.Add(Type + "を拾った。");
+    }
+
+    // アイテムを鑑定して情報を返却
+    public string AssessmentItem()
+    {
+        SetAssesmentText();
+        return AssesmentText[(int)Comprehension];
+    }
 }
