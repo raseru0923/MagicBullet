@@ -12,6 +12,8 @@ public class BattleLabel : MonoBehaviour
     public static BattleLabel Instance;
     public word[] words;
 
+    [SerializeField, TextArea] string[] texts;
+
     private void Awake()
     {
         Instance = this;
@@ -48,6 +50,6 @@ public class BattleLabel : MonoBehaviour
     [System.Serializable]
     public class word
     {
-        public string[] words;
+        [SerializeField, TextArea] public string[] words;
     }
 }
