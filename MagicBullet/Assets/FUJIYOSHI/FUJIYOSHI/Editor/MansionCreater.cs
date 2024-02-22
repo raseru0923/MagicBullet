@@ -8,6 +8,7 @@ using UnityEditor;
 #endif
 using UnityGUI;
 
+#if UNITY_EDITOR
 public class MansionCreater : EditorWindow
 {
     // エリアの境界をタップされたことを感知する。
@@ -328,3 +329,4 @@ public class MansionCreater : EditorWindow
         }
     }
 }
+#endif

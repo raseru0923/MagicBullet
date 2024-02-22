@@ -6,24 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/FUJIYOSHI/Scenes/Title.unity
-    guid: f30d641d2fde222459c304f07ad648cc
-  - enabled: 1
-    path: Assets/FUJIYOSHI/Scenes/Singleton.unity
-    guid: 5884e4bc42eb22e42ab9af22679945d4
-  - enabled: 1
-    path: Assets/FUJIYOSHI/Scenes/Search.unity
-    guid: 528ea1d5837934f42be616ccb6878ef4
-  - enabled: 1
-    path: Assets/FUJIYOSHI/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/FUJIYOSHI/Scenes/New Scene.unity
-    guid: 3ae2302011c11254ab5067b252930391
-  - enabled: 1
-    path: Assets/FUJIYOSHI/DiceSystem/Scenes/Dice.unity
-    guid: 059b70278bf83564c9590ef82e58c514
-  - enabled: 1
-    path: Assets/FUJIYOSHI/Scenes/CreateMap.unity
-    guid: 9443ca303d5e20549a32b7d70b5ba4bd
+    path: Assets/FUJIYOSHI/Scenes/Battle.unity
+    guid: ca64d3bee45c0f1419beb3b2e5d25725
   m_configObjects: {}

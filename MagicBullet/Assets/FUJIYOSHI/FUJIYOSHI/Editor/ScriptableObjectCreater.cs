@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
+#if UNITY_EDITOR
 public class ScriptableObjectCreater : EditorWindow
 {
     [MenuItem("Editor/ScriptableObjectCreater")]
@@ -23,3 +24,4 @@ public class ScriptableObjectCreater : EditorWindow
 
     }
 }
+#endif
