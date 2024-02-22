@@ -13,32 +13,14 @@ public class Dealer : MonoBehaviour
 
     public static Dealer Instance;
 
-    [SerializeField] private Label ItemLabel;
-
     private void Awake()
     {
         Instance = this;
     }
 
-    private async void Update()
+    private async void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            var result = await HundredDiceRoll(50);
 
-            // ライフルを取得
-            Item Rifle = GameObject.Find("Rifle").GetComponent<Item>();
-            ObjectItem RifleObject = Rifle.ItemManager.ItemData[Rifle.SelectItem];
-            // ObjectItem myItem = ItemManager.ItemData[SelectItem];
-
-            // ダイスロールの結果から理解度を変更
-            int level = Mathf.Clamp((int)result, 0, (int)COMPREHENSION.ABOUT);
-            Debug.Log((int)result + "Clamp = " + level);
-            RifleObject.Comprehension = (COMPREHENSION)level;
-
-            // 理解度からテキストを表示
-            ItemLabel.PlayLabel(RifleObject.AssesmentItem());
-        }
     }
 
     // ダイスロールの判定の種類です。
@@ -54,19 +36,13 @@ public class Dealer : MonoBehaviour
     public async UniTask<JudgementType> HundredDiceRoll(int successRate)
     {
         int value = await SumDealerDiceRoll(100);
-        Debug.Log(value);
 
+        Debug.Log(value);
+        
         if (value <= 5) { return JudgementType.FUMBLE; }       // 大失敗
         if (value < successRate) { return JudgementType.FAIL; } // 失敗
         if (value > 95) { return JudgementType.CRITICAL; }     // クリティカル
-
         return JudgementType.SUCCESS;                           // 成功
-    }
-
-    private IEnumerator WaitDiceDelete(float WaitTime = 1)
-    {
-        yield return new WaitForSeconds(WaitTime);
-        DestroyAllDice();
     }
 
     // ダイスロールを振った順に配列に保存し、返却します。
@@ -82,7 +58,6 @@ public class Dealer : MonoBehaviour
         }
 
         StartCoroutine(WaitDiceDelete());
-
         return result;
     }
 
@@ -151,5 +126,11 @@ public class Dealer : MonoBehaviour
         var dice = Dice.GetComponent<Dice>();
         dice.diceValue = diceValue;
         return dice;
+    }
+
+    private IEnumerator WaitDiceDelete(float WaitTime = 1)
+    {
+        yield return new WaitForSeconds(WaitTime);
+        DestroyAllDice();
     }
 }

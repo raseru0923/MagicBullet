@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private void Start()
+    {
+        ImageAnimation imageAnimation = this.GetComponent<ImageAnimation>();
+        imageAnimation.StartAniamtion();
+    }
+
     // “G‚Ìƒ^[ƒ“‚Ìˆ—
     public IEnumerator EnemyTurn()
     {
