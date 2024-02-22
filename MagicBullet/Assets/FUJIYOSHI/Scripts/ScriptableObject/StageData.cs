@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TalkData", menuName = "ScriptableObjects/TalkData")]
 public class StageData : ScriptableObject
 {
-    public Scene[] scenes;
+    public Scene[] Scenes;
 }
 
 [System.Serializable]

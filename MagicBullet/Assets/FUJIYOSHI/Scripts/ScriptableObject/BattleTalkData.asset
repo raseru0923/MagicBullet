@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b6932de515c254fa841562767a4b9a, type: 3}
   m_Name: BattleTalkData
   m_EditorClassIdentifier: 
-  scenes:
+  Scenes:
   - word: "\u3053\u3093\u306B\u3061\u306F\u3002\n\u30B9\u30E9\u30A4\u30E0\u3092\u5012\u3057\u307E\u3057\u3087\u3046\u3002"
   - word: "\u79C1\u306F\u30CA\u30D3\u30B2\u30FC\u30B7\u30E7\u30F3\u30B7\u30B9\u30C6\u30E0\u306E\u30CA\u30D3\u5B50\u3067\u3059\u3002"
-  - word: "\u3067\u306F\u3055\u3063\u305D\u304F\u3067\u3059\u304C\u2026\u2026"
+  - word: "\u65E9\u901F\u3067\u3059\u304C\u2026\u2026"
   - word: "\u6226\u95D8\u2015"
   - word: "\u958B\u59CB\uFF01"
