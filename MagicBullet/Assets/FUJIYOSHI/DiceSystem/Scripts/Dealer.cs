@@ -18,11 +18,6 @@ public class Dealer : MonoBehaviour
         Instance = this;
     }
 
-    private async void Start()
-    {
-
-    }
-
     // ダイスロールの判定の種類です。
     public enum JudgementType
     {
