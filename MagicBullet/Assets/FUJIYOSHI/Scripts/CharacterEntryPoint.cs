@@ -10,7 +10,7 @@ public class CharacterEntryPoint : MonoBehaviour
     // 暗転用のマスクオブジェクト
     [SerializeField] private GameObject BlackMask;
 
-    private void Start()
+    private void OnEnable()
     {
         // 自身のイメージを取得
         myImage = this.GetComponent<Image>();
@@ -33,12 +33,21 @@ public class CharacterEntryPoint : MonoBehaviour
     public void Joint(Sprite characterSprite)
     {
         myImage.sprite = characterSprite;
+        myImage.color = Color.white;
     }
 
     // 暗転の切り替え
     public void SetBlackOut(bool isActive)
     {
         BlackMask.SetActive(isActive);
+    }
+
+    public void EntryPointReset()
+    {
+        // キャラクターを非表示
+        Remove();
+        // ブラックアウト解除
+        SetBlackOut(false);
     }
 }
 

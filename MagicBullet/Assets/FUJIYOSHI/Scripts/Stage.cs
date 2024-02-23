@@ -16,18 +16,31 @@ public class Stage : MonoBehaviour
 
     [SerializeField] StageData TestStageData;
 
-    private void Start()
+    private bool isShowStage;
+
+    private void Update()
     {
-        ShowStage(TestStageData);
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            ShowStage(TestStageData);
+        }
     }
 
+    // 舞台を開始
     public void ShowStage(StageData stageData)
     {
+        // コルーチンが動作中
+        if (isShowStage)
+        {
+            return;
+        }
         StartCoroutine(PlayStage(stageData));
     }
 
+    // 舞台を再生
     IEnumerator PlayStage(StageData stageData)
     {
+        isShowStage = true;
         Debug.Log("舞台が再生されます。");
 
         StageSetting.SetActive(true);
@@ -46,20 +59,81 @@ public class Stage : MonoBehaviour
             yield return null;
         }
 
+        Point1.EntryPointReset();
+        Point2.EntryPointReset();
+
         StageSetting.SetActive(false);
         Debug.Log("舞台の装置を非アクティブにしました。");
+        isShowStage = false;
     }
 
+    // 任意のマウスクリックを待機
     IEnumerator WaitMouseClick(int targetButtonNumber)
     {
-        while (!Input.GetMouseButtonDown(0))
+        while (!Input.GetMouseButtonDown(targetButtonNumber))
         {
             yield return null;
         }
     }
 
+    // シーンを表示
     private void PrintScene(Scene scene)
     {
+        // 台詞の表示
         TalkLabel.PlayLabel(scene.word);
+
+        // キャラクターの操作を実行
+        foreach (var item in scene.characterOperations)
+        {
+            RunOperation(item);
+        }
+    }
+
+    // 操作を実行
+    private void RunOperation(CharacterOperation item)
+    {
+        // 使用するエントリーポイント
+        CharacterEntryPoint useEntryPoint = Point1;
+        // 使用するエントリーポイントを代入
+        switch (item.Target)
+        {
+            case CharacterOperation.OPERATIONTARGET.FIRST:
+                useEntryPoint = Point1;
+                break;
+            case CharacterOperation.OPERATIONTARGET.SECOND:
+                useEntryPoint = Point2;
+                break;
+            default:
+                break;
+        }
+        // 操作を実行
+        switch (item.Type)
+        {
+            case ENTRYPOINTOPERATIONTYPE.REMOVE:
+                useEntryPoint.Remove();
+                break;
+            case ENTRYPOINTOPERATIONTYPE.JOINT:
+                JointOperation(item, useEntryPoint);
+                break;
+            case ENTRYPOINTOPERATIONTYPE.BLACKOUT:
+                useEntryPoint.SetBlackOut(item.IsBlackOut);
+                break;
+            default:
+                break;
+        }
+    }
+
+    // ジョイント操作
+    private static void JointOperation(CharacterOperation item, CharacterEntryPoint useEntryPoint)
+    {
+        if (item.JointImage != null)
+        {
+            useEntryPoint.Joint(item.JointImage);
+            return;
+        }
+        if (item.JointSprite != null)
+        {
+            useEntryPoint.Joint(item.JointSprite);
+        }
     }
 }
