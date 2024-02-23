@@ -14,7 +14,10 @@ public class Scene
 {
     [Header("台詞▼")]
     [TextArea] public string word = null;
-    public bool isReset = false;
+    [Header("BGM▼")]
+    public AudioClip BGM;
+    [Header("キャラクターのリセット▼")]
+    public bool IsReset = false;
     [Header("キャラクターの動き▼")]
     public CharacterOperation[] characterOperations = null;
 }

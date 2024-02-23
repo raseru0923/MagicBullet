@@ -16,6 +16,12 @@ public class Stage : MonoBehaviour
 
     [SerializeField] StageData TestStageData;
 
+    // BGMを流すところ
+    [SerializeField] AudioSource audioSource;
+
+    // クリック音
+    [SerializeField] AudioClip ClickSE;
+
     private bool isShowStage;
 
     private void Update()
@@ -46,6 +52,25 @@ public class Stage : MonoBehaviour
         StageSetting.SetActive(true);
         Debug.Log("舞台の装置をアクティブにしました。");
 
+        // かかっていたBGM
+        AudioClip audioClip = audioSource.clip;
+
+        // シーンを再生
+        yield return PlayScene(stageData);
+
+        // ステージをリセットする。
+        StageReset();
+
+        // BGMを元に戻す
+        SetBGM(audioClip);
+
+        StageSetting.SetActive(false);
+        Debug.Log("舞台の装置を非アクティブにしました。");
+        isShowStage = false;
+    }
+
+    IEnumerator PlayScene(StageData stageData)
+    {
         foreach (var item in stageData.Scenes)
         {
             // シーンを表示
@@ -58,12 +83,12 @@ public class Stage : MonoBehaviour
             Debug.Log("次のシーンへ");
             yield return null;
         }
+    }
 
-        StageReset();
-
-        StageSetting.SetActive(false);
-        Debug.Log("舞台の装置を非アクティブにしました。");
-        isShowStage = false;
+    private void SetBGM(AudioClip BGM)
+    {
+        audioSource.clip = BGM;
+        audioSource.Play();
     }
 
     // ステージをリセットします。
@@ -80,15 +105,22 @@ public class Stage : MonoBehaviour
         {
             yield return null;
         }
+        audioSource.PlayOneShot(ClickSE);
     }
 
     // シーンを表示
     private void PrintScene(Scene scene)
     {
+        // BGMがセットされたいたらBGMを変更
+        if (scene.BGM != null)
+        {
+            SetBGM(scene.BGM);
+        }
+
         // 台詞の表示
         TalkLabel.PlayLabel(scene.word);
 
-        if (scene.isReset)
+        if (scene.IsReset)
         {
             StageReset();
             return;
