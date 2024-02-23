@@ -10,6 +10,8 @@ public class Dealer : MonoBehaviour
     [SerializeField] private GameObject DicePrefab;
     // ダイスを置く場所
     [SerializeField] private GameObject DiceRollSpace;
+    // 通知
+    public Label informationLabel;
 
     public static Dealer Instance;
 
@@ -30,18 +32,16 @@ public class Dealer : MonoBehaviour
     // 1d100のファンブル、クリティカルを追加したダイスロールの判定です。
     public async UniTask<JudgementType> HundredDiceRoll(int successRate)
     {
-        int value = await SumDealerDiceRoll(100);
+        int value = await SumDealerDiceRoll(1, 100);
 
-        Debug.Log(value);
-        
-        if (value <= 5) { return JudgementType.FUMBLE; }       // 大失敗
-        if (value < successRate) { return JudgementType.FAIL; } // 失敗
-        if (value > 95) { return JudgementType.CRITICAL; }     // クリティカル
-        return JudgementType.SUCCESS;                           // 成功
+        if (value <= 5) { return JudgementType.CRITICAL; }       // クリティカル
+        if (value < successRate) { return JudgementType.SUCCESS; } // 成功
+        if (value > 95) { return JudgementType.FUMBLE; }     // ファンブル
+        return JudgementType.FAIL;                           // 失敗
     }
 
     // ダイスロールを振った順に配列に保存し、返却します。
-    public async UniTask<int[]> DealerDiceRoll(int diceValue, int diceCount = 1)
+    public async UniTask<int[]> DealerDiceRoll(int diceCount, int diceValue)
     {
         DestroyAllDice();
 
@@ -52,37 +52,39 @@ public class Dealer : MonoBehaviour
             result[i] = await OneDiceRoll(diceValue);
         }
 
-        StartCoroutine(WaitDiceDelete());
+        await WaitDiceDelete();
         return result;
     }
 
     // ダイスロールの合計の値を返却します。
-    public async UniTask<int> SumDealerDiceRoll(int diceValue, int diceCount = 1)
+    public async UniTask<int> SumDealerDiceRoll(int diceCount, int diceValue)
     {
+        await informationLabel.PlayLabelTask("ダイスロール！");
+
         int sum = 0;
 
-        foreach (var item in await DealerDiceRoll(diceValue, diceCount))
+        foreach (var item in await DealerDiceRoll(diceCount, diceValue))
         {
             sum += item;
         }
+
+        await informationLabel.PlayLabelTask(sum.ToString());
 
         return sum;
     }
 
     // 第一引数を基準にダイスロールの成否を判定します。
-    public async UniTask<JudgementType> ReturnResultDiceRoll(int successRate, int diceValue, int diceCount = 1)
+    public async UniTask<JudgementType> ReturnResultDiceRoll(int successRate, int diceCount, int diceValue)
     {
-        var result = await SumDealerDiceRoll(diceValue, diceCount);
-
-        Debug.Log(result);
+        var result = await SumDealerDiceRoll(diceCount, diceValue);
 
         // 失敗
         if (result < successRate)
         {
-            return JudgementType.FAIL;
+            return JudgementType.SUCCESS;
         }
 
-        return JudgementType.SUCCESS;
+        return JudgementType.FAIL;
     }
 
     // 一つのダイスを作成し、ダイスロールを行い値を返す
@@ -114,7 +116,7 @@ public class Dealer : MonoBehaviour
         // 設計図を使用し、ダイスを生成
         GameObject Dice = Instantiate(DicePrefab);
 
-        await UniTask.Yield(PlayerLoopTiming.Update, ct);
+        await WaitOneFrame();
 
         Dice.transform.SetParent(DiceRollSpace.transform);
 
@@ -123,9 +125,14 @@ public class Dealer : MonoBehaviour
         return dice;
     }
 
-    private IEnumerator WaitDiceDelete(float WaitTime = 1)
+    private async UniTask WaitDiceDelete()
     {
-        yield return new WaitForSeconds(WaitTime);
+        await UniTask.WaitForSeconds(1);
         DestroyAllDice();
+    }
+
+    private async UniTask WaitOneFrame(CancellationToken ct = default)
+    {
+        await UniTask.Yield(PlayerLoopTiming.Update, ct);
     }
 }
