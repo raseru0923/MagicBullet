@@ -38,17 +38,24 @@ public class Stage : MonoBehaviour
             // シーンを表示
             PrintScene(item);
             Debug.Log("シーンを表示");
+
             // クリックで次へ
-            while (!Input.GetMouseButtonDown(0))
-            {
-                yield return null;
-            }
+            yield return WaitMouseClick(0);
+
             Debug.Log("次のシーンへ");
             yield return null;
         }
 
         StageSetting.SetActive(false);
         Debug.Log("舞台の装置を非アクティブにしました。");
+    }
+
+    IEnumerator WaitMouseClick(int targetButtonNumber)
+    {
+        while (!Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
     }
 
     private void PrintScene(Scene scene)
