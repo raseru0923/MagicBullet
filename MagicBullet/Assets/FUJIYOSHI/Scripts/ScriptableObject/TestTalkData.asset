@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scenes:
   - word: "\u304A\u304A\uFF01\u3053\u308C\u306F\u304B\u306E\u6709\u540D\u306A\u25CB\u25CB\u25CB\u25CB\u3067\u306F\u306A\u3044\u304B\uFF01"
-    BGM: {fileID: 8300000, guid: 54045499a62f6d44fab769d183b94d63, type: 3}
+    BGM: {fileID: 8300000, guid: 2a1d45b22445bb74189df8a1ead37f5d, type: 3}
     IsReset: 0
     characterOperations:
     - Target: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
     IsReset: 1
     characterOperations: []
   - word: "\u5927\u4E08\u592B\u3067\u3059\u304B\uFF01"
-    BGM: {fileID: 8300000, guid: 54045499a62f6d44fab769d183b94d63, type: 3}
+    BGM: {fileID: 8300000, guid: 2a1d45b22445bb74189df8a1ead37f5d, type: 3}
     IsReset: 0
     characterOperations:
     - Target: 1

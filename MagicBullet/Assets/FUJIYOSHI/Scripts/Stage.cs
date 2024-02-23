@@ -58,9 +58,6 @@ public class Stage : MonoBehaviour
         // シーンを再生
         yield return PlayScene(stageData);
 
-        // ステージをリセットする。
-        StageReset();
-
         // BGMを元に戻す
         SetBGM(audioClip);
 
@@ -71,6 +68,9 @@ public class Stage : MonoBehaviour
 
     IEnumerator PlayScene(StageData stageData)
     {
+        // ステージをリセットする。
+        StageReset();
+
         foreach (var item in stageData.Scenes)
         {
             // シーンを表示
