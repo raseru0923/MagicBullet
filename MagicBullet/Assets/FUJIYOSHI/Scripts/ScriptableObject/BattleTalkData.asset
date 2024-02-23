@@ -19,12 +19,27 @@ MonoBehaviour:
       Type: 1
       IsBlackOut: 0
       JointImage: {fileID: 0}
-      JointSprite: {fileID: 0}
+      JointSprite: {fileID: 21300000, guid: eff834c317acf1f418729f572cba27ef, type: 3}
+    - Target: 1
+      Type: 1
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 21300000, guid: 2d7fb497482b4c0428ef650e6c256ad0, type: 3}
   - word: "\u3053\u3053\u306F\u30D0\u30C8\u30EB\u30B7\u30FC\u30F3\u3067\u3059\u3002\n\u30B9\u30E9\u30A4\u30E0\u3092\u5012\u3057\u307E\u3057\u3087\u3046\u3002"
     characterOperations: []
-  - word: "\u65E9\u901F\u3067\u3059\u304C\u2026\u2026"
-    characterOperations: []
+  - word: "\u65E9\u901F\u3067\u3059\u304C\u2026\u2026(\u9003"
+    characterOperations:
+    - Target: 0
+      Type: 2
+      IsBlackOut: 1
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
   - word: "\u6226\u95D8\u2015"
-    characterOperations: []
+    characterOperations:
+    - Target: 0
+      Type: 0
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
   - word: "\u958B\u59CB\uFF01"
     characterOperations: []
