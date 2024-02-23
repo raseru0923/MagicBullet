@@ -10,12 +10,13 @@ public class StageData : ScriptableObject
 }
 
 [System.Serializable]
-public struct Scene
+public class Scene
 {
     [Header("台詞▼")]
-    [TextArea] public string word;
+    [TextArea] public string word = null;
+    public bool isReset = false;
     [Header("キャラクターの動き▼")]
-    public CharacterOperation[] characterOperations;
+    public CharacterOperation[] characterOperations = null;
 }
 
 [System.Serializable]

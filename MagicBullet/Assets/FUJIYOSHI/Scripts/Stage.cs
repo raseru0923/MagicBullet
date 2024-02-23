@@ -59,12 +59,18 @@ public class Stage : MonoBehaviour
             yield return null;
         }
 
-        Point1.EntryPointReset();
-        Point2.EntryPointReset();
+        StageReset();
 
         StageSetting.SetActive(false);
         Debug.Log("舞台の装置を非アクティブにしました。");
         isShowStage = false;
+    }
+
+    // ステージをリセットします。
+    private void StageReset()
+    {
+        Point1.EntryPointReset();
+        Point2.EntryPointReset();
     }
 
     // 任意のマウスクリックを待機
@@ -81,6 +87,12 @@ public class Stage : MonoBehaviour
     {
         // 台詞の表示
         TalkLabel.PlayLabel(scene.word);
+
+        if (scene.isReset)
+        {
+            StageReset();
+            return;
+        }
 
         // キャラクターの操作を実行
         foreach (var item in scene.characterOperations)

@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b6932de515c254fa841562767a4b9a, type: 3}
+  m_Name: TestTalkData
+  m_EditorClassIdentifier: 
+  Scenes:
+  - word: "\u304A\u304A\uFF01\u3053\u308C\u306F\u304B\u306E\u6709\u540D\u306A\u25CB\u25CB\u25CB\u25CB\u3067\u306F\u306A\u3044\u304B\uFF01"
+    isReset: 0
+    characterOperations:
+    - Target: 0
+      Type: 1
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 21300000, guid: 274ef4f47a7c7e64a882e946178ab783, type: 3}
+  - word: "\u3075\u3080\u3001\u3053\u306E\u8272\u3064\u3084\u306B\u6B66\u9AA8\u306A\u304C\u3089\u3069\u3053\u304B\u3058\u3063\u3068\u308A\u3068\u3057\u305F\u91CD\u307F\u3092\u611F\u3058\u308B\u5F62\u72B6\u2026\u2026"
+    isReset: 0
+    characterOperations: []
+  - word: "\u3042\u306E\u540D\u9283\u58EB\u25B3\u25B3\u25B3\u304C\u6EBA\u611B\u3057\u3066\u3044\u305F\u3068\u3044\u3046\u306E\u3082\u3046\u306A\u3065\u3051\u308B\u306A\u2026\u2026"
+    isReset: 0
+    characterOperations: []
+  - word: "\u3068\u306F\u3044\u3048\u3001\u79C1\u306E\u611B\u9283\u306B\u306F\u9060\u304F\u53CA\u3070\u3093\u304C\u306A\uFF01"
+    isReset: 0
+    characterOperations: []
+  - word: "\u306A\u3042\u3001\u30C9\u30AF\u30BF\u30FC\u3002\u30B9\u30C8\u30E9\u30C6\u30AF\u30B9\u3067\u306E\u6226\u3044\u3067\u306E\u2015"
+    isReset: 0
+    characterOperations: []
+  - word: "\u305D\u306E\u8A71\u306F\u3082\u30464\u56DE\u76EE\u3067\u3059\u3088\u3002"
+    isReset: 0
+    characterOperations:
+    - Target: 1
+      Type: 1
+      IsBlackOut: 1
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 21300000, guid: bf29c86463dd89e4ca390bda8ead7e68, type: 3}
+  - word: "\u305D\u3046\u306F\u8A00\u3046\u304C\u306A\u3001\u3053\u308C\u307B\u3069\u307E\u3067\u306B\u2015"
+    isReset: 0
+    characterOperations:
+    - Target: 0
+      Type: 2
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+    - Target: 1
+      Type: 2
+      IsBlackOut: 1
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+  - word: "\u63A2\u7D22\u8005\u305F\u3061\u306F\u601D\u3044\u601D\u3044\u306B\u4E16\u754C\u306E\u540D\u9283\u5C55\u3092\u697D\u3057\u3093\u3067\u3044\u305F\u3002"
+    isReset: 0
+    characterOperations:
+    - Target: 0
+      Type: 2
+      IsBlackOut: 1
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+  - word: "\u305D\u308C\u3067\u3060\u306A\u5F3E\u304C\u5C3D\u304D\u305F\u306E\u3092\u9006\u624B\u306B\u3068\u3063\u3066\u2015"
+    isReset: 0
+    characterOperations:
+    - Target: 0
+      Type: 2
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+  - word: "\u3044\u3064\u3082\u601D\u3044\u307E\u3059\u304C\u3001\u305D\u308C\u306F\u3082\u3046\u3069\u306E\u3088\u3046\u306A\u9283\u3067\u3082\u95A2\u4FC2\u306A\u3044\u2015\n\n\u2015\u30D6\u30A9\u30F3\u30C3\u2026\u2026"
+    isReset: 0
+    characterOperations:
+    - Target: 1
+      Type: 2
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+  - word: "\u306A\u3001\u306A\u3093\u3060\uFF1F\uFF01"
+    isReset: 0
+    characterOperations:
+    - Target: 1
+      Type: 2
+      IsBlackOut: 1
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+    - Target: 0
+      Type: 2
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+  - word: "\u4E0D\u7A4F\u306A\u97F3\u3068\u3068\u3082\u306B\u3042\u305F\u308A\u306F\u95C7\u306B\u5305\u307E\u308C\u305F\u3002"
+    isReset: 0
+    characterOperations:
+    - Target: 0
+      Type: 2
+      IsBlackOut: 1
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+  - word: "\u30B4\u30F3\u30C3\u3068\u4E00\u3064\u97F3\u304C\u9CF4\u3063\u305F\u304B\u3068\u601D\u3046\u3068\u305D\u3053\u304B\u3057\u3053\u304B\u3089\u540C\u3058\u3088\u3046\u306A\u97F3\u304C\u3042\u305F\u308A\u306B\u97FF\u304D\u6E21\u308B\u3002"
+    isReset: 0
+    characterOperations: []
+  - word: "\u8DB3\u304B\u3089\u304B\u3059\u304B\u306B\u632F\u52D5\u304C\u4F1D\u308F\u3063\u3066\u304D\u305F\u304B\u3068\u601D\u3046\u3068\u3001\u81EA\u8EAB\u3082\u30B4\u30F3\u30C3\u3068\u97F3\u3092\u7ACB\u3066\u5E8A\u306B\u5012\u308C\u4F0F\u3057\u305F\u3002"
+    isReset: 0
+    characterOperations: []
+  - word: "\u2026"
+    isReset: 1
+    characterOperations: []
+  - word: "\u5927\u4E08\u592B\u3067\u3059\u304B\uFF01"
+    isReset: 0
+    characterOperations:
+    - Target: 1
+      Type: 1
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 21300000, guid: 8cbbdee37640fe14baa275dc9ae25a85, type: 3}
+  - word: "\u3063\u2026\u2026\uFF1F"
+    isReset: 0
+    characterOperations:
+    - Target: 0
+      Type: 1
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 21300000, guid: 274ef4f47a7c7e64a882e946178ab783, type: 3}
+    - Target: 1
+      Type: 2
+      IsBlackOut: 1
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+  - word: "\u3053\u3053\u306B\u3044\u308B\u306E\u304C\u79C1\u3060\u3051\u3067\u306A\u304F\u3088\u304B\u3063\u305F..."
+    isReset: 0
+    characterOperations:
+    - Target: 0
+      Type: 2
+      IsBlackOut: 1
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+    - Target: 1
+      Type: 2
+      IsBlackOut: 0
+      JointImage: {fileID: 0}
+      JointSprite: {fileID: 0}
+  - word: "\u308F\u305F\u3057\u306F\u3010\u30A8\u30EB\u3011\u3001\r\u3042\u308B\u4EE4\u5B22\u306E\u57F7\u4E8B\u3092\u3055\u305B\u3066\u3082\u3089\u3063\u3066\u3044\u308B\u3082\u306E\u3067\u3059\u3002"
+    isReset: 0
+    characterOperations: []
+  - word: "\u5C55\u89A7\u4F1A\u3092\u697D\u3057\u3093\u3067\u3044\u305F\u3089\u7A81\u7136\u76EE\u306E\u524D\u304C\u771F\u3063\u6697\u306B\u306A\u308A\u3001\u76EE\u304C\u899A\u3081\u305F\u3089\u3053\u3053\u306B\u3044\u305F\u306E\u3067\u3059..."
+    isReset: 0
+    characterOperations: []
+  - word: "\u3082\u3057\u3088\u3051\u308C\u3070\u3001\u3053\u3053\u304B\u3089\u8131\u51FA\u3059\u308B\u304A\u624B\u4F1D\u3044\u3092\u3055\u305B\u3066\u3044\u305F\u3060\u3051\u307E\u305B\u3093\u304B\uFF1F"
+    isReset: 0
+    characterOperations: []
