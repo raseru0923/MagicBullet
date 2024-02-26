@@ -41,4 +41,16 @@ public class Label : MonoBehaviour
 
         MainLabel.SetActive(false);
     }
+
+    public void OnLabel(string text)
+    {
+        MainLabel.SetActive(true);
+
+        LabelText.text = text;
+    }
+
+    public void OFFLabel()
+    {
+        MainLabel.SetActive(false);
+    }
 }

@@ -53,13 +53,16 @@ public class Dealer : MonoBehaviour
         }
 
         await WaitDiceDelete();
+
         return result;
     }
 
     // ダイスロールの合計の値を返却します。
     public async UniTask<int> SumDealerDiceRoll(int diceCount, int diceValue)
     {
+        await informationLabel.PlayLabelTask(diceCount + " d " + diceValue);
         await informationLabel.PlayLabelTask("ダイスロール！");
+        informationLabel.OnLabel(diceCount + " d " + diceValue);
 
         int sum = 0;
 
@@ -128,6 +131,7 @@ public class Dealer : MonoBehaviour
     private async UniTask WaitDiceDelete()
     {
         await UniTask.WaitForSeconds(1);
+        informationLabel.OFFLabel();
         DestroyAllDice();
     }
 

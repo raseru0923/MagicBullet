@@ -20,8 +20,8 @@ public class GameMaster : Dealer
     // 自身の現在のSAN値と失敗時、成功時のSAN値の減少方法
     public async UniTask<int> SANDiceRoll(int nowSAN, int minA, int maxA,int minB, int maxB)
     {
-        await informationLabel.PlayLabelTask("SAN値減少！ 1 d " + (maxA - minA + 1) + " + " + (minA - 1) + " or "
-             + "1 d " + (maxB - minB + 1) + " + " + (minB - 1) + "!");
+        await informationLabel.PlayLabelTask("SAN値減少！ " + minA + " / "
+             + "1 d " + (maxB - minB + 1));
 
         // 成功、失敗のみを返す1d100
         var SANResult = await ReturnResultDiceRoll(nowSAN, 1, 100);
