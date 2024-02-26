@@ -12,6 +12,7 @@ public class GameMaster : Dealer
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
+            Debug.Log("X");
             await SANDiceRoll(50, 1, 1, 1, 3);
         }
     }
