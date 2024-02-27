@@ -10941,6 +10941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 970995752}
+  - component: {fileID: 970995754}
   - component: {fileID: 970995753}
   m_Layer: 0
   m_Name: Fade
@@ -10976,9 +10977,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca81eeea9e7004c8f4bfd9f40f3234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeImage: {fileID: 1940805194}
   FadeInSpeed: 1
   FadeOutSpeed: 1
+--- !u!114 &970995754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970995751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfeedba7d8ec5c4d8c3b5f1d1727e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnAwake: 0
+  LenearImage: {fileID: 1940805194}
+  FlashSeconds: 1
+  StartColor: {r: 0, g: 0, b: 0, a: 1}
+  EndColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &973990708
 GameObject:
   m_ObjectHideFlags: 0

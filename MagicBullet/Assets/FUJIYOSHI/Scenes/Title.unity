@@ -745,11 +745,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd2f05fe416b8049ac62f1395434cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayOnAwake: 1
+  IsLinear: 1
   UIObjects:
     ImageUI: {fileID: 0}
     TextUI: {fileID: 1982799973}
     SpriteUI: {fileID: 0}
-  FlashSpeed: 1
-  FlashRatio: 0.5
-  StartColor: {r: 0.2509804, g: 0, b: 0, a: 1}
-  EndColor: {r: 0, g: 0, b: 0, a: 0}
+  FlashSeconds: 2
+  FlashRatio: 0.25
+  StartColor: {r: 0.2509804, g: 0, b: 0, a: 0.2509804}
+  EndColor: {r: 0.2509804, g: 0, b: 0, a: 1}
