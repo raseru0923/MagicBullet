@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class GameManager : MonoBehaviour
+public class M_GameManager : MonoBehaviour
 {
     public GameObject DiceButton;
     public GameObject NextButton;
