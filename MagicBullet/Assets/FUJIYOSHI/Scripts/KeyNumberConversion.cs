@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyNumberCombertion
+public class f_KeyNumberCombertion
 {
     // 数字キーと対応した数値を返却します。
     public int KeyNumberToInteger()
