@@ -107,12 +107,15 @@ public class StatusManager : MonoBehaviour
 
     public static StatusManager instance;
 
-    public void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
+            DontDestroyOnLoad(this);
             instance = this;
+            return;
         }
+        Destroy(this);
     }
     public void StatusPoints()
     {

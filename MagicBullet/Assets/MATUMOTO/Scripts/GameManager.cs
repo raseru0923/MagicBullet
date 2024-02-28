@@ -217,7 +217,7 @@ public class GameManager : MonoBehaviour
     float choicePanel = 0;
     private int limit = 80;     //ステータス上限
     private int delay = 300;
-    
+
     //戦闘技能ステータス
     int kaihi = 0;
     int kikku = 0;
@@ -315,7 +315,7 @@ public class GameManager : MonoBehaviour
                            "Unten","Kikaisyuri","Zyukikaisosa","Zyoba","Suiei","Sesaku","Sozyu","Tyoyaku","Denkisyuri","Nabige-to","Hensou",
                            "Iikurume","Shinyou","Settoku","Negiri","Bokokugo",
                            "Igaku","Okaruto","Shinwa","Gezyutsu","Keiri","Kokogaku","PC","Shinrigaku","Zinruigaku","Seibutsugaku","Tishitsugaku","Denshikougaku","Tenmongaku","Hakubutsugaku","Butsurigaku","Houritsu","Yakugaku","Rekishi"};
-    
+
 
     //基礎ステータス
     [SerializeField] Text STR;
@@ -716,7 +716,7 @@ public class GameManager : MonoBehaviour
         InputHobbyPRekishi.text = "0";
 
     }
-    int Dice(int a,int b)   //Dice(ダイスの数,ダイスのプラス値)
+    int Dice(int a, int b)   //Dice(ダイスの数,ダイスのプラス値)
     {
         int x = Random.Range(1, 6);
         x = x * a + b;
@@ -771,7 +771,8 @@ public class GameManager : MonoBehaviour
         {
             DamegeP.text = "-1D6";
             StatusManager.instance.DamageP = -6;
-        }else if ((13 <= StatusManager.instance.DamagePCheck) && (StatusManager.instance.DamagePCheck <= 16))
+        }
+        else if ((13 <= StatusManager.instance.DamagePCheck) && (StatusManager.instance.DamagePCheck <= 16))
         {
             DamegeP.text = "-1D4";
             StatusManager.instance.DamageP = -4;
@@ -1248,7 +1249,8 @@ public class GameManager : MonoBehaviour
         {
             BattlePanel.SetActive(false);
             SearchPanel.SetActive(true);
-        }else if ((choicePanel == 1) && (!NRButton))
+        }
+        else if ((choicePanel == 1) && (!NRButton))
         {
             BattlePanel.SetActive(false);
             BrainPanel.SetActive(true);
@@ -1344,7 +1346,7 @@ public class GameManager : MonoBehaviour
                 choicePanel = 5;
                 NRButton = false;
                 break;
-        }     
+        }
     }
 
     //職業技能ポイント入力
@@ -1370,10 +1372,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kaihi += kaihi;
                     InputWorkPKaihi.text = kaihi.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kaihi;
-                       StatusManager.instance.Kaihi -= inputworkp[0];
-                       StatusManager.instance.Kaihi += kaihi;
-                       StatusManager.instance.WorkP += inputworkp[0];
+                else
+                {
+                    StatusManager.instance.WorkP -= kaihi;
+                    StatusManager.instance.Kaihi -= inputworkp[0];
+                    StatusManager.instance.Kaihi += kaihi;
+                    StatusManager.instance.WorkP += inputworkp[0];
                 }
                 NowKaihi.text = StatusManager.instance.Kaihi.ToString();
                 inputworkp[0] = kaihi;
@@ -1396,10 +1400,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kikku += kikku;
                     InputWorkPKikku.text = kikku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kikku;
-                       StatusManager.instance.Kikku -= inputworkp[1];
-                       StatusManager.instance.Kikku += kikku;
-                       StatusManager.instance.WorkP += inputworkp[1];
+                else
+                {
+                    StatusManager.instance.WorkP -= kikku;
+                    StatusManager.instance.Kikku -= inputworkp[1];
+                    StatusManager.instance.Kikku += kikku;
+                    StatusManager.instance.WorkP += inputworkp[1];
                 }
                 NowKikku.text = StatusManager.instance.Kikku.ToString();
                 inputworkp[1] = kikku;
@@ -1422,10 +1428,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kumitsuki += kumitsuki;
                     InputWorkPKumitsuki.text = kumitsuki.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kumitsuki;
-                       StatusManager.instance.Kumitsuki -= inputworkp[2];
-                       StatusManager.instance.Kumitsuki += kumitsuki;
-                       StatusManager.instance.WorkP += inputworkp[2];
+                else
+                {
+                    StatusManager.instance.WorkP -= kumitsuki;
+                    StatusManager.instance.Kumitsuki -= inputworkp[2];
+                    StatusManager.instance.Kumitsuki += kumitsuki;
+                    StatusManager.instance.WorkP += inputworkp[2];
                 }
                 NowKumitsuki.text = StatusManager.instance.Kumitsuki.ToString();
                 inputworkp[2] = kumitsuki;
@@ -1448,10 +1456,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kobushi += kobushi;
                     InputWorkPKobushi.text = kobushi.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kobushi;
-                       StatusManager.instance.Kobushi -= inputworkp[3];
-                       StatusManager.instance.Kobushi += kobushi;
-                       StatusManager.instance.WorkP += inputworkp[3];
+                else
+                {
+                    StatusManager.instance.WorkP -= kobushi;
+                    StatusManager.instance.Kobushi -= inputworkp[3];
+                    StatusManager.instance.Kobushi += kobushi;
+                    StatusManager.instance.WorkP += inputworkp[3];
                 }
                 NowKobushi.text = StatusManager.instance.Kobushi.ToString();
                 inputworkp[3] = kobushi;
@@ -1474,10 +1484,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Zutsuki += zutsuki;
                     InputWorkPZutsuki.text = zutsuki.ToString();
                 }
-                else { StatusManager.instance.WorkP -= zutsuki;
-                       StatusManager.instance.Zutsuki -= inputworkp[4];
-                       StatusManager.instance.Zutsuki += zutsuki;
-                       StatusManager.instance.WorkP += inputworkp[4];
+                else
+                {
+                    StatusManager.instance.WorkP -= zutsuki;
+                    StatusManager.instance.Zutsuki -= inputworkp[4];
+                    StatusManager.instance.Zutsuki += zutsuki;
+                    StatusManager.instance.WorkP += inputworkp[4];
                 }
                 NowZutsuki.text = StatusManager.instance.Zutsuki.ToString();
                 inputworkp[4] = zutsuki;
@@ -1500,10 +1512,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Toteki += toteki;
                     InputWorkPToteki.text = toteki.ToString();
                 }
-                else { StatusManager.instance.WorkP -= toteki;
-                       StatusManager.instance.Toteki -= inputworkp[5];
-                       StatusManager.instance.Toteki += toteki;
-                       StatusManager.instance.WorkP += inputworkp[5];
+                else
+                {
+                    StatusManager.instance.WorkP -= toteki;
+                    StatusManager.instance.Toteki -= inputworkp[5];
+                    StatusManager.instance.Toteki += toteki;
+                    StatusManager.instance.WorkP += inputworkp[5];
                 }
                 NowToteki.text = StatusManager.instance.Toteki.ToString();
                 inputworkp[5] = toteki;
@@ -1526,10 +1540,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.MSA += msa;
                     InputWorkPMSA.text = msa.ToString();
                 }
-                else { StatusManager.instance.WorkP -= msa;
-                       StatusManager.instance.MSA -= inputworkp[6];
-                       StatusManager.instance.MSA += msa;
-                       StatusManager.instance.WorkP += inputworkp[6];
+                else
+                {
+                    StatusManager.instance.WorkP -= msa;
+                    StatusManager.instance.MSA -= inputworkp[6];
+                    StatusManager.instance.MSA += msa;
+                    StatusManager.instance.WorkP += inputworkp[6];
                 }
                 NowMSA.text = StatusManager.instance.MSA.ToString();
                 inputworkp[6] = msa;
@@ -1552,10 +1568,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kenzyu += kenzyu;
                     InputWorkPKenzyu.text = kenzyu.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kenzyu;
-                       StatusManager.instance.Kenzyu -= inputworkp[7];
-                       StatusManager.instance.Kenzyu += kenzyu;
-                       StatusManager.instance.WorkP += inputworkp[7];
+                else
+                {
+                    StatusManager.instance.WorkP -= kenzyu;
+                    StatusManager.instance.Kenzyu -= inputworkp[7];
+                    StatusManager.instance.Kenzyu += kenzyu;
+                    StatusManager.instance.WorkP += inputworkp[7];
                 }
                 NowKenzyu.text = StatusManager.instance.Kenzyu.ToString();
                 inputworkp[7] = kenzyu;
@@ -1578,10 +1596,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.SMG += smg;
                     InputWorkPSMG.text = smg.ToString();
                 }
-                else { StatusManager.instance.WorkP -= smg;
-                       StatusManager.instance.SMG -= inputworkp[8];
-                       StatusManager.instance.SMG += smg;
-                       StatusManager.instance.WorkP += inputworkp[8];
+                else
+                {
+                    StatusManager.instance.WorkP -= smg;
+                    StatusManager.instance.SMG -= inputworkp[8];
+                    StatusManager.instance.SMG += smg;
+                    StatusManager.instance.WorkP += inputworkp[8];
                 }
                 NowSMG.text = StatusManager.instance.SMG.ToString();
                 inputworkp[8] = smg;
@@ -1604,10 +1624,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.SG += sg;
                     InputWorkPSG.text = sg.ToString();
                 }
-                else { StatusManager.instance.WorkP -= sg;
-                       StatusManager.instance.SG -= inputworkp[9];
-                       StatusManager.instance.SG += sg;
-                       StatusManager.instance.WorkP += inputworkp[9];
+                else
+                {
+                    StatusManager.instance.WorkP -= sg;
+                    StatusManager.instance.SG -= inputworkp[9];
+                    StatusManager.instance.SG += sg;
+                    StatusManager.instance.WorkP += inputworkp[9];
                 }
                 NowSG.text = StatusManager.instance.SG.ToString();
                 inputworkp[9] = sg;
@@ -1630,10 +1652,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.MG += mg;
                     InputWorkPMG.text = mg.ToString();
                 }
-                else { StatusManager.instance.WorkP -= mg;
-                       StatusManager.instance.MG -= inputworkp[10];
-                       StatusManager.instance.MG += mg;
-                       StatusManager.instance.WorkP += inputworkp[10];
+                else
+                {
+                    StatusManager.instance.WorkP -= mg;
+                    StatusManager.instance.MG -= inputworkp[10];
+                    StatusManager.instance.MG += mg;
+                    StatusManager.instance.WorkP += inputworkp[10];
                 }
                 NowMG.text = StatusManager.instance.MG.ToString();
                 inputworkp[10] = mg;
@@ -1656,10 +1680,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.R += r;
                     InputWorkPR.text = r.ToString();
                 }
-                else { StatusManager.instance.WorkP -= r;
-                       StatusManager.instance.R -= inputworkp[11];
-                       StatusManager.instance.R += r;
-                       StatusManager.instance.WorkP += inputworkp[11];
+                else
+                {
+                    StatusManager.instance.WorkP -= r;
+                    StatusManager.instance.R -= inputworkp[11];
+                    StatusManager.instance.R += r;
+                    StatusManager.instance.WorkP += inputworkp[11];
                 }
                 NowR.text = StatusManager.instance.R.ToString();
                 inputworkp[11] = r;
@@ -1684,10 +1710,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Okyuteate += okyuteate;
                     InputWorkPOkyuteate.text = okyuteate.ToString();
                 }
-                else { StatusManager.instance.WorkP -= okyuteate;
-                       StatusManager.instance.Okyuteate -= inputworkp[12];
-                       StatusManager.instance.Okyuteate += okyuteate;
-                       StatusManager.instance.WorkP += inputworkp[12];
+                else
+                {
+                    StatusManager.instance.WorkP -= okyuteate;
+                    StatusManager.instance.Okyuteate -= inputworkp[12];
+                    StatusManager.instance.Okyuteate += okyuteate;
+                    StatusManager.instance.WorkP += inputworkp[12];
                 }
                 NowOkyuteate.text = StatusManager.instance.Okyuteate.ToString();
                 inputworkp[12] = okyuteate;
@@ -1710,10 +1738,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kagiake += kagiake;
                     InputWorkPKagiake.text = kagiake.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kagiake;
-                       StatusManager.instance.Kagiake -= inputworkp[13];
-                       StatusManager.instance.Kagiake += kagiake;
-                       StatusManager.instance.WorkP += inputworkp[13];
+                else
+                {
+                    StatusManager.instance.WorkP -= kagiake;
+                    StatusManager.instance.Kagiake -= inputworkp[13];
+                    StatusManager.instance.Kagiake += kagiake;
+                    StatusManager.instance.WorkP += inputworkp[13];
                 }
                 NowKagiake.text = StatusManager.instance.Kagiake.ToString();
                 inputworkp[13] = kagiake;
@@ -1736,10 +1766,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kakusu += kakusu;
                     InputWorkPKakusu.text = kakusu.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kakusu;
-                       StatusManager.instance.Kakusu -= inputworkp[14];
-                       StatusManager.instance.Kakusu += kakusu;
-                       StatusManager.instance.WorkP += inputworkp[14];
+                else
+                {
+                    StatusManager.instance.WorkP -= kakusu;
+                    StatusManager.instance.Kakusu -= inputworkp[14];
+                    StatusManager.instance.Kakusu += kakusu;
+                    StatusManager.instance.WorkP += inputworkp[14];
                 }
                 NowKakusu.text = StatusManager.instance.Kakusu.ToString();
                 inputworkp[14] = kakusu;
@@ -1762,10 +1794,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kakureru += kakureru;
                     InputWorkPKakureru.text = kakureru.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kakureru;
-                       StatusManager.instance.Kakureru -= inputworkp[15];
-                       StatusManager.instance.Kakureru += kakureru;
-                       StatusManager.instance.WorkP += inputworkp[15];
+                else
+                {
+                    StatusManager.instance.WorkP -= kakureru;
+                    StatusManager.instance.Kakureru -= inputworkp[15];
+                    StatusManager.instance.Kakureru += kakureru;
+                    StatusManager.instance.WorkP += inputworkp[15];
                 }
                 NowKakureru.text = StatusManager.instance.Kakureru.ToString();
                 inputworkp[15] = kakureru;
@@ -1788,10 +1822,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kikimimi += kikimimi;
                     InputWorkPKikimimi.text = kikimimi.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kikimimi;
-                       StatusManager.instance.Kikimimi -= inputworkp[16];
-                       StatusManager.instance.Kikimimi += kikimimi;
-                       StatusManager.instance.WorkP += inputworkp[16];
+                else
+                {
+                    StatusManager.instance.WorkP -= kikimimi;
+                    StatusManager.instance.Kikimimi -= inputworkp[16];
+                    StatusManager.instance.Kikimimi += kikimimi;
+                    StatusManager.instance.WorkP += inputworkp[16];
                 }
                 NowKikimimi.text = StatusManager.instance.Kikimimi.ToString();
                 inputworkp[16] = kikimimi;
@@ -1814,10 +1850,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Shinobiaruki += shinobiaruki;
                     InputWorkPShinobiaruki.text = shinobiaruki.ToString();
                 }
-                else { StatusManager.instance.WorkP -= shinobiaruki;
-                       StatusManager.instance.Shinobiaruki -= inputworkp[17];
-                       StatusManager.instance.Shinobiaruki += shinobiaruki;
-                       StatusManager.instance.WorkP += inputworkp[17];
+                else
+                {
+                    StatusManager.instance.WorkP -= shinobiaruki;
+                    StatusManager.instance.Shinobiaruki -= inputworkp[17];
+                    StatusManager.instance.Shinobiaruki += shinobiaruki;
+                    StatusManager.instance.WorkP += inputworkp[17];
                 }
                 NowShinobiaruki.text = StatusManager.instance.Shinobiaruki.ToString();
                 inputworkp[17] = shinobiaruki;
@@ -1840,10 +1878,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Syashinzyutsu += syashinzyutsu;
                     InputWorkPSyashinzyutsu.text = syashinzyutsu.ToString();
                 }
-                else { StatusManager.instance.WorkP -= syashinzyutsu;
-                       StatusManager.instance.Syashinzyutsu -= inputworkp[18];
-                       StatusManager.instance.Syashinzyutsu += syashinzyutsu;
-                       StatusManager.instance.WorkP += inputworkp[18];
+                else
+                {
+                    StatusManager.instance.WorkP -= syashinzyutsu;
+                    StatusManager.instance.Syashinzyutsu -= inputworkp[18];
+                    StatusManager.instance.Syashinzyutsu += syashinzyutsu;
+                    StatusManager.instance.WorkP += inputworkp[18];
                 }
                 NowSyashinzyutsu.text = StatusManager.instance.Syashinzyutsu.ToString();
                 inputworkp[18] = syashinzyutsu;
@@ -1866,10 +1906,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Seshinbunseki += seshinbunseki;
                     InputWorkPSeshinbunseki.text = seshinbunseki.ToString();
                 }
-                else { StatusManager.instance.WorkP -= seshinbunseki;
-                       StatusManager.instance.Seshinbunseki -= inputworkp[19];
-                       StatusManager.instance.Seshinbunseki += seshinbunseki;
-                       StatusManager.instance.WorkP += inputworkp[19];
+                else
+                {
+                    StatusManager.instance.WorkP -= seshinbunseki;
+                    StatusManager.instance.Seshinbunseki -= inputworkp[19];
+                    StatusManager.instance.Seshinbunseki += seshinbunseki;
+                    StatusManager.instance.WorkP += inputworkp[19];
                 }
                 NowSeshinbunseki.text = StatusManager.instance.Seshinbunseki.ToString();
                 inputworkp[19] = seshinbunseki;
@@ -1892,10 +1934,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tsuiseki += tsuiseki;
                     InputWorkPTsuiseki.text = tsuiseki.ToString();
                 }
-                else { StatusManager.instance.WorkP -= tsuiseki;
-                       StatusManager.instance.Tsuiseki -= inputworkp[20];
-                       StatusManager.instance.Tsuiseki += tsuiseki;
-                       StatusManager.instance.WorkP += inputworkp[20];
+                else
+                {
+                    StatusManager.instance.WorkP -= tsuiseki;
+                    StatusManager.instance.Tsuiseki -= inputworkp[20];
+                    StatusManager.instance.Tsuiseki += tsuiseki;
+                    StatusManager.instance.WorkP += inputworkp[20];
                 }
                 NowTsuiseki.text = StatusManager.instance.Tsuiseki.ToString();
                 inputworkp[20] = tsuiseki;
@@ -1918,10 +1962,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Touhan += touhan;
                     InputWorkPTouhan.text = touhan.ToString();
                 }
-                else { StatusManager.instance.WorkP -= touhan;
-                       StatusManager.instance.Touhan -= inputworkp[21];
-                       StatusManager.instance.Touhan += touhan;
-                       StatusManager.instance.WorkP += inputworkp[21];
+                else
+                {
+                    StatusManager.instance.WorkP -= touhan;
+                    StatusManager.instance.Touhan -= inputworkp[21];
+                    StatusManager.instance.Touhan += touhan;
+                    StatusManager.instance.WorkP += inputworkp[21];
                 }
                 NowTouhan.text = StatusManager.instance.Touhan.ToString();
                 inputworkp[21] = touhan;
@@ -1944,10 +1990,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tosyokan += tosyokan;
                     InputWorkPTosyokan.text = tosyokan.ToString();
                 }
-                else { StatusManager.instance.WorkP -= tosyokan;
-                       StatusManager.instance.Tosyokan -= inputworkp[22];
-                       StatusManager.instance.Tosyokan += tosyokan;
-                       StatusManager.instance.WorkP += inputworkp[22];
+                else
+                {
+                    StatusManager.instance.WorkP -= tosyokan;
+                    StatusManager.instance.Tosyokan -= inputworkp[22];
+                    StatusManager.instance.Tosyokan += tosyokan;
+                    StatusManager.instance.WorkP += inputworkp[22];
                 }
                 NowTosyokan.text = StatusManager.instance.Tosyokan.ToString();
                 inputworkp[22] = tosyokan;
@@ -1970,10 +2018,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Meboshi += meboshi;
                     InputWorkPMeboshi.text = meboshi.ToString();
                 }
-                else { StatusManager.instance.WorkP -= meboshi;
-                       StatusManager.instance.Meboshi -= inputworkp[23];
-                       StatusManager.instance.Meboshi += meboshi;
-                       StatusManager.instance.WorkP += inputworkp[23];
+                else
+                {
+                    StatusManager.instance.WorkP -= meboshi;
+                    StatusManager.instance.Meboshi -= inputworkp[23];
+                    StatusManager.instance.Meboshi += meboshi;
+                    StatusManager.instance.WorkP += inputworkp[23];
                 }
                 NowMeboshi.text = StatusManager.instance.Meboshi.ToString();
                 inputworkp[23] = meboshi;
@@ -1998,10 +2048,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Unten += unten;
                     InputWorkPUnten.text = unten.ToString();
                 }
-                else { StatusManager.instance.WorkP -= unten;
-                       StatusManager.instance.Unten -= inputworkp[24];
-                       StatusManager.instance.Unten += unten;
-                       StatusManager.instance.WorkP += inputworkp[24];
+                else
+                {
+                    StatusManager.instance.WorkP -= unten;
+                    StatusManager.instance.Unten -= inputworkp[24];
+                    StatusManager.instance.Unten += unten;
+                    StatusManager.instance.WorkP += inputworkp[24];
                 }
                 NowUnten.text = StatusManager.instance.Unten.ToString();
                 inputworkp[24] = unten;
@@ -2024,10 +2076,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kikaisyuri += kikaisyuri;
                     InputWorkPKikaisyuri.text = kikaisyuri.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kikaisyuri;
-                       StatusManager.instance.Kikaisyuri -= inputworkp[25];
-                       StatusManager.instance.Kikaisyuri += kikaisyuri;
-                       StatusManager.instance.WorkP += inputworkp[25];
+                else
+                {
+                    StatusManager.instance.WorkP -= kikaisyuri;
+                    StatusManager.instance.Kikaisyuri -= inputworkp[25];
+                    StatusManager.instance.Kikaisyuri += kikaisyuri;
+                    StatusManager.instance.WorkP += inputworkp[25];
                 }
                 NowKikaisyuri.text = StatusManager.instance.Kikaisyuri.ToString();
                 inputworkp[25] = kikaisyuri;
@@ -2050,10 +2104,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Zyukikaisosa += zyukikaisosa;
                     InputWorkPZyukikaisosa.text = zyukikaisosa.ToString();
                 }
-                else { StatusManager.instance.WorkP -= zyukikaisosa;
-                       StatusManager.instance.Zyukikaisosa -= inputworkp[26];
-                       StatusManager.instance.Zyukikaisosa += zyukikaisosa;
-                       StatusManager.instance.WorkP += inputworkp[26];
+                else
+                {
+                    StatusManager.instance.WorkP -= zyukikaisosa;
+                    StatusManager.instance.Zyukikaisosa -= inputworkp[26];
+                    StatusManager.instance.Zyukikaisosa += zyukikaisosa;
+                    StatusManager.instance.WorkP += inputworkp[26];
                 }
                 NowZyukikaisosa.text = StatusManager.instance.Zyukikaisosa.ToString();
                 inputworkp[26] = zyukikaisosa;
@@ -2076,10 +2132,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Zyoba += zyoba;
                     InputWorkPZyoba.text = zyoba.ToString();
                 }
-                else { StatusManager.instance.WorkP -= zyoba;
-                       StatusManager.instance.Zyoba = inputworkp[27];
-                       StatusManager.instance.Zyoba += zyoba;
-                       StatusManager.instance.WorkP += inputworkp[27];
+                else
+                {
+                    StatusManager.instance.WorkP -= zyoba;
+                    StatusManager.instance.Zyoba = inputworkp[27];
+                    StatusManager.instance.Zyoba += zyoba;
+                    StatusManager.instance.WorkP += inputworkp[27];
                 }
                 NowZyoba.text = StatusManager.instance.Zyoba.ToString();
                 inputworkp[27] = zyoba;
@@ -2102,10 +2160,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Suiei += suiei;
                     InputWorkPSuiei.text = suiei.ToString();
                 }
-                else { StatusManager.instance.WorkP -= suiei;
-                       StatusManager.instance.Suiei -= inputworkp[28];
-                       StatusManager.instance.Suiei += suiei;
-                       StatusManager.instance.WorkP += inputworkp[28];
+                else
+                {
+                    StatusManager.instance.WorkP -= suiei;
+                    StatusManager.instance.Suiei -= inputworkp[28];
+                    StatusManager.instance.Suiei += suiei;
+                    StatusManager.instance.WorkP += inputworkp[28];
                 }
                 NowSuiei.text = StatusManager.instance.Suiei.ToString();
                 inputworkp[28] = suiei;
@@ -2128,10 +2188,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Sesaku += sesaku;
                     InputWorkPSesaku.text = sesaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= sesaku;
-                       StatusManager.instance.Sesaku -= inputworkp[29];
-                       StatusManager.instance.Sesaku += sesaku;
-                       StatusManager.instance.WorkP += inputworkp[29];
+                else
+                {
+                    StatusManager.instance.WorkP -= sesaku;
+                    StatusManager.instance.Sesaku -= inputworkp[29];
+                    StatusManager.instance.Sesaku += sesaku;
+                    StatusManager.instance.WorkP += inputworkp[29];
                 }
                 NowSesaku.text = StatusManager.instance.Sesaku.ToString();
                 inputworkp[29] = sesaku;
@@ -2154,10 +2216,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Sozyu += sozyu;
                     InputWorkPSozyu.text = sozyu.ToString();
                 }
-                else { StatusManager.instance.WorkP -= sozyu;
-                       StatusManager.instance.Sozyu -= inputworkp[30];
-                       StatusManager.instance.Sozyu += sozyu;
-                       StatusManager.instance.WorkP += inputworkp[30];
+                else
+                {
+                    StatusManager.instance.WorkP -= sozyu;
+                    StatusManager.instance.Sozyu -= inputworkp[30];
+                    StatusManager.instance.Sozyu += sozyu;
+                    StatusManager.instance.WorkP += inputworkp[30];
                 }
                 NowSozyu.text = StatusManager.instance.Sozyu.ToString();
                 inputworkp[30] = sozyu;
@@ -2180,10 +2244,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tyoyaku += tyoyaku;
                     InputWorkPTyoyaku.text = tyoyaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= tyoyaku;
-                       StatusManager.instance.Tyoyaku -= inputworkp[31];
-                       StatusManager.instance.Tyoyaku += tyoyaku;
-                       StatusManager.instance.WorkP += inputworkp[31];
+                else
+                {
+                    StatusManager.instance.WorkP -= tyoyaku;
+                    StatusManager.instance.Tyoyaku -= inputworkp[31];
+                    StatusManager.instance.Tyoyaku += tyoyaku;
+                    StatusManager.instance.WorkP += inputworkp[31];
                 }
                 NowTyoyaku.text = StatusManager.instance.Tyoyaku.ToString();
                 inputworkp[31] = tyoyaku;
@@ -2206,10 +2272,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Denkisyuri += denkisyuri;
                     InputWorkPDenkisyuri.text = denkisyuri.ToString();
                 }
-                else { StatusManager.instance.WorkP -= denkisyuri;
-                       StatusManager.instance.Denkisyuri -= inputworkp[32];
-                       StatusManager.instance.Denkisyuri += denkisyuri;
-                       StatusManager.instance.WorkP += inputworkp[32];
+                else
+                {
+                    StatusManager.instance.WorkP -= denkisyuri;
+                    StatusManager.instance.Denkisyuri -= inputworkp[32];
+                    StatusManager.instance.Denkisyuri += denkisyuri;
+                    StatusManager.instance.WorkP += inputworkp[32];
                 }
                 NowDenkisyuri.text = StatusManager.instance.Denkisyuri.ToString();
                 inputworkp[32] = denkisyuri;
@@ -2232,10 +2300,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Nabigeto += nabigeto;
                     InputWorkPNabigeto.text = nabigeto.ToString();
                 }
-                else { StatusManager.instance.WorkP -= nabigeto;
-                       StatusManager.instance.Nabigeto -= inputworkp[33];
-                       StatusManager.instance.Nabigeto += nabigeto;
-                       StatusManager.instance.WorkP += inputworkp[33];
+                else
+                {
+                    StatusManager.instance.WorkP -= nabigeto;
+                    StatusManager.instance.Nabigeto -= inputworkp[33];
+                    StatusManager.instance.Nabigeto += nabigeto;
+                    StatusManager.instance.WorkP += inputworkp[33];
                 }
                 NowNabigeto.text = StatusManager.instance.Nabigeto.ToString();
                 inputworkp[33] = nabigeto;
@@ -2258,10 +2328,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Hensou += hensou;
                     InputWorkPHensou.text = hensou.ToString();
                 }
-                else { StatusManager.instance.WorkP -= hensou;
-                       StatusManager.instance.Hensou -= inputworkp[34];
-                       StatusManager.instance.Hensou += hensou;
-                       StatusManager.instance.WorkP += inputworkp[34];
+                else
+                {
+                    StatusManager.instance.WorkP -= hensou;
+                    StatusManager.instance.Hensou -= inputworkp[34];
+                    StatusManager.instance.Hensou += hensou;
+                    StatusManager.instance.WorkP += inputworkp[34];
                 }
                 NowHensou.text = StatusManager.instance.Hensou.ToString();
                 inputworkp[34] = hensou;
@@ -2286,10 +2358,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Iikurume += iikurume;
                     InputWorkPIikurume.text = iikurume.ToString();
                 }
-                else { StatusManager.instance.WorkP -= iikurume;
-                       StatusManager.instance.Iikurume -= inputworkp[35];
-                       StatusManager.instance.Iikurume += iikurume;
-                       StatusManager.instance.WorkP += inputworkp[35];
+                else
+                {
+                    StatusManager.instance.WorkP -= iikurume;
+                    StatusManager.instance.Iikurume -= inputworkp[35];
+                    StatusManager.instance.Iikurume += iikurume;
+                    StatusManager.instance.WorkP += inputworkp[35];
                 }
                 NowIikurume.text = StatusManager.instance.Iikurume.ToString();
                 inputworkp[35] = iikurume;
@@ -2312,10 +2386,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Shinyou += shinyou;
                     InputWorkPShinyou.text = shinyou.ToString();
                 }
-                else { StatusManager.instance.WorkP -= shinyou;
-                       StatusManager.instance.Shinyou -= inputworkp[36];
-                       StatusManager.instance.Shinyou += shinyou;
-                       StatusManager.instance.WorkP += inputworkp[36];
+                else
+                {
+                    StatusManager.instance.WorkP -= shinyou;
+                    StatusManager.instance.Shinyou -= inputworkp[36];
+                    StatusManager.instance.Shinyou += shinyou;
+                    StatusManager.instance.WorkP += inputworkp[36];
                 }
                 NowShinyou.text = StatusManager.instance.Shinyou.ToString();
                 inputworkp[36] = shinyou;
@@ -2338,10 +2414,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Settoku += settoku;
                     InputWorkPSettoku.text = settoku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= settoku;
-                       StatusManager.instance.Settoku -= inputworkp[37];
-                       StatusManager.instance.Settoku += settoku;
-                       StatusManager.instance.WorkP += inputworkp[37];
+                else
+                {
+                    StatusManager.instance.WorkP -= settoku;
+                    StatusManager.instance.Settoku -= inputworkp[37];
+                    StatusManager.instance.Settoku += settoku;
+                    StatusManager.instance.WorkP += inputworkp[37];
                 }
                 NowSettoku.text = StatusManager.instance.Settoku.ToString();
                 inputworkp[37] = settoku;
@@ -2364,10 +2442,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Negiri += negiri;
                     InputWorkPNegiri.text = negiri.ToString();
                 }
-                else { StatusManager.instance.WorkP -= negiri;
-                       StatusManager.instance.Negiri -= inputworkp[38];
-                       StatusManager.instance.Negiri += negiri;
-                       StatusManager.instance.WorkP += inputworkp[38];
+                else
+                {
+                    StatusManager.instance.WorkP -= negiri;
+                    StatusManager.instance.Negiri -= inputworkp[38];
+                    StatusManager.instance.Negiri += negiri;
+                    StatusManager.instance.WorkP += inputworkp[38];
                 }
                 NowNegiri.text = StatusManager.instance.Negiri.ToString();
                 inputworkp[38] = negiri;
@@ -2390,10 +2470,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Bokokugo += bokokugo;
                     InputWorkPBokokugo.text = bokokugo.ToString();
                 }
-                else { StatusManager.instance.WorkP -= bokokugo;
-                       StatusManager.instance.Bokokugo -= inputworkp[39];
-                       StatusManager.instance.Bokokugo += bokokugo;
-                       StatusManager.instance.WorkP += inputworkp[39];
+                else
+                {
+                    StatusManager.instance.WorkP -= bokokugo;
+                    StatusManager.instance.Bokokugo -= inputworkp[39];
+                    StatusManager.instance.Bokokugo += bokokugo;
+                    StatusManager.instance.WorkP += inputworkp[39];
                 }
                 NowBokokugo.text = StatusManager.instance.Bokokugo.ToString();
                 inputworkp[39] = bokokugo;
@@ -2418,10 +2500,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Igaku += igaku;
                     InputWorkPIgaku.text = igaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= igaku;
-                       StatusManager.instance.Igaku -= inputworkp[40];
-                       StatusManager.instance.Igaku += igaku;
-                       StatusManager.instance.WorkP += inputworkp[40];
+                else
+                {
+                    StatusManager.instance.WorkP -= igaku;
+                    StatusManager.instance.Igaku -= inputworkp[40];
+                    StatusManager.instance.Igaku += igaku;
+                    StatusManager.instance.WorkP += inputworkp[40];
                 }
                 NowIgaku.text = StatusManager.instance.Igaku.ToString();
                 inputworkp[40] = igaku;
@@ -2444,10 +2528,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Okaruto += okaruto;
                     InputWorkPOkaruto.text = okaruto.ToString();
                 }
-                else { StatusManager.instance.WorkP -= okaruto;
-                       StatusManager.instance.Okaruto -= inputworkp[41];
-                       StatusManager.instance.Okaruto += okaruto;
-                       StatusManager.instance.WorkP += inputworkp[41];
+                else
+                {
+                    StatusManager.instance.WorkP -= okaruto;
+                    StatusManager.instance.Okaruto -= inputworkp[41];
+                    StatusManager.instance.Okaruto += okaruto;
+                    StatusManager.instance.WorkP += inputworkp[41];
                 }
                 NowOkaruto.text = StatusManager.instance.Okaruto.ToString();
                 inputworkp[41] = okaruto;
@@ -2470,10 +2556,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kagaku += kagaku;
                     InputWorkPKagaku.text = kagaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kagaku;
-                       StatusManager.instance.Kagaku -= inputworkp[42];
-                       StatusManager.instance.Kagaku += kagaku;
-                       StatusManager.instance.WorkP += inputworkp[42];
+                else
+                {
+                    StatusManager.instance.WorkP -= kagaku;
+                    StatusManager.instance.Kagaku -= inputworkp[42];
+                    StatusManager.instance.Kagaku += kagaku;
+                    StatusManager.instance.WorkP += inputworkp[42];
                 }
                 NowKagaku.text = StatusManager.instance.Kagaku.ToString();
                 inputworkp[42] = kagaku;
@@ -2496,10 +2584,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Shinwa += shinwa;
                     InputWorkPShinwa.text = shinwa.ToString();
                 }
-                else { StatusManager.instance.WorkP -= shinwa;
-                       StatusManager.instance.Shinwa -= inputworkp[43];
-                       StatusManager.instance.Shinwa += shinwa;
-                       StatusManager.instance.WorkP += inputworkp[43];
+                else
+                {
+                    StatusManager.instance.WorkP -= shinwa;
+                    StatusManager.instance.Shinwa -= inputworkp[43];
+                    StatusManager.instance.Shinwa += shinwa;
+                    StatusManager.instance.WorkP += inputworkp[43];
                 }
                 NowShinwa.text = StatusManager.instance.Shinwa.ToString();
                 inputworkp[43] = shinwa;
@@ -2522,10 +2612,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Gezyutsu += gezyutsu;
                     InputWorkPGezyutsu.text = gezyutsu.ToString();
                 }
-                else { StatusManager.instance.WorkP -= gezyutsu;
-                       StatusManager.instance.Gezyutsu -= inputworkp[44];
-                       StatusManager.instance.Gezyutsu += gezyutsu;
-                       StatusManager.instance.WorkP += inputworkp[44];
+                else
+                {
+                    StatusManager.instance.WorkP -= gezyutsu;
+                    StatusManager.instance.Gezyutsu -= inputworkp[44];
+                    StatusManager.instance.Gezyutsu += gezyutsu;
+                    StatusManager.instance.WorkP += inputworkp[44];
                 }
                 NowGezyutsu.text = StatusManager.instance.Gezyutsu.ToString();
                 inputworkp[44] = gezyutsu;
@@ -2548,10 +2640,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Keiri += keiri;
                     InputWorkPKeiri.text = keiri.ToString();
                 }
-                else { StatusManager.instance.WorkP -= keiri;
-                       StatusManager.instance.Keiri -= inputworkp[45];
-                       StatusManager.instance.Keiri += keiri;
-                       StatusManager.instance.WorkP += inputworkp[45];
+                else
+                {
+                    StatusManager.instance.WorkP -= keiri;
+                    StatusManager.instance.Keiri -= inputworkp[45];
+                    StatusManager.instance.Keiri += keiri;
+                    StatusManager.instance.WorkP += inputworkp[45];
                 }
                 NowKeiri.text = StatusManager.instance.Keiri.ToString();
                 inputworkp[45] = keiri;
@@ -2574,10 +2668,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kokogaku += kokogaku;
                     InputWorkPKokogaku.text = kokogaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= kokogaku;
-                       StatusManager.instance.Kokogaku -= inputworkp[46];
-                       StatusManager.instance.Kokogaku += kokogaku;
-                       StatusManager.instance.WorkP += inputworkp[46];
+                else
+                {
+                    StatusManager.instance.WorkP -= kokogaku;
+                    StatusManager.instance.Kokogaku -= inputworkp[46];
+                    StatusManager.instance.Kokogaku += kokogaku;
+                    StatusManager.instance.WorkP += inputworkp[46];
                 }
                 NowKokogaku.text = StatusManager.instance.Kokogaku.ToString();
                 inputworkp[46] = kokogaku;
@@ -2600,10 +2696,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.PC += pc;
                     InputWorkPPC.text = pc.ToString();
                 }
-                else { StatusManager.instance.WorkP -= pc;
-                       StatusManager.instance.PC -= inputworkp[47];
-                       StatusManager.instance.PC += pc;
-                       StatusManager.instance.WorkP += inputworkp[47];
+                else
+                {
+                    StatusManager.instance.WorkP -= pc;
+                    StatusManager.instance.PC -= inputworkp[47];
+                    StatusManager.instance.PC += pc;
+                    StatusManager.instance.WorkP += inputworkp[47];
                 }
                 NowPC.text = StatusManager.instance.PC.ToString();
                 inputworkp[47] = pc;
@@ -2626,10 +2724,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Shinrigaku += shinrigaku;
                     InputWorkPShinrigaku.text = shinrigaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= shinrigaku;
-                       StatusManager.instance.Shinrigaku -= inputworkp[48];
-                       StatusManager.instance.Shinrigaku += shinrigaku;
-                       StatusManager.instance.WorkP += inputworkp[48];
+                else
+                {
+                    StatusManager.instance.WorkP -= shinrigaku;
+                    StatusManager.instance.Shinrigaku -= inputworkp[48];
+                    StatusManager.instance.Shinrigaku += shinrigaku;
+                    StatusManager.instance.WorkP += inputworkp[48];
                 }
                 NowShinrigaku.text = StatusManager.instance.Shinrigaku.ToString();
                 inputworkp[48] = shinrigaku;
@@ -2652,10 +2752,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Zinruigaku += zinruigaku;
                     InputWorkPZinruigaku.text = zinruigaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= zinruigaku;
-                       StatusManager.instance.Zinruigaku -= inputworkp[49];
-                       StatusManager.instance.Zinruigaku += zinruigaku;
-                       StatusManager.instance.WorkP += inputworkp[49];
+                else
+                {
+                    StatusManager.instance.WorkP -= zinruigaku;
+                    StatusManager.instance.Zinruigaku -= inputworkp[49];
+                    StatusManager.instance.Zinruigaku += zinruigaku;
+                    StatusManager.instance.WorkP += inputworkp[49];
                 }
                 NowZinruigaku.text = StatusManager.instance.Zinruigaku.ToString();
                 inputworkp[49] = zinruigaku;
@@ -2678,10 +2780,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Seibutsugaku += seibutsugaku;
                     InputWorkPSeibutsugaku.text = seibutsugaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= seibutsugaku;
-                       StatusManager.instance.Seibutsugaku -= inputworkp[50];
-                       StatusManager.instance.Seibutsugaku += seibutsugaku;
-                       StatusManager.instance.WorkP += inputworkp[50];
+                else
+                {
+                    StatusManager.instance.WorkP -= seibutsugaku;
+                    StatusManager.instance.Seibutsugaku -= inputworkp[50];
+                    StatusManager.instance.Seibutsugaku += seibutsugaku;
+                    StatusManager.instance.WorkP += inputworkp[50];
                 }
                 NowSeibutsugaku.text = StatusManager.instance.Seibutsugaku.ToString();
                 inputworkp[50] = seibutsugaku;
@@ -2704,10 +2808,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tishitsugaku += tishitsugaku;
                     InputWorkPTishitsugaku.text = tishitsugaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= tishitsugaku;
-                       StatusManager.instance.Tishitsugaku -= inputworkp[51];
-                       StatusManager.instance.Tishitsugaku += tishitsugaku;
-                       StatusManager.instance.WorkP += inputworkp[51];
+                else
+                {
+                    StatusManager.instance.WorkP -= tishitsugaku;
+                    StatusManager.instance.Tishitsugaku -= inputworkp[51];
+                    StatusManager.instance.Tishitsugaku += tishitsugaku;
+                    StatusManager.instance.WorkP += inputworkp[51];
                 }
                 NowTishitsugaku.text = StatusManager.instance.Tishitsugaku.ToString();
                 inputworkp[51] = tishitsugaku;
@@ -2730,10 +2836,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Denshikougaku += denshikougaku;
                     InputWorkPDenshikougaku.text = denshikougaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= denshikougaku;
-                       StatusManager.instance.Denshikougaku -= inputworkp[52];
-                       StatusManager.instance.Denshikougaku += denshikougaku;
-                       StatusManager.instance.WorkP += inputworkp[52];
+                else
+                {
+                    StatusManager.instance.WorkP -= denshikougaku;
+                    StatusManager.instance.Denshikougaku -= inputworkp[52];
+                    StatusManager.instance.Denshikougaku += denshikougaku;
+                    StatusManager.instance.WorkP += inputworkp[52];
                 }
                 NowDenshikougaku.text = StatusManager.instance.Denshikougaku.ToString();
                 inputworkp[52] = denshikougaku;
@@ -2756,10 +2864,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tenmongaku += tenmongaku;
                     InputWorkPTenmongaku.text = tenmongaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= tenmongaku;
-                       StatusManager.instance.Tenmongaku -= inputworkp[53];
-                       StatusManager.instance.Tenmongaku += tenmongaku;
-                       StatusManager.instance.WorkP += inputworkp[53];
+                else
+                {
+                    StatusManager.instance.WorkP -= tenmongaku;
+                    StatusManager.instance.Tenmongaku -= inputworkp[53];
+                    StatusManager.instance.Tenmongaku += tenmongaku;
+                    StatusManager.instance.WorkP += inputworkp[53];
                 }
                 NowTenmongaku.text = StatusManager.instance.Tenmongaku.ToString();
                 inputworkp[53] = tenmongaku;
@@ -2782,10 +2892,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Hakubutsugaku += hakubutsugaku;
                     InputWorkPHakubutsugaku.text = hakubutsugaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= hakubutsugaku;
-                       StatusManager.instance.Hakubutsugaku -= inputworkp[54];
-                       StatusManager.instance.Hakubutsugaku += hakubutsugaku;
-                       StatusManager.instance.WorkP += inputworkp[54];
+                else
+                {
+                    StatusManager.instance.WorkP -= hakubutsugaku;
+                    StatusManager.instance.Hakubutsugaku -= inputworkp[54];
+                    StatusManager.instance.Hakubutsugaku += hakubutsugaku;
+                    StatusManager.instance.WorkP += inputworkp[54];
                 }
                 NowHakubutsugaku.text = StatusManager.instance.Hakubutsugaku.ToString();
                 inputworkp[54] = hakubutsugaku;
@@ -2808,10 +2920,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Butsurigaku += butsurigaku;
                     InputWorkPButsurigaku.text = butsurigaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= butsurigaku;
-                       StatusManager.instance.Butsurigaku -= inputworkp[55];
-                       StatusManager.instance.Butsurigaku += butsurigaku;
-                       StatusManager.instance.WorkP += inputworkp[55];
+                else
+                {
+                    StatusManager.instance.WorkP -= butsurigaku;
+                    StatusManager.instance.Butsurigaku -= inputworkp[55];
+                    StatusManager.instance.Butsurigaku += butsurigaku;
+                    StatusManager.instance.WorkP += inputworkp[55];
                 }
                 NowButsurigaku.text = StatusManager.instance.Butsurigaku.ToString();
                 inputworkp[55] = butsurigaku;
@@ -2834,10 +2948,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Houritsu += houritsu;
                     InputWorkPHouritsu.text = houritsu.ToString();
                 }
-                else { StatusManager.instance.WorkP -= houritsu;
-                       StatusManager.instance.Houritsu -= inputworkp[56];
-                       StatusManager.instance.Houritsu += houritsu;
-                       StatusManager.instance.WorkP += inputworkp[56];
+                else
+                {
+                    StatusManager.instance.WorkP -= houritsu;
+                    StatusManager.instance.Houritsu -= inputworkp[56];
+                    StatusManager.instance.Houritsu += houritsu;
+                    StatusManager.instance.WorkP += inputworkp[56];
                 }
                 NowHouritsu.text = StatusManager.instance.Houritsu.ToString();
                 inputworkp[56] = houritsu;
@@ -2860,10 +2976,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Yakugaku += yakugaku;
                     InputWorkPYakugaku.text = yakugaku.ToString();
                 }
-                else { StatusManager.instance.WorkP -= yakugaku;
-                       StatusManager.instance.Yakugaku -= inputworkp[57];
-                       StatusManager.instance.Yakugaku += yakugaku;
-                       StatusManager.instance.WorkP += inputworkp[57];
+                else
+                {
+                    StatusManager.instance.WorkP -= yakugaku;
+                    StatusManager.instance.Yakugaku -= inputworkp[57];
+                    StatusManager.instance.Yakugaku += yakugaku;
+                    StatusManager.instance.WorkP += inputworkp[57];
                 }
                 NowYakugaku.text = StatusManager.instance.Yakugaku.ToString();
                 inputworkp[57] = yakugaku;
@@ -2886,10 +3004,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Rekishi += rekishi;
                     InputWorkPRekishi.text = rekishi.ToString();
                 }
-                else { StatusManager.instance.WorkP -= rekishi;
-                       StatusManager.instance.Rekishi -= inputworkp[58];
-                       StatusManager.instance.Rekishi += rekishi;
-                       StatusManager.instance.WorkP += inputworkp[58];
+                else
+                {
+                    StatusManager.instance.WorkP -= rekishi;
+                    StatusManager.instance.Rekishi -= inputworkp[58];
+                    StatusManager.instance.Rekishi += rekishi;
+                    StatusManager.instance.WorkP += inputworkp[58];
                 }
                 NowRekishi.text = StatusManager.instance.Rekishi.ToString();
                 inputworkp[58] = rekishi;
@@ -2905,7 +3025,7 @@ public class GameManager : MonoBehaviour
         {
             case 0:     //回避
                 if ((int.Parse(InputWorkPKaihi.text) + int.Parse(InputHobbyPKaihi.text) + status[0]) > limit)
-                { 
+                {
                     InputHobbyPKaihi.text = (limit - status[0] - int.Parse(InputWorkPKaihi.text)).ToString();
                 }
                 else if (int.Parse(InputHobbyPKaihi.text) < 0)
@@ -2920,10 +3040,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kaihi += kaihi;
                     InputHobbyPKaihi.text = kaihi.ToString();
                 }
-                else  {StatusManager.instance.HobbyP -= kaihi;
-                       StatusManager.instance.Kaihi -= inputhobbyp[0];
-                       StatusManager.instance.Kaihi += kaihi;
-                       StatusManager.instance.HobbyP += inputhobbyp[0];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kaihi;
+                    StatusManager.instance.Kaihi -= inputhobbyp[0];
+                    StatusManager.instance.Kaihi += kaihi;
+                    StatusManager.instance.HobbyP += inputhobbyp[0];
                 }
                 NowKaihi.text = StatusManager.instance.Kaihi.ToString();
                 inputhobbyp[0] = kaihi;
@@ -2946,11 +3068,13 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kikku += kikku;
                     InputHobbyPKikku.text = kikku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kikku;
-                       StatusManager.instance.Kikku -= inputhobbyp[1];
-                       StatusManager.instance.Kikku += kikku;
-                       StatusManager.instance.HobbyP += inputhobbyp[1];
-                }             
+                else
+                {
+                    StatusManager.instance.HobbyP -= kikku;
+                    StatusManager.instance.Kikku -= inputhobbyp[1];
+                    StatusManager.instance.Kikku += kikku;
+                    StatusManager.instance.HobbyP += inputhobbyp[1];
+                }
                 NowKikku.text = StatusManager.instance.Kikku.ToString();
                 inputhobbyp[1] = kikku;
                 Afterstatus[1] = StatusManager.instance.Kikku;
@@ -2972,10 +3096,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kumitsuki += kumitsuki;
                     InputHobbyPKumitsuki.text = kumitsuki.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kumitsuki;
-                       StatusManager.instance.Kumitsuki -= inputhobbyp[2];
-                       StatusManager.instance.Kumitsuki += kumitsuki;
-                       StatusManager.instance.HobbyP += inputhobbyp[2];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kumitsuki;
+                    StatusManager.instance.Kumitsuki -= inputhobbyp[2];
+                    StatusManager.instance.Kumitsuki += kumitsuki;
+                    StatusManager.instance.HobbyP += inputhobbyp[2];
                 }
                 NowKumitsuki.text = StatusManager.instance.Kumitsuki.ToString();
                 inputhobbyp[2] = kumitsuki;
@@ -2998,10 +3124,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kobushi += kobushi;
                     InputHobbyPKobushi.text = kobushi.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kobushi;
-                       StatusManager.instance.Kobushi -= inputhobbyp[3];
-                       StatusManager.instance.Kobushi += kobushi;
-                       StatusManager.instance.HobbyP += inputhobbyp[3];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kobushi;
+                    StatusManager.instance.Kobushi -= inputhobbyp[3];
+                    StatusManager.instance.Kobushi += kobushi;
+                    StatusManager.instance.HobbyP += inputhobbyp[3];
                 }
                 NowKobushi.text = StatusManager.instance.Kobushi.ToString();
                 inputhobbyp[3] = kobushi;
@@ -3024,10 +3152,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Zutsuki += zutsuki;
                     InputHobbyPZutsuki.text = zutsuki.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= zutsuki;
-                       StatusManager.instance.Zutsuki -= inputhobbyp[4];
-                       StatusManager.instance.Zutsuki += zutsuki;
-                       StatusManager.instance.HobbyP += inputhobbyp[4];
+                else
+                {
+                    StatusManager.instance.HobbyP -= zutsuki;
+                    StatusManager.instance.Zutsuki -= inputhobbyp[4];
+                    StatusManager.instance.Zutsuki += zutsuki;
+                    StatusManager.instance.HobbyP += inputhobbyp[4];
                 }
                 NowZutsuki.text = StatusManager.instance.Zutsuki.ToString();
                 inputhobbyp[4] = zutsuki;
@@ -3050,10 +3180,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Toteki += toteki;
                     InputHobbyPToteki.text = toteki.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= toteki;
-                       StatusManager.instance.Toteki -= inputhobbyp[5];
-                       StatusManager.instance.Toteki += toteki;
-                       StatusManager.instance.HobbyP += inputhobbyp[5];
+                else
+                {
+                    StatusManager.instance.HobbyP -= toteki;
+                    StatusManager.instance.Toteki -= inputhobbyp[5];
+                    StatusManager.instance.Toteki += toteki;
+                    StatusManager.instance.HobbyP += inputhobbyp[5];
                 }
                 NowToteki.text = StatusManager.instance.Toteki.ToString();
                 inputhobbyp[5] = toteki;
@@ -3076,10 +3208,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.MSA += msa;
                     InputHobbyPMSA.text = msa.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= msa;
-                       StatusManager.instance.MSA -= inputhobbyp[6];
-                       StatusManager.instance.MSA += msa;
-                       StatusManager.instance.HobbyP += inputhobbyp[6];
+                else
+                {
+                    StatusManager.instance.HobbyP -= msa;
+                    StatusManager.instance.MSA -= inputhobbyp[6];
+                    StatusManager.instance.MSA += msa;
+                    StatusManager.instance.HobbyP += inputhobbyp[6];
                 }
                 NowMSA.text = StatusManager.instance.MSA.ToString();
                 inputhobbyp[6] = msa;
@@ -3102,10 +3236,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kenzyu += kenzyu;
                     InputHobbyPKenzyu.text = kenzyu.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kenzyu;
-                       StatusManager.instance.Kenzyu -= inputhobbyp[7];
-                       StatusManager.instance.Kenzyu += kenzyu;
-                       StatusManager.instance.HobbyP += inputhobbyp[7];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kenzyu;
+                    StatusManager.instance.Kenzyu -= inputhobbyp[7];
+                    StatusManager.instance.Kenzyu += kenzyu;
+                    StatusManager.instance.HobbyP += inputhobbyp[7];
                 }
                 NowKenzyu.text = StatusManager.instance.Kenzyu.ToString();
                 inputhobbyp[7] = kenzyu;
@@ -3128,10 +3264,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.SMG += smg;
                     InputHobbyPSMG.text = smg.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= smg;
-                       StatusManager.instance.SMG -= inputhobbyp[8];
-                       StatusManager.instance.SMG += smg;
-                       StatusManager.instance.HobbyP += inputhobbyp[8];
+                else
+                {
+                    StatusManager.instance.HobbyP -= smg;
+                    StatusManager.instance.SMG -= inputhobbyp[8];
+                    StatusManager.instance.SMG += smg;
+                    StatusManager.instance.HobbyP += inputhobbyp[8];
                 }
                 NowSMG.text = StatusManager.instance.SMG.ToString();
                 inputhobbyp[8] = smg;
@@ -3154,10 +3292,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.SG += sg;
                     InputHobbyPSG.text = sg.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= sg;
-                       StatusManager.instance.SG -= inputhobbyp[9];
-                       StatusManager.instance.SG += sg;
-                       StatusManager.instance.HobbyP += inputhobbyp[9];
+                else
+                {
+                    StatusManager.instance.HobbyP -= sg;
+                    StatusManager.instance.SG -= inputhobbyp[9];
+                    StatusManager.instance.SG += sg;
+                    StatusManager.instance.HobbyP += inputhobbyp[9];
                 }
                 NowSG.text = StatusManager.instance.SG.ToString();
                 inputhobbyp[9] = sg;
@@ -3180,10 +3320,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.MG += mg;
                     InputHobbyPMG.text = mg.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= mg;
-                       StatusManager.instance.MG -= inputhobbyp[10];
-                       StatusManager.instance.MG += mg;
-                       StatusManager.instance.HobbyP += inputhobbyp[10];
+                else
+                {
+                    StatusManager.instance.HobbyP -= mg;
+                    StatusManager.instance.MG -= inputhobbyp[10];
+                    StatusManager.instance.MG += mg;
+                    StatusManager.instance.HobbyP += inputhobbyp[10];
                 }
                 NowMG.text = StatusManager.instance.MG.ToString();
                 inputhobbyp[10] = mg;
@@ -3206,10 +3348,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.R += r;
                     InputHobbyPR.text = r.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= r;
-                       StatusManager.instance.R -= inputhobbyp[11];
-                       StatusManager.instance.R += r;
-                       StatusManager.instance.HobbyP += inputhobbyp[11];
+                else
+                {
+                    StatusManager.instance.HobbyP -= r;
+                    StatusManager.instance.R -= inputhobbyp[11];
+                    StatusManager.instance.R += r;
+                    StatusManager.instance.HobbyP += inputhobbyp[11];
                 }
                 NowR.text = StatusManager.instance.R.ToString();
                 inputhobbyp[11] = r;
@@ -3233,10 +3377,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Okyuteate += okyuteate;
                     InputHobbyPOkyuteate.text = okyuteate.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= okyuteate;
-                       StatusManager.instance.Okyuteate -= inputhobbyp[12];
-                       StatusManager.instance.Okyuteate += okyuteate;
-                       StatusManager.instance.HobbyP += inputhobbyp[12];
+                else
+                {
+                    StatusManager.instance.HobbyP -= okyuteate;
+                    StatusManager.instance.Okyuteate -= inputhobbyp[12];
+                    StatusManager.instance.Okyuteate += okyuteate;
+                    StatusManager.instance.HobbyP += inputhobbyp[12];
                 }
                 NowOkyuteate.text = StatusManager.instance.Okyuteate.ToString();
                 inputhobbyp[12] = okyuteate;
@@ -3259,10 +3405,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kagiake += kagiake;
                     InputHobbyPKagiake.text = kagiake.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kagiake;
-                       StatusManager.instance.Kagiake -= inputhobbyp[13];
-                       StatusManager.instance.Kagiake += kagiake;
-                       StatusManager.instance.HobbyP += inputhobbyp[13];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kagiake;
+                    StatusManager.instance.Kagiake -= inputhobbyp[13];
+                    StatusManager.instance.Kagiake += kagiake;
+                    StatusManager.instance.HobbyP += inputhobbyp[13];
                 }
                 NowKagiake.text = StatusManager.instance.Kagiake.ToString();
                 inputhobbyp[13] = kagiake;
@@ -3285,10 +3433,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kakusu += kakusu;
                     InputHobbyPKakusu.text = kakusu.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kakusu;
-                       StatusManager.instance.Kakusu -= inputhobbyp[14];
-                       StatusManager.instance.Kakusu += kakusu;
-                       StatusManager.instance.HobbyP += inputhobbyp[14];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kakusu;
+                    StatusManager.instance.Kakusu -= inputhobbyp[14];
+                    StatusManager.instance.Kakusu += kakusu;
+                    StatusManager.instance.HobbyP += inputhobbyp[14];
                 }
                 NowKakusu.text = StatusManager.instance.Kakusu.ToString();
                 inputhobbyp[14] = kakusu;
@@ -3311,10 +3461,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kakureru += kakureru;
                     InputHobbyPKakureru.text = kakureru.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kakureru;
-                       StatusManager.instance.Kakureru -= inputhobbyp[15];
-                       StatusManager.instance.Kakureru += kakureru;
-                       StatusManager.instance.HobbyP += inputhobbyp[15];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kakureru;
+                    StatusManager.instance.Kakureru -= inputhobbyp[15];
+                    StatusManager.instance.Kakureru += kakureru;
+                    StatusManager.instance.HobbyP += inputhobbyp[15];
                 }
                 NowKakureru.text = StatusManager.instance.Kakureru.ToString();
                 inputhobbyp[15] = kakureru;
@@ -3337,10 +3489,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kikimimi += kikimimi;
                     InputHobbyPKikimimi.text = kikimimi.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kikimimi;
-                       StatusManager.instance.Kikimimi -= inputhobbyp[16];
-                       StatusManager.instance.Kikimimi += kikimimi;
-                       StatusManager.instance.HobbyP += inputhobbyp[16];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kikimimi;
+                    StatusManager.instance.Kikimimi -= inputhobbyp[16];
+                    StatusManager.instance.Kikimimi += kikimimi;
+                    StatusManager.instance.HobbyP += inputhobbyp[16];
                 }
                 NowKikimimi.text = StatusManager.instance.Kikimimi.ToString();
                 inputhobbyp[16] = kikimimi;
@@ -3363,10 +3517,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Shinobiaruki += shinobiaruki;
                     InputHobbyPShinobiaruki.text = shinobiaruki.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= shinobiaruki;
-                       StatusManager.instance.Shinobiaruki -= inputhobbyp[17];
-                       StatusManager.instance.Shinobiaruki += shinobiaruki;
-                       StatusManager.instance.HobbyP += inputhobbyp[17];
+                else
+                {
+                    StatusManager.instance.HobbyP -= shinobiaruki;
+                    StatusManager.instance.Shinobiaruki -= inputhobbyp[17];
+                    StatusManager.instance.Shinobiaruki += shinobiaruki;
+                    StatusManager.instance.HobbyP += inputhobbyp[17];
                 }
                 NowShinobiaruki.text = StatusManager.instance.Shinobiaruki.ToString();
                 inputhobbyp[17] = shinobiaruki;
@@ -3389,10 +3545,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Syashinzyutsu += syashinzyutsu;
                     InputHobbyPSyashinzyutsu.text = syashinzyutsu.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= syashinzyutsu;
-                       StatusManager.instance.Syashinzyutsu -= inputhobbyp[18];
-                       StatusManager.instance.Syashinzyutsu += syashinzyutsu;
-                       StatusManager.instance.HobbyP += inputhobbyp[18];
+                else
+                {
+                    StatusManager.instance.HobbyP -= syashinzyutsu;
+                    StatusManager.instance.Syashinzyutsu -= inputhobbyp[18];
+                    StatusManager.instance.Syashinzyutsu += syashinzyutsu;
+                    StatusManager.instance.HobbyP += inputhobbyp[18];
                 }
                 NowSyashinzyutsu.text = StatusManager.instance.Syashinzyutsu.ToString();
                 inputhobbyp[18] = syashinzyutsu;
@@ -3415,10 +3573,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Seshinbunseki += seshinbunseki;
                     InputHobbyPSeshinbunseki.text = seshinbunseki.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= seshinbunseki;
-                       StatusManager.instance.Seshinbunseki -= inputhobbyp[19];
-                       StatusManager.instance.Seshinbunseki += seshinbunseki;
-                       StatusManager.instance.HobbyP += inputhobbyp[19];
+                else
+                {
+                    StatusManager.instance.HobbyP -= seshinbunseki;
+                    StatusManager.instance.Seshinbunseki -= inputhobbyp[19];
+                    StatusManager.instance.Seshinbunseki += seshinbunseki;
+                    StatusManager.instance.HobbyP += inputhobbyp[19];
                 }
                 NowSeshinbunseki.text = StatusManager.instance.Seshinbunseki.ToString();
                 inputhobbyp[19] = seshinbunseki;
@@ -3441,10 +3601,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tsuiseki += tsuiseki;
                     InputHobbyPTsuiseki.text = tsuiseki.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= tsuiseki;
-                       StatusManager.instance.Tsuiseki -= inputhobbyp[20];
-                       StatusManager.instance.Tsuiseki += tsuiseki;
-                       StatusManager.instance.HobbyP += inputhobbyp[20];
+                else
+                {
+                    StatusManager.instance.HobbyP -= tsuiseki;
+                    StatusManager.instance.Tsuiseki -= inputhobbyp[20];
+                    StatusManager.instance.Tsuiseki += tsuiseki;
+                    StatusManager.instance.HobbyP += inputhobbyp[20];
                 }
                 NowTsuiseki.text = StatusManager.instance.Tsuiseki.ToString();
                 inputhobbyp[20] = tsuiseki;
@@ -3467,10 +3629,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Touhan += touhan;
                     InputHobbyPTouhan.text = touhan.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= touhan;
-                       StatusManager.instance.Touhan -= inputhobbyp[21];
-                       StatusManager.instance.Touhan += touhan;
-                       StatusManager.instance.HobbyP += inputhobbyp[21];
+                else
+                {
+                    StatusManager.instance.HobbyP -= touhan;
+                    StatusManager.instance.Touhan -= inputhobbyp[21];
+                    StatusManager.instance.Touhan += touhan;
+                    StatusManager.instance.HobbyP += inputhobbyp[21];
                 }
                 NowTouhan.text = StatusManager.instance.Touhan.ToString();
                 inputhobbyp[21] = touhan;
@@ -3493,10 +3657,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tosyokan += tosyokan;
                     InputHobbyPTosyokan.text = tosyokan.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= tosyokan;
-                       StatusManager.instance.Tosyokan -= inputhobbyp[22];
-                       StatusManager.instance.Tosyokan += tosyokan;
-                       StatusManager.instance.HobbyP += inputhobbyp[22];
+                else
+                {
+                    StatusManager.instance.HobbyP -= tosyokan;
+                    StatusManager.instance.Tosyokan -= inputhobbyp[22];
+                    StatusManager.instance.Tosyokan += tosyokan;
+                    StatusManager.instance.HobbyP += inputhobbyp[22];
                 }
                 NowTosyokan.text = StatusManager.instance.Tosyokan.ToString();
                 inputhobbyp[22] = tosyokan;
@@ -3519,10 +3685,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Meboshi += meboshi;
                     InputHobbyPMeboshi.text = meboshi.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= meboshi;
-                       StatusManager.instance.Meboshi -= inputhobbyp[23];
-                       StatusManager.instance.Meboshi += meboshi;
-                       StatusManager.instance.HobbyP += inputhobbyp[23];
+                else
+                {
+                    StatusManager.instance.HobbyP -= meboshi;
+                    StatusManager.instance.Meboshi -= inputhobbyp[23];
+                    StatusManager.instance.Meboshi += meboshi;
+                    StatusManager.instance.HobbyP += inputhobbyp[23];
                 }
                 NowMeboshi.text = StatusManager.instance.Meboshi.ToString();
                 inputhobbyp[23] = meboshi;
@@ -3547,10 +3715,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Unten += unten;
                     InputHobbyPUnten.text = unten.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= unten;
-                       StatusManager.instance.Unten -= inputhobbyp[24];
-                       StatusManager.instance.Unten += unten;
-                       StatusManager.instance.HobbyP += inputhobbyp[24];
+                else
+                {
+                    StatusManager.instance.HobbyP -= unten;
+                    StatusManager.instance.Unten -= inputhobbyp[24];
+                    StatusManager.instance.Unten += unten;
+                    StatusManager.instance.HobbyP += inputhobbyp[24];
                 }
                 NowUnten.text = StatusManager.instance.Unten.ToString();
                 inputhobbyp[24] = unten;
@@ -3573,10 +3743,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kikaisyuri += kikaisyuri;
                     InputHobbyPKikaisyuri.text = kikaisyuri.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kikaisyuri;
-                       StatusManager.instance.Kikaisyuri -= inputhobbyp[25];
-                       StatusManager.instance.Kikaisyuri += kikaisyuri;
-                       StatusManager.instance.HobbyP += inputhobbyp[25];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kikaisyuri;
+                    StatusManager.instance.Kikaisyuri -= inputhobbyp[25];
+                    StatusManager.instance.Kikaisyuri += kikaisyuri;
+                    StatusManager.instance.HobbyP += inputhobbyp[25];
                 }
                 NowKikaisyuri.text = StatusManager.instance.Kikaisyuri.ToString();
                 inputhobbyp[25] = kikaisyuri;
@@ -3599,10 +3771,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Zyukikaisosa += zyukikaisosa;
                     InputHobbyPZyukikaisosa.text = zyukikaisosa.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= zyukikaisosa;
-                       StatusManager.instance.Zyukikaisosa -= inputhobbyp[26];
-                       StatusManager.instance.Zyukikaisosa += zyukikaisosa;
-                       StatusManager.instance.HobbyP += inputhobbyp[26];
+                else
+                {
+                    StatusManager.instance.HobbyP -= zyukikaisosa;
+                    StatusManager.instance.Zyukikaisosa -= inputhobbyp[26];
+                    StatusManager.instance.Zyukikaisosa += zyukikaisosa;
+                    StatusManager.instance.HobbyP += inputhobbyp[26];
                 }
                 NowZyukikaisosa.text = StatusManager.instance.Zyukikaisosa.ToString();
                 inputhobbyp[26] = zyukikaisosa;
@@ -3625,10 +3799,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Zyoba += zyoba;
                     InputHobbyPZyoba.text = zyoba.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= zyoba;
-                       StatusManager.instance.Zyoba -= inputhobbyp[27];
-                       StatusManager.instance.Zyoba += zyoba;
-                       StatusManager.instance.HobbyP += inputhobbyp[27];
+                else
+                {
+                    StatusManager.instance.HobbyP -= zyoba;
+                    StatusManager.instance.Zyoba -= inputhobbyp[27];
+                    StatusManager.instance.Zyoba += zyoba;
+                    StatusManager.instance.HobbyP += inputhobbyp[27];
                 }
                 NowZyoba.text = StatusManager.instance.Zyoba.ToString();
                 inputhobbyp[27] = zyoba;
@@ -3651,10 +3827,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Suiei += suiei;
                     InputHobbyPSuiei.text = suiei.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= suiei;
-                       StatusManager.instance.Suiei -= inputhobbyp[28];
-                       StatusManager.instance.Suiei += suiei;
-                       StatusManager.instance.HobbyP += inputhobbyp[28];
+                else
+                {
+                    StatusManager.instance.HobbyP -= suiei;
+                    StatusManager.instance.Suiei -= inputhobbyp[28];
+                    StatusManager.instance.Suiei += suiei;
+                    StatusManager.instance.HobbyP += inputhobbyp[28];
                 }
                 NowSuiei.text = StatusManager.instance.Suiei.ToString();
                 inputhobbyp[28] = suiei;
@@ -3677,10 +3855,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Sesaku += sesaku;
                     InputHobbyPSesaku.text = sesaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= sesaku;
-                       StatusManager.instance.Sesaku -= inputhobbyp[29];
-                       StatusManager.instance.Sesaku += sesaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[29];
+                else
+                {
+                    StatusManager.instance.HobbyP -= sesaku;
+                    StatusManager.instance.Sesaku -= inputhobbyp[29];
+                    StatusManager.instance.Sesaku += sesaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[29];
                 }
                 NowSesaku.text = StatusManager.instance.Sesaku.ToString();
                 inputhobbyp[29] = sesaku;
@@ -3703,10 +3883,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Sozyu += sozyu;
                     InputHobbyPSozyu.text = sozyu.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= sozyu;
-                       StatusManager.instance.Sozyu -= inputhobbyp[30];
-                       StatusManager.instance.Sozyu += sozyu;
-                       StatusManager.instance.HobbyP += inputhobbyp[30];
+                else
+                {
+                    StatusManager.instance.HobbyP -= sozyu;
+                    StatusManager.instance.Sozyu -= inputhobbyp[30];
+                    StatusManager.instance.Sozyu += sozyu;
+                    StatusManager.instance.HobbyP += inputhobbyp[30];
                 }
                 NowSozyu.text = StatusManager.instance.Sozyu.ToString();
                 inputhobbyp[30] = sozyu;
@@ -3729,10 +3911,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tyoyaku += tyoyaku;
                     InputHobbyPTyoyaku.text = tyoyaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= tyoyaku;
-                       StatusManager.instance.Tyoyaku -= inputhobbyp[31];
-                       StatusManager.instance.Tyoyaku += tyoyaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[31];
+                else
+                {
+                    StatusManager.instance.HobbyP -= tyoyaku;
+                    StatusManager.instance.Tyoyaku -= inputhobbyp[31];
+                    StatusManager.instance.Tyoyaku += tyoyaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[31];
                 }
                 NowTyoyaku.text = StatusManager.instance.Tyoyaku.ToString();
                 inputhobbyp[31] = tyoyaku;
@@ -3755,10 +3939,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Denkisyuri += denkisyuri;
                     InputHobbyPDenkisyuri.text = denkisyuri.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= denkisyuri;
-                       StatusManager.instance.Denkisyuri -= inputhobbyp[32];
-                       StatusManager.instance.Denkisyuri += denkisyuri;
-                       StatusManager.instance.HobbyP += inputhobbyp[32];
+                else
+                {
+                    StatusManager.instance.HobbyP -= denkisyuri;
+                    StatusManager.instance.Denkisyuri -= inputhobbyp[32];
+                    StatusManager.instance.Denkisyuri += denkisyuri;
+                    StatusManager.instance.HobbyP += inputhobbyp[32];
                 }
                 NowDenkisyuri.text = StatusManager.instance.Denkisyuri.ToString();
                 inputhobbyp[32] = denkisyuri;
@@ -3781,10 +3967,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Nabigeto += nabigeto;
                     InputHobbyPNabigeto.text = nabigeto.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= nabigeto;
-                       StatusManager.instance.Nabigeto -= inputhobbyp[33];
-                       StatusManager.instance.Nabigeto += nabigeto;
-                       StatusManager.instance.HobbyP += inputhobbyp[33];
+                else
+                {
+                    StatusManager.instance.HobbyP -= nabigeto;
+                    StatusManager.instance.Nabigeto -= inputhobbyp[33];
+                    StatusManager.instance.Nabigeto += nabigeto;
+                    StatusManager.instance.HobbyP += inputhobbyp[33];
                 }
                 NowNabigeto.text = StatusManager.instance.Nabigeto.ToString();
                 inputhobbyp[33] = nabigeto;
@@ -3807,10 +3995,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Hensou += hensou;
                     InputHobbyPHensou.text = hensou.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= hensou;
-                       StatusManager.instance.Hensou -= inputhobbyp[34];
-                       StatusManager.instance.Hensou += hensou;
-                       StatusManager.instance.HobbyP += inputhobbyp[34];
+                else
+                {
+                    StatusManager.instance.HobbyP -= hensou;
+                    StatusManager.instance.Hensou -= inputhobbyp[34];
+                    StatusManager.instance.Hensou += hensou;
+                    StatusManager.instance.HobbyP += inputhobbyp[34];
                 }
                 NowHensou.text = StatusManager.instance.Hensou.ToString();
                 inputhobbyp[34] = hensou;
@@ -3835,10 +4025,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Iikurume += iikurume;
                     InputHobbyPIikurume.text = iikurume.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= iikurume;
-                       StatusManager.instance.Iikurume -= inputhobbyp[35];
-                       StatusManager.instance.Iikurume += iikurume;
-                       StatusManager.instance.HobbyP += inputhobbyp[35];
+                else
+                {
+                    StatusManager.instance.HobbyP -= iikurume;
+                    StatusManager.instance.Iikurume -= inputhobbyp[35];
+                    StatusManager.instance.Iikurume += iikurume;
+                    StatusManager.instance.HobbyP += inputhobbyp[35];
                 }
                 NowIikurume.text = StatusManager.instance.Iikurume.ToString();
                 inputhobbyp[35] = iikurume;
@@ -3861,10 +4053,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Shinyou += shinyou;
                     InputHobbyPShinyou.text = shinyou.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= shinyou;
-                       StatusManager.instance.Shinyou -= inputhobbyp[36];
-                       StatusManager.instance.Shinyou += shinyou;
-                       StatusManager.instance.HobbyP += inputhobbyp[36];
+                else
+                {
+                    StatusManager.instance.HobbyP -= shinyou;
+                    StatusManager.instance.Shinyou -= inputhobbyp[36];
+                    StatusManager.instance.Shinyou += shinyou;
+                    StatusManager.instance.HobbyP += inputhobbyp[36];
                 }
                 NowShinyou.text = StatusManager.instance.Shinyou.ToString();
                 inputhobbyp[36] = shinyou;
@@ -3887,10 +4081,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Settoku += settoku;
                     InputHobbyPSettoku.text = settoku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= settoku;
-                       StatusManager.instance.Settoku -= inputhobbyp[37];
-                       StatusManager.instance.Settoku += settoku;
-                       StatusManager.instance.HobbyP += inputhobbyp[37];
+                else
+                {
+                    StatusManager.instance.HobbyP -= settoku;
+                    StatusManager.instance.Settoku -= inputhobbyp[37];
+                    StatusManager.instance.Settoku += settoku;
+                    StatusManager.instance.HobbyP += inputhobbyp[37];
                 }
                 NowSettoku.text = StatusManager.instance.Settoku.ToString();
                 inputhobbyp[37] = settoku;
@@ -3913,10 +4109,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Negiri += negiri;
                     InputHobbyPNegiri.text = negiri.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= negiri;
-                       StatusManager.instance.Negiri -= inputhobbyp[38];
-                       StatusManager.instance.Negiri += negiri;
-                       StatusManager.instance.HobbyP += inputhobbyp[38];
+                else
+                {
+                    StatusManager.instance.HobbyP -= negiri;
+                    StatusManager.instance.Negiri -= inputhobbyp[38];
+                    StatusManager.instance.Negiri += negiri;
+                    StatusManager.instance.HobbyP += inputhobbyp[38];
                 }
                 NowNegiri.text = StatusManager.instance.Negiri.ToString();
                 inputhobbyp[38] = negiri;
@@ -3939,10 +4137,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Bokokugo += bokokugo;
                     InputHobbyPBokokugo.text = bokokugo.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= bokokugo;
-                       StatusManager.instance.Bokokugo -= inputhobbyp[39];
-                       StatusManager.instance.Bokokugo += bokokugo;
-                       StatusManager.instance.HobbyP += inputhobbyp[39];
+                else
+                {
+                    StatusManager.instance.HobbyP -= bokokugo;
+                    StatusManager.instance.Bokokugo -= inputhobbyp[39];
+                    StatusManager.instance.Bokokugo += bokokugo;
+                    StatusManager.instance.HobbyP += inputhobbyp[39];
                 }
                 NowBokokugo.text = StatusManager.instance.Bokokugo.ToString();
                 inputhobbyp[39] = bokokugo;
@@ -3967,10 +4167,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Igaku += igaku;
                     InputHobbyPIgaku.text = igaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= igaku;
-                       StatusManager.instance.Igaku -= inputhobbyp[40];
-                       StatusManager.instance.Igaku += igaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[40];
+                else
+                {
+                    StatusManager.instance.HobbyP -= igaku;
+                    StatusManager.instance.Igaku -= inputhobbyp[40];
+                    StatusManager.instance.Igaku += igaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[40];
                 }
                 NowIgaku.text = StatusManager.instance.Igaku.ToString();
                 inputhobbyp[40] = igaku;
@@ -3993,10 +4195,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Okaruto += okaruto;
                     InputHobbyPOkaruto.text = okaruto.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= okaruto;
-                       StatusManager.instance.Okaruto -= inputhobbyp[41];
-                       StatusManager.instance.Okaruto += okaruto;
-                       StatusManager.instance.HobbyP += inputhobbyp[41];
+                else
+                {
+                    StatusManager.instance.HobbyP -= okaruto;
+                    StatusManager.instance.Okaruto -= inputhobbyp[41];
+                    StatusManager.instance.Okaruto += okaruto;
+                    StatusManager.instance.HobbyP += inputhobbyp[41];
                 }
                 NowOkaruto.text = StatusManager.instance.Okaruto.ToString();
                 inputhobbyp[41] = okaruto;
@@ -4019,10 +4223,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kagaku += kagaku;
                     InputHobbyPKagaku.text = kagaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kagaku;
-                       StatusManager.instance.Kagaku -= inputhobbyp[42];
-                       StatusManager.instance.Kagaku += kagaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[42];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kagaku;
+                    StatusManager.instance.Kagaku -= inputhobbyp[42];
+                    StatusManager.instance.Kagaku += kagaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[42];
                 }
                 NowKagaku.text = StatusManager.instance.Kagaku.ToString();
                 inputhobbyp[42] = kagaku;
@@ -4045,10 +4251,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Shinwa += shinwa;
                     InputHobbyPShinwa.text = shinwa.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= shinwa;
-                       StatusManager.instance.Shinwa -= inputhobbyp[43];
-                       StatusManager.instance.Shinwa += shinwa;
-                       StatusManager.instance.HobbyP += inputhobbyp[43];
+                else
+                {
+                    StatusManager.instance.HobbyP -= shinwa;
+                    StatusManager.instance.Shinwa -= inputhobbyp[43];
+                    StatusManager.instance.Shinwa += shinwa;
+                    StatusManager.instance.HobbyP += inputhobbyp[43];
                 }
                 NowShinwa.text = StatusManager.instance.Shinwa.ToString();
                 inputhobbyp[43] = shinwa;
@@ -4071,10 +4279,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Gezyutsu += gezyutsu;
                     InputHobbyPGezyutsu.text = gezyutsu.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= gezyutsu;
-                       StatusManager.instance.Gezyutsu -= inputhobbyp[44];
-                       StatusManager.instance.Gezyutsu += gezyutsu;
-                       StatusManager.instance.HobbyP += inputhobbyp[44];
+                else
+                {
+                    StatusManager.instance.HobbyP -= gezyutsu;
+                    StatusManager.instance.Gezyutsu -= inputhobbyp[44];
+                    StatusManager.instance.Gezyutsu += gezyutsu;
+                    StatusManager.instance.HobbyP += inputhobbyp[44];
                 }
                 NowGezyutsu.text = StatusManager.instance.Gezyutsu.ToString();
                 inputhobbyp[44] = gezyutsu;
@@ -4097,10 +4307,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Keiri += keiri;
                     InputHobbyPKeiri.text = keiri.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= keiri;
-                       StatusManager.instance.Keiri -= inputhobbyp[45];
-                       StatusManager.instance.Keiri += keiri;
-                       StatusManager.instance.HobbyP += inputhobbyp[45];
+                else
+                {
+                    StatusManager.instance.HobbyP -= keiri;
+                    StatusManager.instance.Keiri -= inputhobbyp[45];
+                    StatusManager.instance.Keiri += keiri;
+                    StatusManager.instance.HobbyP += inputhobbyp[45];
                 }
                 NowKeiri.text = StatusManager.instance.Keiri.ToString();
                 inputhobbyp[45] = keiri;
@@ -4123,10 +4335,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Kokogaku += kokogaku;
                     InputHobbyPKokogaku.text = kokogaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= kokogaku;
-                       StatusManager.instance.Kokogaku -= inputhobbyp[46];
-                       StatusManager.instance.Kokogaku += kokogaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[46];
+                else
+                {
+                    StatusManager.instance.HobbyP -= kokogaku;
+                    StatusManager.instance.Kokogaku -= inputhobbyp[46];
+                    StatusManager.instance.Kokogaku += kokogaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[46];
                 }
                 NowKokogaku.text = StatusManager.instance.Kokogaku.ToString();
                 inputhobbyp[46] = kokogaku;
@@ -4149,10 +4363,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.PC += pc;
                     InputHobbyPPC.text = pc.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= pc;
-                       StatusManager.instance.PC -= inputhobbyp[47];
-                       StatusManager.instance.PC += pc;
-                       StatusManager.instance.HobbyP += inputhobbyp[47];
+                else
+                {
+                    StatusManager.instance.HobbyP -= pc;
+                    StatusManager.instance.PC -= inputhobbyp[47];
+                    StatusManager.instance.PC += pc;
+                    StatusManager.instance.HobbyP += inputhobbyp[47];
                 }
                 NowPC.text = StatusManager.instance.PC.ToString();
                 inputhobbyp[47] = pc;
@@ -4175,10 +4391,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Shinrigaku += shinrigaku;
                     InputHobbyPShinrigaku.text = shinrigaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= shinrigaku;
-                       StatusManager.instance.Shinrigaku -= inputhobbyp[48];
-                       StatusManager.instance.Shinrigaku += shinrigaku;
-                       StatusManager.instance.WorkP += inputhobbyp[48];
+                else
+                {
+                    StatusManager.instance.HobbyP -= shinrigaku;
+                    StatusManager.instance.Shinrigaku -= inputhobbyp[48];
+                    StatusManager.instance.Shinrigaku += shinrigaku;
+                    StatusManager.instance.WorkP += inputhobbyp[48];
                 }
                 NowShinrigaku.text = StatusManager.instance.Shinrigaku.ToString();
                 inputhobbyp[48] = shinrigaku;
@@ -4201,10 +4419,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Zinruigaku += zinruigaku;
                     InputHobbyPZinruigaku.text = zinruigaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= zinruigaku;
-                       StatusManager.instance.Zinruigaku -= inputhobbyp[49];
-                       StatusManager.instance.Zinruigaku += zinruigaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[49];
+                else
+                {
+                    StatusManager.instance.HobbyP -= zinruigaku;
+                    StatusManager.instance.Zinruigaku -= inputhobbyp[49];
+                    StatusManager.instance.Zinruigaku += zinruigaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[49];
                 }
                 NowZinruigaku.text = StatusManager.instance.Zinruigaku.ToString();
                 inputhobbyp[49] = zinruigaku;
@@ -4219,7 +4439,7 @@ public class GameManager : MonoBehaviour
                 {
                     InputHobbyPSeibutsugaku.text = "0";
                 }
-                seibutsugaku = int.Parse(InputHobbyPSeibutsugaku.text);              
+                seibutsugaku = int.Parse(InputHobbyPSeibutsugaku.text);
                 if (StatusManager.instance.HobbyP < seibutsugaku)
                 {
                     seibutsugaku = StatusManager.instance.HobbyP;
@@ -4227,10 +4447,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Seibutsugaku += seibutsugaku;
                     InputHobbyPSeibutsugaku.text = seibutsugaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= seibutsugaku;
-                       StatusManager.instance.Seibutsugaku -= inputhobbyp[50];
-                       StatusManager.instance.Seibutsugaku += seibutsugaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[50];
+                else
+                {
+                    StatusManager.instance.HobbyP -= seibutsugaku;
+                    StatusManager.instance.Seibutsugaku -= inputhobbyp[50];
+                    StatusManager.instance.Seibutsugaku += seibutsugaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[50];
                 }
                 NowSeibutsugaku.text = StatusManager.instance.Seibutsugaku.ToString();
                 inputhobbyp[50] = seibutsugaku;
@@ -4253,10 +4475,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tishitsugaku += tishitsugaku;
                     InputHobbyPTishitsugaku.text = tishitsugaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= tishitsugaku;
-                       StatusManager.instance.Tishitsugaku -= inputhobbyp[51];
-                       StatusManager.instance.Tishitsugaku += tishitsugaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[51];
+                else
+                {
+                    StatusManager.instance.HobbyP -= tishitsugaku;
+                    StatusManager.instance.Tishitsugaku -= inputhobbyp[51];
+                    StatusManager.instance.Tishitsugaku += tishitsugaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[51];
                 }
                 NowTishitsugaku.text = StatusManager.instance.Tishitsugaku.ToString();
                 inputhobbyp[51] = tishitsugaku;
@@ -4279,10 +4503,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Denshikougaku += denshikougaku;
                     InputHobbyPDenshikougaku.text = denshikougaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= denshikougaku;
-                       StatusManager.instance.Denshikougaku -= inputhobbyp[52];
-                       StatusManager.instance.Denshikougaku += denshikougaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[52];
+                else
+                {
+                    StatusManager.instance.HobbyP -= denshikougaku;
+                    StatusManager.instance.Denshikougaku -= inputhobbyp[52];
+                    StatusManager.instance.Denshikougaku += denshikougaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[52];
                 }
                 NowDenshikougaku.text = StatusManager.instance.Denshikougaku.ToString();
                 inputhobbyp[52] = denshikougaku;
@@ -4305,10 +4531,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Tenmongaku += tenmongaku;
                     InputHobbyPTenmongaku.text = tenmongaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= tenmongaku;
-                       StatusManager.instance.Tenmongaku -= inputhobbyp[53];
-                       StatusManager.instance.Tenmongaku += tenmongaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[53];
+                else
+                {
+                    StatusManager.instance.HobbyP -= tenmongaku;
+                    StatusManager.instance.Tenmongaku -= inputhobbyp[53];
+                    StatusManager.instance.Tenmongaku += tenmongaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[53];
                 }
                 NowTenmongaku.text = StatusManager.instance.Tenmongaku.ToString();
                 inputhobbyp[53] = tenmongaku;
@@ -4331,10 +4559,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Hakubutsugaku += hakubutsugaku;
                     InputHobbyPHakubutsugaku.text = hakubutsugaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= hakubutsugaku;
-                       StatusManager.instance.Hakubutsugaku -= inputhobbyp[54];
-                       StatusManager.instance.Hakubutsugaku += hakubutsugaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[54];
+                else
+                {
+                    StatusManager.instance.HobbyP -= hakubutsugaku;
+                    StatusManager.instance.Hakubutsugaku -= inputhobbyp[54];
+                    StatusManager.instance.Hakubutsugaku += hakubutsugaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[54];
                 }
                 NowHakubutsugaku.text = StatusManager.instance.Hakubutsugaku.ToString();
                 inputhobbyp[54] = hakubutsugaku;
@@ -4357,10 +4587,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Butsurigaku += butsurigaku;
                     InputHobbyPButsurigaku.text = butsurigaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= butsurigaku;
-                       StatusManager.instance.Butsurigaku -= inputhobbyp[55];
-                       StatusManager.instance.Butsurigaku += butsurigaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[55];
+                else
+                {
+                    StatusManager.instance.HobbyP -= butsurigaku;
+                    StatusManager.instance.Butsurigaku -= inputhobbyp[55];
+                    StatusManager.instance.Butsurigaku += butsurigaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[55];
                 }
                 NowButsurigaku.text = StatusManager.instance.Butsurigaku.ToString();
                 inputhobbyp[55] = butsurigaku;
@@ -4383,10 +4615,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Houritsu += houritsu;
                     InputHobbyPHouritsu.text = houritsu.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= houritsu;
-                       StatusManager.instance.Houritsu -= inputhobbyp[56];
-                       StatusManager.instance.Houritsu += houritsu;
-                       StatusManager.instance.HobbyP += inputhobbyp[56];
+                else
+                {
+                    StatusManager.instance.HobbyP -= houritsu;
+                    StatusManager.instance.Houritsu -= inputhobbyp[56];
+                    StatusManager.instance.Houritsu += houritsu;
+                    StatusManager.instance.HobbyP += inputhobbyp[56];
                 }
                 NowHouritsu.text = StatusManager.instance.Houritsu.ToString();
                 inputhobbyp[56] = houritsu;
@@ -4409,10 +4643,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Yakugaku += yakugaku;
                     InputHobbyPYakugaku.text = yakugaku.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= yakugaku;
-                       StatusManager.instance.Yakugaku -= inputhobbyp[57];
-                       StatusManager.instance.Yakugaku += yakugaku;
-                       StatusManager.instance.HobbyP += inputhobbyp[57];
+                else
+                {
+                    StatusManager.instance.HobbyP -= yakugaku;
+                    StatusManager.instance.Yakugaku -= inputhobbyp[57];
+                    StatusManager.instance.Yakugaku += yakugaku;
+                    StatusManager.instance.HobbyP += inputhobbyp[57];
                 }
                 NowYakugaku.text = StatusManager.instance.Yakugaku.ToString();
                 inputhobbyp[57] = yakugaku;
@@ -4435,10 +4671,12 @@ public class GameManager : MonoBehaviour
                     StatusManager.instance.Rekishi += rekishi;
                     InputHobbyPRekishi.text = rekishi.ToString();
                 }
-                else { StatusManager.instance.HobbyP -= rekishi;
-                       StatusManager.instance.Rekishi -= inputhobbyp[58];
-                       StatusManager.instance.Rekishi += rekishi;
-                       StatusManager.instance.HobbyP += inputhobbyp[58];
+                else
+                {
+                    StatusManager.instance.HobbyP -= rekishi;
+                    StatusManager.instance.Rekishi -= inputhobbyp[58];
+                    StatusManager.instance.Rekishi += rekishi;
+                    StatusManager.instance.HobbyP += inputhobbyp[58];
                 }
                 NowRekishi.text = StatusManager.instance.Rekishi.ToString();
                 inputhobbyp[58] = rekishi;
@@ -4463,7 +4701,8 @@ public class GameManager : MonoBehaviour
                     NowKaihi.text = StatusManager.instance.Kaihi.ToString();
                     Afterstatus[0] = StatusManager.instance.Kaihi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 1:     //キック
                 if ((StatusManager.instance.Kikku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4474,7 +4713,8 @@ public class GameManager : MonoBehaviour
                     NowKikku.text = StatusManager.instance.Kikku.ToString();
                     Afterstatus[1] = StatusManager.instance.Kikku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 2:     //組み付き
                 if ((StatusManager.instance.Kumitsuki < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4485,7 +4725,8 @@ public class GameManager : MonoBehaviour
                     NowKumitsuki.text = StatusManager.instance.Kumitsuki.ToString();
                     Afterstatus[2] = StatusManager.instance.Kumitsuki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 3:     //こぶし
                 if ((StatusManager.instance.Kobushi < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4496,7 +4737,8 @@ public class GameManager : MonoBehaviour
                     NowKobushi.text = StatusManager.instance.Kobushi.ToString();
                     Afterstatus[3] = StatusManager.instance.Kobushi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 4:     //頭突き
                 if ((StatusManager.instance.Zutsuki < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4507,7 +4749,8 @@ public class GameManager : MonoBehaviour
                     NowZutsuki.text = StatusManager.instance.Zutsuki.ToString();
                     Afterstatus[4] = StatusManager.instance.Zutsuki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 5:     //投擲
                 if ((StatusManager.instance.Toteki < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4518,7 +4761,8 @@ public class GameManager : MonoBehaviour
                     NowToteki.text = StatusManager.instance.Toteki.ToString();
                     Afterstatus[5] = StatusManager.instance.Toteki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 6:     //マーシャルアーツ
                 if ((StatusManager.instance.MSA < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4529,7 +4773,8 @@ public class GameManager : MonoBehaviour
                     NowMSA.text = StatusManager.instance.MSA.ToString();
                     Afterstatus[6] = StatusManager.instance.MSA;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 7:     //拳銃
                 if ((StatusManager.instance.Kenzyu < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4540,7 +4785,8 @@ public class GameManager : MonoBehaviour
                     NowKenzyu.text = StatusManager.instance.Kenzyu.ToString();
                     Afterstatus[7] = StatusManager.instance.Kenzyu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 8:     //サブマシンガン
                 if ((StatusManager.instance.SMG < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4551,7 +4797,8 @@ public class GameManager : MonoBehaviour
                     NowSMG.text = StatusManager.instance.SMG.ToString();
                     Afterstatus[8] = StatusManager.instance.SMG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 9:     //ショットガン
                 if ((StatusManager.instance.SG < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4562,7 +4809,8 @@ public class GameManager : MonoBehaviour
                     NowSG.text = StatusManager.instance.SG.ToString();
                     Afterstatus[9] = StatusManager.instance.SG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 10:    //マシンガン
                 if ((StatusManager.instance.MG < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4573,7 +4821,8 @@ public class GameManager : MonoBehaviour
                     NowMG.text = StatusManager.instance.MG.ToString();
                     Afterstatus[10] = StatusManager.instance.MG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 11:    //ライフル
                 if ((StatusManager.instance.R < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4584,7 +4833,8 @@ public class GameManager : MonoBehaviour
                     NowR.text = StatusManager.instance.R.ToString();
                     Afterstatus[11] = StatusManager.instance.R;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //探索技能ステータス
             case 100:    //応急手当
@@ -4597,7 +4847,8 @@ public class GameManager : MonoBehaviour
                     NowOkyuteate.text = StatusManager.instance.Okyuteate.ToString();
                     Afterstatus[12] = StatusManager.instance.Okyuteate;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 101:    //鍵開け
                 if ((StatusManager.instance.Kagiake < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4608,7 +4859,8 @@ public class GameManager : MonoBehaviour
                     NowKagiake.text = StatusManager.instance.Kagiake.ToString();
                     Afterstatus[13] = StatusManager.instance.Kagiake;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 102:    //隠す
                 if ((StatusManager.instance.Kakusu < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4619,7 +4871,8 @@ public class GameManager : MonoBehaviour
                     NowKakusu.text = StatusManager.instance.Kakusu.ToString();
                     Afterstatus[14] = StatusManager.instance.Kakusu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 103:    //隠れる
                 if ((StatusManager.instance.Kakureru < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4630,7 +4883,8 @@ public class GameManager : MonoBehaviour
                     NowKakureru.text = StatusManager.instance.Kakureru.ToString();
                     Afterstatus[15] = StatusManager.instance.Kakureru;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 104:    //聞き耳
                 if ((StatusManager.instance.Kikimimi < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4641,7 +4895,8 @@ public class GameManager : MonoBehaviour
                     NowKikimimi.text = StatusManager.instance.Kikimimi.ToString();
                     Afterstatus[16] = StatusManager.instance.Kikimimi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 105:    //忍び歩き
                 if ((StatusManager.instance.Shinobiaruki < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4652,7 +4907,8 @@ public class GameManager : MonoBehaviour
                     NowShinobiaruki.text = StatusManager.instance.Shinobiaruki.ToString();
                     Afterstatus[17] = StatusManager.instance.Shinobiaruki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 106:    //写真術
                 if ((StatusManager.instance.Syashinzyutsu < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4663,7 +4919,8 @@ public class GameManager : MonoBehaviour
                     NowSyashinzyutsu.text = StatusManager.instance.Syashinzyutsu.ToString();
                     Afterstatus[18] = StatusManager.instance.Syashinzyutsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 107:    //精神分析
                 if ((StatusManager.instance.Seshinbunseki < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4674,7 +4931,8 @@ public class GameManager : MonoBehaviour
                     NowSeshinbunseki.text = StatusManager.instance.Seshinbunseki.ToString();
                     Afterstatus[19] = StatusManager.instance.Seshinbunseki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 108:    //追跡
                 if ((StatusManager.instance.Tsuiseki < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4685,7 +4943,8 @@ public class GameManager : MonoBehaviour
                     NowTsuiseki.text = StatusManager.instance.Tsuiseki.ToString();
                     Afterstatus[20] = StatusManager.instance.Tsuiseki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 109:    //登攀
                 if ((StatusManager.instance.Touhan < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4696,7 +4955,8 @@ public class GameManager : MonoBehaviour
                     NowTouhan.text = StatusManager.instance.Touhan.ToString();
                     Afterstatus[21] = StatusManager.instance.Touhan;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 110:    //図書館
                 if ((StatusManager.instance.Tosyokan < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4707,7 +4967,8 @@ public class GameManager : MonoBehaviour
                     NowTosyokan.text = StatusManager.instance.Tosyokan.ToString();
                     Afterstatus[22] = StatusManager.instance.Tosyokan;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 111:    //目星
                 if ((StatusManager.instance.Meboshi < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4718,7 +4979,8 @@ public class GameManager : MonoBehaviour
                     NowMeboshi.text = StatusManager.instance.Meboshi.ToString();
                     Afterstatus[23] = StatusManager.instance.Meboshi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //行動技能ステータス
             case 200:    //運転
@@ -4731,7 +4993,8 @@ public class GameManager : MonoBehaviour
                     NowUnten.text = StatusManager.instance.Unten.ToString();
                     Afterstatus[24] = StatusManager.instance.Unten;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 201:    //機械修理
                 if ((StatusManager.instance.Kikaisyuri < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4742,7 +5005,8 @@ public class GameManager : MonoBehaviour
                     NowKikaisyuri.text = StatusManager.instance.Kikaisyuri.ToString();
                     Afterstatus[25] = StatusManager.instance.Kikaisyuri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 202:    //重機械操作
                 if ((StatusManager.instance.Zyukikaisosa < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4753,7 +5017,8 @@ public class GameManager : MonoBehaviour
                     NowZyukikaisosa.text = StatusManager.instance.Zyukikaisosa.ToString();
                     Afterstatus[26] = StatusManager.instance.Zyukikaisosa;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 203:    //乗馬
                 if ((StatusManager.instance.Zyoba < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4764,7 +5029,8 @@ public class GameManager : MonoBehaviour
                     NowZyoba.text = StatusManager.instance.Zyoba.ToString();
                     Afterstatus[27] = StatusManager.instance.Zyoba;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 204:    //水泳
                 if ((StatusManager.instance.Suiei < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4775,7 +5041,8 @@ public class GameManager : MonoBehaviour
                     NowSuiei.text = StatusManager.instance.Suiei.ToString();
                     Afterstatus[28] = StatusManager.instance.Suiei;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 205:    //制作
                 if ((StatusManager.instance.Sesaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4786,7 +5053,8 @@ public class GameManager : MonoBehaviour
                     NowSesaku.text = StatusManager.instance.Sesaku.ToString();
                     Afterstatus[29] = StatusManager.instance.Sesaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 206:    //操縦
                 if ((StatusManager.instance.Sozyu < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4797,7 +5065,8 @@ public class GameManager : MonoBehaviour
                     NowSozyu.text = StatusManager.instance.Sozyu.ToString();
                     Afterstatus[30] = StatusManager.instance.Sozyu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 207:    //跳躍
                 if ((StatusManager.instance.Tyoyaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4808,7 +5077,8 @@ public class GameManager : MonoBehaviour
                     NowTyoyaku.text = StatusManager.instance.Tyoyaku.ToString();
                     Afterstatus[31] = StatusManager.instance.Tyoyaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 208:    //電気修理
                 if ((StatusManager.instance.Denkisyuri < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4819,7 +5089,8 @@ public class GameManager : MonoBehaviour
                     NowDenkisyuri.text = StatusManager.instance.Denkisyuri.ToString();
                     Afterstatus[32] = StatusManager.instance.Denkisyuri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 209:    //ナビゲート
                 if ((StatusManager.instance.Nabigeto < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4830,7 +5101,8 @@ public class GameManager : MonoBehaviour
                     NowNabigeto.text = StatusManager.instance.Nabigeto.ToString();
                     Afterstatus[33] = StatusManager.instance.Nabigeto;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 210:    //変装
                 if ((StatusManager.instance.Hensou < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4841,7 +5113,8 @@ public class GameManager : MonoBehaviour
                     NowHensou.text = StatusManager.instance.Hensou.ToString();
                     Afterstatus[34] = StatusManager.instance.Hensou;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //交渉技能ステータス
             case 300:    //言いくるめ
@@ -4854,7 +5127,8 @@ public class GameManager : MonoBehaviour
                     NowIikurume.text = StatusManager.instance.Iikurume.ToString();
                     Afterstatus[35] = StatusManager.instance.Iikurume;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 301:    //信用
                 if ((StatusManager.instance.Shinyou < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4865,7 +5139,8 @@ public class GameManager : MonoBehaviour
                     NowShinyou.text = StatusManager.instance.Shinyou.ToString();
                     Afterstatus[36] = StatusManager.instance.Shinyou;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 302:    //説得
                 if ((StatusManager.instance.Settoku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4876,7 +5151,8 @@ public class GameManager : MonoBehaviour
                     NowSettoku.text = StatusManager.instance.Settoku.ToString();
                     Afterstatus[37] = StatusManager.instance.Settoku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 303:    //値切り
                 if ((StatusManager.instance.Negiri < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4887,7 +5163,8 @@ public class GameManager : MonoBehaviour
                     NowNegiri.text = StatusManager.instance.Negiri.ToString();
                     Afterstatus[38] = StatusManager.instance.Negiri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 304:    //母国語
                 if ((StatusManager.instance.Bokokugo < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4898,7 +5175,8 @@ public class GameManager : MonoBehaviour
                     NowBokokugo.text = StatusManager.instance.Bokokugo.ToString();
                     Afterstatus[39] = StatusManager.instance.Bokokugo;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //知識技能ステータス
             case 400:    //医学
@@ -4911,7 +5189,8 @@ public class GameManager : MonoBehaviour
                     NowIgaku.text = StatusManager.instance.Igaku.ToString();
                     Afterstatus[40] = StatusManager.instance.Igaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 401:    //オカルト
                 if ((StatusManager.instance.Okaruto < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4922,7 +5201,8 @@ public class GameManager : MonoBehaviour
                     NowOkaruto.text = StatusManager.instance.Okaruto.ToString();
                     Afterstatus[41] = StatusManager.instance.Okaruto;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 402:    //化学
                 if ((StatusManager.instance.Kagaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4933,7 +5213,8 @@ public class GameManager : MonoBehaviour
                     NowKagaku.text = StatusManager.instance.Kagaku.ToString();
                     Afterstatus[42] = StatusManager.instance.Kagaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 403:    //クトゥルフ神話
                 if ((StatusManager.instance.Shinwa < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4944,7 +5225,8 @@ public class GameManager : MonoBehaviour
                     NowShinwa.text = StatusManager.instance.Shinwa.ToString();
                     Afterstatus[43] = StatusManager.instance.Shinwa;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 404:    //芸術
                 if ((StatusManager.instance.Gezyutsu < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4955,7 +5237,8 @@ public class GameManager : MonoBehaviour
                     NowGezyutsu.text = StatusManager.instance.Gezyutsu.ToString();
                     Afterstatus[44] = StatusManager.instance.Gezyutsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 405:    //経理
                 if ((StatusManager.instance.Keiri < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4966,7 +5249,8 @@ public class GameManager : MonoBehaviour
                     NowKeiri.text = StatusManager.instance.Keiri.ToString();
                     Afterstatus[45] = StatusManager.instance.Keiri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 406:    //考古学
                 if ((StatusManager.instance.Kokogaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4977,7 +5261,8 @@ public class GameManager : MonoBehaviour
                     NowKokogaku.text = StatusManager.instance.Kokogaku.ToString();
                     Afterstatus[46] = StatusManager.instance.Kokogaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 407:    //コンピューター
                 if ((StatusManager.instance.PC < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4988,7 +5273,8 @@ public class GameManager : MonoBehaviour
                     NowPC.text = StatusManager.instance.PC.ToString();
                     Afterstatus[47] = StatusManager.instance.PC;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 408:    //心理学
                 if ((StatusManager.instance.Shinrigaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -4999,7 +5285,8 @@ public class GameManager : MonoBehaviour
                     NowShinrigaku.text = StatusManager.instance.Shinrigaku.ToString();
                     Afterstatus[48] = StatusManager.instance.Shinrigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 409:    //人類学
                 if ((StatusManager.instance.Zinruigaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5010,7 +5297,8 @@ public class GameManager : MonoBehaviour
                     NowZinruigaku.text = StatusManager.instance.Zinruigaku.ToString();
                     Afterstatus[49] = StatusManager.instance.Zinruigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 410:    //生物学
                 if ((StatusManager.instance.Seibutsugaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5021,7 +5309,8 @@ public class GameManager : MonoBehaviour
                     NowSeibutsugaku.text = StatusManager.instance.Seibutsugaku.ToString();
                     Afterstatus[50] = StatusManager.instance.Seibutsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 411:    //地質学
                 if ((StatusManager.instance.Tishitsugaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5032,7 +5321,8 @@ public class GameManager : MonoBehaviour
                     NowTishitsugaku.text = StatusManager.instance.Tishitsugaku.ToString();
                     Afterstatus[51] = StatusManager.instance.Tishitsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 412:    //電子工学
                 if ((StatusManager.instance.Denshikougaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5043,7 +5333,8 @@ public class GameManager : MonoBehaviour
                     NowDenshikougaku.text = StatusManager.instance.Denshikougaku.ToString();
                     Afterstatus[52] = StatusManager.instance.Denshikougaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 413:    //天文学
                 if ((StatusManager.instance.Tenmongaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5054,7 +5345,8 @@ public class GameManager : MonoBehaviour
                     NowTenmongaku.text = StatusManager.instance.Tenmongaku.ToString();
                     Afterstatus[53] = StatusManager.instance.Tenmongaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 414:    //博物学
                 if ((StatusManager.instance.Hakubutsugaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5065,7 +5357,8 @@ public class GameManager : MonoBehaviour
                     NowHakubutsugaku.text = StatusManager.instance.Hakubutsugaku.ToString();
                     Afterstatus[54] = StatusManager.instance.Hakubutsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 415:    //物理学
                 if ((StatusManager.instance.Butsurigaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5076,7 +5369,8 @@ public class GameManager : MonoBehaviour
                     NowButsurigaku.text = StatusManager.instance.Butsurigaku.ToString();
                     Afterstatus[55] = StatusManager.instance.Butsurigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 416:    //法律
                 if ((StatusManager.instance.Houritsu < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5087,7 +5381,8 @@ public class GameManager : MonoBehaviour
                     NowHouritsu.text = StatusManager.instance.Houritsu.ToString();
                     Afterstatus[56] = StatusManager.instance.Houritsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 417:    //薬学
                 if ((StatusManager.instance.Yakugaku < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5098,7 +5393,8 @@ public class GameManager : MonoBehaviour
                     NowYakugaku.text = StatusManager.instance.Yakugaku.ToString();
                     Afterstatus[57] = StatusManager.instance.Yakugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 418:    //歴史
                 if ((StatusManager.instance.Rekishi < limit) && (StatusManager.instance.WorkP != 0))
                 {
@@ -5109,7 +5405,8 @@ public class GameManager : MonoBehaviour
                     NowRekishi.text = StatusManager.instance.Rekishi.ToString();
                     Afterstatus[58] = StatusManager.instance.Rekishi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
         }
     }
 
@@ -5128,7 +5425,8 @@ public class GameManager : MonoBehaviour
                     NowKaihi.text = StatusManager.instance.Kaihi.ToString();
                     Afterstatus[0] = StatusManager.instance.Kaihi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 1:     //キック
                 if (int.Parse(InputWorkPKikku.text) > 0)
                 {
@@ -5139,7 +5437,8 @@ public class GameManager : MonoBehaviour
                     NowKikku.text = StatusManager.instance.Kikku.ToString();
                     Afterstatus[1] = StatusManager.instance.Kikku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 2:     //組み付き
                 if (int.Parse(InputWorkPKumitsuki.text) > 0)
                 {
@@ -5150,7 +5449,8 @@ public class GameManager : MonoBehaviour
                     NowKumitsuki.text = StatusManager.instance.Kumitsuki.ToString();
                     Afterstatus[2] = StatusManager.instance.Kumitsuki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 3:     //こぶし
                 if (int.Parse(InputWorkPKobushi.text) > 0)
                 {
@@ -5161,7 +5461,8 @@ public class GameManager : MonoBehaviour
                     NowKobushi.text = StatusManager.instance.Kobushi.ToString();
                     Afterstatus[3] = StatusManager.instance.Kobushi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 4:     //頭突き
                 if (int.Parse(InputWorkPZutsuki.text) > 0)
                 {
@@ -5172,7 +5473,8 @@ public class GameManager : MonoBehaviour
                     NowZutsuki.text = StatusManager.instance.Zutsuki.ToString();
                     Afterstatus[4] = StatusManager.instance.Zutsuki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 5:     //投擲
                 if (int.Parse(InputWorkPToteki.text) > 0)
                 {
@@ -5183,7 +5485,8 @@ public class GameManager : MonoBehaviour
                     NowToteki.text = StatusManager.instance.Toteki.ToString();
                     Afterstatus[5] = StatusManager.instance.Toteki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 6:     //マーシャルアーツ
                 if (int.Parse(InputWorkPMSA.text) > 0)
                 {
@@ -5194,7 +5497,8 @@ public class GameManager : MonoBehaviour
                     NowMSA.text = StatusManager.instance.MSA.ToString();
                     Afterstatus[6] = StatusManager.instance.MSA;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 7:     //拳銃
                 if (int.Parse(InputWorkPKenzyu.text) > 0)
                 {
@@ -5205,7 +5509,8 @@ public class GameManager : MonoBehaviour
                     NowKenzyu.text = StatusManager.instance.Kenzyu.ToString();
                     Afterstatus[7] = StatusManager.instance.Kenzyu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 8:     //サブマシンガン
                 if (int.Parse(InputWorkPSMG.text) > 0)
                 {
@@ -5216,7 +5521,8 @@ public class GameManager : MonoBehaviour
                     NowSMG.text = StatusManager.instance.SMG.ToString();
                     Afterstatus[8] = StatusManager.instance.SMG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 9:     //ショットガン
                 if (int.Parse(InputWorkPSG.text) > 0)
                 {
@@ -5227,7 +5533,8 @@ public class GameManager : MonoBehaviour
                     NowSG.text = StatusManager.instance.SG.ToString();
                     Afterstatus[9] = StatusManager.instance.SG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 10:    //マシンガン
                 if (int.Parse(InputWorkPMG.text) > 0)
                 {
@@ -5238,7 +5545,8 @@ public class GameManager : MonoBehaviour
                     NowMG.text = StatusManager.instance.MG.ToString();
                     Afterstatus[10] = StatusManager.instance.MG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 11:    //ライフル
                 if (int.Parse(InputWorkPR.text) > 0)
                 {
@@ -5249,7 +5557,8 @@ public class GameManager : MonoBehaviour
                     NowR.text = StatusManager.instance.R.ToString();
                     Afterstatus[11] = StatusManager.instance.R;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //探索技能ステータス
             case 100:    //応急手当
@@ -5262,7 +5571,8 @@ public class GameManager : MonoBehaviour
                     NowOkyuteate.text = StatusManager.instance.Okyuteate.ToString();
                     Afterstatus[12] = StatusManager.instance.Okyuteate;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 101:    //鍵開け
                 if (int.Parse(InputWorkPKagiake.text) > 0)
                 {
@@ -5273,7 +5583,8 @@ public class GameManager : MonoBehaviour
                     NowKagiake.text = StatusManager.instance.Kagiake.ToString();
                     Afterstatus[13] = StatusManager.instance.Kagiake;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 102:    //隠す
                 if (int.Parse(InputWorkPKakusu.text) > 0)
                 {
@@ -5284,7 +5595,8 @@ public class GameManager : MonoBehaviour
                     NowKakusu.text = StatusManager.instance.Kakusu.ToString();
                     Afterstatus[14] = StatusManager.instance.Kakusu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 103:    //隠れる
                 if (int.Parse(InputWorkPKakureru.text) > 0)
                 {
@@ -5295,7 +5607,8 @@ public class GameManager : MonoBehaviour
                     NowKakureru.text = StatusManager.instance.Kakureru.ToString();
                     Afterstatus[15] = StatusManager.instance.Kakureru;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 104:    //聞き耳
                 if (int.Parse(InputWorkPKikimimi.text) > 0)
                 {
@@ -5306,7 +5619,8 @@ public class GameManager : MonoBehaviour
                     NowKikimimi.text = StatusManager.instance.Kikimimi.ToString();
                     Afterstatus[16] = StatusManager.instance.Kikimimi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 105:    //忍び歩き
                 if (int.Parse(InputWorkPShinobiaruki.text) > 0)
                 {
@@ -5317,7 +5631,8 @@ public class GameManager : MonoBehaviour
                     NowShinobiaruki.text = StatusManager.instance.Shinobiaruki.ToString();
                     Afterstatus[17] = StatusManager.instance.Shinobiaruki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 106:    //写真術
                 if (int.Parse(InputWorkPSyashinzyutsu.text) > 0)
                 {
@@ -5328,7 +5643,8 @@ public class GameManager : MonoBehaviour
                     NowSyashinzyutsu.text = StatusManager.instance.Syashinzyutsu.ToString();
                     Afterstatus[18] = StatusManager.instance.Syashinzyutsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 107:    //精神分析
                 if (int.Parse(InputWorkPSeshinbunseki.text) > 0)
                 {
@@ -5339,7 +5655,8 @@ public class GameManager : MonoBehaviour
                     NowSeshinbunseki.text = StatusManager.instance.Seshinbunseki.ToString();
                     Afterstatus[19] = StatusManager.instance.Seshinbunseki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 108:    //追跡
                 if (int.Parse(InputWorkPTsuiseki.text) > 0)
                 {
@@ -5350,7 +5667,8 @@ public class GameManager : MonoBehaviour
                     NowTsuiseki.text = StatusManager.instance.Tsuiseki.ToString();
                     Afterstatus[20] = StatusManager.instance.Tsuiseki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 109:    //登攀
                 if (int.Parse(InputWorkPTouhan.text) > 0)
                 {
@@ -5361,7 +5679,8 @@ public class GameManager : MonoBehaviour
                     NowTouhan.text = StatusManager.instance.Touhan.ToString();
                     Afterstatus[21] = StatusManager.instance.Touhan;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 110:    //図書館
                 if (int.Parse(InputWorkPTosyokan.text) > 0)
                 {
@@ -5372,7 +5691,8 @@ public class GameManager : MonoBehaviour
                     NowTosyokan.text = StatusManager.instance.Tosyokan.ToString();
                     Afterstatus[22] = StatusManager.instance.Tosyokan;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 111:    //目星
                 if (int.Parse(InputWorkPMeboshi.text) > 0)
                 {
@@ -5383,7 +5703,8 @@ public class GameManager : MonoBehaviour
                     NowMeboshi.text = StatusManager.instance.Meboshi.ToString();
                     Afterstatus[23] = StatusManager.instance.Meboshi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //行動技能ステータス
             case 200:    //運転
@@ -5396,7 +5717,8 @@ public class GameManager : MonoBehaviour
                     NowUnten.text = StatusManager.instance.Unten.ToString();
                     Afterstatus[24] = StatusManager.instance.Unten;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 201:    //機械修理
                 if (int.Parse(InputWorkPKikaisyuri.text) > 0)
                 {
@@ -5407,7 +5729,8 @@ public class GameManager : MonoBehaviour
                     NowKikaisyuri.text = StatusManager.instance.Kikaisyuri.ToString();
                     Afterstatus[25] = StatusManager.instance.Kikaisyuri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 202:    //重機械操作
                 if (int.Parse(InputWorkPZyukikaisosa.text) > 0)
                 {
@@ -5418,7 +5741,8 @@ public class GameManager : MonoBehaviour
                     NowZyukikaisosa.text = StatusManager.instance.Zyukikaisosa.ToString();
                     Afterstatus[26] = StatusManager.instance.Zyukikaisosa;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 203:    //乗馬
                 if (int.Parse(InputWorkPZyoba.text) > 0)
                 {
@@ -5429,7 +5753,8 @@ public class GameManager : MonoBehaviour
                     NowZyoba.text = StatusManager.instance.Zyoba.ToString();
                     Afterstatus[27] = StatusManager.instance.Zyoba;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 204:    //水泳
                 if (int.Parse(InputWorkPSuiei.text) > 0)
                 {
@@ -5440,7 +5765,8 @@ public class GameManager : MonoBehaviour
                     NowSuiei.text = StatusManager.instance.Suiei.ToString();
                     Afterstatus[28] = StatusManager.instance.Suiei;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 205:    //制作
                 if (int.Parse(InputWorkPSesaku.text) > 0)
                 {
@@ -5451,7 +5777,8 @@ public class GameManager : MonoBehaviour
                     NowSesaku.text = StatusManager.instance.Sesaku.ToString();
                     Afterstatus[29] = StatusManager.instance.Sesaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 206:    //操縦
                 if (int.Parse(InputWorkPSozyu.text) > 0)
                 {
@@ -5462,7 +5789,8 @@ public class GameManager : MonoBehaviour
                     NowSozyu.text = StatusManager.instance.Sozyu.ToString();
                     Afterstatus[30] = StatusManager.instance.Sozyu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 207:    //跳躍
                 if (int.Parse(InputWorkPTyoyaku.text) > 0)
                 {
@@ -5473,7 +5801,8 @@ public class GameManager : MonoBehaviour
                     NowTyoyaku.text = StatusManager.instance.Tyoyaku.ToString();
                     Afterstatus[31] = StatusManager.instance.Tyoyaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 208:    //電気修理
                 if (int.Parse(InputWorkPDenkisyuri.text) > 0)
                 {
@@ -5484,7 +5813,8 @@ public class GameManager : MonoBehaviour
                     NowDenkisyuri.text = StatusManager.instance.Denkisyuri.ToString();
                     Afterstatus[32] = StatusManager.instance.Denkisyuri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 209:    //ナビゲート
                 if (int.Parse(InputWorkPNabigeto.text) > 0)
                 {
@@ -5495,7 +5825,8 @@ public class GameManager : MonoBehaviour
                     NowNabigeto.text = StatusManager.instance.Nabigeto.ToString();
                     Afterstatus[33] = StatusManager.instance.Nabigeto;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 210:    //変装
                 if (int.Parse(InputWorkPHensou.text) > 0)
                 {
@@ -5506,7 +5837,8 @@ public class GameManager : MonoBehaviour
                     NowHensou.text = StatusManager.instance.Hensou.ToString();
                     Afterstatus[34] = StatusManager.instance.Hensou;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //交渉技能ステータス
             case 300:    //言いくるめ
@@ -5519,7 +5851,8 @@ public class GameManager : MonoBehaviour
                     NowIikurume.text = StatusManager.instance.Iikurume.ToString();
                     Afterstatus[35] = StatusManager.instance.Iikurume;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 301:    //信用
                 if (int.Parse(InputWorkPShinyou.text) > 0)
                 {
@@ -5530,7 +5863,8 @@ public class GameManager : MonoBehaviour
                     NowShinyou.text = StatusManager.instance.Shinyou.ToString();
                     Afterstatus[36] = StatusManager.instance.Shinyou;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 302:    //説得
                 if (int.Parse(InputWorkPSettoku.text) > 0)
                 {
@@ -5541,7 +5875,8 @@ public class GameManager : MonoBehaviour
                     NowSettoku.text = StatusManager.instance.Settoku.ToString();
                     Afterstatus[37] = StatusManager.instance.Settoku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 303:    //値切り
                 if (int.Parse(InputWorkPNegiri.text) > 0)
                 {
@@ -5552,7 +5887,8 @@ public class GameManager : MonoBehaviour
                     NowNegiri.text = StatusManager.instance.Negiri.ToString();
                     Afterstatus[38] = StatusManager.instance.Negiri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 304:    //母国語
                 if (int.Parse(InputWorkPBokokugo.text) > 0)
                 {
@@ -5563,7 +5899,8 @@ public class GameManager : MonoBehaviour
                     NowBokokugo.text = StatusManager.instance.Bokokugo.ToString();
                     Afterstatus[39] = StatusManager.instance.Bokokugo;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //知識技能ステータス
             case 400:    //医学
@@ -5576,7 +5913,8 @@ public class GameManager : MonoBehaviour
                     NowIgaku.text = StatusManager.instance.Igaku.ToString();
                     Afterstatus[40] = StatusManager.instance.Igaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 401:    //オカルト
                 if (int.Parse(InputWorkPOkaruto.text) > 0)
                 {
@@ -5587,7 +5925,8 @@ public class GameManager : MonoBehaviour
                     NowOkaruto.text = StatusManager.instance.Okaruto.ToString();
                     Afterstatus[41] = StatusManager.instance.Okaruto;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 402:    //化学
                 if (int.Parse(InputWorkPKagaku.text) > 0)
                 {
@@ -5598,7 +5937,8 @@ public class GameManager : MonoBehaviour
                     NowKagaku.text = StatusManager.instance.Kagaku.ToString();
                     Afterstatus[42] = StatusManager.instance.Kagaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 403:    //クトゥルフ神話
                 if (int.Parse(InputWorkPShinwa.text) > 0)
                 {
@@ -5609,7 +5949,8 @@ public class GameManager : MonoBehaviour
                     NowShinwa.text = StatusManager.instance.Shinwa.ToString();
                     Afterstatus[43] = StatusManager.instance.Shinwa;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 404:    //芸術
                 if (int.Parse(InputWorkPGezyutsu.text) > 0)
                 {
@@ -5620,7 +5961,8 @@ public class GameManager : MonoBehaviour
                     NowGezyutsu.text = StatusManager.instance.Gezyutsu.ToString();
                     Afterstatus[44] = StatusManager.instance.Gezyutsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 405:    //経理
                 if (int.Parse(InputWorkPKeiri.text) > 0)
                 {
@@ -5631,7 +5973,8 @@ public class GameManager : MonoBehaviour
                     NowKeiri.text = StatusManager.instance.Keiri.ToString();
                     Afterstatus[45] = StatusManager.instance.Keiri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 406:    //考古学
                 if (int.Parse(InputWorkPKokogaku.text) > 0)
                 {
@@ -5643,7 +5986,8 @@ public class GameManager : MonoBehaviour
                     Afterstatus[46] = StatusManager.instance.Kokogaku
                         ;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 407:    //コンピューター
                 if (int.Parse(InputWorkPPC.text) > 0)
                 {
@@ -5654,7 +5998,8 @@ public class GameManager : MonoBehaviour
                     NowPC.text = StatusManager.instance.PC.ToString();
                     Afterstatus[47] = StatusManager.instance.PC;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 408:    //心理学
                 if (int.Parse(InputWorkPShinrigaku.text) > 0)
                 {
@@ -5665,7 +6010,8 @@ public class GameManager : MonoBehaviour
                     NowShinrigaku.text = StatusManager.instance.Shinrigaku.ToString();
                     Afterstatus[48] = StatusManager.instance.Shinrigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 409:    //人類学
                 if (int.Parse(InputWorkPZinruigaku.text) > 0)
                 {
@@ -5676,7 +6022,8 @@ public class GameManager : MonoBehaviour
                     NowZinruigaku.text = StatusManager.instance.Zinruigaku.ToString();
                     Afterstatus[49] = StatusManager.instance.Zinruigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 410:    //生物学
                 if (int.Parse(InputWorkPSeibutsugaku.text) > 0)
                 {
@@ -5687,7 +6034,8 @@ public class GameManager : MonoBehaviour
                     NowSeibutsugaku.text = StatusManager.instance.Seibutsugaku.ToString();
                     Afterstatus[50] = StatusManager.instance.Seibutsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 411:    //地質学
                 if (int.Parse(InputWorkPTishitsugaku.text) > 0)
                 {
@@ -5698,7 +6046,8 @@ public class GameManager : MonoBehaviour
                     NowTishitsugaku.text = StatusManager.instance.Tishitsugaku.ToString();
                     Afterstatus[51] = StatusManager.instance.Tishitsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 412:    //電子工学
                 if (int.Parse(InputWorkPDenshikougaku.text) > 0)
                 {
@@ -5709,7 +6058,8 @@ public class GameManager : MonoBehaviour
                     NowDenshikougaku.text = StatusManager.instance.Denshikougaku.ToString();
                     Afterstatus[52] = StatusManager.instance.Denshikougaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 413:    //天文学
                 if (int.Parse(InputWorkPTenmongaku.text) > 0)
                 {
@@ -5720,7 +6070,8 @@ public class GameManager : MonoBehaviour
                     NowTenmongaku.text = StatusManager.instance.Tenmongaku.ToString();
                     Afterstatus[53] = StatusManager.instance.Tenmongaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 414:    //博物学
                 if (int.Parse(InputWorkPHakubutsugaku.text) > 0)
                 {
@@ -5731,7 +6082,8 @@ public class GameManager : MonoBehaviour
                     NowHakubutsugaku.text = StatusManager.instance.Hakubutsugaku.ToString();
                     Afterstatus[54] = StatusManager.instance.Hakubutsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 415:    //物理学
                 if (int.Parse(InputWorkPButsurigaku.text) > 0)
                 {
@@ -5742,7 +6094,8 @@ public class GameManager : MonoBehaviour
                     NowButsurigaku.text = StatusManager.instance.Butsurigaku.ToString();
                     Afterstatus[55] = StatusManager.instance.Butsurigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 416:    //法律
                 if (int.Parse(InputWorkPHouritsu.text) > 0)
                 {
@@ -5753,7 +6106,8 @@ public class GameManager : MonoBehaviour
                     NowHouritsu.text = StatusManager.instance.Houritsu.ToString();
                     Afterstatus[56] = StatusManager.instance.Houritsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 417:    //薬学
                 if (int.Parse(InputWorkPYakugaku.text) > 0)
                 {
@@ -5764,7 +6118,8 @@ public class GameManager : MonoBehaviour
                     NowYakugaku.text = StatusManager.instance.Yakugaku.ToString();
                     Afterstatus[57] = StatusManager.instance.Yakugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 418:    //歴史
                 if (int.Parse(InputWorkPRekishi.text) > 0)
                 {
@@ -5775,7 +6130,8 @@ public class GameManager : MonoBehaviour
                     NowRekishi.text = StatusManager.instance.Rekishi.ToString();
                     Afterstatus[58] = StatusManager.instance.Rekishi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
         }
     }
 
@@ -5785,7 +6141,7 @@ public class GameManager : MonoBehaviour
         switch (ButtonNo)
         {
             case 0:     //回避
-                if ((StatusManager.instance.Kaihi < limit)&&(StatusManager.instance.HobbyP!=0))
+                if ((StatusManager.instance.Kaihi < limit) && (StatusManager.instance.HobbyP != 0))
                 {
                     StatusManager.instance.Kaihi += 1;
                     StatusManager.instance.HobbyP -= 1;
@@ -5794,7 +6150,8 @@ public class GameManager : MonoBehaviour
                     NowKaihi.text = StatusManager.instance.Kaihi.ToString();
                     Afterstatus[0] = StatusManager.instance.Kaihi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 1:     //キック
                 if ((StatusManager.instance.Kikku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5805,7 +6162,8 @@ public class GameManager : MonoBehaviour
                     NowKikku.text = StatusManager.instance.Kikku.ToString();
                     Afterstatus[1] = StatusManager.instance.Kikku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 2:     //組み付き
                 if ((StatusManager.instance.Kumitsuki < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5816,7 +6174,8 @@ public class GameManager : MonoBehaviour
                     NowKumitsuki.text = StatusManager.instance.Kumitsuki.ToString();
                     Afterstatus[2] = StatusManager.instance.Kumitsuki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 3:     //こぶし
                 if ((StatusManager.instance.Kobushi < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5827,7 +6186,8 @@ public class GameManager : MonoBehaviour
                     NowKobushi.text = StatusManager.instance.Kobushi.ToString();
                     Afterstatus[3] = StatusManager.instance.Kobushi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 4:     //頭突き
                 if ((StatusManager.instance.Zutsuki < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5838,7 +6198,8 @@ public class GameManager : MonoBehaviour
                     NowZutsuki.text = StatusManager.instance.Zutsuki.ToString();
                     Afterstatus[4] = StatusManager.instance.Zutsuki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 5:     //投擲
                 if ((StatusManager.instance.Toteki < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5849,7 +6210,8 @@ public class GameManager : MonoBehaviour
                     NowToteki.text = StatusManager.instance.Toteki.ToString();
                     Afterstatus[5] = StatusManager.instance.Toteki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 6:     //マーシャルアーツ
                 if ((StatusManager.instance.MSA < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5860,7 +6222,8 @@ public class GameManager : MonoBehaviour
                     NowMSA.text = StatusManager.instance.MSA.ToString();
                     Afterstatus[6] = StatusManager.instance.MSA;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 7:     //拳銃
                 if ((StatusManager.instance.Kenzyu < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5871,7 +6234,8 @@ public class GameManager : MonoBehaviour
                     NowKenzyu.text = StatusManager.instance.Kenzyu.ToString();
                     Afterstatus[7] = StatusManager.instance.Kenzyu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 8:     //サブマシンガン
                 if ((StatusManager.instance.SMG < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5882,7 +6246,8 @@ public class GameManager : MonoBehaviour
                     NowSMG.text = StatusManager.instance.SMG.ToString();
                     Afterstatus[8] = StatusManager.instance.SMG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 9:     //ショットガン
                 if ((StatusManager.instance.SG < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5893,7 +6258,8 @@ public class GameManager : MonoBehaviour
                     NowSG.text = StatusManager.instance.SG.ToString();
                     Afterstatus[9] = StatusManager.instance.SG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 10:    //マシンガン
                 if ((StatusManager.instance.MG < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5904,7 +6270,8 @@ public class GameManager : MonoBehaviour
                     NowMG.text = StatusManager.instance.MG.ToString();
                     Afterstatus[10] = StatusManager.instance.MG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 11:    //ライフル
                 if ((StatusManager.instance.R < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5915,7 +6282,8 @@ public class GameManager : MonoBehaviour
                     NowR.text = StatusManager.instance.R.ToString();
                     Afterstatus[11] = StatusManager.instance.R;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //探索技能ステータス
             case 100:    //応急手当
@@ -5928,7 +6296,8 @@ public class GameManager : MonoBehaviour
                     NowOkyuteate.text = StatusManager.instance.Okyuteate.ToString();
                     Afterstatus[12] = StatusManager.instance.Okyuteate;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 101:    //鍵開け
                 if ((StatusManager.instance.Kagiake < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5939,7 +6308,8 @@ public class GameManager : MonoBehaviour
                     NowKagiake.text = StatusManager.instance.Kagiake.ToString();
                     Afterstatus[13] = StatusManager.instance.Kagiake;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 102:    //隠す
                 if ((StatusManager.instance.Kakusu < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5950,7 +6320,8 @@ public class GameManager : MonoBehaviour
                     NowKakusu.text = StatusManager.instance.Kakusu.ToString();
                     Afterstatus[14] = StatusManager.instance.Kakusu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 103:    //隠れる
                 if ((StatusManager.instance.Kakureru < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5961,7 +6332,8 @@ public class GameManager : MonoBehaviour
                     NowKakureru.text = StatusManager.instance.Kakureru.ToString();
                     Afterstatus[15] = StatusManager.instance.Kakureru;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 104:    //聞き耳
                 if ((StatusManager.instance.Kikimimi < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5972,7 +6344,8 @@ public class GameManager : MonoBehaviour
                     NowKikimimi.text = StatusManager.instance.Kikimimi.ToString();
                     Afterstatus[16] = StatusManager.instance.Kikimimi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 105:    //忍び歩き
                 if ((StatusManager.instance.Shinobiaruki < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5983,7 +6356,8 @@ public class GameManager : MonoBehaviour
                     NowShinobiaruki.text = StatusManager.instance.Shinobiaruki.ToString();
                     Afterstatus[17] = StatusManager.instance.Shinobiaruki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 106:    //写真術
                 if ((StatusManager.instance.Syashinzyutsu < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -5994,7 +6368,8 @@ public class GameManager : MonoBehaviour
                     NowSyashinzyutsu.text = StatusManager.instance.Syashinzyutsu.ToString();
                     Afterstatus[18] = StatusManager.instance.Syashinzyutsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 107:    //精神分析
                 if ((StatusManager.instance.Seshinbunseki < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6005,7 +6380,8 @@ public class GameManager : MonoBehaviour
                     NowSeshinbunseki.text = StatusManager.instance.Seshinbunseki.ToString();
                     Afterstatus[19] = StatusManager.instance.Seshinbunseki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 108:    //追跡
                 if ((StatusManager.instance.Tsuiseki < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6016,7 +6392,8 @@ public class GameManager : MonoBehaviour
                     NowTsuiseki.text = StatusManager.instance.Tsuiseki.ToString();
                     Afterstatus[20] = StatusManager.instance.Tsuiseki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 109:    //登攀
                 if ((StatusManager.instance.Touhan < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6027,7 +6404,8 @@ public class GameManager : MonoBehaviour
                     NowTouhan.text = StatusManager.instance.Touhan.ToString();
                     Afterstatus[21] = StatusManager.instance.Touhan;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 110:    //図書館
                 if ((StatusManager.instance.Tosyokan < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6038,7 +6416,8 @@ public class GameManager : MonoBehaviour
                     NowTosyokan.text = StatusManager.instance.Tosyokan.ToString();
                     Afterstatus[22] = StatusManager.instance.Tosyokan;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 111:    //目星
                 if ((StatusManager.instance.Meboshi < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6049,7 +6428,8 @@ public class GameManager : MonoBehaviour
                     NowMeboshi.text = StatusManager.instance.Meboshi.ToString();
                     Afterstatus[23] = StatusManager.instance.Meboshi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //行動技能ステータス
             case 200:    //運転
@@ -6062,7 +6442,8 @@ public class GameManager : MonoBehaviour
                     NowUnten.text = StatusManager.instance.Unten.ToString();
                     Afterstatus[24] = StatusManager.instance.Unten;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 201:    //機械修理
                 if ((StatusManager.instance.Kikaisyuri < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6073,7 +6454,8 @@ public class GameManager : MonoBehaviour
                     NowKikaisyuri.text = StatusManager.instance.Kikaisyuri.ToString();
                     Afterstatus[25] = StatusManager.instance.Kikaisyuri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 202:    //重機械操作
                 if ((StatusManager.instance.Zyukikaisosa < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6084,7 +6466,8 @@ public class GameManager : MonoBehaviour
                     NowZyukikaisosa.text = StatusManager.instance.Zyukikaisosa.ToString();
                     Afterstatus[26] = StatusManager.instance.Zyukikaisosa;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 203:    //乗馬
                 if ((StatusManager.instance.Zyoba < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6095,7 +6478,8 @@ public class GameManager : MonoBehaviour
                     NowZyoba.text = StatusManager.instance.Zyoba.ToString();
                     Afterstatus[27] = StatusManager.instance.Zyoba;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 204:    //水泳
                 if ((StatusManager.instance.Suiei < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6106,7 +6490,8 @@ public class GameManager : MonoBehaviour
                     NowSuiei.text = StatusManager.instance.Suiei.ToString();
                     Afterstatus[28] = StatusManager.instance.Suiei;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 205:    //制作
                 if ((StatusManager.instance.Sesaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6117,7 +6502,8 @@ public class GameManager : MonoBehaviour
                     NowSesaku.text = StatusManager.instance.Sesaku.ToString();
                     Afterstatus[29] = StatusManager.instance.Sesaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 206:    //操縦
                 if ((StatusManager.instance.Sozyu < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6128,7 +6514,8 @@ public class GameManager : MonoBehaviour
                     NowSozyu.text = StatusManager.instance.Sozyu.ToString();
                     Afterstatus[30] = StatusManager.instance.Sozyu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 207:    //跳躍
                 if ((StatusManager.instance.Tyoyaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6139,7 +6526,8 @@ public class GameManager : MonoBehaviour
                     NowTyoyaku.text = StatusManager.instance.Tyoyaku.ToString();
                     Afterstatus[31] = StatusManager.instance.Tyoyaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 208:    //電気修理
                 if ((StatusManager.instance.Denkisyuri < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6150,7 +6538,8 @@ public class GameManager : MonoBehaviour
                     NowDenkisyuri.text = StatusManager.instance.Denkisyuri.ToString();
                     Afterstatus[32] = StatusManager.instance.Denkisyuri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 209:    //ナビゲート
                 if ((StatusManager.instance.Nabigeto < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6161,7 +6550,8 @@ public class GameManager : MonoBehaviour
                     NowNabigeto.text = StatusManager.instance.Nabigeto.ToString();
                     Afterstatus[33] = StatusManager.instance.Nabigeto;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 210:    //変装
                 if ((StatusManager.instance.Hensou < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6172,7 +6562,8 @@ public class GameManager : MonoBehaviour
                     NowHensou.text = StatusManager.instance.Hensou.ToString();
                     Afterstatus[34] = StatusManager.instance.Hensou;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //交渉技能ステータス
             case 300:    //言いくるめ
@@ -6185,7 +6576,8 @@ public class GameManager : MonoBehaviour
                     NowIikurume.text = StatusManager.instance.Iikurume.ToString();
                     Afterstatus[35] = StatusManager.instance.Iikurume;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 301:    //信用
                 if ((StatusManager.instance.Shinyou < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6196,7 +6588,8 @@ public class GameManager : MonoBehaviour
                     NowShinyou.text = StatusManager.instance.Shinyou.ToString();
                     Afterstatus[36] = StatusManager.instance.Shinyou;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 302:    //説得
                 if ((StatusManager.instance.Settoku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6207,7 +6600,8 @@ public class GameManager : MonoBehaviour
                     NowSettoku.text = StatusManager.instance.Settoku.ToString();
                     Afterstatus[37] = StatusManager.instance.Settoku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 303:    //値切り
                 if ((StatusManager.instance.Negiri < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6218,7 +6612,8 @@ public class GameManager : MonoBehaviour
                     NowNegiri.text = StatusManager.instance.Negiri.ToString();
                     Afterstatus[38] = StatusManager.instance.Negiri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 304:    //母国語
                 if ((StatusManager.instance.Bokokugo < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6229,7 +6624,8 @@ public class GameManager : MonoBehaviour
                     NowBokokugo.text = StatusManager.instance.Bokokugo.ToString();
                     Afterstatus[39] = StatusManager.instance.Bokokugo;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //知識技能ステータス
             case 400:    //医学
@@ -6242,7 +6638,8 @@ public class GameManager : MonoBehaviour
                     NowIgaku.text = StatusManager.instance.Igaku.ToString();
                     Afterstatus[40] = StatusManager.instance.Igaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 401:    //オカルト
                 if ((StatusManager.instance.Okaruto < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6253,7 +6650,8 @@ public class GameManager : MonoBehaviour
                     NowOkaruto.text = StatusManager.instance.Okaruto.ToString();
                     Afterstatus[41] = StatusManager.instance.Okaruto;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 402:    //化学
                 if ((StatusManager.instance.Kagaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6264,7 +6662,8 @@ public class GameManager : MonoBehaviour
                     NowKagaku.text = StatusManager.instance.Kagaku.ToString();
                     Afterstatus[42] = StatusManager.instance.Kagaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 403:    //クトゥルフ神話
                 if ((StatusManager.instance.Shinwa < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6275,7 +6674,8 @@ public class GameManager : MonoBehaviour
                     NowShinwa.text = StatusManager.instance.Shinwa.ToString();
                     Afterstatus[43] = StatusManager.instance.Shinwa;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 404:    //芸術
                 if ((StatusManager.instance.Gezyutsu < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6286,7 +6686,8 @@ public class GameManager : MonoBehaviour
                     NowGezyutsu.text = StatusManager.instance.Gezyutsu.ToString();
                     Afterstatus[44] = StatusManager.instance.Gezyutsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 405:    //経理
                 if ((StatusManager.instance.Keiri < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6297,7 +6698,8 @@ public class GameManager : MonoBehaviour
                     NowKeiri.text = StatusManager.instance.Keiri.ToString();
                     Afterstatus[45] = StatusManager.instance.Keiri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 406:    //考古学
                 if ((StatusManager.instance.Kokogaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6308,7 +6710,8 @@ public class GameManager : MonoBehaviour
                     NowKokogaku.text = StatusManager.instance.Kokogaku.ToString();
                     Afterstatus[46] = StatusManager.instance.Kokogaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 407:    //コンピューター
                 if ((StatusManager.instance.PC < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6319,7 +6722,8 @@ public class GameManager : MonoBehaviour
                     NowPC.text = StatusManager.instance.PC.ToString();
                     Afterstatus[47] = StatusManager.instance.PC;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 408:    //心理学
                 if ((StatusManager.instance.Shinrigaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6330,7 +6734,8 @@ public class GameManager : MonoBehaviour
                     NowShinrigaku.text = StatusManager.instance.Shinrigaku.ToString();
                     Afterstatus[48] = StatusManager.instance.Shinrigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 409:    //人類学
                 if ((StatusManager.instance.Zinruigaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6341,7 +6746,8 @@ public class GameManager : MonoBehaviour
                     NowZinruigaku.text = StatusManager.instance.Zinruigaku.ToString();
                     Afterstatus[49] = StatusManager.instance.Zinruigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 410:    //生物学
                 if ((StatusManager.instance.Seibutsugaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6352,7 +6758,8 @@ public class GameManager : MonoBehaviour
                     NowSeibutsugaku.text = StatusManager.instance.Seibutsugaku.ToString();
                     Afterstatus[50] = StatusManager.instance.Seibutsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 411:    //地質学
                 if ((StatusManager.instance.Tishitsugaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6363,7 +6770,8 @@ public class GameManager : MonoBehaviour
                     NowTishitsugaku.text = StatusManager.instance.Tishitsugaku.ToString();
                     Afterstatus[51] = StatusManager.instance.Tishitsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 412:    //電子工学
                 if ((StatusManager.instance.Denshikougaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6374,7 +6782,8 @@ public class GameManager : MonoBehaviour
                     NowDenshikougaku.text = StatusManager.instance.Denshikougaku.ToString();
                     Afterstatus[52] = StatusManager.instance.Denshikougaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 413:    //天文学
                 if ((StatusManager.instance.Tenmongaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6385,7 +6794,8 @@ public class GameManager : MonoBehaviour
                     NowTenmongaku.text = StatusManager.instance.Tenmongaku.ToString();
                     Afterstatus[53] = StatusManager.instance.Tenmongaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 414:    //博物学
                 if ((StatusManager.instance.Hakubutsugaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6396,7 +6806,8 @@ public class GameManager : MonoBehaviour
                     NowHakubutsugaku.text = StatusManager.instance.Hakubutsugaku.ToString();
                     Afterstatus[54] = StatusManager.instance.Hakubutsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 415:    //物理学
                 if ((StatusManager.instance.Butsurigaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6407,7 +6818,8 @@ public class GameManager : MonoBehaviour
                     NowButsurigaku.text = StatusManager.instance.Butsurigaku.ToString();
                     Afterstatus[55] = StatusManager.instance.Butsurigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 416:    //法律
                 if ((StatusManager.instance.Houritsu < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6418,7 +6830,8 @@ public class GameManager : MonoBehaviour
                     NowHouritsu.text = StatusManager.instance.Houritsu.ToString();
                     Afterstatus[56] = StatusManager.instance.Houritsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 417:    //薬学
                 if ((StatusManager.instance.Yakugaku < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6429,7 +6842,8 @@ public class GameManager : MonoBehaviour
                     NowYakugaku.text = StatusManager.instance.Yakugaku.ToString();
                     Afterstatus[57] = StatusManager.instance.Yakugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 418:    //歴史
                 if ((StatusManager.instance.Rekishi < limit) && (StatusManager.instance.HobbyP != 0))
                 {
@@ -6440,8 +6854,9 @@ public class GameManager : MonoBehaviour
                     NowRekishi.text = StatusManager.instance.Rekishi.ToString();
                     Afterstatus[58] = StatusManager.instance.Rekishi;
                 }
-                else { return; }break;
-        }  
+                else { return; }
+                break;
+        }
     }
 
     //趣味技能ポイント振り分けDownボタン
@@ -6459,7 +6874,8 @@ public class GameManager : MonoBehaviour
                     NowKaihi.text = StatusManager.instance.Kaihi.ToString();
                     Afterstatus[0] = StatusManager.instance.Kaihi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 1:     //キック
                 if (int.Parse(InputHobbyPKikku.text) > 0)
                 {
@@ -6469,7 +6885,8 @@ public class GameManager : MonoBehaviour
                     NowKikku.text = StatusManager.instance.Kikku.ToString();
                     Afterstatus[1] = StatusManager.instance.Kikku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 2:     //組み付き
                 if (int.Parse(InputHobbyPKumitsuki.text) > 0)
                 {
@@ -6480,7 +6897,8 @@ public class GameManager : MonoBehaviour
                     NowKumitsuki.text = StatusManager.instance.Kumitsuki.ToString();
                     Afterstatus[2] = StatusManager.instance.Kumitsuki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 3:     //こぶし
                 if (int.Parse(InputHobbyPKobushi.text) > 0)
                 {
@@ -6491,7 +6909,8 @@ public class GameManager : MonoBehaviour
                     NowKobushi.text = StatusManager.instance.Kobushi.ToString();
                     Afterstatus[3] = StatusManager.instance.Kobushi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 4:     //頭突き
                 if (int.Parse(InputHobbyPZutsuki.text) > 0)
                 {
@@ -6502,7 +6921,8 @@ public class GameManager : MonoBehaviour
                     NowZutsuki.text = StatusManager.instance.Zutsuki.ToString();
                     Afterstatus[4] = StatusManager.instance.Zutsuki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 5:     //投擲
                 if (int.Parse(InputHobbyPToteki.text) > 0)
                 {
@@ -6513,7 +6933,8 @@ public class GameManager : MonoBehaviour
                     NowToteki.text = StatusManager.instance.Toteki.ToString();
                     Afterstatus[5] = StatusManager.instance.Toteki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 6:     //マーシャルアーツ
                 if (int.Parse(InputHobbyPMSA.text) > 0)
                 {
@@ -6524,7 +6945,8 @@ public class GameManager : MonoBehaviour
                     NowMSA.text = StatusManager.instance.MSA.ToString();
                     Afterstatus[6] = StatusManager.instance.MSA;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 7:     //拳銃
                 if (int.Parse(InputHobbyPKenzyu.text) > 0)
                 {
@@ -6535,7 +6957,8 @@ public class GameManager : MonoBehaviour
                     NowKenzyu.text = StatusManager.instance.Kenzyu.ToString();
                     Afterstatus[7] = StatusManager.instance.Kenzyu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 8:     //サブマシンガン
                 if (int.Parse(InputHobbyPSMG.text) > 0)
                 {
@@ -6546,7 +6969,8 @@ public class GameManager : MonoBehaviour
                     NowSMG.text = StatusManager.instance.SMG.ToString();
                     Afterstatus[8] = StatusManager.instance.SMG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 9:     //ショットガン
                 if (int.Parse(InputHobbyPSG.text) > 0)
                 {
@@ -6557,7 +6981,8 @@ public class GameManager : MonoBehaviour
                     NowSG.text = StatusManager.instance.SG.ToString();
                     Afterstatus[9] = StatusManager.instance.SG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 10:    //マシンガン
                 if (int.Parse(InputHobbyPMG.text) > 0)
                 {
@@ -6568,7 +6993,8 @@ public class GameManager : MonoBehaviour
                     NowMG.text = StatusManager.instance.MG.ToString();
                     Afterstatus[10] = StatusManager.instance.MG;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 11:    //ライフル
                 if (int.Parse(InputHobbyPR.text) > 0)
                 {
@@ -6579,7 +7005,8 @@ public class GameManager : MonoBehaviour
                     NowR.text = StatusManager.instance.R.ToString();
                     Afterstatus[11] = StatusManager.instance.R;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //探索技能ステータス
             case 100:    //応急手当
@@ -6592,7 +7019,8 @@ public class GameManager : MonoBehaviour
                     NowOkyuteate.text = StatusManager.instance.Okyuteate.ToString();
                     Afterstatus[12] = StatusManager.instance.Okyuteate;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 101:    //鍵開け
                 if (int.Parse(InputHobbyPKagiake.text) > 0)
                 {
@@ -6603,7 +7031,8 @@ public class GameManager : MonoBehaviour
                     NowKagiake.text = StatusManager.instance.Kagiake.ToString();
                     Afterstatus[13] = StatusManager.instance.Kagiake;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 102:    //隠す
                 if (int.Parse(InputHobbyPKakusu.text) > 0)
                 {
@@ -6614,7 +7043,8 @@ public class GameManager : MonoBehaviour
                     NowKakusu.text = StatusManager.instance.Kakusu.ToString();
                     Afterstatus[14] = StatusManager.instance.Kakusu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 103:    //隠れる
                 if (int.Parse(InputHobbyPKakureru.text) > 0)
                 {
@@ -6625,7 +7055,8 @@ public class GameManager : MonoBehaviour
                     NowKakureru.text = StatusManager.instance.Kakureru.ToString();
                     Afterstatus[15] = StatusManager.instance.Kakureru;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 104:    //聞き耳
                 if (int.Parse(InputHobbyPKikimimi.text) > 0)
                 {
@@ -6636,7 +7067,8 @@ public class GameManager : MonoBehaviour
                     NowKikimimi.text = StatusManager.instance.Kikimimi.ToString();
                     Afterstatus[16] = StatusManager.instance.Kikimimi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 105:    //忍び歩き
                 if (int.Parse(InputHobbyPShinobiaruki.text) > 0)
                 {
@@ -6647,7 +7079,8 @@ public class GameManager : MonoBehaviour
                     NowShinobiaruki.text = StatusManager.instance.Shinobiaruki.ToString();
                     Afterstatus[17] = StatusManager.instance.Shinobiaruki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 106:    //写真術
                 if (int.Parse(InputHobbyPSyashinzyutsu.text) > 0)
                 {
@@ -6658,7 +7091,8 @@ public class GameManager : MonoBehaviour
                     NowSyashinzyutsu.text = StatusManager.instance.Syashinzyutsu.ToString();
                     Afterstatus[18] = StatusManager.instance.Syashinzyutsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 107:    //精神分析
                 if (int.Parse(InputHobbyPSeshinbunseki.text) > 0)
                 {
@@ -6669,7 +7103,8 @@ public class GameManager : MonoBehaviour
                     NowSeshinbunseki.text = StatusManager.instance.Seshinbunseki.ToString();
                     Afterstatus[19] = StatusManager.instance.Seshinbunseki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 108:    //追跡
                 if (int.Parse(InputHobbyPTsuiseki.text) > 0)
                 {
@@ -6680,7 +7115,8 @@ public class GameManager : MonoBehaviour
                     NowTsuiseki.text = StatusManager.instance.Tsuiseki.ToString();
                     Afterstatus[20] = StatusManager.instance.Tsuiseki;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 109:    //登攀
                 if (int.Parse(InputHobbyPTouhan.text) > 0)
                 {
@@ -6691,7 +7127,8 @@ public class GameManager : MonoBehaviour
                     NowTouhan.text = StatusManager.instance.Touhan.ToString();
                     Afterstatus[21] = StatusManager.instance.Touhan;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 110:    //図書館
                 if (int.Parse(InputHobbyPTosyokan.text) > 0)
                 {
@@ -6702,7 +7139,8 @@ public class GameManager : MonoBehaviour
                     NowTosyokan.text = StatusManager.instance.Tosyokan.ToString();
                     Afterstatus[22] = StatusManager.instance.Tosyokan;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 111:    //目星
                 if (int.Parse(InputHobbyPMeboshi.text) > 0)
                 {
@@ -6713,7 +7151,8 @@ public class GameManager : MonoBehaviour
                     NowMeboshi.text = StatusManager.instance.Meboshi.ToString();
                     Afterstatus[23] = StatusManager.instance.Meboshi;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //行動技能ステータス
             case 200:    //運転
@@ -6726,7 +7165,8 @@ public class GameManager : MonoBehaviour
                     NowUnten.text = StatusManager.instance.Unten.ToString();
                     Afterstatus[24] = StatusManager.instance.Unten;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 201:    //機械修理
                 if (int.Parse(InputHobbyPKikaisyuri.text) > 0)
                 {
@@ -6737,7 +7177,8 @@ public class GameManager : MonoBehaviour
                     NowKikaisyuri.text = StatusManager.instance.Kikaisyuri.ToString();
                     Afterstatus[25] = StatusManager.instance.Kikaisyuri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 202:    //重機械操作
                 if (int.Parse(InputHobbyPZyukikaisosa.text) > 0)
                 {
@@ -6748,7 +7189,8 @@ public class GameManager : MonoBehaviour
                     NowZyukikaisosa.text = StatusManager.instance.Zyukikaisosa.ToString();
                     Afterstatus[26] = StatusManager.instance.Zyukikaisosa;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 203:    //乗馬
                 if (int.Parse(InputHobbyPZyoba.text) > 0)
                 {
@@ -6759,7 +7201,8 @@ public class GameManager : MonoBehaviour
                     NowZyoba.text = StatusManager.instance.Zyoba.ToString();
                     Afterstatus[27] = StatusManager.instance.Zyoba;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 204:    //水泳
                 if (int.Parse(InputHobbyPSuiei.text) > 0)
                 {
@@ -6770,7 +7213,8 @@ public class GameManager : MonoBehaviour
                     NowSuiei.text = StatusManager.instance.Suiei.ToString();
                     Afterstatus[28] = StatusManager.instance.Suiei;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 205:    //制作
                 if (int.Parse(InputHobbyPSesaku.text) > 0)
                 {
@@ -6781,7 +7225,8 @@ public class GameManager : MonoBehaviour
                     NowSesaku.text = StatusManager.instance.Sesaku.ToString();
                     Afterstatus[29] = StatusManager.instance.Sesaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 206:    //操縦
                 if (int.Parse(InputHobbyPSozyu.text) > 0)
                 {
@@ -6792,7 +7237,8 @@ public class GameManager : MonoBehaviour
                     NowSozyu.text = StatusManager.instance.Sozyu.ToString();
                     Afterstatus[30] = StatusManager.instance.Sozyu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 207:    //跳躍
                 if (int.Parse(InputHobbyPTyoyaku.text) > 0)
                 {
@@ -6803,7 +7249,8 @@ public class GameManager : MonoBehaviour
                     NowTyoyaku.text = StatusManager.instance.Tyoyaku.ToString();
                     Afterstatus[31] = StatusManager.instance.Tyoyaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 208:    //電気修理
                 if (int.Parse(InputHobbyPDenkisyuri.text) > 0)
                 {
@@ -6814,7 +7261,8 @@ public class GameManager : MonoBehaviour
                     NowDenkisyuri.text = StatusManager.instance.Denkisyuri.ToString();
                     Afterstatus[32] = StatusManager.instance.Denkisyuri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 209:    //ナビゲート
                 if (int.Parse(InputHobbyPNabigeto.text) > 0)
                 {
@@ -6825,7 +7273,8 @@ public class GameManager : MonoBehaviour
                     NowNabigeto.text = StatusManager.instance.Nabigeto.ToString();
                     Afterstatus[33] = StatusManager.instance.Nabigeto;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 210:    //変装
                 if (int.Parse(InputHobbyPHensou.text) > 0)
                 {
@@ -6836,7 +7285,8 @@ public class GameManager : MonoBehaviour
                     NowHensou.text = StatusManager.instance.Hensou.ToString();
                     Afterstatus[34] = StatusManager.instance.Hensou;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //交渉技能ステータス
             case 300:    //言いくるめ
@@ -6849,7 +7299,8 @@ public class GameManager : MonoBehaviour
                     NowIikurume.text = StatusManager.instance.Iikurume.ToString();
                     Afterstatus[35] = StatusManager.instance.Iikurume;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 301:    //信用
                 if (int.Parse(InputHobbyPShinyou.text) > 0)
                 {
@@ -6860,7 +7311,8 @@ public class GameManager : MonoBehaviour
                     NowShinyou.text = StatusManager.instance.Shinyou.ToString();
                     Afterstatus[36] = StatusManager.instance.Shinyou;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 302:    //説得
                 if (int.Parse(InputHobbyPSettoku.text) > 0)
                 {
@@ -6871,7 +7323,8 @@ public class GameManager : MonoBehaviour
                     NowSettoku.text = StatusManager.instance.Settoku.ToString();
                     Afterstatus[37] = StatusManager.instance.Settoku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 303:    //値切り
                 if (int.Parse(InputHobbyPNegiri.text) > 0)
                 {
@@ -6882,7 +7335,8 @@ public class GameManager : MonoBehaviour
                     NowNegiri.text = StatusManager.instance.Negiri.ToString();
                     Afterstatus[38] = StatusManager.instance.Negiri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 304:    //母国語
                 if (int.Parse(InputHobbyPBokokugo.text) > 0)
                 {
@@ -6893,7 +7347,8 @@ public class GameManager : MonoBehaviour
                     NowBokokugo.text = StatusManager.instance.Bokokugo.ToString();
                     Afterstatus[39] = StatusManager.instance.Bokokugo;
                 }
-                else { return; }break;
+                else { return; }
+                break;
 
             //知識技能ステータス
             case 400:    //医学
@@ -6906,7 +7361,8 @@ public class GameManager : MonoBehaviour
                     NowIgaku.text = StatusManager.instance.Igaku.ToString();
                     Afterstatus[40] = StatusManager.instance.Igaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 401:    //オカルト
                 if (int.Parse(InputHobbyPOkaruto.text) > 0)
                 {
@@ -6917,7 +7373,8 @@ public class GameManager : MonoBehaviour
                     NowOkaruto.text = StatusManager.instance.Okaruto.ToString();
                     Afterstatus[41] = StatusManager.instance.Okaruto;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 402:    //化学
                 if (int.Parse(InputHobbyPKagaku.text) > 0)
                 {
@@ -6928,7 +7385,8 @@ public class GameManager : MonoBehaviour
                     NowKagaku.text = StatusManager.instance.Kagaku.ToString();
                     Afterstatus[42] = StatusManager.instance.Kagaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 403:    //クトゥルフ神話
                 if (int.Parse(InputHobbyPShinwa.text) > 0)
                 {
@@ -6939,7 +7397,8 @@ public class GameManager : MonoBehaviour
                     NowShinwa.text = StatusManager.instance.Shinwa.ToString();
                     Afterstatus[43] = StatusManager.instance.Shinwa;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 404:    //芸術
                 if (int.Parse(InputHobbyPGezyutsu.text) > 0)
                 {
@@ -6950,7 +7409,8 @@ public class GameManager : MonoBehaviour
                     NowGezyutsu.text = StatusManager.instance.Gezyutsu.ToString();
                     Afterstatus[44] = StatusManager.instance.Gezyutsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 405:    //経理
                 if (int.Parse(InputHobbyPKeiri.text) > 0)
                 {
@@ -6961,7 +7421,8 @@ public class GameManager : MonoBehaviour
                     NowKeiri.text = StatusManager.instance.Keiri.ToString();
                     Afterstatus[45] = StatusManager.instance.Keiri;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 406:    //考古学
                 if (int.Parse(InputHobbyPKokogaku.text) > 0)
                 {
@@ -6972,7 +7433,8 @@ public class GameManager : MonoBehaviour
                     NowKokogaku.text = StatusManager.instance.Kokogaku.ToString();
                     Afterstatus[46] = StatusManager.instance.Kokogaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 407:    //コンピューター
                 if (int.Parse(InputHobbyPPC.text) > 0)
                 {
@@ -6983,7 +7445,8 @@ public class GameManager : MonoBehaviour
                     NowPC.text = StatusManager.instance.PC.ToString();
                     Afterstatus[47] = StatusManager.instance.PC;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 408:    //心理学
                 if (int.Parse(InputHobbyPShinrigaku.text) > 0)
                 {
@@ -6994,7 +7457,8 @@ public class GameManager : MonoBehaviour
                     NowShinrigaku.text = StatusManager.instance.Shinrigaku.ToString();
                     Afterstatus[48] = StatusManager.instance.Shinrigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 409:    //人類学
                 if (int.Parse(InputHobbyPZinruigaku.text) > 0)
                 {
@@ -7005,7 +7469,8 @@ public class GameManager : MonoBehaviour
                     NowZinruigaku.text = StatusManager.instance.Zinruigaku.ToString();
                     Afterstatus[49] = StatusManager.instance.Zinruigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 410:    //生物学
                 if (int.Parse(InputHobbyPSeibutsugaku.text) > 0)
                 {
@@ -7016,7 +7481,8 @@ public class GameManager : MonoBehaviour
                     NowSeibutsugaku.text = StatusManager.instance.Seibutsugaku.ToString();
                     Afterstatus[50] = StatusManager.instance.Seibutsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 411:    //地質学
                 if (int.Parse(InputHobbyPTishitsugaku.text) > 0)
                 {
@@ -7027,7 +7493,8 @@ public class GameManager : MonoBehaviour
                     NowTishitsugaku.text = StatusManager.instance.Tishitsugaku.ToString();
                     Afterstatus[51] = StatusManager.instance.Tishitsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 412:    //電子工学
                 if (int.Parse(InputHobbyPDenshikougaku.text) > 0)
                 {
@@ -7038,7 +7505,8 @@ public class GameManager : MonoBehaviour
                     NowDenshikougaku.text = StatusManager.instance.Denshikougaku.ToString();
                     Afterstatus[52] = StatusManager.instance.Denshikougaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 413:    //天文学
                 if (int.Parse(InputHobbyPTenmongaku.text) > 0)
                 {
@@ -7049,7 +7517,8 @@ public class GameManager : MonoBehaviour
                     NowTenmongaku.text = StatusManager.instance.Tenmongaku.ToString();
                     Afterstatus[53] = StatusManager.instance.Tenmongaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 414:    //博物学
                 if (int.Parse(InputHobbyPHakubutsugaku.text) > 0)
                 {
@@ -7060,7 +7529,8 @@ public class GameManager : MonoBehaviour
                     NowHakubutsugaku.text = StatusManager.instance.Hakubutsugaku.ToString();
                     Afterstatus[54] = StatusManager.instance.Hakubutsugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 415:    //物理学
                 if (int.Parse(InputHobbyPButsurigaku.text) > 0)
                 {
@@ -7071,7 +7541,8 @@ public class GameManager : MonoBehaviour
                     NowButsurigaku.text = StatusManager.instance.Butsurigaku.ToString();
                     Afterstatus[55] = StatusManager.instance.Butsurigaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 416:    //法律
                 if (int.Parse(InputHobbyPHouritsu.text) > 0)
                 {
@@ -7082,7 +7553,8 @@ public class GameManager : MonoBehaviour
                     NowHouritsu.text = StatusManager.instance.Houritsu.ToString();
                     Afterstatus[56] = StatusManager.instance.Houritsu;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 417:    //薬学
                 if (int.Parse(InputHobbyPYakugaku.text) > 0)
                 {
@@ -7093,7 +7565,8 @@ public class GameManager : MonoBehaviour
                     NowYakugaku.text = StatusManager.instance.Yakugaku.ToString();
                     Afterstatus[57] = StatusManager.instance.Yakugaku;
                 }
-                else { return; }break;
+                else { return; }
+                break;
             case 418:    //歴史
                 if (int.Parse(InputHobbyPRekishi.text) > 0)
                 {
@@ -7104,8 +7577,9 @@ public class GameManager : MonoBehaviour
                     NowRekishi.text = StatusManager.instance.Rekishi.ToString();
                     Afterstatus[58] = StatusManager.instance.Rekishi;
                 }
-                else { return; }break;
-        }      
+                else { return; }
+                break;
+        }
     }
 
     //交渉技能ステータスの選択
@@ -7225,18 +7699,15 @@ public class GameManager : MonoBehaviour
             case 3:
                 SkillCheckerPanel.SetActive(false);
                 break;
-        }              
+        }
     }
 
     //取得した技能をDictionaryに保存
     public void TakeSkill()
     {
-        for(int i = 0; i < 58; i++)
+        for (int i = 0; i < 58; i++)
         {
-            if (status[i] != Afterstatus[i])
-            {
-                StatusManager.instance.dic.Add(SkillName[i], Afterstatus[i]);
-            }
+            StatusManager.instance.dic.Add(SkillName[i], status[i] + Afterstatus[i]);
         }
     }
 }
