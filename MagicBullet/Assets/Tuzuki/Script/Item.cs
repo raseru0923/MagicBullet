@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using Cysharp.Threading.Tasks;
+using System.Threading;
+
+public class Item : MonoBehaviour
+{
+    public ItemScriptableObject ItemManager;
+    [HideInInspector] public int ItemIndex;
+    [SerializeField] private f_Label ItemLabel;
+
+    [SerializeField] private GameMaster GameMaster;
+    [Header("アイテムが拾われた時のイベント")]
+    public UnityEvent onPickUp;
+    /// <summary>
+    /// 拾われた時呼ばれる
+    /// </summary>
+    public async UniTask PickUp()
+    {
+        print("拾われた！");
+        this.tag = "Untagged";
+
+        var myItem = await GameMaster.AssessmentDiceRoll(ItemManager.ItemData[ItemIndex]);
+
+        if ((int)myItem.Comprehension >= 2)
+        {
+            myItem.canAssessment = true;
+        }
+
+        GameObject.Find("Bag").GetComponent<Bag>().Content.Add(myItem);
+
+        onPickUp.Invoke();
+    }
+}
+
