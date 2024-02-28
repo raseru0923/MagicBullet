@@ -10,6 +10,8 @@ public class f_List : MonoBehaviour
     // ノードを並べる場所
     [SerializeField] GameObject Content;
 
+    [SerializeField] string[] TestNames;
+
     public void CreateList(List<string> nodeNames)
     {
         for (int i = 0; i < Content.transform.childCount; i++)
@@ -45,5 +47,13 @@ public class f_List : MonoBehaviour
 
         // ノードにテキストを設定
         node.SetLabel(nodeName);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            CreateList(TestNames);
+        }
     }
 }
