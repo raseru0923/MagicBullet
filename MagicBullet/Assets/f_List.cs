@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class f_List : MonoBehaviour
@@ -9,8 +10,8 @@ public class f_List : MonoBehaviour
     [SerializeField] GameObject NodePrefab;
     // ノードを並べる場所
     [SerializeField] GameObject Content;
-
-    [SerializeField] string[] TestNames;
+    // リストタイトル
+    [SerializeField] Text TitleText;
 
     public void CreateList(GameObject iContentNames)
     {
@@ -60,11 +61,9 @@ public class f_List : MonoBehaviour
         node.SetLabel(nodeName);
     }
 
-    private void Update()
+    // タイトルを設定
+    public void SetTitle(string name)
     {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            CreateList(TestNames);
-        }
+        TitleText.text = name;
     }
 }
