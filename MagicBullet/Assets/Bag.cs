@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bag : MonoBehaviour
+public class Bag : MonoBehaviour, IContentNames
 {
     // íÜêg
     public List<ObjectItem> Content = new List<ObjectItem>();
@@ -25,5 +25,15 @@ public class Bag : MonoBehaviour
         ContentList list = myList.GetComponent<ContentList>();
 
         list.PrintList(this);
+    }
+
+    public List<string> GetNames()
+    {
+        var names = new List<string>();
+        foreach (var item in Content)
+        {
+            names.Add(item.Name);
+        }
+        return names;
     }
 }

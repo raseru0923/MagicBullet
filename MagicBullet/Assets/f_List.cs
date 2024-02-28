@@ -12,6 +12,17 @@ public class f_List : MonoBehaviour
 
     [SerializeField] string[] TestNames;
 
+    public void CreateList(GameObject iContentNames)
+    {
+        if (iContentNames.GetComponent<IContentNames>() != null)    // nullチェック
+        {
+            IContentNames contentNames = iContentNames.GetComponent<IContentNames>();
+            CreateList(contentNames.GetNames());
+            return;
+        }
+        Debug.LogError("IContentNamesインターフェースを継承したオブジェクトを指定してください！");
+    }
+
     public void CreateList(List<string> nodeNames)
     {
         for (int i = 0; i < Content.transform.childCount; i++)
