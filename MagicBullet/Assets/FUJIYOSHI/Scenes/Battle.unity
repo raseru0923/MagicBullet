@@ -208,17 +208,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 5447684866151776069}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &43390533
 MonoBehaviour:
@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5447684866151776070}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ContentList, Assembly-CSharp
         m_MethodName: PrintList
         m_Mode: 2
@@ -2753,10 +2753,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemList, Assembly-CSharp
-        m_MethodName: CloseList
-        m_Mode: 1
+      - m_Target: {fileID: 5447684866151776069}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3170,11 +3170,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5447684866151776069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a772105f8145ddd49b25325ece0dd3bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 4be21375184c8e44e9983501c29013d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myContent: {fileID: 5447684866350732752}
-  Node: {fileID: 5474203045236606971, guid: 2ca93cdf47b50484aab60aeaeb3bec3d, type: 3}
+  NodePrefab: {fileID: 5217574732389124432, guid: 47b1a4e956727754d804be404acafd41, type: 3}
+  Content: {fileID: 5447684866350732752}
 --- !u!222 &5447684866151776073
 CanvasRenderer:
   m_ObjectHideFlags: 0
