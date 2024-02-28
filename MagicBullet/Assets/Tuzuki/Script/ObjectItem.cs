@@ -20,8 +20,8 @@ public class ObjectItem
     public GameObject ItemBody;
     [Header("種類▼")]
     public string Type;
-    [Header("使用する技能▼")]
-    public string SkillText = "目星";
+    [Header("使用する技能の表示▼")]
+    public Sprite SkillSprite;
     [Header("クリティカル時▼")]
     [SerializeField, TextArea] public string CliticalText;
     [Header("成功時▼")]

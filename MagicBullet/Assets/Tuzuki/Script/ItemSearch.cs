@@ -12,7 +12,7 @@ public class ItemSearch : MonoBehaviour
     // アイテムリストが更新されたか
     private bool isItemListUpdate;
 
-    [SerializeField] private Text SkillText;
+    [SerializeField] private Image SkillImage;
 
     private void Start()
     {
@@ -104,17 +104,17 @@ public class ItemSearch : MonoBehaviour
 
         if (item == null)
         {
-            SkillText.gameObject.SetActive(false);
+            SkillImage.gameObject.SetActive(false);
             return;
         }
         Item thisItem = item.GetComponent<Item>();
-        SkillText.text = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillText;
+        SkillImage.sprite = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillSprite;
 
-        SkillText.gameObject.SetActive(true);
+        SkillImage.gameObject.SetActive(true);
 
         BoxCollider itemCollider = item.GetComponent<BoxCollider>();
 
-        SkillText.transform.position = Camera.main.WorldToScreenPoint(item.transform.TransformPoint(itemCollider.center));
+        SkillImage.transform.position = Camera.main.WorldToScreenPoint(item.transform.TransformPoint(itemCollider.center));
     }
     private void Update()
     {

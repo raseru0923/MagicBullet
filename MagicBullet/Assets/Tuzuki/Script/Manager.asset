@@ -16,7 +16,7 @@ MonoBehaviour:
   - Name: "\u30CF\u30F3\u30C9\u30AC\u30F3"
     ItemBody: {fileID: 0}
     Type: "\u9283"
-    SkillText: "\u76EE\u661F"
+    SkillSprite: {fileID: 21300000, guid: 4b01140d93a7c7240b17d97c6652d919, type: 3}
     CliticalText: "\u30CF\u30F3\u30C9\u30AC\u30F3\u3092\u62FE\u3063\u305F\u3002\n\u2026\u2026\u4E0D\u601D\u8B70\u306A\u529B\u3092\u611F\u3058\u308B\u3002"
     SuccessText: "\u30CF\u30F3\u30C9\u30AC\u30F3\u3092\u62FE\u3063\u305F\u3002"
     FailText: "\u9283\u3092\u624B\u306B\u5165\u308C\u305F\uFF01"
@@ -24,7 +24,7 @@ MonoBehaviour:
   - Name: "\u30A2\u30B5\u30EB\u30C8\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
     Type: "\u9283"
-    SkillText: "\u76EE\u661F"
+    SkillSprite: {fileID: 21300000, guid: 4b01140d93a7c7240b17d97c6652d919, type: 3}
     CliticalText: "\u30A2\u30B5\u30EB\u30C8\u30E9\u30A4\u30D5\u30EB\u3092\u62FE\u3063\u305F\u3002\n\u2026\u2026\u4E0D\u601D\u8B70\u306A\u529B\u3092\u611F\u3058\u308B\u3002"
     SuccessText: "\u30A2\u30B5\u30EB\u30C8\u30E9\u30A4\u30D5\u30EB\u3092\u62FE\u3063\u305F\u3002"
     FailText: "\u9283\u3092\u624B\u306B\u5165\u308C\u305F\uFF01"
@@ -32,7 +32,7 @@ MonoBehaviour:
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
     Type: "\u9283"
-    SkillText: "\u76EE\u661F"
+    SkillSprite: {fileID: 21300000, guid: 670c0e6b56bb2444482862f0bb9eb855, type: 3}
     CliticalText: "\u30E9\u30A4\u30D5\u30EB\u3092\u62FE\u3063\u305F\u3002\n\u2026\u2026\u4E0D\u601D\u8B70\u306A\u529B\u3092\u611F\u3058\u308B\u3002"
     SuccessText: "\u30E9\u30A4\u30D5\u30EB\u3092\u62FE\u3063\u305F\u3002"
     FailText: "\u9283\u3092\u624B\u306B\u5165\u308C\u305F\uFF01"
