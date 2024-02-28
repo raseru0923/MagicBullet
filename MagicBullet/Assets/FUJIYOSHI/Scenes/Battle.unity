@@ -316,84 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d50fbe1d3fb7a443a954b6d601f4a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Content:
-  - Name: ewfsd
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: fds
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: s
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sda
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: fsda
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: fdss
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sfdas
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sfdas
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sfdas
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sfdas
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sfdas
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sfdas
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sfdas
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sfdas
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  - Name: sfdas
-    ItemBody: {fileID: 0}
-    Type: 
-    FlavorText: 
-    AssesmentText: []
-  itemList: {fileID: 0}
-  List: {fileID: 5447684866151776069}
 --- !u!1 &118139327
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,7 +2741,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5447684866151776072}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ItemList, Assembly-CSharp
         m_MethodName: CloseList
         m_Mode: 1
@@ -3219,7 +3141,7 @@ GameObject:
   - component: {fileID: 5447684866151776073}
   - component: {fileID: 5447684866151776074}
   - component: {fileID: 5447684866151776075}
-  - component: {fileID: 5447684866151776072}
+  - component: {fileID: 5447684866151776070}
   m_Layer: 5
   m_Name: List
   m_TagString: List
@@ -3227,7 +3149,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &5447684866151776072
+--- !u!114 &5447684866151776070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3236,16 +3158,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5447684866151776069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e08b80b352ada434db2b361e29703c3d, type: 3}
+  m_Script: {fileID: 11500000, guid: a772105f8145ddd49b25325ece0dd3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Subject: {fileID: 5447684865455149784}
-  Content: {fileID: 5447684866350732752}
-  NodePrefab: {fileID: 5217574732389124432, guid: 47b1a4e956727754d804be404acafd41, type: 3}
-  DeleteButton: {fileID: 2139258206}
-  origineButton: {fileID: 0}
-  defaultButton: {fileID: 0}
-  contentTag: Node
+  myContent: {fileID: 5447684866350732752}
+  Node: {fileID: 5474203045236606971, guid: 2ca93cdf47b50484aab60aeaeb3bec3d, type: 3}
 --- !u!222 &5447684866151776073
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3704,21 +3621,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7976123810945762897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7976123810945762899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2447c52b29d11c4db0972146374206d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DicePrefab: {fileID: 6993972929474116758, guid: cf29086c47fc13148947b027331f7fe4, type: 3}
-  DiceRollSpace: {fileID: 7976123810945762899}
-  informationLabel: {fileID: 7759058124847677914}
 --- !u!224 &7976123810945762898
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3748,7 +3650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7976123810945762898}
   - component: {fileID: 7976123810945762909}
-  - component: {fileID: 7976123810945762897}
+  - component: {fileID: 7976123810945762900}
   m_Layer: 5
   m_Name: DiceRollSpace
   m_TagString: Untagged
@@ -3756,6 +3658,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7976123810945762900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7976123810945762899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1377230d642cb488de73c0ba961f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DicePrefab: {fileID: 6993972929474116758, guid: cf29086c47fc13148947b027331f7fe4, type: 3}
+  DiceRollSpace: {fileID: 7976123810945762899}
+  informationLabel: {fileID: 7759058124847677914}
 --- !u!114 &7976123810945762909
 MonoBehaviour:
   m_ObjectHideFlags: 0

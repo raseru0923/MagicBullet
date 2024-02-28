@@ -24,6 +24,6 @@ public class Bag : MonoBehaviour
 
         ContentList list = myList.GetComponent<ContentList>();
 
-        list.PrintList(Content);
+        list.PrintList(this);
     }
 }

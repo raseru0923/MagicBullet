@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 public class GameMaster : f_Dealer
 {
+    // ログの表示
+    public async UniTask PrintLog(string printText)
+    {
+        await informationLabel.PlayLabelTask(printText);
+    }
+    
     // SAN値の判定
     // 自身の現在のSAN値と失敗時、成功時のSAN値の減少方法
     public async UniTask<int> SANDiceRoll(int nowSAN, int minA, int maxA,int minB, int maxB)

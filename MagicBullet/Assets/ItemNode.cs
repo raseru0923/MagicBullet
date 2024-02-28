@@ -10,17 +10,23 @@ using System.Threading.Tasks;
 public class ItemNode : MonoBehaviour
 {
     [SerializeField] Text myText;
-    private ObjectItem myItem;
     public bool isAssessment = false;
     int ItemIndex = 0;
+    // 参照していたバッグ
+    private Bag ReferencedBag;
 
-    public void SetItem(ObjectItem item, int itemIndex)
+    private GameMaster gameMaster;
+
+    private void OnEnable()
     {
-        myItem = item;
-        ItemIndex = itemIndex;
+        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+    }
 
-        Bag bag = GameObject.Find("Bag").GetComponent<Bag>();
-        bag.Content[ItemIndex] = myItem;
+    public void SetItem(Bag bag, int itemIndex)
+    {
+        ReferencedBag = bag;
+        ItemIndex = itemIndex;
+        ObjectItem myItem = bag.Content[ItemIndex];
 
         // 失敗orファンブル時の理解度
         if ((int)myItem.Comprehension >= 2)
@@ -33,7 +39,21 @@ public class ItemNode : MonoBehaviour
 
     public void ConfirmButton()
     {
-        GameObject.Find("ConfirmButton").GetComponent<ConfirmButton>().OnButton(this);
+        ObjectItem myItem = ReferencedBag.Content[ItemIndex];
+        if (myItem.canAssessment)
+        {
+            GameObject.Find("ConfirmButton").GetComponent<ConfirmButton>().OnButton(this);
+            gameMaster.PrintLog("鑑定を行いますか？");
+            return;
+        }
+
+        if ((int)myItem.Comprehension < 2)
+        {
+            gameMaster.PrintLog(myItem.Name + "だ。");
+            return;
+        }
+
+        gameMaster.PrintLog(myItem.Type + "だ。");
     }
 
     async void Update()
@@ -48,17 +68,21 @@ public class ItemNode : MonoBehaviour
     private async UniTask AssessmentItem()
     {
         Debug.Log("鑑定");
+
+        ObjectItem myItem = ReferencedBag.Content[ItemIndex];
+
         // 鑑定使用不可能
         if (!myItem.canAssessment)
         {
             return;
         }
 
-        GameMaster gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
         // アイテムの鑑定
         myItem = await gameMaster.AssessmentDiceRoll(myItem);
 
-        SetItem(myItem, ItemIndex);
+        ReferencedBag.Content[ItemIndex] = myItem;
+
+        SetItem(ReferencedBag, ItemIndex);
 
         myItem.canAssessment = false;
     }

@@ -14,6 +14,7 @@ public class Item : MonoBehaviour
     [SerializeField] private GameMaster GameMaster;
     [Header("アイテムが拾われた時のイベント")]
     public UnityEvent onPickUp;
+
     /// <summary>
     /// 拾われた時呼ばれる
     /// </summary>
@@ -24,6 +25,7 @@ public class Item : MonoBehaviour
 
         var myItem = await GameMaster.AssessmentDiceRoll(ItemManager.ItemData[ItemIndex]);
 
+        // 理解度が低いとき鑑定のチャンスが与えられる
         if ((int)myItem.Comprehension >= 2)
         {
             myItem.canAssessment = true;

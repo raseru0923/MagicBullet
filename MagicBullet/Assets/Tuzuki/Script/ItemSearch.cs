@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
-public class ItemSerch : MonoBehaviour
+public class ItemSearch : MonoBehaviour
 {
     [SerializeField, Header("アイテムを取得する原点(これを元に近いアイテム、遠いアイテムが決まる)")] private GameObject originPoint;
     public List<GameObject> ItemList { get; private set; } = new List<GameObject>();
