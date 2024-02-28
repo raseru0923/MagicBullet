@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum COMMAND
+{
+    ATTACK = 0,
+    ITEM,
+    SKILL
+}
+
 public class ContentList : MonoBehaviour
 {
     // ’†g‚Ì•\¦êŠ

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 public class GameMaster : f_Dealer
 {
     // ƒƒO‚Ì•\¦
-    public async UniTask PrintLog(string printText)
+    public void PrintLog(string printText)
     {
-        await informationLabel.PlayLabelTask(printText);
+        informationLabel.PlayLabel(printText);
     }
     
     // SAN’l‚Ì”»’è
