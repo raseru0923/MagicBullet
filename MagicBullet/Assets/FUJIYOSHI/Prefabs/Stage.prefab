@@ -739,6 +739,6 @@ MonoBehaviour:
   Point1: {fileID: 9177202013391519945}
   Point2: {fileID: 9177202013343393185}
   TalkLabel: {fileID: 9177202012955982017}
-  TestStageData: {fileID: 11400000, guid: d2f4d744f65856044b94921b83706555, type: 2}
+  TestStageData: {fileID: 11400000, guid: 7dd92dad361ea064c83fc26ce77d9d6a, type: 2}
   audioSource: {fileID: 0}
   ClickSE: {fileID: 8300000, guid: 4b3b11f7f37c3b54ea42d16e8968c088, type: 3}
