@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatusManager : MonoBehaviour
+public class StatusManager : MonoBehaviour, IContentNames
 {
     //基本ステータス
     public int STR;  //筋力
@@ -129,5 +129,15 @@ public class StatusManager : MonoBehaviour
         HobbyP = INT * 10;
         DamagePCheck = STR + SIZ;
         Kaihi = DEX * 2;
+    }
+
+    public List<string> GetNames()
+    {
+        var names = new List<string>();
+        foreach (var item in dic)
+        {
+            names.Add(item.Key);
+        }
+        return names;
     }
 }
