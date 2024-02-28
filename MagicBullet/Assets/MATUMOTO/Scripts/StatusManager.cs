@@ -5,7 +5,7 @@ using UnityEngine;
 public class StatusManager : MonoBehaviour
 {
     //基本ステータス
-    public static int STR;  //筋力
+    public int STR;  //筋力
     public int CON;  //体力
     public int POW;  //精神力
     public int DEX;  //敏捷性
@@ -22,10 +22,11 @@ public class StatusManager : MonoBehaviour
     public int MgcP;        //マジックポイント
     public int WorkP;       //職業技能ポイント
     public int HobbyP;      //趣味技能ポイント
+    public int DamagePCheck;
     public int DamageP;     //ダメージポイント
 
     //戦闘技能ステータス
-    public static int Kaihi;
+    public int Kaihi;
     public int Kikku = 25;
     public int Kumitsuki = 25;
     public int Kobushi = 50;
@@ -99,6 +100,11 @@ public class StatusManager : MonoBehaviour
 
     public bool OpenChoicePnal = false;
 
+    public bool DecisionworkP = false;
+    public bool DecisionhobbyP = false;
+
+    public Dictionary<string, int> dic = new Dictionary<string, int>();
+
     public static StatusManager instance;
 
     public void Awake()
@@ -118,7 +124,7 @@ public class StatusManager : MonoBehaviour
         MgcP = POW;
         WorkP = EDU * 20;
         HobbyP = INT * 10;
-        DamageP = STR + SIZ;
+        DamagePCheck = STR + SIZ;
         Kaihi = DEX * 2;
     }
 }
