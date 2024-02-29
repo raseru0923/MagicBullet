@@ -722,7 +722,7 @@ MonoBehaviour:
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 0
     m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9053\u5177"
+  m_Text: "\u30B9\u30C6\u30FC\u30BF\u30B9"
 --- !u!222 &427324801
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -809,7 +809,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SAN
+  m_Text: 'SAN : '
 --- !u!222 &509208311
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1739,7 +1739,7 @@ GameObject:
   - component: {fileID: 1062789874}
   - component: {fileID: 1062789877}
   m_Layer: 5
-  m_Name: Item
+  m_Name: States
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1842,7 +1842,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: "\u9053\u5177"
+          m_StringArgument: "\u30B9\u30C6\u30FC\u30BF\u30B9"
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1062789875
@@ -2050,7 +2050,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 100}
+  m_CellSize: {x: 250, y: 100}
   m_Spacing: {x: 50, y: 25}
   m_Constraint: 1
   m_ConstraintCount: 2
@@ -2666,7 +2666,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HP
+  m_Text: 'HP : '
 --- !u!222 &1850669793
 CanvasRenderer:
   m_ObjectHideFlags: 0
