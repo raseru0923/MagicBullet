@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface f_ITurn
+public interface ITurn
 {
     public bool Action();
 }
