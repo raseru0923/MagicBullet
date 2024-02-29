@@ -310,11 +310,11 @@ public class GameManager : MonoBehaviour
                          0,0,0,0,0,0,0,0,0,0,0,
                          0,0,0,0,0,
                          0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,};
-    string[] SkillName = { "Kaihi","Kikku","Kumitsuki","Kobushi","Zutsuki","Toteki","MSA","Kenzyu","SMG","SG","MG","R",
-                           "Okyuteate","Kagiake","Kakusu","Kakureru","Kikimimi","Shinobiaruki","Syashinzyutsu","Seshinbunseki","Tsuiseki","Touhan","Tosyokan","Meboshi",
-                           "Unten","Kikaisyuri","Zyukikaisosa","Zyoba","Suiei","Sesaku","Sozyu","Tyoyaku","Denkisyuri","Nabige-to","Hensou",
-                           "Iikurume","Shinyou","Settoku","Negiri","Bokokugo",
-                           "Igaku","Okaruto","Shinwa","Gezyutsu","Keiri","Kokogaku","PC","Shinrigaku","Zinruigaku","Seibutsugaku","Tishitsugaku","Denshikougaku","Tenmongaku","Hakubutsugaku","Butsurigaku","Houritsu","Yakugaku","Rekishi"};
+    string[] SkillNames = { "回避","キック","組みつき","拳","頭突き","投てき","マーシャルアーツ","拳銃","サブマシンガン","ショットガン","マシンガン","ライフル",
+                           "応急手当","鍵開け","隠す","隠れる","聞き耳","忍び歩き","写真術","精神分析","追跡","登攀","図書館","目星",
+                           "運転","機械修理","重機械操作","乗馬","水泳","制作","操縦","跳躍","電気修理","ナビゲート","変装",
+                           "言いくるめ","信用","説得","値切り","母国語",
+                           "医学","オカルト","神話","芸術","経理","考古学","PC","心理学","人類学","生物学","地質学","電子工学","天文学","博物学","物理学","法律","薬学","歴史"};
 
 
     //基礎ステータス
@@ -7707,7 +7707,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 58; i++)
         {
-            StatusManager.Instance.SkillParameter.Add(SkillName[i], status[i] + Afterstatus[i]);
+            StatusManager.Instance.SkillParameter.Add(SkillNames[i], status[i] + Afterstatus[i]);
         }
     }
 }
