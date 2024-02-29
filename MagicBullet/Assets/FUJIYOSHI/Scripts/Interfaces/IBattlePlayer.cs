@@ -14,8 +14,8 @@ public interface IBattlePlayer
     // ダメージを受ける
     public void Damage(int damage);
 
-    // 攻撃
-    public int Attack();
+    // 行動
+    public int Action();
 
     // 死亡
     // 戻り値:死亡しているか
