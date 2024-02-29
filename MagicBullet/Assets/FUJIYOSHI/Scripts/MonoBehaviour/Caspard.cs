@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 // カスパール
 public class Caspard : MonoBehaviour, IEnemy
@@ -9,7 +12,7 @@ public class Caspard : MonoBehaviour, IEnemy
     [SerializeField] private int HP;
 
     [Header("攻撃力▼")]
-    [SerializeField] private TRPGParameter AttackParameter;
+    [SerializeField] private GameMaster.TRPGParameter AttackParameter;
 
     public void EnemyDamage(float Damage)
     {
@@ -18,24 +21,7 @@ public class Caspard : MonoBehaviour, IEnemy
 
     public float EnemyAttack()
     {
+        
         return default;
-    }
-
-    [System.Serializable]
-    public struct DiceParameter
-    {
-        [Header("ダイスの数▼")]
-        public int Count;
-        [Header("目の数▼")]
-        public int Value;
-    }
-
-    [System.Serializable]
-    public struct TRPGParameter
-    {
-        [Header("ダイス▼")]
-        public DiceParameter[] DiceParameters;
-        [Header("加算値▼")]
-        public int AddValue;
     }
 }

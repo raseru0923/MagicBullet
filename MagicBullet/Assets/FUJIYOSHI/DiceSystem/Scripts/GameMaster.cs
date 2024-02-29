@@ -73,4 +73,22 @@ public class GameMaster : f_Dealer
 
         return targetItem;
     }
+
+    [System.Serializable]
+    public struct DiceParameter
+    {
+        [Header("ダイスの数▼")]
+        public int Count;
+        [Header("目の数▼")]
+        public int Value;
+    }
+
+    [System.Serializable]
+    public struct TRPGParameter
+    {
+        [Header("ダイス▼")]
+        public DiceParameter[] DiceParameters;
+        [Header("加算値▼")]
+        public int AddValue;
+    }
 }
