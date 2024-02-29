@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 public class GameMaster : f_Dealer
 {
-
+    // 自身のインスタンス
     public static GameMaster Instance;
 
     // 現在戦闘中の敵・味方
@@ -103,6 +103,10 @@ public class GameMaster : f_Dealer
         while (IsCharacterActive(battlePlayer, enemy))
         {
             // プレイヤーが行動を選択します。
+            while (!battlePlayer.IsEnter())
+            {
+                await UniTask.WaitForFixedUpdate();
+            }
 
             // プレイヤーが行動を行います。
 
