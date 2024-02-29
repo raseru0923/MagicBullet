@@ -43,17 +43,17 @@ public class ItemNode : MonoBehaviour
         if (myItem.canAssessment)
         {
             GameObject.Find("ConfirmButton").GetComponent<ConfirmButton>().OnButton(this);
-            gameMaster.PrintLog("鑑定を行いますか？");
+            gameMaster.Moderate("鑑定を行いますか？");
             return;
         }
 
         if ((int)myItem.Comprehension < 2)
         {
-            gameMaster.PrintLog(myItem.Name + "だ。");
+            gameMaster.Moderate(myItem.Name + "だ。");
             return;
         }
 
-        gameMaster.PrintLog(myItem.Type + "だ。");
+        gameMaster.Moderate(myItem.Type + "だ。");
     }
 
     async void Update()

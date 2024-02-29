@@ -16,7 +16,7 @@ public class Exeption : MonoBehaviour
     {
         foreach (var item in ExeptionText)
         {
-            gameMaster.PrintLog(item);
+            gameMaster.Moderate(item);
 
             yield return null;
 

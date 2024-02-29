@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 public class GameMaster : f_Dealer
 {
-    // ログの表示
-    public void PrintLog(string printText)
+    // 司会進行
+    public void Moderate(string printText)
     {
         informationLabel.PlayLabel(printText);
     }
@@ -44,6 +44,7 @@ public class GameMaster : f_Dealer
         return result;
     }
 
+    // SAN値減少ダイスロール
     private async Task<int> DecreaseSAN(int minA, int maxA, int result)
     {
         if (minA == maxA)
@@ -58,7 +59,7 @@ public class GameMaster : f_Dealer
         return await SumDealerDiceRoll(1, diceValue) + addnum;
     }
 
-    // ゲームマスターがアイテムの鑑定を行う。
+    // アイテムの鑑定を行う。
     public async UniTask<ObjectItem> AssessmentDiceRoll(ObjectItem targetItem/*使用する技能を指定*/)
     {
         var result = await HundredDiceRoll(50);
