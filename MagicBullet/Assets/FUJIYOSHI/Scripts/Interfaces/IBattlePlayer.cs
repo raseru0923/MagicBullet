@@ -20,4 +20,10 @@ public interface IBattlePlayer
     // 死亡
     // 戻り値:死亡しているか
     public bool IsDie();
+
+    // 行動決定時に呼び出す。
+    public void ActionEnter();
+
+    // 行動が決定されているか
+    public bool IsEnter();
 }

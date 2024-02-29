@@ -37,4 +37,16 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     {
         return default;
     }
+
+    // IBattlePlayer
+    public void ActionEnter()
+    {
+
+    }
+
+    // IBattlePlayer
+    public bool IsEnter()
+    {
+        return default;
+    }
 }
