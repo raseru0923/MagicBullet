@@ -8,8 +8,22 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     [Header("戦闘用コマンドを設定▼")]
     [SerializeField] private GameObject BattleCommand;
 
+    // IBattlePlayer
     public void SetBattleCommandActive(bool isActive)
     {
         BattleCommand.SetActive(isActive);
     }
+
+    // IBattlePlayer
+    public string GetUsedWeaponName()
+    {
+        return default;
+    }
+
+    // IBattlePlayer
+    public void Damage(int damage)
+    {
+
+    }
+
 }
