@@ -30,10 +30,10 @@ public class GameMaster : f_Dealer
     {
         informationLabel.PlayLabel(printText);
     }
-    
+
     // SAN値の判定
     // 自身の現在のSAN値と失敗時、成功時のSAN値の減少方法
-    public async UniTask<int> SANDiceRoll(int nowSAN, int minA, int maxA,int minB, int maxB)
+    public async UniTask<int> SANDiceRoll(int nowSAN, int minA, int maxA, int minB, int maxB)
     {
         await informationLabel.PlayLabelTask("SAN値減少！ " + minA + " / "
              + "1 d " + (maxB - minB + 1));
@@ -146,7 +146,7 @@ public class GameMaster : f_Dealer
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            await SkillDiceRoll("拳銃");
+            await TurnBattle(GameObject.Find("BattlePlayer").GetComponent<IBattlePlayer>(), GameObject.Find("Caspard").GetComponent<IEnemy>());
         }
     }
 }
