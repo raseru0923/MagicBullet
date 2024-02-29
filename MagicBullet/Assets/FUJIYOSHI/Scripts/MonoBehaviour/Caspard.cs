@@ -12,7 +12,7 @@ public class Caspard : MonoBehaviour, IEnemy
     [SerializeField] private int HP;
 
     [Header("UŒ‚—Í¥")]
-    [SerializeField] private GameMaster.TRPGParameter AttackParameter;
+    [SerializeField] private TRPGParameter AttackParameter;
 
     public void EnemyDamage(float Damage)
     {
