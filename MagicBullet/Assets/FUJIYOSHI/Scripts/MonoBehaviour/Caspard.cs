@@ -28,4 +28,10 @@ public class Caspard : MonoBehaviour, IEnemy
     {
         return AttackParameter;
     }
+
+    // IEnemy
+    public bool IsDie()
+    {
+        return default;
+    }
 }

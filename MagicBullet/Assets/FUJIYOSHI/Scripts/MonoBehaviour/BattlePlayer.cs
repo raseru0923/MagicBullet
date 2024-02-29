@@ -31,4 +31,10 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     {
         return default;
     }
+
+    // IBattlePlayer
+    public bool IsDie()
+    {
+        return default;
+    }
 }

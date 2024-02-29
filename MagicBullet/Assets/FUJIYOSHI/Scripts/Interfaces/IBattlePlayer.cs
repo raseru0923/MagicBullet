@@ -16,4 +16,8 @@ public interface IBattlePlayer
 
     // UŒ‚
     public int Attack();
+
+    // €–S
+    // –ß‚è’l:€–S‚µ‚Ä‚¢‚é‚©
+    public bool IsDie();
 }

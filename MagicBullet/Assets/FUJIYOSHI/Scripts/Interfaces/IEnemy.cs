@@ -12,4 +12,8 @@ public interface IEnemy
     // 攻撃値返却
     // 戻り値:ダメージ量
     public TRPGParameter GetAttackValue();
+
+    // 死亡
+    // 戻り値:死亡しているか
+    public bool IsDie();
 }
