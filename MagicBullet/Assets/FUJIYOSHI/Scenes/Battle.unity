@@ -3150,6 +3150,12 @@ MonoBehaviour:
     - Count: 1
       Value: 6
     AddValue: 3
+  PassWeaponNames:
+  - "\u62F3\u9283"
+  - "\u30B5\u30D6\u30DE\u30B7\u30F3\u30AC\u30F3"
+  - "\u30B7\u30E7\u30C3\u30C8\u30AC\u30F3"
+  - "\u30DE\u30B7\u30F3\u30AC\u30F3"
+  - "\u30E9\u30A4\u30D5\u30EB"
 --- !u!114 &2119633471
 MonoBehaviour:
   m_ObjectHideFlags: 0
