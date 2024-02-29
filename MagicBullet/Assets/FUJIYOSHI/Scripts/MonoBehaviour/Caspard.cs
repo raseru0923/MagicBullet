@@ -2,17 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Caspard : MonoBehaviour
+// カスパール
+public class Caspard : MonoBehaviour, IEnemy
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("HP▼")]
+    [SerializeField] private int HP;
+
+    [Header("攻撃力▼")]
+    [SerializeField] private TRPGParameter AttackParameter;
+
+    public void EnemyDamage(float Damage)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public float EnemyAttack()
     {
-        
+        return default;
+    }
+
+    [System.Serializable]
+    public struct DiceParameter
+    {
+        [Header("ダイスの数▼")]
+        public int Count;
+        [Header("目の数▼")]
+        public int Value;
+    }
+
+    [System.Serializable]
+    public struct TRPGParameter
+    {
+        [Header("ダイス▼")]
+        public DiceParameter[] DiceParameters;
+        [Header("加算値▼")]
+        public int AddValue;
     }
 }

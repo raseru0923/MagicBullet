@@ -3142,6 +3142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95623a8cf312ff743bf9aefb3484f7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 50
+  AttackParameter:
+    DiceParameters:
+    - Count: 1
+      Value: 10
+    - Count: 1
+      Value: 6
+    AddValue: 3
 --- !u!114 &2119633471
 MonoBehaviour:
   m_ObjectHideFlags: 0
