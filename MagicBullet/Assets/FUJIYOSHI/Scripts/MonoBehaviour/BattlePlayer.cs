@@ -11,6 +11,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
 {
     [Header("戦闘用コマンドを設定▼")]
     [SerializeField] private GameObject BattleCommand;
+    [SerializeField] private GameObject ActionList;
     private bool isEnter = false;
     private string useSkillName = null;
 
@@ -53,6 +54,8 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
         Debug.Log("行動決定！");
         useSkillName = skillName;
         isEnter = true;
+        // アクションリストを閉じる
+        ActionList.SetActive(false);
     }
 
     // IBattlePlayer

@@ -2521,6 +2521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BattleCommand: {fileID: 1103882782}
+  ActionList: {fileID: 5447684866151776069}
 --- !u!1 &1810999324
 GameObject:
   m_ObjectHideFlags: 0
