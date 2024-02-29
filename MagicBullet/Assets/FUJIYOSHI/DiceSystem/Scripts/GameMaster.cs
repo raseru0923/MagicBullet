@@ -92,4 +92,18 @@ public class GameMaster : f_Dealer
     {
         return !battlePlayer.IsDie() && !enemy.IsDie();
     }
+
+    // 技能のダイスロール
+    // 戻り値：ダイスロールの結果
+    // 引数1:技能の名前
+    public async UniTask<JudgementType> SkillDiceRoll(string skillName)
+    {
+        // 技能名を表示
+        informationLabel.PlayLabel(skillName + "!");
+
+        // 対応したスキルの値を返却
+        int skillValue = StatusManager.Instance.SkillParameter[skillName];
+
+        return await HundredDiceRoll(skillValue);
+    }
 }
