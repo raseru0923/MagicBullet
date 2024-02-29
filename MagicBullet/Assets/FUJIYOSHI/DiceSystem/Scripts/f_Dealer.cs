@@ -107,9 +107,9 @@ public class f_Dealer : MonoBehaviour
     // 場にあるダイスをすべて削除します。
     private void DestroyAllDice()
     {
-        for (int i = 0; i < this.transform.childCount; i++)
+        for (int i = 0; i < DiceRollSpace.transform.childCount; i++)
         {
-            Destroy(this.transform.GetChild(i).gameObject);
+            Destroy(DiceRollSpace.transform.GetChild(i).gameObject);
         }
     }
 
