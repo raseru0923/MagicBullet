@@ -103,10 +103,14 @@ public class GameMaster : f_Dealer
         while (IsCharacterActive(battlePlayer, enemy))
         {
             // プレイヤーが行動を選択します。
+            battlePlayer.SetBattleCommandActive(true);
+
             while (!battlePlayer.IsEnter())
             {
                 await UniTask.WaitForFixedUpdate();
             }
+
+            battlePlayer.SetBattleCommandActive(false);
 
             // プレイヤーが行動を行います。
             await SkillDiceRoll("拳銃");
