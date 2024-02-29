@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class f_Node : MonoBehaviour
+public class Node : MonoBehaviour
 {
     [SerializeField] private Text Label;
 

@@ -50,7 +50,7 @@ public class f_List : MonoBehaviour
     {
         // ノードを作る
         GameObject nodeObject = Instantiate(NodePrefab);
-        f_Node node = nodeObject.GetComponent<f_Node>();
+        Node node = nodeObject.GetComponent<Node>();
 
         // 親にContentを指定
         nodeObject.transform.SetParent(Content.transform);
