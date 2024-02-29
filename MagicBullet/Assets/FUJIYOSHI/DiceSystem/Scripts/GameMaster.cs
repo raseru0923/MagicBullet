@@ -109,6 +109,7 @@ public class GameMaster : f_Dealer
             }
 
             // プレイヤーが行動を行います。
+            await SkillDiceRoll("拳銃");
 
             // 敵が攻撃を行います。
         }
