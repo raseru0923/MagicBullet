@@ -15,7 +15,7 @@ public interface IBattlePlayer
     public void Damage(int damage);
 
     // s“®
-    public int Action();
+    public void Action();
 
     // €–S
     // –ß‚è’l:€–S‚µ‚Ä‚¢‚é‚©

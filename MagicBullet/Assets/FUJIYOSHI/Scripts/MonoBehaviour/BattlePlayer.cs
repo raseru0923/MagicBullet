@@ -27,9 +27,9 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     }
 
     // IBattlePlayer
-    public int Action()
+    public void Action()
     {
-        return default;
+
     }
 
     // IBattlePlayer
