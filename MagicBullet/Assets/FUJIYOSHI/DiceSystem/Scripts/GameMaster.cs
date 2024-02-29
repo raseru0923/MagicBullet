@@ -73,4 +73,18 @@ public class GameMaster : f_Dealer
 
         return targetItem;
     }
+
+    // ターン性バトル開始！
+    public async UniTask TurnBattle(IBattlePlayer battlePlayer, IEnemy enemy)
+    {
+        // どちらかが倒されるまで戦闘を行う。
+        while (true)
+        {
+            // プレイヤーが行動を選択します。
+
+            // プレイヤーが行動を行います。
+
+            // 敵が攻撃を行います。
+        }
+    }
 }
