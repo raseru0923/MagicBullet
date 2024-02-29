@@ -112,8 +112,15 @@ public class GameMaster : f_Dealer
 
             battlePlayer.SetBattleCommandActive(false);
 
+            var isEnd = false;
+
             // プレイヤーが行動を行います。
-            await SkillDiceRoll("拳銃");
+            battlePlayer.Action(x => isEnd = x);
+
+            while (!isEnd)
+            {
+                await UniTask.WaitForFixedUpdate();
+            }
 
             // 敵が攻撃を行います。
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public interface IBattlePlayer
 {
@@ -15,14 +16,14 @@ public interface IBattlePlayer
     public void Damage(int damage);
 
     // 行動
-    public void Action();
+    public void Action(Action<bool> isEnd);
 
     // 死亡
     // 戻り値:死亡しているか
     public bool IsDie();
 
     // 行動決定時に呼び出す。
-    public void ActionEnter();
+    public void ActionEnter(string skillName);
 
     // 行動が決定されているか
     public bool IsEnter();

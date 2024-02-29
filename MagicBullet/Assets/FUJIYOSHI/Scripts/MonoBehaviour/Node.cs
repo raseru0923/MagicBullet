@@ -17,7 +17,7 @@ public class Node : MonoBehaviour
         Debug.Log("‘I‘ğ‚µ‚Ü‚µ‚½I");
         if (GameMaster.Instance.currentBattlePlayer != null)
         {
-            GameMaster.Instance.currentBattlePlayer.ActionEnter();
+            GameMaster.Instance.currentBattlePlayer.ActionEnter(Label.text);
         }
     }
 }

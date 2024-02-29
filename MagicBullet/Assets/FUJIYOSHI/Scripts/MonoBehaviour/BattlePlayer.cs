@@ -1,6 +1,10 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 // 戦闘時のプレイヤー
 public class BattlePlayer : MonoBehaviour, IBattlePlayer
@@ -8,6 +12,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     [Header("戦闘用コマンドを設定▼")]
     [SerializeField] private GameObject BattleCommand;
     private bool isEnter = false;
+    private string useSkillName = null;
 
     // IBattlePlayer
     public void SetBattleCommandActive(bool isActive)
@@ -28,9 +33,11 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     }
 
     // IBattlePlayer
-    public void Action()
+    public async void Action(Action<bool> isEnd)
     {
+        await GameMaster.Instance.SkillDiceRoll(useSkillName);
 
+        isEnd?.Invoke(true);
     }
 
     // IBattlePlayer
@@ -40,9 +47,10 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     }
 
     // IBattlePlayer
-    public void ActionEnter()
+    public void ActionEnter(string skillName)
     {
         Debug.Log("行動決定！");
+        useSkillName = skillName;
         isEnter = true;
     }
 
