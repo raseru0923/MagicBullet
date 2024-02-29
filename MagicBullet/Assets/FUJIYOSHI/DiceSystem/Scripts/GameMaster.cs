@@ -10,6 +10,10 @@ public class GameMaster : f_Dealer
 
     public static GameMaster Instance;
 
+    // 現在戦闘中の敵・味方
+    public IBattlePlayer currentBattlePlayer;
+    public IEnemy currentEnemy;
+
     private void Awake()
     {
         if (Instance == null)
@@ -91,6 +95,10 @@ public class GameMaster : f_Dealer
     // ターン性バトル開始！
     public async UniTask TurnBattle(IBattlePlayer battlePlayer, IEnemy enemy)
     {
+        // 現在戦闘中の敵・味方を保存
+        currentBattlePlayer = battlePlayer;
+        currentEnemy = enemy;
+
         // 両者生存で続行
         while (IsCharacterActive(battlePlayer, enemy))
         {
@@ -100,6 +108,10 @@ public class GameMaster : f_Dealer
 
             // 敵が攻撃を行います。
         }
+
+        // 戦闘終了のため、戦闘中の敵・味方を削除
+        currentEnemy = null;
+        currentBattlePlayer = null;
     }
 
     private static bool IsCharacterActive(IBattlePlayer battlePlayer, IEnemy enemy)
