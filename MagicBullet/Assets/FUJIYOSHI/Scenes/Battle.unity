@@ -207,6 +207,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8769922556210815061}
+        m_TargetAssemblyTypeName: StatusManager, Assembly-CSharp
+        m_MethodName: SetMode
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 12
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 5447684866151776069}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -2391,7 +2403,7 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 1724761726}
-    m_SelectOnLeft: {fileID: 43390532}
+    m_SelectOnLeft: {fileID: 2004047366}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -2418,6 +2430,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8769922556210815061}
+        m_TargetAssemblyTypeName: StatusManager, Assembly-CSharp
+        m_MethodName: SetMode
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 58
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 5447684866151776069}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -3457,7 +3481,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 25
   m_Viewport: {fileID: 5447684866305305784}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 5447684865577972068}
@@ -4489,6 +4513,7 @@ MonoBehaviour:
   OpenChoicePnal: 0
   DecisionworkP: 0
   DecisionhobbyP: 0
+  ChoiceMode: 12
 --- !u!4 &8769922556210815066
 Transform:
   m_ObjectHideFlags: 0

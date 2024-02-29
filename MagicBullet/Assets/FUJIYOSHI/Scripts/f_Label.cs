@@ -11,11 +11,6 @@ public class f_Label : MonoBehaviour
     [SerializeField] private Text LabelText;
     [SerializeField] private GameObject MainLabel;
 
-    private void Update()
-    {
-
-    }
-
     public void PlayLabel(string text)
     {
         StartCoroutine(PrintLabel(text));

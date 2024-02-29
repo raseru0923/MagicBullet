@@ -107,12 +107,34 @@ public class StatusManager : MonoBehaviour, IContentNames
 
     public static StatusManager instance;
 
+    string[] SkillName = { "回避","キック","組みつき","拳","頭突き","投てき","マーシャルアーツ","拳銃","サブマシンガン","ショットガン","マシンガン","ライフル",
+                           "応急手当","鍵開け","隠す","隠れる","聞き耳","忍び歩き","写真術","精神分析","追跡","登攀","図書館","目星",
+                           "運転","機械修理","重機械操作","乗馬","水泳","制作","操縦","跳躍","電気修理","ナビゲート","変装",
+                           "言いくるめ","信用","説得","値切り","母国語",
+                           "医学","オカルト","神話","芸術","経理","考古学","PC","心理学","人類学","生物学","地質学","電子工学","天文学","博物学","物理学","法律","薬学","歴史"};
+
+    // 閲覧モード
+    public enum ShowMode
+    {
+        ATTACK = 12,
+        SKILL = 58
+    }
+
+    // 選択されているモード
+    public ShowMode ChoiceMode = ShowMode.ATTACK;
+
     private void Awake()
     {
         if (instance == null)
         {
             DontDestroyOnLoad(this);
             instance = this;
+
+            foreach (var item in SkillName)
+            {
+                dic.Add(item, 0);
+            }
+
             return;
         }
         Destroy(this);
@@ -134,10 +156,45 @@ public class StatusManager : MonoBehaviour, IContentNames
     public List<string> GetNames()
     {
         var names = new List<string>();
+
+
+        switch (ChoiceMode)
+        {
+            case ShowMode.ATTACK:
+                ShowNames(names, 1, (int)ShowMode.ATTACK);
+                break;
+            case ShowMode.SKILL:
+                ShowNames(names, (int)ShowMode.ATTACK, (int)ShowMode.SKILL);
+                break;
+            default:
+                break;
+        }
+
+        return names;
+    }
+
+    private void ShowNames(List<string> names, int InitializeValue, int endValue)
+    {
+        int i = 0;
         foreach (var item in dic)
         {
-            names.Add(item.Key);
+            if (i < InitializeValue)
+            {
+                ++i;
+                continue;
+            }
+            if (i < endValue)
+            {
+                names.Add(item.Key);
+                ++i;
+                continue;
+            }
+            break;
         }
-        return names;
+    }
+
+    public void SetMode(int mode)
+    {
+        ChoiceMode = (ShowMode)mode;
     }
 }
