@@ -24,7 +24,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     // IBattlePlayer
     public string GetUsedWeaponName()
     {
-        return default;
+        return useSkillName;
     }
 
     // IBattlePlayer
