@@ -26,4 +26,9 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
 
     }
 
+    // IBattlePlayer
+    public int Attack()
+    {
+        return default;
+    }
 }

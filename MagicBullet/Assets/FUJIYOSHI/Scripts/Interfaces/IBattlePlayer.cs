@@ -13,4 +13,7 @@ public interface IBattlePlayer
 
     // ƒ_ƒ[ƒW‚ğó‚¯‚é
     public void Damage(int damage);
+
+    // UŒ‚
+    public int Attack();
 }
