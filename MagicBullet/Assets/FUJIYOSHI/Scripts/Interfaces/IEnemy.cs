@@ -9,7 +9,7 @@ public interface IEnemy
     // 1:使用武器の番号2:ダメージ量
     public void EnemyDamage(float Damage);
 
-    // 攻撃
+    // 攻撃値返却
     // 戻り値:ダメージ量
-    public float EnemyAttack();
+    public TRPGParameter GetAttackValue();
 }

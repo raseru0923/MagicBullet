@@ -14,14 +14,15 @@ public class Caspard : MonoBehaviour, IEnemy
     [Header("UŒ‚—Í¥")]
     [SerializeField] private TRPGParameter AttackParameter;
 
+    // IEnemy
     public void EnemyDamage(float Damage)
     {
 
     }
 
-    public float EnemyAttack()
+    // IEnemy
+    public TRPGParameter GetAttackValue()
     {
-        
-        return default;
+        return AttackParameter;
     }
 }
