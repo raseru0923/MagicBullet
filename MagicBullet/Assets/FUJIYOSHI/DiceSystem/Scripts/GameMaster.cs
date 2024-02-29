@@ -77,8 +77,8 @@ public class GameMaster : f_Dealer
     // ターン性バトル開始！
     public async UniTask TurnBattle(IBattlePlayer battlePlayer, IEnemy enemy)
     {
-        // どちらかが倒されるまで戦闘を行う。
-        while (true)
+        // 両者生存で続行
+        while (IsCharacterActive(battlePlayer, enemy))
         {
             // プレイヤーが行動を選択します。
 
@@ -86,5 +86,10 @@ public class GameMaster : f_Dealer
 
             // 敵が攻撃を行います。
         }
+    }
+
+    private static bool IsCharacterActive(IBattlePlayer battlePlayer, IEnemy enemy)
+    {
+        return !battlePlayer.IsDie() && !enemy.IsDie();
     }
 }
