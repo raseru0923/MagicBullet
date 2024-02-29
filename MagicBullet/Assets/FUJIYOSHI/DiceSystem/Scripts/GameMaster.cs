@@ -7,6 +7,20 @@ using System.Threading.Tasks;
 
 public class GameMaster : f_Dealer
 {
+
+    public static GameMaster Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            DontDestroyOnLoad(this);
+            Instance = this;
+            return;
+        }
+        Destroy(this);
+    }
+
     // éiâÔêiçs
     public void Moderate(string printText)
     {

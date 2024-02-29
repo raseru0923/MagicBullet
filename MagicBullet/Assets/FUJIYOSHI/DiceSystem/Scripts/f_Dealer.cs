@@ -13,13 +13,6 @@ public class f_Dealer : MonoBehaviour
     // 通知
     public f_Label informationLabel;
 
-    public static f_Dealer Instance;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     // ダイスロールの判定の種類です。
     public enum JudgementType
     {
