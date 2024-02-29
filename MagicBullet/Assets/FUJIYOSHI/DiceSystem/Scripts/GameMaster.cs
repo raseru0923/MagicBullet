@@ -99,7 +99,7 @@ public class GameMaster : f_Dealer
     public async UniTask<JudgementType> SkillDiceRoll(string skillName)
     {
         // 技能名を表示
-        informationLabel.PlayLabel(skillName + "!");
+        await informationLabel.PlayLabelTask(skillName + "!");
 
         // 対応したスキルの値を返却
         int skillValue = StatusManager.Instance.SkillParameter[skillName];
