@@ -7,6 +7,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
 {
     [Header("戦闘用コマンドを設定▼")]
     [SerializeField] private GameObject BattleCommand;
+    private bool isEnter = false;
 
     // IBattlePlayer
     public void SetBattleCommandActive(bool isActive)
@@ -41,12 +42,12 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     // IBattlePlayer
     public void ActionEnter()
     {
-
+        isEnter = true;
     }
 
     // IBattlePlayer
     public bool IsEnter()
     {
-        return default;
+        return isEnter;
     }
 }
