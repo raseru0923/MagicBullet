@@ -12,9 +12,9 @@ public class ChoiceProfession : MonoBehaviour
     void OnMouseOver()
     {
         ChoicePanel.SetActive(true);
-        if ((Input.GetMouseButtonDown(0))&&(StatusManager.instance.OpenChoicePnal==false))
+        if ((Input.GetMouseButtonDown(0))&&(StatusManager.Instance.OpenChoicePnal==false))
         {
-            StatusManager.instance.OpenChoicePnal = true;
+            StatusManager.Instance.OpenChoicePnal = true;
             ProfessionPanel.SetActive(true);
         }
     }
@@ -25,7 +25,7 @@ public class ChoiceProfession : MonoBehaviour
     public void ClosePanel()
     {
         ProfessionPanel.SetActive(false);
-        StatusManager.instance.OpenChoicePnal = false;
+        StatusManager.Instance.OpenChoicePnal = false;
     }
     public void OpenSkillPanel()
     {

@@ -103,11 +103,14 @@ public class StatusManager : MonoBehaviour, IContentNames
     public bool DecisionworkP = false;
     public bool DecisionhobbyP = false;
 
-    public Dictionary<string, int> dic = new Dictionary<string, int>();
+    // 技能名から技能値を取得
+    public Dictionary<string, int> SkillParameter = new Dictionary<string, int>();
 
-    public static StatusManager instance;
+    // インスタンス
+    public static StatusManager Instance;
 
-    string[] SkillName = { "回避","キック","組みつき","拳","頭突き","投てき","マーシャルアーツ","拳銃","サブマシンガン","ショットガン","マシンガン","ライフル",
+    // 技能の名前
+    string[] SkillNames = { "回避","キック","組みつき","拳","頭突き","投てき","マーシャルアーツ","拳銃","サブマシンガン","ショットガン","マシンガン","ライフル",
                            "応急手当","鍵開け","隠す","隠れる","聞き耳","忍び歩き","写真術","精神分析","追跡","登攀","図書館","目星",
                            "運転","機械修理","重機械操作","乗馬","水泳","制作","操縦","跳躍","電気修理","ナビゲート","変装",
                            "言いくるめ","信用","説得","値切り","母国語",
@@ -125,14 +128,14 @@ public class StatusManager : MonoBehaviour, IContentNames
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
             DontDestroyOnLoad(this);
-            instance = this;
+            Instance = this;
 
-            foreach (var item in SkillName)
+            foreach (var item in SkillNames)
             {
-                dic.Add(item, 0);
+                SkillParameter.Add(item, 1);
             }
 
             return;
@@ -176,20 +179,20 @@ public class StatusManager : MonoBehaviour, IContentNames
     private void ShowNames(List<string> names, int InitializeValue, int endValue)
     {
         int i = 0;
-        foreach (var item in dic)
+        foreach (var item in SkillParameter)
         {
+            if (i >= endValue)
+            {
+                break;
+            }
+
             if (i < InitializeValue)
             {
                 ++i;
                 continue;
             }
-            if (i < endValue)
-            {
-                names.Add(item.Key);
-                ++i;
-                continue;
-            }
-            break;
+            names.Add(item.Key);
+            ++i;
         }
     }
 
