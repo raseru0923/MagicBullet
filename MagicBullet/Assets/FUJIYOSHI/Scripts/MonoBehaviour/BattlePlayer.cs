@@ -42,6 +42,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     // IBattlePlayer
     public void ActionEnter()
     {
+        Debug.Log("s“®Œˆ’èI");
         isEnter = true;
     }
 

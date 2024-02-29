@@ -15,5 +15,9 @@ public class Node : MonoBehaviour
     public void Action()
     {
         Debug.Log("‘I‘ğ‚µ‚Ü‚µ‚½I");
+        if (GameMaster.Instance.currentBattlePlayer != null)
+        {
+            GameMaster.Instance.currentBattlePlayer.ActionEnter();
+        }
     }
 }
