@@ -34,7 +34,7 @@ public class f_Dealer : MonoBehaviour
     {
         int value = await SumDealerDiceRoll(1, 100);
 
-        if (value <= 5) { return JudgementType.CRITICAL; }       // クリティカル
+        if (value <= 5 && value < successRate) { return JudgementType.CRITICAL; }       // クリティカル
         if (value < successRate) { return JudgementType.SUCCESS; } // 成功
         if (value > 95) { return JudgementType.FUMBLE; }     // ファンブル
         return JudgementType.FAIL;                           // 失敗
