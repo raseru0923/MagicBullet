@@ -106,4 +106,12 @@ public class GameMaster : f_Dealer
 
         return await HundredDiceRoll(skillValue);
     }
+
+    public async void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            await SkillDiceRoll("åùèe");
+        }
+    }
 }
