@@ -35,6 +35,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     // IBattlePlayer
     public async void Action(Action<bool> isEnd)
     {
+        isEnter = false;
         await GameMaster.Instance.SkillDiceRoll(useSkillName);
 
         isEnd?.Invoke(true);
