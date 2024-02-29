@@ -2520,7 +2520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2246e6b82d8a664faf3d29f0b0ef348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BattleCommand: {fileID: 0}
+  BattleCommand: {fileID: 1103882782}
 --- !u!1 &1810999324
 GameObject:
   m_ObjectHideFlags: 0
