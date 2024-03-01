@@ -16,4 +16,7 @@ public interface IEnemy
     // €–S
     // –ß‚è’l:€–S‚µ‚Ä‚¢‚é‚©
     public bool IsDie();
+
+    // Ÿ—˜‚Ìˆ—
+    public void EnemyWin();
 }

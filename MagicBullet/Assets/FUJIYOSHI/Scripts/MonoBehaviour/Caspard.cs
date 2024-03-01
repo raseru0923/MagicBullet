@@ -68,4 +68,10 @@ public class Caspard : MonoBehaviour, IEnemy
     {
         return isDie;
     }
+
+    // IEnemy
+    public void EnemyWin()
+    {
+        GameMaster.Instance.Moderate("カスパールに敗北した！");
+    }
 }
