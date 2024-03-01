@@ -18,7 +18,7 @@ public class Caspard : MonoBehaviour, IEnemy
     [SerializeField] private List<string> PassWeaponNames;
 
     // IEnemy
-    public void EnemyDamage(int Damage)
+    public void EnemyDamage(string passSkill, int Damage)
     {
 
     }

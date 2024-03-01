@@ -6,8 +6,8 @@ using UnityEngine;
 public interface IEnemy
 {
     // ダメージを受ける
-    // 1:使用武器の番号2:ダメージ量
-    public void EnemyDamage(int Damage);
+    // 1:使用武器の名前2:ダメージ量
+    public void EnemyDamage(string passSkill, int Damage);
 
     // 攻撃値返却
     // 戻り値:ダメージ量
