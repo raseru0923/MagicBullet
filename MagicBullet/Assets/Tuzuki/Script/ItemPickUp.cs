@@ -24,9 +24,9 @@ public class ItemPickUp : MonoBehaviour
                 await item.GetComponent<Item>().PickUp();
             }
             // Žg—p
-            if (true)
+            if (item.GetComponent<ItemUse>())
             {
-
+                await item.GetComponent<ItemUse>().UseItem();
             }
         }
         Debug.Log("null");
