@@ -131,6 +131,15 @@ public class GameMaster : f_Dealer
         // 戦闘終了のため、戦闘中の敵・味方を削除
         currentEnemy = null;
         currentBattlePlayer = null;
+
+        // 味方の勝利！
+        if (!battlePlayer.IsDie())
+        {
+            battlePlayer.Win();
+            return;
+        }
+        // 敵の勝利！
+        enemy.EnemyWin();
     }
 
     private static bool IsCharacterActive(IBattlePlayer battlePlayer, IEnemy enemy)
