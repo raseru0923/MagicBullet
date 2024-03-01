@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 // カスパール
 public class Caspard : MonoBehaviour, IEnemy
 {
-    [Header("HP▼")]
-    [SerializeField] private int HP;
+    [Header("最大HP▼")]
+    [SerializeField] private int MAXHP;
+    private int currentHP;
 
     [Header("攻撃力▼")]
     [SerializeField] private TRPGParameter AttackParameter;
@@ -18,6 +19,11 @@ public class Caspard : MonoBehaviour, IEnemy
     [SerializeField] private List<string> PassSkillNames;
 
     private bool isDie = false;
+
+    private void Start()
+    {
+        currentHP = MAXHP;
+    }
 
     // IEnemy
     public void EnemyDamage(string passSkill, int Damage)
@@ -31,11 +37,11 @@ public class Caspard : MonoBehaviour, IEnemy
         }
 
         // ダメージを受ける
-        HP -= Damage;
+        currentHP -= Damage;
         GameMaster.Instance.Moderate(Damage + "ダメージを与えた！");
 
         // 死亡処理
-        if (HP <= 0)
+        if (currentHP <= 0)
         {
             isDie = true;
         }
