@@ -210,7 +210,6 @@ public class GameMaster : f_Dealer
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            await TurnBattle(GameObject.Find("Player").GetComponent<IBattlePlayer>(), GameObject.Find("Caspard").GetComponent<IEnemy>());
         }
     }
 }
