@@ -126,6 +126,18 @@ public class GameMaster : f_Dealer
             enemy.EnemyDamage(battlePlayer.GetUsedSkillName(), battlePlayer.GetAttackPoint());
 
             // 敵が攻撃を行います。
+            var attackParameter = enemy.GetAttackValue();
+
+            int result = 0;
+
+            foreach (var item in attackParameter.DiceParameters)
+            {
+                result += await SumDealerDiceRoll(item.Count, item.Value);
+            }
+            result += attackParameter.AddValue;
+
+            // プレイヤーがダメージを受けます。
+            battlePlayer.Damage(result);
         }
 
         // 戦闘終了のため、戦闘中の敵・味方を削除
