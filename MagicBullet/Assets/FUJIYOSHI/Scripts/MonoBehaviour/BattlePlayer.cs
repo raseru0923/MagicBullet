@@ -69,4 +69,10 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     {
         return isEnter;
     }
+
+    // IBattlePlayer
+    public void Win()
+    {
+        GameMaster.Instance.Moderate("í“¬I—¹I");
+    }
 }

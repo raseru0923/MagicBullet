@@ -30,4 +30,7 @@ public interface IBattlePlayer
 
     // s“®‚ªŒˆ’è‚³‚ê‚Ä‚¢‚é‚©
     public bool IsEnter();
+
+    // Ÿ—˜‚Ìˆ—
+    public void Win();
 }
