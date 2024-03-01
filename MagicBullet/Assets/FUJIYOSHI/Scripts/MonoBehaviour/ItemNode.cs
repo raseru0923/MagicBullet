@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 
 
-public class ItemNode : MonoBehaviour
+public class ItemNode : MonoBehaviour, IConfirm
 {
     [SerializeField] Text myText;
     public bool isAssessment = false;
@@ -42,7 +42,7 @@ public class ItemNode : MonoBehaviour
         ObjectItem myItem = ReferencedBag.Content[ItemIndex];
         if (myItem.canAssessment)
         {
-            GameObject.Find("ConfirmButton").GetComponent<ConfirmButton>().OnButton(this);
+            GameObject.Find("ConfirmButton").GetComponent<ConfirmButton>().OnButton(this.GetComponent<IConfirm>());
             gameMaster.Moderate("ä”íËÇçsÇ¢Ç‹Ç∑Ç©ÅH");
             return;
         }
@@ -63,6 +63,11 @@ public class ItemNode : MonoBehaviour
             isAssessment = false;
             await AssessmentItem();
         }
+    }
+
+    public void SetConfirm(bool isAgree)
+    {
+        isAssessment = isAgree;
     }
 
     private async UniTask AssessmentItem()

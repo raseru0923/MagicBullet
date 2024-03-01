@@ -122,7 +122,8 @@ public class ItemSearch : MonoBehaviour
 
         if (item.GetComponent<ItemUse>() != null)
         {
-            SkillImage.sprite = UseSprite;
+            ItemUse thisItem = item.GetComponent<ItemUse>();
+            SkillImage.sprite = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillSprite;
         }
         else
         {

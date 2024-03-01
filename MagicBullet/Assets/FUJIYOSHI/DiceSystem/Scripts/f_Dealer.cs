@@ -89,11 +89,6 @@ public class f_Dealer : MonoBehaviour
         var Dice = await CreateDice(diceValue);
 
         // 10ダイスのみ特別な処理を行う。
-        if (diceValue == 10)
-        {
-            return await Dice.DiceRoll(0);
-        }
-
         return await Dice.NormalDiceRoll();
     }
 

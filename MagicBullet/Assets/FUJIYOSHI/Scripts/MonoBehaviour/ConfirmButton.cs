@@ -5,12 +5,14 @@ using UnityEngine;
 public class ConfirmButton : MonoBehaviour
 {
     [SerializeField] GameObject[] Buttons;
-    ItemNode targetNode;
+    IConfirm targetObject;
 
 
-    public void OnButton(ItemNode target)
+    public void OnButton(IConfirm target)
     {
-        targetNode = target;
+        Cursor.lockState = CursorLockMode.None;
+
+        targetObject = target;
 
         foreach (var item in Buttons)
         {
@@ -20,12 +22,13 @@ public class ConfirmButton : MonoBehaviour
 
     public void targetAssessment()
     {
-        targetNode.isAssessment = true;
+        targetObject.SetConfirm(true);
         OffButton();
     }
 
     public void OffButton()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         foreach (var item in Buttons)
         {
             item.SetActive(false);
