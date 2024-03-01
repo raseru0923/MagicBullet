@@ -24,11 +24,13 @@ public class Caspard : MonoBehaviour, IEnemy
         // ※スキル制限の指定なしのときはダメージを食らいます。
         if (PassSkillNames != null && !IsPassSkill(passSkill))
         {
+            GameMaster.Instance.Moderate("無効化！");
             return;
         }
 
         // ダメージを受ける
         HP -= Damage;
+        GameMaster.Instance.Moderate(Damage + "ダメージを与えた！");
 
         // 死亡処理
         if (HP <= 0)

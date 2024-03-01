@@ -122,6 +122,9 @@ public class GameMaster : f_Dealer
                 await UniTask.WaitForFixedUpdate();
             }
 
+            // 敵がダメージを受けます。
+            enemy.EnemyDamage(battlePlayer.GetUsedSkillName(), battlePlayer.GetAttackPoint());
+
             // 敵が攻撃を行います。
         }
 
