@@ -11,6 +11,10 @@ TagManager:
   - TileTip
   - List
   - Node
+  - Item
+  - GameMaster
+  - CinemachineTarget
+  - OpenDoor
   layers:
   - Default
   - TransparentFX
