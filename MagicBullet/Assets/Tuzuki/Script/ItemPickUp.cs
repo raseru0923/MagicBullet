@@ -16,7 +16,18 @@ public class ItemPickUp : MonoBehaviour
         {
             var item = itemSearch.GetNearItem();
             if (item == null) return;
-            await item.GetComponent<Item>().PickUp();
+
+
+            // èEÇ§
+            if (item.GetComponent<Item>())
+            {
+                await item.GetComponent<Item>().PickUp();
+            }
+            // égóp
+            if (true)
+            {
+
+            }
         }
         Debug.Log("null");
     }
