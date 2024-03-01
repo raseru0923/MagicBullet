@@ -17,6 +17,8 @@ public class Caspard : MonoBehaviour, IEnemy
     [Header("Œø‰Ê‚Ì‚ ‚é•Ší‚Ì–¼‘O¥")]
     [SerializeField] private List<string> PassSkillNames;
 
+    private bool isDie = false;
+
     // IEnemy
     public void EnemyDamage(string passSkill, int Damage)
     {
@@ -35,7 +37,7 @@ public class Caspard : MonoBehaviour, IEnemy
         // €–Sˆ—
         if (HP <= 0)
         {
-            Destroy(this.gameObject);
+            isDie = true;
         }
     }
 
@@ -64,6 +66,6 @@ public class Caspard : MonoBehaviour, IEnemy
     // IEnemy
     public bool IsDie()
     {
-        return default;
+        return isDie;
     }
 }
