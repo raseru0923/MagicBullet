@@ -4715,7 +4715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   STR: 0
-  CON: 0
+  CON: 10
   POW: 0
   DEX: 0
   APP: 0

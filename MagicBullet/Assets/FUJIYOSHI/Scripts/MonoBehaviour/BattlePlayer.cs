@@ -13,8 +13,6 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     [SerializeField] private GameObject BattleCommand;
     [SerializeField] private GameObject ActionList;
 
-    [Header("最大HP▼")]
-    [SerializeField] private int MAXHP;
     // 現在HP
     private int currentHP;
 
@@ -22,6 +20,12 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
 
     private bool isEnter = false;
     private string useSkillName = null;
+
+    private void Start()
+    {
+        // ステータスからHPを設定
+        currentHP = StatusManager.Instance.CON;
+    }
 
     // IBattlePlayer
     public void SetBattleCommandActive(bool isActive)
