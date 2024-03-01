@@ -12,6 +12,9 @@ public interface IBattlePlayer
     // 攻撃に使用した武器の名前を返却
     public string GetUsedSkillName();
 
+    // 攻撃値を返却
+    public int GetAttackPoint();
+
     // ダメージを受ける
     public void Damage(int damage);
 

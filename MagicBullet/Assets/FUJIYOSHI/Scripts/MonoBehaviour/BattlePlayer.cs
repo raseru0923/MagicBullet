@@ -28,6 +28,12 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     }
 
     // IBattlePlayer
+    public int GetAttackPoint()
+    {
+        return 5;
+    }
+
+    // IBattlePlayer
     public void Damage(int damage)
     {
 
