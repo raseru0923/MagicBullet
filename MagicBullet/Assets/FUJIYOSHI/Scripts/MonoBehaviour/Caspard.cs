@@ -15,7 +15,7 @@ public class Caspard : MonoBehaviour, IEnemy
     [SerializeField] private TRPGParameter AttackParameter;
 
     [Header("Œø‰Ê‚Ì‚ ‚é•Ší‚Ì–¼‘O¥")]
-    [SerializeField] private List<string> PassWeaponNames;
+    [SerializeField] private List<string> PassSkillNames;
 
     // IEnemy
     public void EnemyDamage(string passSkill, int Damage)

@@ -22,7 +22,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     }
 
     // IBattlePlayer
-    public string GetUsedWeaponName()
+    public string GetUsedSkillName()
     {
         return useSkillName;
     }

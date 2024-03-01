@@ -10,7 +10,7 @@ public interface IBattlePlayer
     public void SetBattleCommandActive(bool isActive);
 
     // 攻撃に使用した武器の名前を返却
-    public string GetUsedWeaponName();
+    public string GetUsedSkillName();
 
     // ダメージを受ける
     public void Damage(int damage);
