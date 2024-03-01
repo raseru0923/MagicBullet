@@ -12,6 +12,14 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     [Header("戦闘用コマンドを設定▼")]
     [SerializeField] private GameObject BattleCommand;
     [SerializeField] private GameObject ActionList;
+
+    [Header("最大HP▼")]
+    [SerializeField] private int MAXHP;
+    // 現在HP
+    private int currentHP;
+
+    private bool isDie = false;
+
     private bool isEnter = false;
     private string useSkillName = null;
 
@@ -36,7 +44,14 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     // IBattlePlayer
     public void Damage(int damage)
     {
+        // ダメージを受ける
+        currentHP -= damage;
 
+        // 死亡
+        if (currentHP <= 0)
+        {
+            isDie = true;
+        }
     }
 
     // IBattlePlayer
@@ -51,7 +66,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     // IBattlePlayer
     public bool IsDie()
     {
-        return default;
+        return isDie;
     }
 
     // IBattlePlayer
