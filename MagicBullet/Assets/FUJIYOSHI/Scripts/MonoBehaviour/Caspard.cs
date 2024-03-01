@@ -20,7 +20,37 @@ public class Caspard : MonoBehaviour, IEnemy
     // IEnemy
     public void EnemyDamage(string passSkill, int Damage)
     {
+        // ダメージ無効化
+        // ※スキル制限の指定なしのときはダメージを食らいます。
+        if (PassSkillNames != null && !IsPassSkill(passSkill))
+        {
+            return;
+        }
 
+        // ダメージを受ける
+        HP -= Damage;
+
+        // 死亡処理
+        if (HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    // 効果のある武器なのか確認
+    bool IsPassSkill(string passSkill)
+    {
+        bool isPass = false;
+
+        foreach (var item in PassSkillNames)
+        {
+            if (passSkill == item)
+            {
+                isPass = true;
+            }
+        }
+
+        return isPass;
     }
 
     // IEnemy
