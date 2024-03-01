@@ -13,6 +13,7 @@ public class ItemSearch : MonoBehaviour
     private bool isItemListUpdate;
 
     [SerializeField] private Image SkillImage;
+    [SerializeField] private Sprite UseSprite;
 
     private void Start()
     {
@@ -119,13 +120,15 @@ public class ItemSearch : MonoBehaviour
             return;
         }
 
-        if (item.GetComponent<Item>() == null)
+        if (item.GetComponent<ItemUse>() != null)
         {
-            return;
+            SkillImage.sprite = UseSprite;
         }
-
-        Item thisItem = item.GetComponent<Item>();
-        SkillImage.sprite = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillSprite;
+        else
+        {
+            Item thisItem = item.GetComponent<Item>();
+            SkillImage.sprite = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillSprite;
+        }
 
         SkillImage.gameObject.SetActive(true);
 

@@ -519,6 +519,7 @@ MonoBehaviour:
   originPoint: {fileID: 8338988565591873048}
   isAlwaysUpdate: 1
   SkillImage: {fileID: 1701600484}
+  UseSprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &542508511
 GameObject:
   m_ObjectHideFlags: 0
