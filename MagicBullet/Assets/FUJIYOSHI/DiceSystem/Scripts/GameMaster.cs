@@ -126,18 +126,51 @@ public class GameMaster : f_Dealer
             enemy.EnemyDamage(battlePlayer.GetUsedSkillName(), battlePlayer.GetAttackPoint());
 
             // 敵が攻撃を行います。
+            await informationLabel.PlayLabelTask("敵の攻撃！");
+
             var attackParameter = enemy.GetAttackValue();
 
-            int result = 0;
+            string attackDice = null;
+            foreach (var item in attackParameter.DiceParameters)
+            {
+                attackDice += item.Count + " d " + item.Value + " + ";
+            }
+            attackDice += attackParameter.AddValue;
+
+            await UniTask.WaitForFixedUpdate();
+
+            await informationLabel.PlayLabelTask(attackDice);
+
+            List<int> result = new List<int>();
 
             foreach (var item in attackParameter.DiceParameters)
             {
-                result += await SumDealerDiceRoll(item.Count, item.Value);
+                result.Add(await SumDealerDiceRoll(item.Count, item.Value));
             }
-            result += attackParameter.AddValue;
+
+            result.Add(attackParameter.AddValue);
+
+            string damageText = null;
+
+            int sumdamage = 0;
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                int item = result[i];
+                damageText += item;
+                sumdamage += item;
+                if(i != result.Count - 1) { damageText += " + "; }
+            }
+
+            damageText += " = " + sumdamage;
+
+            await UniTask.WaitForFixedUpdate();
+            await informationLabel.PlayLabelTask(damageText);
+
+            await UniTask.WaitForFixedUpdate();
 
             // プレイヤーがダメージを受けます。
-            battlePlayer.Damage(result);
+            battlePlayer.Damage(sumdamage);
         }
 
         // 戦闘終了のため、戦闘中の敵・味方を削除

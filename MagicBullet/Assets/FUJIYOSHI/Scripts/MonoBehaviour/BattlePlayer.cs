@@ -48,6 +48,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     // IBattlePlayer
     public void Damage(int damage)
     {
+        GameMaster.Instance.Moderate(damage + "ダメージを受けた！");
         // ダメージを受ける
         currentHP -= damage;
 
