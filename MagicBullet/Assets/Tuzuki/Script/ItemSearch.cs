@@ -28,10 +28,21 @@ public class ItemSearch : MonoBehaviour
         if (other.CompareTag("Item"))
         {
             isItemListUpdate = true;
-            var item = other.GetComponent<Item>();
-            // アイテムを拾った時アイテムリストから除外するイベントを登録
-            item.onPickUp.AddListener(() => ItemList.Remove(other.gameObject));
-            item.onPickUp.AddListener(() => isItemListUpdate = true);
+            if (other.GetComponent<Item>() != null)
+            {
+                var item = other.GetComponent<Item>();
+                // アイテムを拾った時アイテムリストから除外するイベントを登録
+                item.onPickUp.AddListener(() => ItemList.Remove(other.gameObject));
+                item.onPickUp.AddListener(() => isItemListUpdate = true);
+            }
+            if (other.GetComponent<ItemUse>() != null)
+            {
+                var item = other.GetComponent<ItemUse>();
+                // アイテムを拾った時アイテムリストから除外するイベントを登録
+                item.onPickUp.AddListener(() => ItemList.Remove(other.gameObject));
+                item.onPickUp.AddListener(() => isItemListUpdate = true);
+            }
+
             ItemList.Add(other.gameObject);
         }
     }
@@ -107,6 +118,12 @@ public class ItemSearch : MonoBehaviour
             SkillImage.gameObject.SetActive(false);
             return;
         }
+
+        if (item.GetComponent<Item>() == null)
+        {
+            return;
+        }
+
         Item thisItem = item.GetComponent<Item>();
         SkillImage.sprite = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillSprite;
 

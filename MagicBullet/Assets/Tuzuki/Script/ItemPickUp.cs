@@ -19,16 +19,15 @@ public class ItemPickUp : MonoBehaviour
 
 
             // èEÇ§
-            if (item.GetComponent<Item>())
+            if (item.GetComponent<Item>() != null)
             {
                 await item.GetComponent<Item>().PickUp();
             }
             // égóp
-            if (item.GetComponent<ItemUse>())
+            if (item.GetComponent<ItemUse>() != null)
             {
                 await item.GetComponent<ItemUse>().UseItem();
             }
         }
-        Debug.Log("null");
     }
 }
