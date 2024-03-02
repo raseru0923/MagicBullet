@@ -9,9 +9,7 @@ public class Item : MonoBehaviour
 {
     public ItemScriptableObject ItemManager;
     [HideInInspector] public int ItemIndex;
-    [SerializeField] private f_Label ItemLabel;
 
-    [SerializeField] private GameMaster GameMaster;
     [Header("アイテムが拾われた時のイベント")]
     public UnityEvent onPickUp;
 
@@ -23,7 +21,7 @@ public class Item : MonoBehaviour
         print("拾われた！");
         this.tag = "Untagged";
 
-        var myItem = await GameMaster.AssessmentDiceRoll(ItemManager.ItemData[ItemIndex]);
+        var myItem = await GameMaster.Instance.AssessmentDiceRoll(ItemManager.ItemData[ItemIndex]);
 
         // 理解度が低いとき鑑定のチャンスが与えられる
         if ((int)myItem.Comprehension >= 2)

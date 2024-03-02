@@ -9,7 +9,6 @@ public class ItemUse : MonoBehaviour, IConfirm
 {
     public ItemScriptableObject ItemManager;
     [HideInInspector] public int ItemIndex;
-    [SerializeField] private f_Label ItemLabel;
 
     [Header("アイテムが拾われた時のイベント")]
     public UnityEvent onPickUp;
