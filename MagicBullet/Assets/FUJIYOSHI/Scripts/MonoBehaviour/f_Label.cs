@@ -10,6 +10,13 @@ public class f_Label : MonoBehaviour
 {
     [SerializeField] private Text LabelText;
     [SerializeField] private GameObject MainLabel;
+    [SerializeField] private AudioClip ClickClip;
+    private AudioSource audioSource;
+
+    private void OnEnable()
+    {
+        audioSource = Camera.main.GetComponent<AudioSource>();
+    }
 
     public void PlayLabel(string text)
     {
@@ -23,6 +30,8 @@ public class f_Label : MonoBehaviour
 
     IEnumerator PrintLabel(string text)
     {
+        audioSource.PlayOneShot(ClickClip);
+
         MainLabel.SetActive(true);
 
         LabelText.text = text;
@@ -39,6 +48,7 @@ public class f_Label : MonoBehaviour
 
     public void OnLabel(string text)
     {
+        audioSource.PlayOneShot(ClickClip);
         MainLabel.SetActive(true);
 
         LabelText.text = text;

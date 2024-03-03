@@ -3,7 +3,10 @@ guid: 3e574002777f92f4fa5ed71788ca5316
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - LabelText: {instanceID: 0}
+  - MainLabel: {instanceID: 0}
+  - ClickClip: {fileID: 8300000, guid: 4b3b11f7f37c3b54ea42d16e8968c088, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

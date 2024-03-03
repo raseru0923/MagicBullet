@@ -10,8 +10,17 @@ public class f_Dealer : MonoBehaviour
     [SerializeField] private GameObject DicePrefab;
     // ダイスを置く場所
     [SerializeField] private GameObject DiceRollSpace;
+    // ダイスロール音
+    [SerializeField] private AudioClip RollClip;
+    private AudioSource audioSource;
+
     // 通知
     public f_Label informationLabel;
+
+    private void OnEnable()
+    {
+        audioSource = Camera.main.GetComponent<AudioSource>();
+    }
 
     // ダイスロールの判定の種類です。
     public enum JudgementType
@@ -108,6 +117,8 @@ public class f_Dealer : MonoBehaviour
         GameObject Dice = Instantiate(DicePrefab);
 
         await WaitOneFrame();
+
+        audioSource.PlayOneShot(RollClip);
 
         Dice.transform.SetParent(DiceRollSpace.transform);
 

@@ -3,7 +3,11 @@ guid: ce1377230d642cb488de73c0ba961f1b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - DicePrefab: {instanceID: 0}
+  - DiceRollSpace: {instanceID: 0}
+  - RollClip: {fileID: 8300000, guid: f4b29cb4584a2d240bed601499753001, type: 3}
+  - informationLabel: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
