@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioClip StatusSound;
+    AudioSource audioSource;
+
     public GameObject DiceButton;
     public GameObject NextButton;
     public GameObject StatusReturnButton;
@@ -316,7 +319,6 @@ public class GameManager : MonoBehaviour
                            "言いくるめ","信用","説得","値切り","母国語",
                            "医学","オカルト","神話","芸術","経理","考古学","PC","心理学","人類学","生物学","地質学","電子工学","天文学","博物学","物理学","法律","薬学","歴史"};
 
-
     //基礎ステータス
     [SerializeField] Text STR;
     [SerializeField] Text CON;
@@ -404,8 +406,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text NowYakugaku;
     [SerializeField] Text NowRekishi;
 
+    [SerializeField]
+    private Fade m_fade = null;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
+
         //戦闘技能ステータス
         //回避
         InputWorkPKaihi = InputWorkPKaihi.GetComponent<InputField>();
@@ -735,38 +743,55 @@ public class GameManager : MonoBehaviour
         StatusManager.Instance.INT = Dice(2, 6);
         StatusManager.Instance.EDU = Dice(3, 3);
         StatusManager.Instance.StatusPoints();
+        audioSource.PlayOneShot(StatusSound);
         STR.text = StatusManager.Instance.STR.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         CON.text = StatusManager.Instance.CON.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         POW.text = StatusManager.Instance.POW.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         DEX.text = StatusManager.Instance.DEX.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         APP.text = StatusManager.Instance.APP.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         SIZ.text = StatusManager.Instance.SIZ.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         INT.text = StatusManager.Instance.INT.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         EDU.text = StatusManager.Instance.EDU.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         SAN.text = StatusManager.Instance.SAN.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         Luck.text = StatusManager.Instance.Luck.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         Idea.text = StatusManager.Instance.Idea.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         Memory.text = StatusManager.Instance.Memory.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         Durability.text = StatusManager.Instance.Durability.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         MgcP.text = StatusManager.Instance.MgcP.ToString();
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         StatusManager.Instance.DecisionworkP = true;
         await Task.Delay(delay);
+        audioSource.PlayOneShot(StatusSound);
         StatusManager.Instance.DecisionhobbyP = true;
         await Task.Delay(delay);
+
         if ((2 <= StatusManager.Instance.DamagePCheck) && (StatusManager.Instance.DamagePCheck <= 12))
         {
             DamegeP.text = "-1D6";
@@ -7670,6 +7695,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //ボディーガードの取得スキル(聞き耳か目星)
+    public void SPChoiceSkill(int SkillNo)
+    {
+        if (StatusManager.Instance.ChoiceProfession == 0)
+        {
+            switch (SkillNo)
+            {
+                case 0:
+                    if (inputworkp[16] != 0)
+                    {
+                        workMeboshi.SetActive(false);
+                        workKikimimi.SetActive(true);
+                    }
+                    else { workMeboshi.SetActive(true); }
+                    break;
+                case 1:
+                    if (inputworkp[23] != 0)
+                    {
+                        workMeboshi.SetActive(true);
+                        workKikimimi.SetActive(false);
+                    }
+                    else { workKikimimi.SetActive(true); }
+                    break;
+            }
+        }
+        else { return; }
+    }
+
     //シーン移行
     public void NextScenechecker(int ButtonNo)
     {
@@ -7691,7 +7744,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 1:
                 TakeSkill();
-                SceneManager.LoadScene("test");
+                FadeManager.Instance.LoadScene("test", 1.0f);
                 break;
             case 2:
                 DecisionPanel.SetActive(false);

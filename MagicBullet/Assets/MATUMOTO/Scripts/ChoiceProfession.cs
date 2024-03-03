@@ -6,14 +6,21 @@ using UnityEngine.EventSystems;
 
 public class ChoiceProfession : MonoBehaviour
 {
+    public AudioClip ChoiceProfessionSound;
+    AudioSource audioSource;
     [SerializeField] GameObject ChoicePanel;
     [SerializeField] GameObject ProfessionPanel;
     [SerializeField] GameObject SkillPanel;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void OnMouseOver()
     {
         ChoicePanel.SetActive(true);
         if ((Input.GetMouseButtonDown(0))&&(StatusManager.Instance.OpenChoicePnal==false))
         {
+            audioSource.PlayOneShot(ChoiceProfessionSound);
             StatusManager.Instance.OpenChoicePnal = true;
             ProfessionPanel.SetActive(true);
         }
