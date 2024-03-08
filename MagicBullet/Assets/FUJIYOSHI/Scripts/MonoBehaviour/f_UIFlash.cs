@@ -26,6 +26,11 @@ public class f_UIFlash : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        if (this.GetComponent<Image>() != null)
+        {
+            UIObjects.ImageUI = this.GetComponent<Image>();
+        }
+
         if (PlayOnAwake)
         {
             operationCoroutine = StartCoroutine(FlashUI());

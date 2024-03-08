@@ -23,13 +23,15 @@ public class ObjectItem
     [Header("使用する技能の表示▼")]
     public Sprite SkillSprite;
     [Header("クリティカル時▼")]
-    [SerializeField, TextArea] public string CliticalText;
+    [SerializeField, TextArea] public string[] CliticalText;
     [Header("成功時▼")]
-    [SerializeField, TextArea] public string SuccessText;
+    [SerializeField, TextArea] public string[] SuccessText;
     [Header("失敗時▼")]
-    [SerializeField, TextArea] public string FailText;
+    [SerializeField, TextArea] public string[] FailText;
     [Header("ファンブル時▼")]
-    [SerializeField, TextArea] public string FambleText;
+    [SerializeField, TextArea] public string[] FambleText;
+    [Header("フレーバーテキスト▼")]
+    [SerializeField, TextArea] public string[] FlavorText;
     // 鑑定を使用可能かどうか
     [System.NonSerialized] public bool canAssessment = false;
     
@@ -46,9 +48,24 @@ public class ObjectItem
         AssesmentText.Add("ファンブル！\n" + FambleText);
     }
     //アイテムを鑑定して情報を返却
-    public string AssesmentItem()
+    public string[] AssesmentItem()
     {
         SetAssesmentText();
-        return AssesmentText[(int)Comprehension];
+        switch (Comprehension)
+        {
+            case COMPREHENSION.DETAIL:
+                return CliticalText;
+            case COMPREHENSION.NOMAL:
+                return SuccessText;
+            case COMPREHENSION.ABOUT:
+                return FailText;
+            case COMPREHENSION.NONE:
+                return FambleText;
+            case COMPREHENSION.NUM:
+                break;
+            default:
+                break;
+        }
+        return null;
     }
 }

@@ -54,7 +54,7 @@ public class f_Label : MonoBehaviour
         LabelText.text = text;
     }
 
-    public void OFFLabel()
+    public void OffLabel()
     {
         MainLabel.SetActive(false);
     }

@@ -34,6 +34,8 @@ public class f_Dealer : MonoBehaviour
     // 1d100のファンブル、クリティカルを追加したダイスロールの判定です。
     public async UniTask<JudgementType> HundredDiceRoll(int successRate)
     {
+        await informationLabel.PlayLabelTask(successRate.ToString());
+
         int value = await SumDealerDiceRoll(1, 100);
 
         if (value <= 5 && value < successRate) { return JudgementType.CRITICAL; }       // クリティカル
@@ -118,6 +120,11 @@ public class f_Dealer : MonoBehaviour
 
         await WaitOneFrame();
 
+        if (audioSource == null)
+        {
+            audioSource = Camera.main.GetComponent<AudioSource>();
+        }
+
         audioSource.PlayOneShot(RollClip);
 
         Dice.transform.SetParent(DiceRollSpace.transform);
@@ -130,7 +137,7 @@ public class f_Dealer : MonoBehaviour
     private async UniTask WaitDiceDelete()
     {
         await UniTask.WaitForSeconds(1);
-        informationLabel.OFFLabel();
+        informationLabel.OffLabel();
         DestroyAllDice();
     }
 

@@ -16,6 +16,14 @@ public class ItemUse : MonoBehaviour, IConfirm
 
     private bool isUse;
 
+    [SerializeField] private AudioClip GunReportClip;
+    private AudioSource audioSource;
+
+    private void OnEnable()
+    {
+        audioSource = Camera.main.GetComponent<AudioSource>();
+    }
+
     /// <summary>
     /// 使用するときに呼ばれる
     /// </summary>
@@ -68,7 +76,9 @@ public class ItemUse : MonoBehaviour, IConfirm
         if (isUse)
         {
             isUse = false;
+            audioSource.PlayOneShot(GunReportClip);
             GameMaster.Instance.Moderate(AssessmentName() + "を使用しました。");
+            GameMaster.Instance.GimmickClear();
             this.tag = "Untagged";
         }
     }

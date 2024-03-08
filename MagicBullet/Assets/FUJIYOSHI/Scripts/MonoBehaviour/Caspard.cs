@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
@@ -20,31 +21,47 @@ public class Caspard : MonoBehaviour, IEnemy
 
     private bool isDie = false;
 
+    [SerializeField] private AudioClip GunClip;
+
     private void Start()
     {
         currentHP = MAXHP;
     }
 
     // IEnemy
-    public void EnemyDamage(string passSkill, int Damage)
+    public async void EnemyDamage(string passSkill, int Damage, Action<bool> isEnd)
     {
+        StatusManager.Instance.SetMode(58);
+        foreach (var item in StatusManager.Instance.GetNames())
+        {
+            if (item == passSkill)
+            {
+                isEnd?.Invoke(true);
+                return;
+            }
+        }
         // ダメージ無効化
         // ※スキル制限の指定なしのときはダメージを食らいます。
         if (PassSkillNames != null && !IsPassSkill(passSkill))
         {
-            GameMaster.Instance.Moderate("無効化！");
+            await GameMaster.Instance.informationLabel.PlayLabelTask("無効化！");
+            isEnd?.Invoke(true);
             return;
         }
 
         // ダメージを受ける
         currentHP -= Damage;
-        GameMaster.Instance.Moderate(Damage + "ダメージを与えた！");
+        GameMaster.Instance.AttackUI.SetActive(true);
+        Camera.main.GetComponent<AudioSource>().PlayOneShot(GunClip);
+        await GameMaster.Instance.informationLabel.PlayLabelTask(Damage + "ダメージを与えた！");
 
         // 死亡処理
         if (currentHP <= 0)
         {
             isDie = true;
         }
+
+        isEnd?.Invoke(true);
     }
 
     // 効果のある武器なのか確認

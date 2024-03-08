@@ -6,6 +6,7 @@ MonoImporter:
   defaultReferences:
   - ItemManager: {fileID: 11400000, guid: 08eeb176033df1044b18e847d88f4f78, type: 2}
   - confirmButton: {instanceID: 0}
+  - GunReportClip: {fileID: 8300000, guid: c368dee9185cd6d45867d2d0658ee93e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

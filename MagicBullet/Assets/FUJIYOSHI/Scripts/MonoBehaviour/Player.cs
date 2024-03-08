@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 public class Player : MonoBehaviour
 {
@@ -12,7 +15,14 @@ public class Player : MonoBehaviour
     private Animator animator;
     private BoxCollider boxCollider;
 
-    private void Update()
+    [SerializeField] private GameObject Guide;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private async void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -26,6 +36,17 @@ public class Player : MonoBehaviour
 
         if (canOpen && Input.GetKeyDown(KeyCode.F))
         {
+            if (GameMaster.Instance.canFinalBattle && animator.gameObject.GetComponent<ToBattleDoor>() != null)
+            {
+                if (!GameMaster.Instance.isFinalBattle)
+                {
+                    Guide.SetActive(true);
+
+                    GameMaster.Instance.isFinalBattle = true;
+                    return;
+                }
+                animator.gameObject.GetComponent<ToBattleDoor>().ToBattleScene();
+            }
             animator.SetBool("IsOpen", true);
         }
     }

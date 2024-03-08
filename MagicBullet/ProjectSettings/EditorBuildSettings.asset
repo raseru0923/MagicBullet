@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Tuzuki/Scenes/Playground.unity
-    guid: 707acc8dffb72b144bb1ffbe1c965f3d
-  - enabled: 1
     path: Assets/FUJIYOSHI/Scenes/Title.unity
     guid: f30d641d2fde222459c304f07ad648cc
+  - enabled: 1
+    path: Assets/Tuzuki/Scenes/Playground.unity
+    guid: 707acc8dffb72b144bb1ffbe1c965f3d
   - enabled: 1
     path: Assets/MATUMOTO/Scenes/Status.unity
     guid: 2cda990e2423bbf4892e6590ba056729
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MATUMOTO/Scenes/test.unity
     guid: 85889e051ddae594dad5d25285b01b94
+  - enabled: 1
+    path: Assets/FUJIYOSHI/Scenes/Clear.unity
+    guid: ba38f6a35d9f8e746a3edcb1bfd3bdb9
   m_configObjects: {}

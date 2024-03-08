@@ -19,6 +19,7 @@ public class f_CharacterEntryPoint : MonoBehaviour
     // çÌèú
     public void Remove()
     {
+        if (myImage == null) { return; }
         myImage.sprite = null;
         myImage.color = Color.clear;
     }
@@ -26,12 +27,14 @@ public class f_CharacterEntryPoint : MonoBehaviour
     // ìoò^
     public void Joint(Image characterImage)
     {
+        if (myImage == null) { return; }
         myImage = characterImage;
         myImage.color = Color.white;
     }
 
     public void Joint(Sprite characterSprite)
     {
+        if (myImage == null) { return; }
         myImage.sprite = characterSprite;
         myImage.color = Color.white;
     }

@@ -6,11 +6,11 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "TalkData", menuName = "ScriptableObjects/TalkData")]
 public class f_StageData : ScriptableObject
 {
-    public Scene[] Scenes;
+    public f_Scene[] Scenes;
 }
 
 [System.Serializable]
-public class Scene
+public class f_Scene
 {
     [Header("ë‰éåÅ•")]
     [TextArea] public string word = null;

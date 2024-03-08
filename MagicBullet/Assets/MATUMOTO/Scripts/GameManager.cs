@@ -5,10 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 using UnityEngine.EventSystems;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 
 public class GameManager : MonoBehaviour
 {
     public AudioClip StatusSound;
+    [SerializeField] private f_Stage Stage;
     AudioSource audioSource;
 
     public GameObject DiceButton;
@@ -41,10 +44,10 @@ public class GameManager : MonoBehaviour
     public InputField InputHobbyPMSA;
     public InputField InputWorkPKenzyu;
     public InputField InputHobbyPKenzyu;
-    public InputField InputWorkPSMG;
-    public InputField InputHobbyPSMG;
-    public InputField InputWorkPSG;
-    public InputField InputHobbyPSG;
+    public InputField InputWorkPRL;
+    public InputField InputHobbyPRL;
+    public InputField InputWorkPPH;
+    public InputField InputHobbyPPH;
     public InputField InputWorkPMG;
     public InputField InputHobbyPMG;
     public InputField InputWorkPR;
@@ -230,8 +233,8 @@ public class GameManager : MonoBehaviour
     int toteki = 0;
     int msa = 0;
     int kenzyu = 0;
-    int smg = 0;
-    int sg = 0;
+    int rl = 0;
+    int ph = 0;
     int mg = 0;
     int r = 0;
 
@@ -313,7 +316,7 @@ public class GameManager : MonoBehaviour
                          0,0,0,0,0,0,0,0,0,0,0,
                          0,0,0,0,0,
                          0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,};
-    string[] SkillNames = { "回避","キック","組みつき","拳","頭突き","投てき","マーシャルアーツ","拳銃","サブマシンガン","ショットガン","マシンガン","ライフル",
+    string[] SkillNames = { "回避","キック","組みつき","拳","頭突き","投てき","マーシャルアーツ","拳銃","ロケットランチャー","Pハンドガン","マシンガン","ライフル",
                            "応急手当","鍵開け","隠す","隠れる","聞き耳","忍び歩き","写真術","精神分析","追跡","登攀","図書館","目星",
                            "運転","機械修理","重機械操作","乗馬","水泳","制作","操縦","跳躍","電気修理","ナビゲート","変装",
                            "言いくるめ","信用","説得","値切り","母国語",
@@ -346,8 +349,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text NowToteki;
     [SerializeField] Text NowMSA;
     [SerializeField] Text NowKenzyu;
-    [SerializeField] Text NowSMG;
-    [SerializeField] Text NowSG;
+    [SerializeField] Text NowRL;
+    [SerializeField] Text NowPH;
     [SerializeField] Text NowMG;
     [SerializeField] Text NowR;
 
@@ -411,6 +414,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        StartSetting();
+    }
+
+    public void StartSetting()
+    {
+        Debug.Log("実行");
         audioSource = GetComponent<AudioSource>();
 
 
@@ -440,11 +449,11 @@ public class GameManager : MonoBehaviour
         InputWorkPKenzyu = InputWorkPKenzyu.GetComponent<InputField>();
         InputHobbyPKenzyu = InputHobbyPKenzyu.GetComponent<InputField>();
         //サブマシンガン
-        InputWorkPSMG = InputWorkPSMG.GetComponent<InputField>();
-        InputHobbyPSMG = InputHobbyPSMG.GetComponent<InputField>();
+        InputWorkPRL = InputWorkPRL.GetComponent<InputField>();
+        InputHobbyPRL = InputHobbyPRL.GetComponent<InputField>();
         //ショットガン
-        InputWorkPSG = InputWorkPSG.GetComponent<InputField>();
-        InputHobbyPSG = InputHobbyPSG.GetComponent<InputField>();
+        InputWorkPPH = InputWorkPPH.GetComponent<InputField>();
+        InputHobbyPPH = InputHobbyPPH.GetComponent<InputField>();
         //マシンガン
         InputWorkPMG = InputWorkPMG.GetComponent<InputField>();
         InputHobbyPMG = InputHobbyPMG.GetComponent<InputField>();
@@ -612,10 +621,10 @@ public class GameManager : MonoBehaviour
         InputHobbyPMSA.text = "0";
         InputWorkPKenzyu.text = "0";
         InputHobbyPKenzyu.text = "0";
-        InputWorkPSMG.text = "0";
-        InputHobbyPSMG.text = "0";
-        InputWorkPSG.text = "0";
-        InputHobbyPSG.text = "0";
+        InputWorkPRL.text = "0";
+        InputHobbyPRL.text = "0";
+        InputWorkPPH.text = "0";
+        InputHobbyPPH.text = "0";
         InputWorkPMG.text = "0";
         InputHobbyPMG.text = "0";
         InputWorkPR.text = "0";
@@ -722,8 +731,8 @@ public class GameManager : MonoBehaviour
         InputHobbyPYakugaku.text = "0";
         InputWorkPRekishi.text = "0";
         InputHobbyPRekishi.text = "0";
-
     }
+
     int Dice(int a, int b)   //Dice(ダイスの数,ダイスのプラス値)
     {
         int x = Random.Range(1, 6);
@@ -734,38 +743,47 @@ public class GameManager : MonoBehaviour
     public async void Status()
     {
         DiceButton.SetActive(false);
-        StatusManager.Instance.STR = Dice(3, 0);
-        StatusManager.Instance.CON = Dice(3, 0);
-        StatusManager.Instance.POW = Dice(3, 0);
-        StatusManager.Instance.DEX = Dice(3, 0);
-        StatusManager.Instance.APP = Dice(3, 0);
-        StatusManager.Instance.SIZ = Dice(2, 6);
-        StatusManager.Instance.INT = Dice(2, 6);
-        StatusManager.Instance.EDU = Dice(3, 3);
+        int[] Dices =
+        {
+            3,0,
+            3,0,
+            3,0,
+            3,0,
+            3,0,
+            2,6,
+            2,6,
+            3,3
+        };
+
+        for (int i = 0; i < StatusManager.Instance.BasicStatus.Length; i++)
+        {
+            StatusManager.Instance.BasicStatus[i] = Dice(Dices[i * 2], Dices[i * 2 + 1]);
+        }
+
         StatusManager.Instance.StatusPoints();
         audioSource.PlayOneShot(StatusSound);
-        STR.text = StatusManager.Instance.STR.ToString();
+        STR.text = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.STR).ToString();
         await Task.Delay(delay);
         audioSource.PlayOneShot(StatusSound);
-        CON.text = StatusManager.Instance.CON.ToString();
+        CON.text = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.CON).ToString();
         await Task.Delay(delay);
         audioSource.PlayOneShot(StatusSound);
-        POW.text = StatusManager.Instance.POW.ToString();
+        POW.text = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.POW).ToString();
         await Task.Delay(delay);
         audioSource.PlayOneShot(StatusSound);
-        DEX.text = StatusManager.Instance.DEX.ToString();
+        DEX.text = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.DEX).ToString();
         await Task.Delay(delay);
         audioSource.PlayOneShot(StatusSound);
-        APP.text = StatusManager.Instance.APP.ToString();
+        APP.text = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.APP).ToString();
         await Task.Delay(delay);
         audioSource.PlayOneShot(StatusSound);
-        SIZ.text = StatusManager.Instance.SIZ.ToString();
+        SIZ.text = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.SIZ).ToString();
         await Task.Delay(delay);
         audioSource.PlayOneShot(StatusSound);
-        INT.text = StatusManager.Instance.INT.ToString();
+        INT.text = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.INT).ToString();
         await Task.Delay(delay);
         audioSource.PlayOneShot(StatusSound);
-        EDU.text = StatusManager.Instance.EDU.ToString();
+        EDU.text = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.EDU).ToString();
         await Task.Delay(delay);
         audioSource.PlayOneShot(StatusSound);
         SAN.text = StatusManager.Instance.SAN.ToString();
@@ -835,10 +853,10 @@ public class GameManager : MonoBehaviour
         status[6] = StatusManager.Instance.MSA;
         NowKenzyu.text = StatusManager.Instance.Kenzyu.ToString();
         status[7] = StatusManager.Instance.Kenzyu;
-        NowSMG.text = StatusManager.Instance.SMG.ToString();
-        status[8] = StatusManager.Instance.SMG;
-        NowSG.text = StatusManager.Instance.SG.ToString();
-        status[9] = StatusManager.Instance.SG;
+        NowRL.text = StatusManager.Instance.rl.ToString();
+        status[8] = StatusManager.Instance.rl;
+        NowPH.text = StatusManager.Instance.PH.ToString();
+        status[9] = StatusManager.Instance.PH;
         NowMG.text = StatusManager.Instance.MG.ToString();
         status[10] = StatusManager.Instance.MG;
         NowR.text = StatusManager.Instance.R.ToString();
@@ -1604,61 +1622,61 @@ public class GameManager : MonoBehaviour
                 inputworkp[7] = kenzyu;
                 Afterstatus[7] = StatusManager.Instance.Kenzyu;
                 break;
-            case 8:     //サブマシンガン
-                if ((int.Parse(InputWorkPSMG.text) + int.Parse(InputHobbyPSMG.text) + status[8]) > limit)
+            case 8:     //ロケットランチャー
+                if ((int.Parse(InputWorkPRL.text) + int.Parse(InputHobbyPRL.text) + status[8]) > limit)
                 {
-                    InputWorkPSMG.text = (limit - status[8] - int.Parse(InputHobbyPSMG.text)).ToString();
+                    InputWorkPRL.text = (limit - status[8] - int.Parse(InputHobbyPRL.text)).ToString();
                 }
-                else if (int.Parse(InputWorkPSMG.text) < 0)
+                else if (int.Parse(InputWorkPRL.text) < 0)
                 {
-                    InputWorkPSMG.text = "0";
+                    InputWorkPRL.text = "0";
                 }
-                smg = int.Parse(InputWorkPSMG.text);
-                if (StatusManager.Instance.WorkP < smg)
+                rl = int.Parse(InputWorkPRL.text);
+                if (StatusManager.Instance.WorkP < rl)
                 {
-                    smg = StatusManager.Instance.WorkP;
+                    rl = StatusManager.Instance.WorkP;
                     StatusManager.Instance.WorkP = 0;
-                    StatusManager.Instance.SMG += smg;
-                    InputWorkPSMG.text = smg.ToString();
+                    StatusManager.Instance.rl += rl;
+                    InputWorkPRL.text = rl.ToString();
                 }
                 else
                 {
-                    StatusManager.Instance.WorkP -= smg;
-                    StatusManager.Instance.SMG -= inputworkp[8];
-                    StatusManager.Instance.SMG += smg;
+                    StatusManager.Instance.WorkP -= rl;
+                    StatusManager.Instance.rl -= inputworkp[8];
+                    StatusManager.Instance.rl += rl;
                     StatusManager.Instance.WorkP += inputworkp[8];
                 }
-                NowSMG.text = StatusManager.Instance.SMG.ToString();
-                inputworkp[8] = smg;
-                Afterstatus[8] = StatusManager.Instance.SMG;
+                NowRL.text = StatusManager.Instance.rl.ToString();
+                inputworkp[8] = rl;
+                Afterstatus[8] = StatusManager.Instance.rl;
                 break;
-            case 9:     //ショットガン
-                if ((int.Parse(InputWorkPSG.text) + int.Parse(InputHobbyPSG.text) + status[9]) > limit)
+            case 9:     //Pハンドガン
+                if ((int.Parse(InputWorkPPH.text) + int.Parse(InputHobbyPPH.text) + status[9]) > limit)
                 {
-                    InputWorkPSG.text = (limit - status[9] - int.Parse(InputHobbyPSG.text)).ToString();
+                    InputWorkPPH.text = (limit - status[9] - int.Parse(InputHobbyPPH.text)).ToString();
                 }
-                else if (int.Parse(InputWorkPSG.text) < 0)
+                else if (int.Parse(InputWorkPPH.text) < 0)
                 {
-                    InputWorkPSG.text = "0";
+                    InputWorkPPH.text = "0";
                 }
-                sg = int.Parse(InputWorkPSG.text);
-                if (StatusManager.Instance.WorkP < sg)
+                ph = int.Parse(InputWorkPPH.text);
+                if (StatusManager.Instance.WorkP < ph)
                 {
-                    sg = StatusManager.Instance.WorkP;
+                    ph = StatusManager.Instance.WorkP;
                     StatusManager.Instance.WorkP = 0;
-                    StatusManager.Instance.SG += sg;
-                    InputWorkPSG.text = sg.ToString();
+                    StatusManager.Instance.PH += ph;
+                    InputWorkPPH.text = ph.ToString();
                 }
                 else
                 {
-                    StatusManager.Instance.WorkP -= sg;
-                    StatusManager.Instance.SG -= inputworkp[9];
-                    StatusManager.Instance.SG += sg;
+                    StatusManager.Instance.WorkP -= ph;
+                    StatusManager.Instance.PH -= inputworkp[9];
+                    StatusManager.Instance.PH += ph;
                     StatusManager.Instance.WorkP += inputworkp[9];
                 }
-                NowSG.text = StatusManager.Instance.SG.ToString();
-                inputworkp[9] = sg;
-                Afterstatus[9] = StatusManager.Instance.SG;
+                NowPH.text = StatusManager.Instance.PH.ToString();
+                inputworkp[9] = ph;
+                Afterstatus[9] = StatusManager.Instance.PH;
                 break;
             case 10:        //マシンガン
                 if ((int.Parse(InputWorkPMG.text) + int.Parse(InputHobbyPMG.text) + status[10]) > limit)
@@ -3273,60 +3291,60 @@ public class GameManager : MonoBehaviour
                 Afterstatus[7] = StatusManager.Instance.Kenzyu;
                 break;
             case 8:     //サブマシンガン
-                if ((int.Parse(InputWorkPSMG.text) + int.Parse(InputHobbyPSMG.text) + status[8]) > limit)
+                if ((int.Parse(InputWorkPRL.text) + int.Parse(InputHobbyPRL.text) + status[8]) > limit)
                 {
-                    InputHobbyPSMG.text = (limit - status[8] - int.Parse(InputWorkPSMG.text)).ToString();
+                    InputHobbyPRL.text = (limit - status[8] - int.Parse(InputWorkPRL.text)).ToString();
                 }
-                else if (int.Parse(InputHobbyPSMG.text) < 0)
+                else if (int.Parse(InputHobbyPRL.text) < 0)
                 {
-                    InputHobbyPSMG.text = "0";
+                    InputHobbyPRL.text = "0";
                 }
-                smg = int.Parse(InputHobbyPSMG.text);
-                if (StatusManager.Instance.HobbyP < smg)
+                rl = int.Parse(InputHobbyPRL.text);
+                if (StatusManager.Instance.HobbyP < rl)
                 {
-                    smg = StatusManager.Instance.HobbyP;
+                    rl = StatusManager.Instance.HobbyP;
                     StatusManager.Instance.HobbyP = 0;
-                    StatusManager.Instance.SMG += smg;
-                    InputHobbyPSMG.text = smg.ToString();
+                    StatusManager.Instance.rl += rl;
+                    InputHobbyPRL.text = rl.ToString();
                 }
                 else
                 {
-                    StatusManager.Instance.HobbyP -= smg;
-                    StatusManager.Instance.SMG -= inputhobbyp[8];
-                    StatusManager.Instance.SMG += smg;
+                    StatusManager.Instance.HobbyP -= rl;
+                    StatusManager.Instance.rl -= inputhobbyp[8];
+                    StatusManager.Instance.rl += rl;
                     StatusManager.Instance.HobbyP += inputhobbyp[8];
                 }
-                NowSMG.text = StatusManager.Instance.SMG.ToString();
-                inputhobbyp[8] = smg;
-                Afterstatus[8] = StatusManager.Instance.SMG;
+                NowRL.text = StatusManager.Instance.rl.ToString();
+                inputhobbyp[8] = rl;
+                Afterstatus[8] = StatusManager.Instance.rl;
                 break;
             case 9:     //ショットガン
-                if ((int.Parse(InputWorkPSG.text) + int.Parse(InputHobbyPSG.text) + status[9]) > limit)
+                if ((int.Parse(InputWorkPPH.text) + int.Parse(InputHobbyPPH.text) + status[9]) > limit)
                 {
-                    InputHobbyPSG.text = (limit - status[9] - int.Parse(InputWorkPSG.text)).ToString();
+                    InputHobbyPPH.text = (limit - status[9] - int.Parse(InputWorkPPH.text)).ToString();
                 }
-                else if (int.Parse(InputHobbyPSG.text) < 0)
+                else if (int.Parse(InputHobbyPPH.text) < 0)
                 {
-                    InputHobbyPSG.text = "0";
+                    InputHobbyPPH.text = "0";
                 }
-                sg = int.Parse(InputHobbyPSG.text);
-                if (StatusManager.Instance.HobbyP < sg)
+                ph = int.Parse(InputHobbyPPH.text);
+                if (StatusManager.Instance.HobbyP < ph)
                 {
-                    sg = StatusManager.Instance.HobbyP;
+                    ph = StatusManager.Instance.HobbyP;
                     StatusManager.Instance.HobbyP = 0;
-                    StatusManager.Instance.SG += sg;
-                    InputHobbyPSG.text = sg.ToString();
+                    StatusManager.Instance.PH += ph;
+                    InputHobbyPPH.text = ph.ToString();
                 }
                 else
                 {
-                    StatusManager.Instance.HobbyP -= sg;
-                    StatusManager.Instance.SG -= inputhobbyp[9];
-                    StatusManager.Instance.SG += sg;
+                    StatusManager.Instance.HobbyP -= ph;
+                    StatusManager.Instance.PH -= inputhobbyp[9];
+                    StatusManager.Instance.PH += ph;
                     StatusManager.Instance.HobbyP += inputhobbyp[9];
                 }
-                NowSG.text = StatusManager.Instance.SG.ToString();
-                inputhobbyp[9] = sg;
-                Afterstatus[9] = StatusManager.Instance.SG;
+                NowPH.text = StatusManager.Instance.PH.ToString();
+                inputhobbyp[9] = ph;
+                Afterstatus[9] = StatusManager.Instance.PH;
                 break;
             case 10:        //マシンガン
                 if ((int.Parse(InputWorkPMG.text) + int.Parse(InputHobbyPMG.text) + status[10]) > limit)
@@ -4813,26 +4831,26 @@ public class GameManager : MonoBehaviour
                 else { return; }
                 break;
             case 8:     //サブマシンガン
-                if ((StatusManager.Instance.SMG < limit) && (StatusManager.Instance.WorkP != 0))
+                if ((StatusManager.Instance.rl < limit) && (StatusManager.Instance.WorkP != 0))
                 {
-                    StatusManager.Instance.SMG += 1;
+                    StatusManager.Instance.rl += 1;
                     StatusManager.Instance.WorkP -= 1;
                     inputworkp[8] += 1;
-                    InputWorkPSMG.text = inputworkp[8].ToString();
-                    NowSMG.text = StatusManager.Instance.SMG.ToString();
-                    Afterstatus[8] = StatusManager.Instance.SMG;
+                    InputWorkPRL.text = inputworkp[8].ToString();
+                    NowRL.text = StatusManager.Instance.rl.ToString();
+                    Afterstatus[8] = StatusManager.Instance.rl;
                 }
                 else { return; }
                 break;
             case 9:     //ショットガン
-                if ((StatusManager.Instance.SG < limit) && (StatusManager.Instance.WorkP != 0))
+                if ((StatusManager.Instance.PH < limit) && (StatusManager.Instance.WorkP != 0))
                 {
-                    StatusManager.Instance.SG += 1;
+                    StatusManager.Instance.PH += 1;
                     StatusManager.Instance.WorkP -= 1;
                     inputworkp[9] += 1;
-                    InputWorkPSG.text = inputworkp[9].ToString();
-                    NowSG.text = StatusManager.Instance.SG.ToString();
-                    Afterstatus[9] = StatusManager.Instance.SG;
+                    InputWorkPPH.text = inputworkp[9].ToString();
+                    NowPH.text = StatusManager.Instance.PH.ToString();
+                    Afterstatus[9] = StatusManager.Instance.PH;
                 }
                 else { return; }
                 break;
@@ -5537,26 +5555,26 @@ public class GameManager : MonoBehaviour
                 else { return; }
                 break;
             case 8:     //サブマシンガン
-                if (int.Parse(InputWorkPSMG.text) > 0)
+                if (int.Parse(InputWorkPRL.text) > 0)
                 {
-                    StatusManager.Instance.SMG -= 1;
+                    StatusManager.Instance.rl -= 1;
                     StatusManager.Instance.WorkP += 1;
                     inputworkp[8] -= 1;
-                    InputWorkPSMG.text = inputworkp[8].ToString();
-                    NowSMG.text = StatusManager.Instance.SMG.ToString();
-                    Afterstatus[8] = StatusManager.Instance.SMG;
+                    InputWorkPRL.text = inputworkp[8].ToString();
+                    NowRL.text = StatusManager.Instance.rl.ToString();
+                    Afterstatus[8] = StatusManager.Instance.rl;
                 }
                 else { return; }
                 break;
             case 9:     //ショットガン
-                if (int.Parse(InputWorkPSG.text) > 0)
+                if (int.Parse(InputWorkPPH.text) > 0)
                 {
-                    StatusManager.Instance.SG -= 1;
+                    StatusManager.Instance.PH -= 1;
                     StatusManager.Instance.WorkP += 1;
                     inputworkp[9] -= 1;
-                    InputWorkPSG.text = inputworkp[9].ToString();
-                    NowSG.text = StatusManager.Instance.SG.ToString();
-                    Afterstatus[9] = StatusManager.Instance.SG;
+                    InputWorkPPH.text = inputworkp[9].ToString();
+                    NowPH.text = StatusManager.Instance.PH.ToString();
+                    Afterstatus[9] = StatusManager.Instance.PH;
                 }
                 else { return; }
                 break;
@@ -6262,26 +6280,26 @@ public class GameManager : MonoBehaviour
                 else { return; }
                 break;
             case 8:     //サブマシンガン
-                if ((StatusManager.Instance.SMG < limit) && (StatusManager.Instance.HobbyP != 0))
+                if ((StatusManager.Instance.rl < limit) && (StatusManager.Instance.HobbyP != 0))
                 {
-                    StatusManager.Instance.SMG += 1;
+                    StatusManager.Instance.rl += 1;
                     StatusManager.Instance.HobbyP -= 1;
                     inputhobbyp[8] += 1;
-                    InputHobbyPSMG.text = inputhobbyp[8].ToString();
-                    NowSMG.text = StatusManager.Instance.SMG.ToString();
-                    Afterstatus[8] = StatusManager.Instance.SMG;
+                    InputHobbyPRL.text = inputhobbyp[8].ToString();
+                    NowRL.text = StatusManager.Instance.rl.ToString();
+                    Afterstatus[8] = StatusManager.Instance.rl;
                 }
                 else { return; }
                 break;
             case 9:     //ショットガン
-                if ((StatusManager.Instance.SG < limit) && (StatusManager.Instance.HobbyP != 0))
+                if ((StatusManager.Instance.PH < limit) && (StatusManager.Instance.HobbyP != 0))
                 {
-                    StatusManager.Instance.SG += 1;
+                    StatusManager.Instance.PH += 1;
                     StatusManager.Instance.HobbyP -= 1;
                     inputhobbyp[9] += 1;
-                    InputHobbyPSG.text = inputhobbyp[9].ToString();
-                    NowSG.text = StatusManager.Instance.SG.ToString();
-                    Afterstatus[9] = StatusManager.Instance.SG;
+                    InputHobbyPPH.text = inputhobbyp[9].ToString();
+                    NowPH.text = StatusManager.Instance.PH.ToString();
+                    Afterstatus[9] = StatusManager.Instance.PH;
                 }
                 else { return; }
                 break;
@@ -6985,26 +7003,26 @@ public class GameManager : MonoBehaviour
                 else { return; }
                 break;
             case 8:     //サブマシンガン
-                if (int.Parse(InputHobbyPSMG.text) > 0)
+                if (int.Parse(InputHobbyPRL.text) > 0)
                 {
-                    StatusManager.Instance.SMG -= 1;
+                    StatusManager.Instance.rl -= 1;
                     StatusManager.Instance.HobbyP += 1;
                     inputhobbyp[8] -= 1;
-                    InputHobbyPSMG.text = inputhobbyp[8].ToString();
-                    NowSMG.text = StatusManager.Instance.SMG.ToString();
-                    Afterstatus[8] = StatusManager.Instance.SMG;
+                    InputHobbyPRL.text = inputhobbyp[8].ToString();
+                    NowRL.text = StatusManager.Instance.rl.ToString();
+                    Afterstatus[8] = StatusManager.Instance.rl;
                 }
                 else { return; }
                 break;
             case 9:     //ショットガン
-                if (int.Parse(InputHobbyPSG.text) > 0)
+                if (int.Parse(InputHobbyPPH.text) > 0)
                 {
-                    StatusManager.Instance.SG -= 1;
+                    StatusManager.Instance.PH -= 1;
                     StatusManager.Instance.HobbyP += 1;
                     inputhobbyp[9] -= 1;
-                    InputHobbyPSG.text = inputhobbyp[9].ToString();
-                    NowSG.text = StatusManager.Instance.SG.ToString();
-                    Afterstatus[9] = StatusManager.Instance.SG;
+                    InputHobbyPPH.text = inputhobbyp[9].ToString();
+                    NowPH.text = StatusManager.Instance.PH.ToString();
+                    Afterstatus[9] = StatusManager.Instance.PH;
                 }
                 else { return; }
                 break;
@@ -7724,7 +7742,7 @@ public class GameManager : MonoBehaviour
     }
 
     //シーン移行
-    public void NextScenechecker(int ButtonNo)
+    public async void NextScenechecker(int ButtonNo)
     {
         switch (ButtonNo)
         {
@@ -7744,7 +7762,9 @@ public class GameManager : MonoBehaviour
                 break;
             case 1:
                 TakeSkill();
-                FadeManager.Instance.LoadScene("test", 1.0f);
+                await Stage.PlayStage();
+                Stage.StageSettingActive(true);
+                FadeManager.Instance.LoadScene("Playground", 1.0f);
                 break;
             case 2:
                 DecisionPanel.SetActive(false);
@@ -7760,7 +7780,12 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 58; i++)
         {
-            StatusManager.Instance.SkillParameter.Add(SkillNames[i], status[i] + Afterstatus[i]);
+            if (Afterstatus[i] == 0)
+            {
+                StatusManager.Instance.SkillParameter[SkillNames[i]] = status[i];
+                continue;
+            }
+            StatusManager.Instance.SkillParameter[SkillNames[i]] = Afterstatus[i];
         }
     }
 }

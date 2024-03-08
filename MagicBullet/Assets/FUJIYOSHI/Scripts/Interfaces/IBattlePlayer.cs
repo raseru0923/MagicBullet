@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 public interface IBattlePlayer
 {
@@ -16,7 +19,7 @@ public interface IBattlePlayer
     public int GetAttackPoint();
 
     // ダメージを受ける
-    public void Damage(int damage);
+    public void Damage(int damage, Action<bool> isEnd);
 
     // 行動
     public void Action(Action<bool> isEnd);

@@ -21,7 +21,9 @@ public class Item : MonoBehaviour
         print("E‚í‚ê‚½I");
         this.tag = "Untagged";
 
-        var myItem = await GameMaster.Instance.AssessmentDiceRoll(ItemManager.ItemData[ItemIndex]);
+        ObjectItem item = ItemManager.ItemData[ItemIndex];
+
+        var myItem = await GameMaster.Instance.AssessmentDiceRoll(item, item.SkillSprite.name);
 
         // —‰ð“x‚ª’á‚¢‚Æ‚«ŠÓ’è‚Ìƒ`ƒƒƒ“ƒX‚ª—^‚¦‚ç‚ê‚é
         if ((int)myItem.Comprehension >= 2)

@@ -47,6 +47,12 @@ public class ItemNode : MonoBehaviour, IConfirm
             return;
         }
 
+        if (myItem.FlavorText.Length != 0)
+        {
+            gameMaster.Moderate(myItem.FlavorText);
+            return;
+        }
+
         if ((int)myItem.Comprehension < 2)
         {
             gameMaster.Moderate(myItem.Name + "‚¾B");

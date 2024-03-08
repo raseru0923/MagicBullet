@@ -14,6 +14,20 @@ public class TRPGParameter
         public int Value;
     }
 
+    public string DiceText
+    {
+        get
+        {
+            string diceText = null;
+            foreach (var item in DiceParameters)
+            {
+                diceText += item.Count + " d " + item.Value + " + ";
+            }
+            diceText += AddValue;
+            return diceText;
+        }
+    }
+
     [Header("ダイス▼")]
     public DiceParameter[] DiceParameters;
     [Header("加算値▼")]

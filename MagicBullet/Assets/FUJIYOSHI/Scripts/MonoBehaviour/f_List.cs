@@ -65,5 +65,16 @@ public class f_List : MonoBehaviour
     public void SetTitle(string name)
     {
         TitleText.text = name;
+        if (name == "攻撃")
+        {
+            StatusManager.Instance.SetMode(12);
+            return;
+        }
+        if (name == "ステータス")
+        {
+            StatusManager.Instance.SetMode(0);
+            return;
+        }
+        StatusManager.Instance.SetMode(58);
     }
 }

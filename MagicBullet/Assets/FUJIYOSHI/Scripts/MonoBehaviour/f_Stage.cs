@@ -14,7 +14,7 @@ public class f_Stage : MonoBehaviour
     // 会話表示
     [SerializeField] f_Label TalkLabel;
 
-    [SerializeField] f_StageData TestStageData;
+    public f_StageData StageData;
 
     // BGMを流すところ
     [SerializeField] AudioSource audioSource;
@@ -24,11 +24,21 @@ public class f_Stage : MonoBehaviour
 
     private bool isShowStage;
 
+    [SerializeField] private bool PlayOnAwake = true;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            ShowStage(TestStageData);
+            ShowStage(StageData);
+        }
+    }
+
+    private void Start()
+    {
+        if (PlayOnAwake)
+        {
+            ShowStage(StageData);
         }
     }
 
@@ -42,9 +52,23 @@ public class f_Stage : MonoBehaviour
         }
         StartCoroutine(PlayStage(stageData));
     }
+    public void ShowStage()
+    {
+        // コルーチンが動作中
+        if (isShowStage)
+        {
+            return;
+        }
+        StartCoroutine(PlayStage(StageData));
+    }
+
+    public void StageSettingActive(bool isActive)
+    {
+        StageSetting.SetActive(isActive);
+    }
 
     // 舞台を再生
-    IEnumerator PlayStage(f_StageData stageData)
+    public IEnumerator PlayStage(f_StageData stageData)
     {
         isShowStage = true;
         Debug.Log("舞台が再生されます。");
@@ -57,6 +81,27 @@ public class f_Stage : MonoBehaviour
 
         // シーンを再生
         yield return PlayScene(stageData);
+
+        // BGMを元に戻す
+        SetBGM(audioClip);
+
+        StageSetting.SetActive(false);
+        Debug.Log("舞台の装置を非アクティブにしました。");
+        isShowStage = false;
+    }
+    public IEnumerator PlayStage()
+    {
+        isShowStage = true;
+        Debug.Log("舞台が再生されます。");
+
+        StageSetting.SetActive(true);
+        Debug.Log("舞台の装置をアクティブにしました。");
+
+        // かかっていたBGM
+        AudioClip audioClip = audioSource.clip;
+
+        // シーンを再生
+        yield return PlayScene(StageData);
 
         // BGMを元に戻す
         SetBGM(audioClip);
@@ -109,7 +154,7 @@ public class f_Stage : MonoBehaviour
     }
 
     // シーンを表示
-    private void PrintScene(Scene scene)
+    private void PrintScene(f_Scene scene)
     {
         // BGMがセットされたいたらBGMを変更
         if (scene.BGM != null)

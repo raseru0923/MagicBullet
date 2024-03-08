@@ -5,14 +5,31 @@ using UnityEngine;
 public class StatusManager : MonoBehaviour, IContentNames
 {
     //基本ステータス
-    public int STR;  //筋力
-    public int CON;  //体力
-    public int POW;  //精神力
-    public int DEX;  //敏捷性
-    public int APP;  //外見
-    public int SIZ;  //体格
-    public int INT;  //知性
-    public int EDU;  //教育
+    public enum BasicStatusType
+    {
+        STR = 0,
+        CON,
+        POW,
+        DEX,
+        APP,
+        SIZ,
+        INT,
+        EDU,
+        NUM
+    }
+
+
+    [HideInInspector] public int[] BasicStatus = new int[(int)BasicStatusType.NUM]
+    {
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+    };
 
     public int SAN;         //正気度
     public int Luck;        //幸運
@@ -34,8 +51,8 @@ public class StatusManager : MonoBehaviour, IContentNames
     public int Toteki = 25;
     public int MSA = 1;         //マーシャルアーツ
     public int Kenzyu = 20;
-    public int SMG = 15;         //サブマシンガン
-    public int SG = 30;          //ショットガン
+    public int rl = 15;         //サブマシンガン
+    public int PH = 30;          //ショットガン
     public int MG = 15;          //マシンガン
     public int R = 25;            //ライフル
 
@@ -110,7 +127,7 @@ public class StatusManager : MonoBehaviour, IContentNames
     public static StatusManager Instance;
 
     // 技能の名前
-    string[] SkillNames = { "回避","キック","組みつき","拳","頭突き","投てき","マーシャルアーツ","拳銃","サブマシンガン","ショットガン","マシンガン","ライフル",
+    string[] SkillNames = { "回避","キック","組みつき","拳","頭突き","投てき","マーシャルアーツ","拳銃","ロケットランチャー","Pハンドガン","マシンガン","ライフル",
                            "応急手当","鍵開け","隠す","隠れる","聞き耳","忍び歩き","写真術","精神分析","追跡","登攀","図書館","目星",
                            "運転","機械修理","重機械操作","乗馬","水泳","制作","操縦","跳躍","電気修理","ナビゲート","変装",
                            "言いくるめ","信用","説得","値切り","母国語",
@@ -119,6 +136,7 @@ public class StatusManager : MonoBehaviour, IContentNames
     // 閲覧モード
     public enum ShowMode
     {
+        STATUS = 0,
         ATTACK = 12,
         SKILL = 58
     }
@@ -133,27 +151,52 @@ public class StatusManager : MonoBehaviour, IContentNames
             DontDestroyOnLoad(this);
             Instance = this;
 
-            foreach (var item in SkillNames)
+            if (SkillParameter.Count == 0)
             {
-                SkillParameter.Add(item, 1);
+                foreach (var item in SkillNames)
+                {
+                    SkillParameter.Add(item, 1);
+                }
             }
 
             return;
         }
-        Destroy(this);
+
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Status")
+        {
+            Destroy(Instance.gameObject);
+            DontDestroyOnLoad(this);
+            Instance = this;
+
+            if (SkillParameter.Count == 0)
+            {
+                foreach (var item in SkillNames)
+                {
+                    SkillParameter.Add(item, 1);
+                }
+            }
+            return;
+        }
+
+        Destroy(this.gameObject);
     }
     public void StatusPoints()
     {
-        SAN = POW * 5;
-        Luck = POW * 5;
-        Idea = INT * 5;
-        Memory = EDU * 5;
-        Durability = (CON + SIZ) / 2;
-        MgcP = POW;
-        WorkP = EDU * 20;
-        HobbyP = INT * 10;
-        DamagePCheck = STR + SIZ;
-        Kaihi = DEX * 2;
+        SAN = BasicStatusTypeValue(BasicStatusType.POW) * 5;
+        Luck = BasicStatusTypeValue(BasicStatusType.POW) * 5;
+        Idea = BasicStatusTypeValue(BasicStatusType.INT) * 5;
+        Memory = BasicStatusTypeValue(BasicStatusType.EDU) * 5;
+        Durability = (BasicStatusTypeValue(BasicStatusType.CON) + BasicStatusTypeValue(BasicStatusType.SIZ)) / 2;
+        MgcP = BasicStatusTypeValue(BasicStatusType.POW);
+        WorkP = BasicStatusTypeValue(BasicStatusType.EDU) * 20;
+        HobbyP = BasicStatusTypeValue(BasicStatusType.INT) * 10;
+        DamagePCheck = BasicStatusTypeValue(BasicStatusType.STR) + BasicStatusTypeValue(BasicStatusType.SIZ);
+        Kaihi = BasicStatusTypeValue(BasicStatusType.DEX) * 2;
+    }
+
+    public int BasicStatusTypeValue(BasicStatusType basicStatusType)
+    {
+        return BasicStatus[(int)basicStatusType];
     }
 
     public List<string> GetNames()
@@ -163,11 +206,14 @@ public class StatusManager : MonoBehaviour, IContentNames
 
         switch (ChoiceMode)
         {
+            case ShowMode.STATUS:
+                ShowNames(names, 0, (int)ChoiceMode);
+                break;
             case ShowMode.ATTACK:
-                ShowNames(names, 1, (int)ShowMode.ATTACK);
+                ShowNames(names, 1, (int)ChoiceMode);
                 break;
             case ShowMode.SKILL:
-                ShowNames(names, (int)ShowMode.ATTACK, (int)ShowMode.SKILL);
+                ShowNames(names, (int)ShowMode.ATTACK, (int)ChoiceMode);
                 break;
             default:
                 break;
@@ -179,6 +225,21 @@ public class StatusManager : MonoBehaviour, IContentNames
     private void ShowNames(List<string> names, int InitializeValue, int endValue)
     {
         int i = 0;
+        if (endValue == 0)
+        {
+            for (int j = 0; j < BasicStatus.Length; j++)
+            {
+                names.Add((BasicStatusType)j + " = " + BasicStatus[j].ToString());
+            }
+
+            foreach (var item in SkillParameter)
+            {
+                names.Add(item.Key + " = " + item.Value);
+            }
+
+            return;
+        }
+
         foreach (var item in SkillParameter)
         {
             if (i >= endValue)
@@ -199,5 +260,18 @@ public class StatusManager : MonoBehaviour, IContentNames
     public void SetMode(int mode)
     {
         ChoiceMode = (ShowMode)mode;
+        StartCoroutine(SetList());
+    }
+
+
+    IEnumerator SetList()
+    {
+        while (GameObject.Find("List") == null)
+        {
+            yield return null;
+        }
+
+        GameObject.Find("List").GetComponent<f_List>().CreateList(this.gameObject);
+        Debug.Log("Set");
     }
 }

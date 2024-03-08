@@ -14,10 +14,17 @@ public class Node : MonoBehaviour
 
     public void Action()
     {
-        Debug.Log("選択しました！");
-        if (GameMaster.Instance.currentBattlePlayer != null)
+        foreach (var item in StatusManager.Instance.SkillParameter.Keys)
         {
-            GameMaster.Instance.currentBattlePlayer.ActionEnter(Label.text);
+            if (item == Label.text)
+            {
+                Debug.Log("選択しました！");
+                if (GameMaster.Instance.currentBattlePlayer != null)
+                {
+                    GameMaster.Instance.currentBattlePlayer.ActionEnter(Label.text);
+                    return;
+                }
+            }
         }
     }
 }

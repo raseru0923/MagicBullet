@@ -13,33 +13,43 @@ MonoBehaviour:
   m_Name: BattleTalkData
   m_EditorClassIdentifier: 
   Scenes:
-  - word: "\u3053\u3093\u306B\u3061\u306F\u3002\n\u79C1\u306F\u30CA\u30D3\u30B2\u30FC\u30B7\u30E7\u30F3\u30B7\u30B9\u30C6\u30E0\u306E\u30CA\u30D3\u5B50\u3067\u3059\u3002"
+  - word: "\u8A31\u3055\u306C...\u8A31\u3055\u306C..."
+    BGM: {fileID: 8300000, guid: 2a1d45b22445bb74189df8a1ead37f5d, type: 3}
+    IsReset: 0
     characterOperations:
     - Target: 0
       Type: 1
       IsBlackOut: 0
       JointImage: {fileID: 0}
-      JointSprite: {fileID: 21300000, guid: eff834c317acf1f418729f572cba27ef, type: 3}
-    - Target: 1
-      Type: 1
-      IsBlackOut: 0
+      JointSprite: {fileID: 21300000, guid: 25d150a334c2d264f8d7746937c1ca1f, type: 3}
+    - Target: 0
+      Type: 2
+      IsBlackOut: 1
       JointImage: {fileID: 0}
-      JointSprite: {fileID: 21300000, guid: 2d7fb497482b4c0428ef650e6c256ad0, type: 3}
-  - word: "\u3053\u3053\u306F\u30D0\u30C8\u30EB\u30B7\u30FC\u30F3\u3067\u3059\u3002\n\u30B9\u30E9\u30A4\u30E0\u3092\u5012\u3057\u307E\u3057\u3087\u3046\u3002"
+      JointSprite: {fileID: 0}
+  - word: "\u5FC5\u305A\u3042\u306E\u7537\u306B\u5FA9\u8B90\u3059\u308B\u306E\u3060..."
+    BGM: {fileID: 0}
+    IsReset: 0
     characterOperations: []
-  - word: "\u65E9\u901F\u3067\u3059\u304C\u2026\u2026(\u9003"
+  - word: "\u3042\u3068\u5C11\u3057..."
+    BGM: {fileID: 0}
+    IsReset: 0
     characterOperations:
     - Target: 0
       Type: 2
       IsBlackOut: 1
       JointImage: {fileID: 0}
       JointSprite: {fileID: 0}
-  - word: "\u6226\u95D8\u2015"
+  - word: "\u3042\u3068\u5C11\u3057\u9B42\u304C\u96C6\u307E\u308C\u3070..."
+    BGM: {fileID: 0}
+    IsReset: 0
+    characterOperations: []
+  - word: "\u79C1\u306F\u8607\u308B...(\uFF81\uFF97\uFF6F)"
+    BGM: {fileID: 0}
+    IsReset: 0
     characterOperations:
     - Target: 0
-      Type: 0
+      Type: 2
       IsBlackOut: 0
       JointImage: {fileID: 0}
       JointSprite: {fileID: 0}
-  - word: "\u958B\u59CB\uFF01"
-    characterOperations: []

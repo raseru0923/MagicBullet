@@ -14,6 +14,15 @@ public class GameMaster : f_Dealer
     public IBattlePlayer currentBattlePlayer;
     public IEnemy currentEnemy;
 
+    private int clearGimmickCount = 0;
+
+    /*[HideInInspector]*/
+    public bool canFinalBattle = false;
+    public bool isFinalBattle = false;
+
+    public GameObject AttackUI;
+
+    private bool canModerator = true;
     private void Awake()
     {
         if (Instance == null)
@@ -28,7 +37,55 @@ public class GameMaster : f_Dealer
     // 司会進行
     public void Moderate(string printText)
     {
-        informationLabel.PlayLabel(printText);
+        if (canModerator)
+        {
+            canModerator = false;
+            StartCoroutine(Moderator(printText));
+        }
+    }
+
+    // 司会進行
+    public void Moderate(string[] printTexts)
+    {
+        if (canModerator)
+        {
+            canModerator = false;
+            StartCoroutine(Moderator(printTexts));
+        }
+    }
+
+    private IEnumerator Moderator(string printText)
+    {
+        yield return null;
+        informationLabel.OnLabel(printText);
+        while (!Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
+        informationLabel.OffLabel();
+        canModerator = true;
+    }
+
+    private IEnumerator Moderator(string[] printTexts)
+    {
+        foreach (var item in printTexts)
+        {
+            canModerator = false;
+            yield return Moderator(item);
+        }
+        canModerator = true;
+    }
+
+    public async UniTask TalkTask(List<string> talkTexts)
+    {
+        foreach (var item in talkTexts)
+        {
+            // 台詞を流す
+            await informationLabel.PlayLabelTask(item);
+
+            // 1フレーム待機
+            await UniTask.Yield(PlayerLoopTiming.Update);
+        }
     }
 
     // SAN値の判定
@@ -86,8 +143,32 @@ public class GameMaster : f_Dealer
         int level = (int)result;
         targetItem.Comprehension = (COMPREHENSION)level;
         //理解度からテキストを表示
+        informationLabel.PlayLabel(result.ToString());
 
-        informationLabel.PlayLabel(targetItem.AssesmentItem());
+        foreach (var item in targetItem.AssesmentItem())
+        {
+            informationLabel.PlayLabel(item);
+        }
+
+        return targetItem;
+    }
+    public async UniTask<ObjectItem> AssessmentDiceRoll(ObjectItem targetItem, string useSkillName)
+    {
+        await informationLabel.PlayLabelTask(useSkillName);
+
+        var result = await HundredDiceRoll(StatusManager.Instance.SkillParameter[useSkillName]);
+
+        //ダイスロールの結果から理解度を変更
+        int level = (int)result;
+        targetItem.Comprehension = (COMPREHENSION)level;
+        //理解度からテキストを表示
+
+        informationLabel.PlayLabel(result.ToString());
+
+        foreach (var item in targetItem.AssesmentItem())
+        {
+            informationLabel.PlayLabel(item);
+        }
 
         return targetItem;
     }
@@ -99,9 +180,17 @@ public class GameMaster : f_Dealer
         currentBattlePlayer = battlePlayer;
         currentEnemy = enemy;
 
+        if (AttackUI == null)
+        {
+            AttackUI = GameObject.Find("GunAttack");
+            Debug.Log(AttackUI);
+        }
+        var isEnd = false;
+
         // 両者生存で続行
         while (IsCharacterActive(battlePlayer, enemy))
         {
+            AttackUI.SetActive(false);
             // プレイヤーが行動を選択します。
             battlePlayer.SetBattleCommandActive(true);
 
@@ -112,7 +201,7 @@ public class GameMaster : f_Dealer
 
             battlePlayer.SetBattleCommandActive(false);
 
-            var isEnd = false;
+            isEnd = false;
 
             // プレイヤーが行動を行います。
             battlePlayer.Action(x => isEnd = x);
@@ -122,11 +211,21 @@ public class GameMaster : f_Dealer
                 await UniTask.WaitForFixedUpdate();
             }
 
+            isEnd = false;
+
             // 敵がダメージを受けます。
-            enemy.EnemyDamage(battlePlayer.GetUsedSkillName(), battlePlayer.GetAttackPoint());
+            enemy.EnemyDamage(battlePlayer.GetUsedSkillName(), battlePlayer.GetAttackPoint(), x => isEnd = x);
+
+            while (!isEnd)
+            {
+                await UniTask.WaitForFixedUpdate();
+            }
+
+            await UniTask.Yield(PlayerLoopTiming.Update);
 
             // 敵が攻撃を行います。
             await informationLabel.PlayLabelTask("敵の攻撃！");
+            AttackUI.SetActive(false);
 
             var attackParameter = enemy.GetAttackValue();
 
@@ -159,7 +258,7 @@ public class GameMaster : f_Dealer
                 int item = result[i];
                 damageText += item;
                 sumdamage += item;
-                if(i != result.Count - 1) { damageText += " + "; }
+                if (i != result.Count - 1) { damageText += " + "; }
             }
 
             damageText += " = " + sumdamage;
@@ -170,7 +269,20 @@ public class GameMaster : f_Dealer
             await UniTask.WaitForFixedUpdate();
 
             // プレイヤーがダメージを受けます。
-            battlePlayer.Damage(sumdamage);
+            isEnd = false;
+
+            // プレイヤーが行動を行います。
+            battlePlayer.Damage(sumdamage, x => isEnd = x);
+
+            while (!isEnd)
+            {
+                await UniTask.WaitForFixedUpdate();
+            }
+
+            while (!Input.GetMouseButtonDown(0))
+            {
+                await UniTask.Yield(PlayerLoopTiming.Update);
+            }
         }
 
         // 戦闘終了のため、戦闘中の敵・味方を削除
@@ -181,10 +293,18 @@ public class GameMaster : f_Dealer
         if (!battlePlayer.IsDie())
         {
             battlePlayer.Win();
+
             return;
         }
         // 敵の勝利！
         enemy.EnemyWin();
+
+        while (!Input.anyKeyDown)
+        {
+            await UniTask.Yield(PlayerLoopTiming.Update);
+        }
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
     }
 
     private static bool IsCharacterActive(IBattlePlayer battlePlayer, IEnemy enemy)
@@ -201,15 +321,34 @@ public class GameMaster : f_Dealer
         await informationLabel.PlayLabelTask(skillName + "!");
 
         // 対応したスキルの値を返却
-        int skillValue = StatusManager.Instance.SkillParameter[skillName];
+        int skillValue = ReturnSkillParameter(skillName);
 
         return await HundredDiceRoll(skillValue);
     }
 
+    private int ReturnSkillParameter(string skillName)
+    {
+        if (StatusManager.Instance.SkillParameter.Count != 0)
+        {
+            return StatusManager.Instance.SkillParameter[skillName];
+        }
+        return 50;
+    }
+
+    public void GimmickClear()
+    {
+        ++clearGimmickCount;
+        if (clearGimmickCount >= 5)
+        {
+            canFinalBattle = true;
+        }
+    }
+
     public async void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.B))
         {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Battle");
         }
     }
 }
