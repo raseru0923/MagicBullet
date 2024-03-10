@@ -34,4 +34,9 @@ public class ConfirmButton : MonoBehaviour
             item.SetActive(false);
         }
     }
+
+    public bool GetButtonActive()
+    {
+        return Buttons[0].activeSelf;
+    }
 }

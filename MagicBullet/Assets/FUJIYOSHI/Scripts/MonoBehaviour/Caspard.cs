@@ -31,14 +31,12 @@ public class Caspard : MonoBehaviour, IEnemy
     // IEnemy
     public async void EnemyDamage(string passSkill, int Damage, Action<bool> isEnd)
     {
+        if (Damage == 0) { isEnd?.Invoke(true); return; }
         StatusManager.Instance.SetMode(58);
         foreach (var item in StatusManager.Instance.GetNames())
         {
-            if (item == passSkill)
-            {
-                isEnd?.Invoke(true);
-                return;
-            }
+            // 使用技能が攻撃技能でないときは終了
+            if (item == passSkill) { isEnd?.Invoke(true); return; }
         }
         // ダメージ無効化
         // ※スキル制限の指定なしのときはダメージを食らいます。

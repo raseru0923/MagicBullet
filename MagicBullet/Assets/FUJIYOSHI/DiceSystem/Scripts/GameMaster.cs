@@ -23,6 +23,10 @@ public class GameMaster : f_Dealer
     public GameObject AttackUI;
 
     private bool canModerator = true;
+
+    [SerializeField] private f_Stage Stage;
+    [SerializeField] private f_StageData StageData;
+
     private void Awake()
     {
         if (Instance == null)
@@ -163,11 +167,25 @@ public class GameMaster : f_Dealer
         targetItem.Comprehension = (COMPREHENSION)level;
         //理解度からテキストを表示
 
+        await UniTask.Yield(PlayerLoopTiming.Update);
+
         informationLabel.PlayLabel(result.ToString());
+
+        while (!Input.GetMouseButtonDown(0))
+        {
+            await UniTask.Yield(PlayerLoopTiming.Update);
+        }
 
         foreach (var item in targetItem.AssesmentItem())
         {
+            await UniTask.Yield(PlayerLoopTiming.Update);
+
             informationLabel.PlayLabel(item);
+
+            while (!Input.GetMouseButtonDown(0))
+            {
+                await UniTask.Yield(PlayerLoopTiming.Update);
+            }
         }
 
         return targetItem;
@@ -199,6 +217,7 @@ public class GameMaster : f_Dealer
                 await UniTask.WaitForFixedUpdate();
             }
 
+
             battlePlayer.SetBattleCommandActive(false);
 
             isEnd = false;
@@ -220,6 +239,8 @@ public class GameMaster : f_Dealer
             {
                 await UniTask.WaitForFixedUpdate();
             }
+
+            if (!IsCharacterActive(battlePlayer, enemy)) { break; }
 
             await UniTask.Yield(PlayerLoopTiming.Update);
 
@@ -278,11 +299,6 @@ public class GameMaster : f_Dealer
             {
                 await UniTask.WaitForFixedUpdate();
             }
-
-            while (!Input.GetMouseButtonDown(0))
-            {
-                await UniTask.Yield(PlayerLoopTiming.Update);
-            }
         }
 
         // 戦闘終了のため、戦闘中の敵・味方を削除
@@ -293,11 +309,34 @@ public class GameMaster : f_Dealer
         if (!battlePlayer.IsDie())
         {
             battlePlayer.Win();
+            await UniTask.Yield(PlayerLoopTiming.Update);
+
+            while (!Input.GetMouseButtonDown(0))
+            {
+                await UniTask.Yield(PlayerLoopTiming.Update);
+            }
+
+            while (!Input.anyKeyDown)
+            {
+                await UniTask.Yield(PlayerLoopTiming.Update);
+            }
+            await UniTask.Yield(PlayerLoopTiming.Update);
+
+            await Stage.PlayStage(StageData);
+            Stage.StageSettingActive(true);
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Clear");
 
             return;
         }
         // 敵の勝利！
         enemy.EnemyWin();
+        await UniTask.Yield(PlayerLoopTiming.Update);
+
+        while (!Input.GetMouseButtonDown(0))
+        {
+            await UniTask.Yield(PlayerLoopTiming.Update);
+        }
 
         while (!Input.anyKeyDown)
         {

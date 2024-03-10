@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private async void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {

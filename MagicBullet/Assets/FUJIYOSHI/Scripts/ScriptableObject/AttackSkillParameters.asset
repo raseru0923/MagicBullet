@@ -49,3 +49,39 @@ MonoBehaviour:
       - Count: 1
         Value: 5
       AddValue: 0
+  - SkillName: "\u30AD\u30C3\u30AF"
+    Parameter:
+      DiceParameters:
+      - Count: 1
+        Value: 6
+      AddValue: 0
+  - SkillName: "\u7D44\u307F\u3064\u304D"
+    Parameter:
+      DiceParameters:
+      - Count: 1
+        Value: 6
+      AddValue: 0
+  - SkillName: "\u62F3"
+    Parameter:
+      DiceParameters:
+      - Count: 1
+        Value: 6
+      AddValue: 0
+  - SkillName: "\u982D\u7A81\u304D"
+    Parameter:
+      DiceParameters:
+      - Count: 1
+        Value: 6
+      AddValue: 0
+  - SkillName: "\u6295\u3066\u304D"
+    Parameter:
+      DiceParameters:
+      - Count: 1
+        Value: 6
+      AddValue: 0
+  - SkillName: "\u30DE\u30FC\u30B7\u30E3\u30EB\u30A2\u30FC\u30C4"
+    Parameter:
+      DiceParameters:
+      - Count: 1
+        Value: 6
+      AddValue: 0

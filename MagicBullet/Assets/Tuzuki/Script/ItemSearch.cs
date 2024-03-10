@@ -36,13 +36,6 @@ public class ItemSearch : MonoBehaviour
                 item.onPickUp.AddListener(() => ItemList.Remove(other.gameObject));
                 item.onPickUp.AddListener(() => isItemListUpdate = true);
             }
-            if (other.GetComponent<ItemUse>() != null)
-            {
-                var item = other.GetComponent<ItemUse>();
-                // アイテムを拾った時アイテムリストから除外するイベントを登録
-                item.onPickUp.AddListener(() => ItemList.Remove(other.gameObject));
-                item.onPickUp.AddListener(() => isItemListUpdate = true);
-            }
 
             ItemList.Add(other.gameObject);
         }
@@ -120,9 +113,15 @@ public class ItemSearch : MonoBehaviour
             return;
         }
 
+
         if (item.GetComponent<ItemUse>() != null)
         {
             ItemUse thisItem = item.GetComponent<ItemUse>();
+            SkillImage.sprite = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillSprite;
+        }
+        else if (item.GetComponent<DescriptionMessage>() != null)
+        {
+            DescriptionMessage thisItem = item.GetComponent<DescriptionMessage>();
             SkillImage.sprite = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillSprite;
         }
         else

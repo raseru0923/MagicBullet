@@ -18,6 +18,13 @@ public class Node : MonoBehaviour
         {
             if (item == Label.text)
             {
+
+                StatusManager.Instance.SetMode(58);
+                foreach (var skillItem in StatusManager.Instance.GetNames())
+                {
+                    // 使用技能が攻撃技能でないときは終了
+                    if (skillItem == item && skillItem != "応急手当") { GameMaster.Instance.Moderate("使用しても意味はなさそうだ。"); return; }
+                }
                 Debug.Log("選択しました！");
                 if (GameMaster.Instance.currentBattlePlayer != null)
                 {

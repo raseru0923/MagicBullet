@@ -45,4 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DicePrefab: {fileID: 6993972929474116758, guid: cf29086c47fc13148947b027331f7fe4, type: 3}
   DiceRollSpace: {fileID: 0}
+  RollClip: {fileID: 0}
   informationLabel: {fileID: 0}
+  canFinalBattle: 0
+  isFinalBattle: 0
+  AttackUI: {fileID: 0}
+  Stage: {fileID: 0}
+  StageData: {fileID: 11400000, guid: 40bd0a3f4a6710645942ee9a14295918, type: 2}

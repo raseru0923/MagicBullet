@@ -89,12 +89,24 @@ public class ItemNode : MonoBehaviour, IConfirm
         }
 
         // ƒAƒCƒeƒ€‚ÌŠÓ’è
-        myItem = await gameMaster.AssessmentDiceRoll(myItem);
+        string useSkill = GetUseAssessmentSkill(myItem);
+        myItem = await gameMaster.AssessmentDiceRoll(myItem, useSkill);
 
         ReferencedBag.Content[ItemIndex] = myItem;
 
         SetItem(ReferencedBag, ItemIndex);
 
         myItem.canAssessment = false;
+    }
+
+    private static string GetUseAssessmentSkill(ObjectItem myItem)
+    {
+        string useSkill = myItem.AssessmentSkill;
+        if (useSkill.Length == 0)
+        {
+            useSkill = myItem.SkillSprite.name;
+        }
+
+        return useSkill;
     }
 }

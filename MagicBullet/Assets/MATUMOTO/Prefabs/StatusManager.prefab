@@ -43,14 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38a66bfdd34621d41ad2e6120bf6fd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  STR: 0
-  CON: 0
-  POW: 0
-  DEX: 0
-  APP: 0
-  SIZ: 0
-  INT: 0
-  EDU: 0
+  BasicStatus: 0a0000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
   SAN: 0
   Luck: 0
   Idea: 0
@@ -69,8 +62,8 @@ MonoBehaviour:
   Toteki: 25
   MSA: 1
   Kenzyu: 20
-  SMG: 15
-  SG: 30
+  rl: 15
+  PH: 30
   MG: 15
   R: 25
   Okyuteate: 30
@@ -125,3 +118,4 @@ MonoBehaviour:
   OpenChoicePnal: 0
   DecisionworkP: 0
   DecisionhobbyP: 0
+  ChoiceMode: 12

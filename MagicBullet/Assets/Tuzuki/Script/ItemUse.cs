@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(BoxCollider))]
 public class ItemUse : MonoBehaviour, IConfirm
 {
     public ItemScriptableObject ItemManager;
@@ -22,6 +24,7 @@ public class ItemUse : MonoBehaviour, IConfirm
     private void OnEnable()
     {
         audioSource = Camera.main.GetComponent<AudioSource>();
+        this.tag = "Item";
     }
 
     /// <summary>
@@ -46,7 +49,10 @@ public class ItemUse : MonoBehaviour, IConfirm
         }
         if (!isHave)
         {
-            await GameMaster.Instance.HundredDiceRoll(100);
+            var myItem = ItemManager.ItemData[ItemIndex];
+            var useSkillName = myItem.SkillSprite.name;
+            await GameMaster.Instance.informationLabel.PlayLabelTask(useSkillName);
+            await GameMaster.Instance.HundredDiceRoll(StatusManager.Instance.SkillParameter[useSkillName]);
             GameMaster.Instance.Moderate("ì¡Ç…âΩÇ‡Ç»Ç¢ÇÊÇ§Çæ");
             return;
         }
@@ -79,7 +85,11 @@ public class ItemUse : MonoBehaviour, IConfirm
             audioSource.PlayOneShot(GunReportClip);
             GameMaster.Instance.Moderate(AssessmentName() + "ÇégópÇµÇ‹ÇµÇΩÅB");
             GameMaster.Instance.GimmickClear();
-            this.tag = "Untagged";
+            this.enabled = false;
+        }
+        if (this.tag == "Untagged" && !confirmButton.GetButtonActive())
+        {
+            this.tag = "Item";
         }
     }
 

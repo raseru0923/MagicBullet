@@ -7,6 +7,7 @@ using Cysharp.Threading.Tasks;
 public class ItemPickUp : MonoBehaviour
 {
     [SerializeField] private ItemSearch itemSearch;
+    private GameObject Item;
     /// <summary>
     /// ItemPickUpにバインドされているボタンが押されたら呼ばれる
     /// </summary>
@@ -16,17 +17,28 @@ public class ItemPickUp : MonoBehaviour
         {
             var item = itemSearch.GetNearItem();
             if (item == null) return;
-
-
+            if (item == Item) return;
+            Item = item;
+            Debug.Log(item);
             // 拾う
             if (item.GetComponent<Item>() != null)
             {
                 await item.GetComponent<Item>().PickUp();
+                Item = null;
+                return;
             }
             // 使用
             if (item.GetComponent<ItemUse>() != null)
             {
                 await item.GetComponent<ItemUse>().UseItem();
+                Item = null;
+                return;
+            }
+            // 説明
+            if (item.GetComponent<DescriptionMessage>() != null)
+            {
+                await item.GetComponent<DescriptionMessage>().PlayMessage();
+                Item = null;
             }
         }
     }

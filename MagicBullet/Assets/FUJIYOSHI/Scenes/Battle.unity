@@ -332,58 +332,72 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     Type: 
     SkillSprite: {fileID: 0}
-    CliticalText: 
-    SuccessText: 
-    FailText: 
-    FambleText: 
+    AssessmentSkill: 
+    CliticalText: []
+    SuccessText: []
+    FailText: []
+    FambleText: []
+    FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
     Type: 
     SkillSprite: {fileID: 0}
-    CliticalText: 
-    SuccessText: 
-    FailText: 
-    FambleText: 
+    AssessmentSkill: 
+    CliticalText: []
+    SuccessText: []
+    FailText: []
+    FambleText: []
+    FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
     Type: 
     SkillSprite: {fileID: 0}
-    CliticalText: 
-    SuccessText: 
-    FailText: 
-    FambleText: 
+    AssessmentSkill: 
+    CliticalText: []
+    SuccessText: []
+    FailText: []
+    FambleText: []
+    FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
     Type: 
     SkillSprite: {fileID: 0}
-    CliticalText: 
-    SuccessText: 
-    FailText: 
-    FambleText: 
+    AssessmentSkill: 
+    CliticalText: []
+    SuccessText: []
+    FailText: []
+    FambleText: []
+    FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
     Type: 
     SkillSprite: {fileID: 0}
-    CliticalText: 
-    SuccessText: 
-    FailText: 
-    FambleText: 
+    AssessmentSkill: 
+    CliticalText: []
+    SuccessText: []
+    FailText: []
+    FambleText: []
+    FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
     Type: 
     SkillSprite: {fileID: 0}
-    CliticalText: 
-    SuccessText: 
-    FailText: 
-    FambleText: 
+    AssessmentSkill: 
+    CliticalText: []
+    SuccessText: []
+    FailText: []
+    FambleText: []
+    FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
     Type: 
     SkillSprite: {fileID: 0}
-    CliticalText: 
-    SuccessText: 
-    FailText: 
-    FambleText: 
+    AssessmentSkill: 
+    CliticalText: []
+    SuccessText: []
+    FailText: []
+    FambleText: []
+    FlavorText: []
   myList: {fileID: 0}
 --- !u!1 &269767441
 GameObject:
@@ -802,6 +816,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 802551379556991701, guid: bdf8cfa00c9e85547ae663a1c99094ed, type: 3}
+      propertyPath: Stage
+      value: 
+      objectReference: {fileID: 8292945869571960302}
+    - target: {fileID: 802551379556991701, guid: bdf8cfa00c9e85547ae663a1c99094ed, type: 3}
       propertyPath: AttackUI
       value: 
       objectReference: {fileID: 1957029917}
@@ -809,6 +827,10 @@ PrefabInstance:
       propertyPath: RollClip
       value: 
       objectReference: {fileID: 8300000, guid: f4b29cb4584a2d240bed601499753001, type: 3}
+    - target: {fileID: 802551379556991701, guid: bdf8cfa00c9e85547ae663a1c99094ed, type: 3}
+      propertyPath: StageData
+      value: 
+      objectReference: {fileID: 11400000, guid: 40bd0a3f4a6710645942ee9a14295918, type: 2}
     - target: {fileID: 5109300066286281961, guid: bdf8cfa00c9e85547ae663a1c99094ed, type: 3}
       propertyPath: m_Name
       value: DiceCanvasPrefab

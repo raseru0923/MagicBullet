@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(BoxCollider))]
 public class Item : MonoBehaviour
 {
     public ItemScriptableObject ItemManager;
@@ -12,6 +14,11 @@ public class Item : MonoBehaviour
 
     [Header("アイテムが拾われた時のイベント")]
     public UnityEvent onPickUp;
+
+    private void Start()
+    {
+        this.tag = "Item";
+    }
 
     /// <summary>
     /// 拾われた時呼ばれる
@@ -32,7 +39,6 @@ public class Item : MonoBehaviour
         }
 
         GameObject.Find("Bag").GetComponent<Bag>().Content.Add(myItem);
-
         onPickUp.Invoke();
     }
 }

@@ -158,8 +158,6 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
 
         var result = await GameMaster.Instance.SkillDiceRoll(useSkillName);
 
-        // テスト用
-        result = f_Dealer.JudgementType.FUMBLE;
 
         if (useSkillName == "応急手当")
         {
@@ -196,7 +194,8 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
             return;
         }
 
-        TRPGParameter trpgParameter = default;
+        var trpgParameter = new TRPGParameter();
+        attackPoint = 0;
 
         switch (result)
         {
@@ -214,6 +213,20 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
                 break;
         }
 
+        var damageBonus = StatusManager.Instance.DamageP;
+
+        // ダメージボーナスの処理はじめ
+        if (damageBonus != 0)
+        {
+            var absBonus = Mathf.Abs(damageBonus);
+            await GameMaster.Instance.informationLabel.PlayLabelTask("ダメージボーナス = " + damageBonus / absBonus + " d " + absBonus);
+            var bonusResult = await GameMaster.Instance.SumDealerDiceRoll(1, absBonus);
+            bonusResult *= damageBonus / absBonus;
+            await GameMaster.Instance.informationLabel.PlayLabelTask(attackPoint + " + " + bonusResult + " = " + (attackPoint + bonusResult));
+            attackPoint += bonusResult;
+        }
+
+
         isEnd?.Invoke(true);
     }
 
@@ -226,6 +239,12 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     // IBattlePlayer
     public void ActionEnter(string skillName)
     {
+        StatusManager.Instance.SetMode(58);
+        foreach (var item in StatusManager.Instance.GetNames())
+        {
+            // 使用技能が攻撃技能でないときは終了
+            if (item == skillName && item != "応急手当") { GameMaster.Instance.Moderate("使用しても意味はなさそうだ。"); return; }
+        }
         canAvoid = true;
         Debug.Log("行動決定！");
         useSkillName = skillName;
@@ -257,6 +276,5 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
     public void Win()
     {
         GameMaster.Instance.Moderate("戦闘終了！");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Clear");
     }
 }
