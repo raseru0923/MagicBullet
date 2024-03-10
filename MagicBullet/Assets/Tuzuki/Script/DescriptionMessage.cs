@@ -14,7 +14,9 @@ using System.Linq;
 public class DescriptionMessage : MonoBehaviour
 {
     public ItemScriptableObject ItemManager;
-    [HideInInspector] public int ItemIndex = 11;
+    [HideInInspector] public int ItemIndex = 24;
+    private bool needCheckSAN = false;
+    private bool isCheckSAN = false;
 
     [Header("アイテムが拾われた時のイベント")]
     public UnityEvent onPickUp;
@@ -31,10 +33,39 @@ public class DescriptionMessage : MonoBehaviour
     {
         print("説明！");
         var item = ItemManager.ItemData[ItemIndex];
+        if (item.isUsingSkill)
+        {
+            await GameMaster.Instance.AssessmentDiceRoll(item, item.SkillSprite.name);
+        }
+        else
+        {
+            foreach (var content in item.AssesmentItem())
+            {
+                await UniTask.Yield(PlayerLoopTiming.Update);
 
-        await GameMaster.Instance.AssessmentDiceRoll(item, item.SkillSprite.name);
+                GameMaster.Instance.informationLabel.PlayLabel(content);
+
+                while (!Input.GetMouseButtonDown(0))
+                {
+                    await UniTask.Yield(PlayerLoopTiming.Update);
+                }
+            }
+        }
 
         onPickUp.Invoke();
+
+        if (needCheckSAN && !isCheckSAN)
+        {
+            StatusManager.Instance.SAN -= await GameMaster.Instance.SANDiceRoll(StatusManager.Instance.SAN, 1, 1, 1, 3);
+            needCheckSAN = false;
+            isCheckSAN = true;
+            this.tag = "Untagged";
+        }
+    }
+
+    public void CheckSAN()
+    {
+        needCheckSAN = true;
     }
 }
 

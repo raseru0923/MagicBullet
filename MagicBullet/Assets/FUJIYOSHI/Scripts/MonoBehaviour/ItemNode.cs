@@ -19,7 +19,7 @@ public class ItemNode : MonoBehaviour, IConfirm
 
     private void OnEnable()
     {
-        gameMaster = GameObject.FindGameObjectWithTag("GameMaster").GetComponent<GameMaster>();
+        gameMaster = GameMaster.Instance;
     }
 
     public void SetItem(Bag bag, int itemIndex)
@@ -47,9 +47,9 @@ public class ItemNode : MonoBehaviour, IConfirm
             return;
         }
 
-        if (myItem.FlavorText.Length != 0)
+        if (myItem.ReplaceFlavorText.Length != 0)
         {
-            gameMaster.Moderate(myItem.FlavorText);
+            gameMaster.Moderate(myItem.ReplaceFlavorText);
             return;
         }
 
@@ -108,5 +108,13 @@ public class ItemNode : MonoBehaviour, IConfirm
         }
 
         return useSkill;
+    }
+
+    public void SelectItem()
+    {
+        Debug.Log("ëIëÅI");
+        var selectItem = ReferencedBag.Content[ItemIndex];
+        gameMaster.SelectItem = selectItem;
+        gameMaster.IsSelectItem = true;
     }
 }

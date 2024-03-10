@@ -9,7 +9,7 @@ public class Bag : MonoBehaviour, IContentNames
     // •\Ž¦ƒŠƒXƒg
     [SerializeField] private GameObject myList;
 
-    public void PrintInventory()
+    public void CallInventory()
     {
         if (myList.activeSelf)
         {

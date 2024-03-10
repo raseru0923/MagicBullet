@@ -18,8 +18,12 @@ public class ObjectItem
     public string Name;
     [Header("本体▼")]
     public GameObject ItemBody;
+    [Header("アイテム画像▼")]
+    public Sprite ItemImage;
     [Header("種類▼")]
     public string Type;
+    [Header("拾得時技能を使用するか▼")]
+    public bool isUsingSkill = true;
     [Header("拾得時の使用技能アイコン▼")]
     public Sprite SkillSprite;
     [Header("鑑定時の使用技能名▼")]
@@ -33,12 +37,12 @@ public class ObjectItem
     [Header("ファンブル時▼")]
     [SerializeField, TextArea] public string[] FambleText;
     [Header("フレーバーテキスト▼")]
-    [SerializeField, TextArea] public string[] FlavorText;
+    [SerializeField, TextArea] private string[] FlavorText;
     // 鑑定を使用可能かどうか
     [System.NonSerialized] public bool canAssessment = false;
 
     //理解度
-    [System.NonSerialized] public COMPREHENSION Comprehension = COMPREHENSION.NUM;
+    [System.NonSerialized] public COMPREHENSION Comprehension = COMPREHENSION.DETAIL;
     List<string> AssesmentText = new List<string>();
 
     private void SetAssesmentText()
@@ -71,8 +75,14 @@ public class ObjectItem
         return null;
     }
 
-    private string[] KeyWordReplace(string[] replaceText)
+    public string[] ReplaceFlavorText
     {
+        get { return KeyWordReplace(FlavorText); }
+    }
+
+    private string[] KeyWordReplace(string[] targetText)
+    {
+        var replaceText = targetText;
         for (int i = 0; i < replaceText.Length; i++)
         {
             replaceText[i] = replaceText[i].Replace("@Name", Name);

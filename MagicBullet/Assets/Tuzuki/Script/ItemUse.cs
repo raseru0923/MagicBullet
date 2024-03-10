@@ -84,6 +84,8 @@ public class ItemUse : MonoBehaviour, IConfirm
             isUse = false;
             audioSource.PlayOneShot(GunReportClip);
             GameMaster.Instance.Moderate(AssessmentName() + "ÇégópÇµÇ‹ÇµÇΩÅB");
+            var bag = GameObject.Find("Bag").GetComponent<Bag>();
+            bag.Content.Remove(ItemManager.ItemData[ItemIndex]);
             GameMaster.Instance.GimmickClear();
             this.enabled = false;
         }

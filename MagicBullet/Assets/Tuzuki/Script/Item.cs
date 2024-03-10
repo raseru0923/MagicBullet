@@ -30,15 +30,32 @@ public class Item : MonoBehaviour
 
         ObjectItem item = ItemManager.ItemData[ItemIndex];
 
-        var myItem = await GameMaster.Instance.AssessmentDiceRoll(item, item.SkillSprite.name);
-
-        // 理解度が低いとき鑑定のチャンスが与えられる
-        if ((int)myItem.Comprehension >= 2)
+        if (item.isUsingSkill)
         {
-            myItem.canAssessment = true;
+            item = await GameMaster.Instance.AssessmentDiceRoll(item, item.SkillSprite.name);
+
+            // 理解度が低いとき鑑定のチャンスが与えられる
+            if ((int)item.Comprehension >= 2)
+            {
+                item.canAssessment = true;
+            }
+        }
+        else
+        {
+            foreach (var content in item.AssesmentItem())
+            {
+                await UniTask.Yield(PlayerLoopTiming.Update);
+
+                GameMaster.Instance.informationLabel.PlayLabel(content);
+
+                while (!Input.GetMouseButtonDown(0))
+                {
+                    await UniTask.Yield(PlayerLoopTiming.Update);
+                }
+            }
         }
 
-        GameObject.Find("Bag").GetComponent<Bag>().Content.Add(myItem);
+        GameObject.Find("Bag").GetComponent<Bag>().Content.Add(item);
         onPickUp.Invoke();
     }
 }

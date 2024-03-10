@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 public class Player : MonoBehaviour
 {
     // 自身のバッグ
-    [SerializeField] private Bag MyBag;
+    public Bag MyBag;
 
     // Update is called once per frame
     private bool canOpen;
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            MyBag.PrintInventory();
+            MyBag.CallInventory();
         }
 
         if (animator == null)

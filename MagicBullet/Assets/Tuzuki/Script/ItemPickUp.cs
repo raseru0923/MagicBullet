@@ -16,8 +16,9 @@ public class ItemPickUp : MonoBehaviour
         if (itemSearch != null)
         {
             var item = itemSearch.GetNearItem();
-            if (item == null) return;
-            if (item == Item) return;
+            if (item == null) { return; }
+            if (item == Item) { item = null; return; }
+            if (!item.CompareTag("Item")) { item = null; return; }
             Item = item;
             Debug.Log(item);
             // èEÇ§

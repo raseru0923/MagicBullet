@@ -27,6 +27,9 @@ public class GameMaster : f_Dealer
     [SerializeField] private f_Stage Stage;
     [SerializeField] private f_StageData StageData;
 
+    [HideInInspector] public ObjectItem SelectItem;
+    [HideInInspector] public bool IsSelectItem = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -96,8 +99,11 @@ public class GameMaster : f_Dealer
     // 自身の現在のSAN値と失敗時、成功時のSAN値の減少方法
     public async UniTask<int> SANDiceRoll(int nowSAN, int minA, int maxA, int minB, int maxB)
     {
-        await informationLabel.PlayLabelTask("SAN値減少！ " + minA + " / "
-             + "1 d " + (maxB - minB + 1));
+        await UniTask.Yield(PlayerLoopTiming.Update);
+        await informationLabel.PlayLabelTask("SAN値減少！ " + minA.ToString() + " / "
+             + "1 d " + (maxB - minB + 1).ToString());
+
+        await informationLabel.PlayLabelTask("SAN値 = " + nowSAN);
 
         // 成功、失敗のみを返す1d100
         var SANResult = await ReturnResultDiceRoll(nowSAN, 1, 100);
@@ -118,7 +124,7 @@ public class GameMaster : f_Dealer
                 break;
         }
 
-        await informationLabel.PlayLabelTask(result + "減少！");
+        await informationLabel.PlayLabelTask("SAN値が" + result + "減少！");
 
         return result;
     }
@@ -147,11 +153,18 @@ public class GameMaster : f_Dealer
         int level = (int)result;
         targetItem.Comprehension = (COMPREHENSION)level;
         //理解度からテキストを表示
-        informationLabel.PlayLabel(result.ToString());
+        await informationLabel.PlayLabelTask(result.ToString());
 
         foreach (var item in targetItem.AssesmentItem())
         {
-            informationLabel.PlayLabel(item);
+            await informationLabel.PlayLabelTask(item);
+        }
+
+        result = JudgementType.FUMBLE;
+        // ファンブル時特別処理
+        if (result == JudgementType.FUMBLE)
+        {
+            StatusManager.Instance.SAN -= await SANDiceRoll(StatusManager.Instance.SAN, 1, 1, 1, 3);
         }
 
         return targetItem;
@@ -186,6 +199,12 @@ public class GameMaster : f_Dealer
             {
                 await UniTask.Yield(PlayerLoopTiming.Update);
             }
+        }
+
+        // ファンブル時特別処理
+        if (result == JudgementType.FUMBLE)
+        {
+            StatusManager.Instance.SAN -= await SANDiceRoll(StatusManager.Instance.SAN, 1, 1, 1, 3);
         }
 
         return targetItem;
