@@ -55,6 +55,7 @@ public class ItemUse : MonoBehaviour, IConfirm
             await GameMaster.Instance.informationLabel.PlayLabelTask(useSkillName);
             await GameMaster.Instance.HundredDiceRoll(StatusManager.Instance.SkillParameter[useSkillName]);
             GameMaster.Instance.Moderate("“Á‚É‰½‚à‚È‚¢‚æ‚¤‚¾");
+            Cursor.lockState = CursorLockMode.Locked;
             return;
         }
 
@@ -89,10 +90,12 @@ public class ItemUse : MonoBehaviour, IConfirm
             bag.Content.Remove(ItemManager.ItemData[ItemIndex]);
             GameMaster.Instance.GimmickClear();
             onUseItem.Invoke();
+            Cursor.lockState = CursorLockMode.Locked;
             this.enabled = false;
         }
         if (this.tag == "Untagged" && !confirmButton.GetButtonActive())
         {
+            Cursor.lockState = CursorLockMode.Locked;
             this.tag = "Item";
         }
     }

@@ -20,7 +20,7 @@ public class ConfirmButton : MonoBehaviour
         }
     }
 
-    public void targetAssessment()
+    public void TargetBooleanTrue()
     {
         targetObject.SetConfirm(true);
         OffButton();
@@ -28,9 +28,9 @@ public class ConfirmButton : MonoBehaviour
 
     public void OffButton()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         foreach (var item in Buttons)
         {
+            Cursor.lockState = CursorLockMode.Locked;
             item.SetActive(false);
         }
     }
@@ -38,5 +38,13 @@ public class ConfirmButton : MonoBehaviour
     public bool GetButtonActive()
     {
         return Buttons[0].activeSelf;
+    }
+
+    private void Update()
+    {
+        if (GetButtonActive() && Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }

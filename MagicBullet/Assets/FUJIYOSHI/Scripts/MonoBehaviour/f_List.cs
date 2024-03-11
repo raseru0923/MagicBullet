@@ -15,6 +15,7 @@ public class f_List : MonoBehaviour
 
     public void CreateList(GameObject iContentNames)
     {
+        Cursor.lockState = CursorLockMode.None;
         if (iContentNames.GetComponent<IContentNames>() != null)    // nullチェック
         {
             IContentNames contentNames = iContentNames.GetComponent<IContentNames>();
@@ -26,6 +27,7 @@ public class f_List : MonoBehaviour
 
     public void CreateList(List<string> nodeNames)
     {
+        Cursor.lockState = CursorLockMode.None;
         for (int i = 0; i < Content.transform.childCount; i++)
         {
             GameObject childObject = Content.transform.GetChild(i).gameObject;
@@ -43,6 +45,7 @@ public class f_List : MonoBehaviour
 
     public void CreateList(string[] nodeNames)
     {
+        Cursor.lockState = CursorLockMode.None;
         CreateList(nodeNames.ToList());
     }
 
@@ -76,5 +79,14 @@ public class f_List : MonoBehaviour
             return;
         }
         StatusManager.Instance.SetMode(58);
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }

@@ -15,9 +15,9 @@ public class OperationControl : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (operation.isOperation != behaviours[0].enabled)
+        if (operation.IsOperation != behaviours[0].enabled)
         {
-            SetEnabled(operation.isOperation);
+            SetEnabled(operation.IsOperation);
         }
     }
 

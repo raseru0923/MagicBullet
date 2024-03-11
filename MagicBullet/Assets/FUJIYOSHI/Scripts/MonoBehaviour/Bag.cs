@@ -15,16 +15,23 @@ public class Bag : MonoBehaviour, IContentNames
         {
             myList.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
+            GameMaster.Instance.PlayerRelease();
             return;
         }
 
         Cursor.lockState =  CursorLockMode.None;
+        GameMaster.Instance.PlayerLocked();
 
         myList.SetActive(true);
 
         ContentList list = myList.GetComponent<ContentList>();
 
         list.PrintList(this);
+    }
+
+    public bool IsOpenInventory()
+    {
+        return myList.activeSelf;
     }
 
     public List<string> GetNames()

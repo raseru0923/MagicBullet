@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Operation : MonoBehaviour
 {
-    public bool isOperation = false;
+    public bool IsOperation = false;
 
     public void SetOperation(bool isOperation)
     {
-        this.isOperation = isOperation;
+        this.IsOperation = isOperation;
     }
 }

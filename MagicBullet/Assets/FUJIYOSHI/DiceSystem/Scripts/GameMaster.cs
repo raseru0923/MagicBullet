@@ -43,6 +43,9 @@ public class GameMaster : f_Dealer
 
     public int magicBullet = 0;
 
+    [HideInInspector] public List<GameObject> PlayerObjects;
+    private Coroutine playerLockCoroutine;
+
     private void Awake()
     {
         if (Instance != null)
@@ -267,6 +270,7 @@ public class GameMaster : f_Dealer
                 //await informationLabel.PlayLabelTask(TurnLimit + "ターン耐久で勝利！");
             }
 
+            Cursor.lockState = CursorLockMode.None;
             battlePlayer.SetBattleCommandActive(true);
 
             while (!battlePlayer.IsEnter())
@@ -467,6 +471,52 @@ public class GameMaster : f_Dealer
         {
             Moderate("どこかで鍵の開いた音がした！");
             canFinalBattle = true;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        // カーソルが表示されているとき、プレイヤーがストップしていない
+        if (Cursor.lockState == CursorLockMode.None && playerLockCoroutine == null)
+        {
+            PlayerLocked();
+        }
+        else if (Cursor.lockState == CursorLockMode.Locked && playerLockCoroutine != null)
+        {
+            PlayerRelease();
+        }
+    }
+
+    public void PlayerLocked()
+    {
+        if (playerLockCoroutine == null) { playerLockCoroutine = StartCoroutine(PlayerLock()); }
+    }
+    public void PlayerRelease()
+    {
+        if (playerLockCoroutine != null) { StopCoroutine(playerLockCoroutine); playerLockCoroutine = null; }
+    }
+
+    private IEnumerator PlayerLock()
+    {
+        List<Vector3> playerPositions = new List<Vector3>();
+        List<Vector3> playerRotations = new List<Vector3>();
+
+        foreach (var item in PlayerObjects)
+        {
+            playerPositions.Add(item.transform.position);
+            playerRotations.Add(item.transform.eulerAngles);
+        }
+        while (true)
+        {
+            yield return null;
+            for (int i = 0; i < playerPositions.Count; i++)
+            {
+                PlayerObjects[i].transform.position = playerPositions[i];
+            }
+            for (int i = 0; i < playerRotations.Count; i++)
+            {
+                PlayerObjects[i].transform.eulerAngles = playerRotations[i];
+            }
         }
     }
 }

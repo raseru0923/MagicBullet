@@ -14,12 +14,14 @@ using System.Linq;
 public class DescriptionMessage : MonoBehaviour
 {
     public ItemScriptableObject ItemManager;
-    [HideInInspector] public int ItemIndex = 24;
+    [HideInInspector] public int ItemIndex = 54;
     private bool needCheckSAN = false;
     private bool isCheckSAN = false;
 
     [Header("アイテムが拾われた時のイベント")]
     public UnityEvent onPickUp;
+    [Header("アイテムを拾う処理の開始時のイベント")]
+    public UnityEvent onStart;
 
     private void Start()
     {
@@ -31,6 +33,7 @@ public class DescriptionMessage : MonoBehaviour
     /// </summary>
     public async UniTask PlayMessage()
     {
+        onStart?.Invoke();
         print("説明！");
         var item = ItemManager.ItemData[ItemIndex];
         if (item.isUsingSkill)
@@ -52,7 +55,7 @@ public class DescriptionMessage : MonoBehaviour
             }
         }
 
-        onPickUp.Invoke();
+        onPickUp?.Invoke();
 
         if (needCheckSAN && !isCheckSAN)
         {
@@ -61,6 +64,7 @@ public class DescriptionMessage : MonoBehaviour
             isCheckSAN = true;
             this.tag = "Untagged";
         }
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void CheckSAN()

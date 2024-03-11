@@ -155,7 +155,7 @@ public class StatusManager : MonoBehaviour, IContentNames
             {
                 foreach (var item in SkillNames)
                 {
-                    SkillParameter.Add(item, 80);
+                    SkillParameter.Add(item, 50);
                 }
             }
 

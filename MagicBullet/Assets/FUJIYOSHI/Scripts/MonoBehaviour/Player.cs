@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
@@ -11,9 +11,8 @@ public class Player : MonoBehaviour
     public Bag MyBag;
 
     // Update is called once per frame
-    private bool canOpen;
-    private Animator animator;
-    private BoxCollider boxCollider;
+    private bool canDoorOperation;
+    public List<Animator> Animators = new List<Animator>();
 
     [SerializeField] private GameObject Guide;
 
@@ -24,27 +23,61 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        // 鞄を開く
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            GameMaster.Instance.IsSelectItem = false;
             MyBag.CallInventory();
         }
 
-        if (animator == null)
+        // ドアの開閉処理はじめ
+        if (Animators == null)
         {
             return;
         }
 
-        if (canOpen && Input.GetKeyDown(KeyCode.F))
+        if (canDoorOperation && Input.GetKeyDown(KeyCode.F))
         {
+            var animator = PassAnimator(Animators, animator => animator.GetComponent<Operation>() != null);
+
+            if (animator != null && !animator.GetComponent<Operation>().IsOperation)
+            {
+                GameMaster.Instance.Moderate("扉は固く閉ざされている");
+                return;
+            }
+
+            animator = PassAnimator(Animators, animator => animator.GetComponent<ToBattleDoor>() != null);
+
             // バトル遷移可能な時
-            if (animator.gameObject.GetComponent<ToBattleDoor>() != null)
+            if (animator != null)
             {
                 if (GameMaster.Instance.canFinalBattle) { ToBattleScene(); return; }
                 GameMaster.Instance.Moderate("扉は固く閉ざされている");
                 return;
             }
-            animator.SetBool("IsOpen", true);
+            foreach (var item in Animators)
+            {
+                if (!item.GetBool("IsOpen"))
+                {
+                    item.SetBool("IsOpen", true);
+                }
+                else
+                {
+                    item.SetBool("IsOpen", false);
+                }
+            }
         }
+        // ドアの開閉処理終わり
+    }
+
+    // 条件に一致したアニメーターを返却
+    private Animator PassAnimator(List<Animator> targetAnimators, Func<Animator, bool> terms)
+    {
+        foreach (var item in targetAnimators)
+        {
+            if (terms(item)) { return item; }
+        }
+        return null;
     }
 
     private void ToBattleScene()
@@ -56,36 +89,25 @@ public class Player : MonoBehaviour
             GameMaster.Instance.isFinalBattle = true;
             return;
         }
-        animator.gameObject.GetComponent<ToBattleDoor>().ToBattleScene();
+        // ここでバトルシーンに遷移
+        var animator = PassAnimator(Animators, animator => animator.GetComponent<ToBattleDoor>() != null);
+        if (animator != null) { animator.GetComponent<ToBattleDoor>().ToBattleScene(); }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Door"))
         {
             Debug.Log("DoorEnter!");
 
-            if (animator != null)
+            var otherAnimator = other.GetComponent<Animator>();
+
+            // ドアのアニメーターを取得
+            if (!Animators.Contains(otherAnimator))
             {
-                animator.SetBool("IsOpen", false);
+                Animators.Add(otherAnimator);
+                canDoorOperation = true;
             }
-
-            animator = other.GetComponent<Animator>();
-            canOpen = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Door"))
-        {
-            Debug.Log("DoorExit!");
-
-            other.GetComponent<Animator>().SetBool("IsOpen", false);
-
-            animator = null;
-
-            canOpen = false;
         }
     }
 }

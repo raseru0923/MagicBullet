@@ -125,14 +125,14 @@ public class TableGimmick : MonoBehaviour
         if (passCount >= 4)
         {
             var bag = GameObject.Find("Bag").GetComponent<Bag>();
-            foreach (var item in bag.Content)
+            for (int i = 0; i < bag.Content.Count; i++)
             {
-                if ("カード" == item.Type)
+                if ("カード" == bag.Content[i].Type)
                 {
-                    bag.Content.Remove(item);
+                    bag.Content.Remove(bag.Content[i]);
                 }
             }
-            DoorOperation.isOperation = true;
+            DoorOperation.IsOperation = true;
             yield return null;
             while (!Input.GetMouseButtonDown(0)) { yield return null; }
             GameMaster.Instance.Moderate("どこかで鍵の開いた音がした！");

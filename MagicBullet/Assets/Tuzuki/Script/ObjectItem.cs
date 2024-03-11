@@ -15,7 +15,7 @@ public enum COMPREHENSION
 public class ObjectItem
 {
     [Header("名前▼")]
-    public string Name;
+    [TextArea] public string Name;
     [Header("本体▼")]
     public GameObject ItemBody;
     [Header("アイテム画像▼")]

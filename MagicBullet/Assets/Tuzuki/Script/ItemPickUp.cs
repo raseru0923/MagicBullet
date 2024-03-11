@@ -19,6 +19,9 @@ public class ItemPickUp : MonoBehaviour
             if (item == null) { return; }
             if (item == Item) { item = null; return; }
             if (!item.CompareTag("Item")) { item = null; return; }
+
+            Cursor.lockState = CursorLockMode.None;
+
             Item = item;
             Debug.Log(item);
             // èEÇ§

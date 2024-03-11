@@ -57,6 +57,7 @@ public class Item : MonoBehaviour
         }
 
         GameObject.Find("Bag").GetComponent<Bag>().Content.Add(item);
+        Cursor.lockState = CursorLockMode.Locked;
         onPickUp.Invoke();
         if (item.isGetWithDestroy)
         {

@@ -57,4 +57,13 @@ public class ContentList : MonoBehaviour
             }
         }
     }
+
+
+    private void FixedUpdate()
+    {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 }

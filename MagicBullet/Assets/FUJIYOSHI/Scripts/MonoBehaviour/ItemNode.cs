@@ -42,8 +42,8 @@ public class ItemNode : MonoBehaviour, IConfirm
         ObjectItem myItem = ReferencedBag.Content[ItemIndex];
         if (myItem.canAssessment)
         {
-            GameObject.Find("ConfirmButton").GetComponent<ConfirmButton>().OnButton(this.GetComponent<IConfirm>());
             gameMaster.Moderate("鑑定を行いますか？");
+            GameObject.Find("ConfirmButton").GetComponent<ConfirmButton>().OnButton(this.GetComponent<IConfirm>());
             return;
         }
 
@@ -66,8 +66,8 @@ public class ItemNode : MonoBehaviour, IConfirm
     {
         if (isAssessment)
         {
-            isAssessment = false;
             await AssessmentItem();
+            isAssessment = false;
         }
     }
 
@@ -89,14 +89,14 @@ public class ItemNode : MonoBehaviour, IConfirm
         }
 
         // アイテムの鑑定
+        myItem.canAssessment = false;
+
         string useSkill = GetUseAssessmentSkill(myItem);
         myItem = await gameMaster.AssessmentDiceRoll(myItem, useSkill);
 
         ReferencedBag.Content[ItemIndex] = myItem;
 
         SetItem(ReferencedBag, ItemIndex);
-
-        myItem.canAssessment = false;
     }
 
     private static string GetUseAssessmentSkill(ObjectItem myItem)
