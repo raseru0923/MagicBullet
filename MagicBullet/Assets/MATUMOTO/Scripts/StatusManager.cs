@@ -159,7 +159,20 @@ public class StatusManager : MonoBehaviour, IContentNames
                 }
             }
 
+
+            if (GameObject.Find("GameMaster"))
+            {
+                var gameMaster = GameObject.Find("GameMaster");
+                gameMaster.transform.SetParent(Instance.gameObject.transform);
+            }
+
             return;
+        }
+
+        if (GameObject.Find("GameMaster"))
+        {
+            var gameMaster = GameObject.Find("GameMaster");
+            gameMaster.transform.SetParent(Instance.gameObject.transform);
         }
 
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Status")

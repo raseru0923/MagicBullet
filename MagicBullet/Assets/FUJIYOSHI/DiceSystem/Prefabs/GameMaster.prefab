@@ -45,10 +45,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DicePrefab: {fileID: 6993972929474116758, guid: cf29086c47fc13148947b027331f7fe4, type: 3}
   DiceRollSpace: {fileID: 0}
-  RollClip: {fileID: 0}
+  RollClip: {fileID: 8300000, guid: f4b29cb4584a2d240bed601499753001, type: 3}
   informationLabel: {fileID: 0}
   canFinalBattle: 0
   isFinalBattle: 0
   AttackUI: {fileID: 0}
   Stage: {fileID: 0}
   StageData: {fileID: 11400000, guid: 40bd0a3f4a6710645942ee9a14295918, type: 2}
+  SelectItem:
+    Name: 
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
+    Type: 
+    isGetWithDestroy: 0
+    isUsingSkill: 1
+    SkillSprite: {fileID: 0}
+    AssessmentSkill: 
+    CliticalText: []
+    SuccessText: []
+    FailText: []
+    FambleText: []
+    FlavorText: []
+  IsSelectItem: 0
+  canMagickBulletAvoid: 0
+  canBattle: 0
+  BattleObject: {fileID: 0}
+  ItemManager: {fileID: 11400000, guid: 08eeb176033df1044b18e847d88f4f78, type: 2}
+  ItemIndex: 36
+  magicBullet: 0

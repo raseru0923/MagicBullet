@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class GameMaster : f_Dealer
 {
@@ -28,17 +32,27 @@ public class GameMaster : f_Dealer
     [SerializeField] private f_StageData StageData;
 
     [HideInInspector] public ObjectItem SelectItem;
-    [HideInInspector] public bool IsSelectItem = false;
+    public bool IsSelectItem = false;
+    public bool canMagickBulletAvoid = false;
+    public bool canBattle = false;
+
+    [HideInInspector] public GameObject BattleObject;
+
+    public ItemScriptableObject ItemManager;
+    [HideInInspector] public int ItemIndex;
+
+    public int magicBullet = 0;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null)
         {
-            DontDestroyOnLoad(this);
-            Instance = this;
-            return;
+            this.canMagickBulletAvoid = Instance.canMagickBulletAvoid;
+            this.canBattle = Instance.canBattle;
+            Destroy(Instance.gameObject);
         }
-        Destroy(this);
+        Instance = this;
+        return;
     }
 
     // 司会進行
@@ -126,7 +140,18 @@ public class GameMaster : f_Dealer
 
         await informationLabel.PlayLabelTask("SAN値が" + result + "減少！");
 
+        await CheckInsane(nowSAN - result);
+
         return result;
+    }
+
+    private async UniTask CheckInsane(int SAN)
+    {
+        if (SAN <= 0)
+        {
+            await informationLabel.PlayLabelTask("SAN値0あなたは狂死してしまった。");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+        }
     }
 
     // SAN値減少ダイスロール
@@ -178,6 +203,8 @@ public class GameMaster : f_Dealer
         //ダイスロールの結果から理解度を変更
         int level = (int)result;
         targetItem.Comprehension = (COMPREHENSION)level;
+        Debug.Log(targetItem.Comprehension);
+
         //理解度からテキストを表示
 
         await UniTask.Yield(PlayerLoopTiming.Update);
@@ -211,11 +238,15 @@ public class GameMaster : f_Dealer
     }
 
     // ターン性バトル開始！
-    public async UniTask TurnBattle(IBattlePlayer battlePlayer, IEnemy enemy)
+    public async UniTask TurnBattle(IBattlePlayer battlePlayer, IEnemy enemy, int TurnLimit = 0)
     {
+        BattleObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+
         // 現在戦闘中の敵・味方を保存
         currentBattlePlayer = battlePlayer;
         currentEnemy = enemy;
+        var turnCount = 0;
 
         if (AttackUI == null)
         {
@@ -225,10 +256,17 @@ public class GameMaster : f_Dealer
         var isEnd = false;
 
         // 両者生存で続行
-        while (IsCharacterActive(battlePlayer, enemy))
+        while (IsCharacterActive(battlePlayer, enemy) && (TurnLimit == 0 || turnCount < TurnLimit))
         {
             AttackUI.SetActive(false);
-            // プレイヤーが行動を選択します。
+
+            if (turnCount == 0 && TurnLimit != 0)
+            {
+                await UniTask.WaitForSeconds(1);
+                await informationLabel.PlayLabelTask("亡骸から人型のもやが出てきた！");
+                //await informationLabel.PlayLabelTask(TurnLimit + "ターン耐久で勝利！");
+            }
+
             battlePlayer.SetBattleCommandActive(true);
 
             while (!battlePlayer.IsEnter())
@@ -251,8 +289,23 @@ public class GameMaster : f_Dealer
 
             isEnd = false;
 
+            var passSkill = battlePlayer.GetUsedSkillName();
+
+            if (enemy.IsPassSkill(passSkill))
+            {
+                // すでに6発撃っており、花冠を持っていないとき
+                if (magicBullet == 6 && !canMagickBulletAvoid)
+                {
+                    await informationLabel.PlayLabelTask("撃ち出された弾は敵に向かわず\n弾道を変え自身の胸めがけて飛んできた！");
+                    await informationLabel.PlayLabelTask("9999ダメージを受けた！");
+                    await informationLabel.PlayLabelTask("GameOver");
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+                }
+                ++magicBullet;
+            }
+
             // 敵がダメージを受けます。
-            enemy.EnemyDamage(battlePlayer.GetUsedSkillName(), battlePlayer.GetAttackPoint(), x => isEnd = x);
+            enemy.EnemyDamage(passSkill, battlePlayer.GetAttackPoint(), x => isEnd = x);
 
             while (!isEnd)
             {
@@ -318,6 +371,7 @@ public class GameMaster : f_Dealer
             {
                 await UniTask.WaitForFixedUpdate();
             }
+            ++turnCount;
         }
 
         // 戦闘終了のため、戦闘中の敵・味方を削除
@@ -340,6 +394,19 @@ public class GameMaster : f_Dealer
                 await UniTask.Yield(PlayerLoopTiming.Update);
             }
             await UniTask.Yield(PlayerLoopTiming.Update);
+
+            if (TurnLimit != 0)
+            {
+                await informationLabel.PlayLabelTask("人型のもやは霧散した！");
+                var bag = GameObject.Find("Bag").GetComponent<Bag>();
+                bag.Content.Add(ItemManager.ItemData[ItemIndex]);
+
+                await informationLabel.PlayLabelTask("花冠を手に入れた！");
+                canMagickBulletAvoid = true;
+                BattleObject.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                return;
+            }
 
             await Stage.PlayStage(StageData);
             Stage.StageSettingActive(true);
@@ -398,15 +465,43 @@ public class GameMaster : f_Dealer
         ++clearGimmickCount;
         if (clearGimmickCount >= 5)
         {
+            Moderate("どこかで鍵の開いた音がした！");
             canFinalBattle = true;
         }
     }
+}
 
-    public async void Update()
+#if UNITY_EDITOR
+[CustomEditor(typeof(GameMaster))]
+public class GameMasterEditor : Editor
+{
+    SerializedProperty PopupProperty;
+
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        PopupProperty = serializedObject.FindProperty("ItemIndex");
+    }
+
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        serializedObject.Update();
+
+        GameMaster manager = (GameMaster)this.target;
+        //未セットの場合はnullがあり得る
+        if (manager.ItemManager.ItemData == null)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Battle");
+            return;
         }
+
+        EditorGUILayout.LabelField("自身アイテムを指定▼");
+        PopupProperty.intValue = EditorGUILayout.Popup(
+            PopupProperty.intValue,
+            manager.ItemManager.ItemData.Select((x) => x.Name).ToArray()
+            );
+
+        serializedObject.ApplyModifiedProperties();
     }
 }
+#endif

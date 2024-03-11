@@ -20,4 +20,6 @@ public interface IEnemy
 
     // Ÿ—˜‚Ìˆ—
     public void EnemyWin();
+
+    public bool IsPassSkill(string passSkill);
 }

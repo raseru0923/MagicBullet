@@ -8,6 +8,11 @@ MonoImporter:
   - DiceRollSpace: {instanceID: 0}
   - RollClip: {fileID: 8300000, guid: f4b29cb4584a2d240bed601499753001, type: 3}
   - informationLabel: {instanceID: 0}
+  - AttackUI: {instanceID: 0}
+  - Stage: {instanceID: 0}
+  - StageData: {instanceID: 0}
+  - BattleObject: {instanceID: 0}
+  - ItemManager: {fileID: 11400000, guid: 08eeb176033df1044b18e847d88f4f78, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

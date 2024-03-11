@@ -37,6 +37,15 @@ public class TableGimmick : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    private void Update()
+    {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
     public void SetImage(Image selectImage)
     {
         SelectImage = selectImage;
@@ -64,15 +73,34 @@ public class TableGimmick : MonoBehaviour
         CurrentPlayer.MyBag.CallInventory();
         Cursor.lockState = CursorLockMode.None;
 
-        // カードの選択を待機
-        yield return WaitSelectCard();
+        // アイテムが選択されるまで待機。
+        while (!GameMaster.Instance.IsSelectItem) { yield return null; }
 
+        GameMaster.Instance.IsSelectItem = false;
+
+        // 選択されたアイテムを取得
+        var selectItem = GameMaster.Instance.SelectItem;
+
+        if (selectItem.Type != "カード")
+        {
+            GameMaster.Instance.Moderate("カードを選択してください！");
+            CurrentPlayer.MyBag.CallInventory();
+            yield break;
+        }
+
+        // 既に使用されているとき再度選択待機
+        foreach (var item in SelectCardName)
+        {
+            if (item == selectItem.Name)
+            {
+                GameMaster.Instance.Moderate("すでに使用されています！");
+                CurrentPlayer.MyBag.CallInventory();
+                yield break;
+            }
+        }
         // 鞄を閉じる
         CurrentPlayer.MyBag.CallInventory();
         Cursor.lockState = CursorLockMode.None;
-
-        // アイテムを取得
-        var selectItem = GameMaster.Instance.SelectItem;
 
         // アイテムの名前を設定
         SelectCardName[CardPositionIndex] = selectItem.Name;
@@ -96,8 +124,16 @@ public class TableGimmick : MonoBehaviour
         // 4枚ともすべてそろっているとき
         if (passCount >= 4)
         {
+            var bag = GameObject.Find("Bag").GetComponent<Bag>();
+            foreach (var item in bag.Content)
+            {
+                if ("カード" == item.Type)
+                {
+                    bag.Content.Remove(item);
+                }
+            }
             DoorOperation.isOperation = true;
-            yield return null; 
+            yield return null;
             while (!Input.GetMouseButtonDown(0)) { yield return null; }
             GameMaster.Instance.Moderate("どこかで鍵の開いた音がした！");
             // クリックされるまで待機
@@ -105,26 +141,4 @@ public class TableGimmick : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitSelectCard()
-    {
-        // アイテムが選択されるまで待機。
-        while (!GameMaster.Instance.IsSelectItem) { yield return null; }
-
-        // 選択されたアイテムを取得
-        var selectItem = GameMaster.Instance.SelectItem;
-
-        if (selectItem.Type != "カード")
-        {
-            yield return WaitSelectCard();
-        }
-
-        // 既に使用されているとき再度選択待機
-        foreach (var item in SelectCardName)
-        {
-            if (item == selectItem.Name)
-            {
-                yield return WaitSelectCard();
-            }
-        }
-    }
 }

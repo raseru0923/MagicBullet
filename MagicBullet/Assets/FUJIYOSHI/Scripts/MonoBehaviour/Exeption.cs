@@ -5,7 +5,6 @@ using UnityEngine;
 public class Exeption : MonoBehaviour
 {
     [TextArea] public string[] ExeptionText;
-    [SerializeField] GameMaster gameMaster;
 
     public void PlayExeption()
     {
@@ -16,7 +15,7 @@ public class Exeption : MonoBehaviour
     {
         foreach (var item in ExeptionText)
         {
-            gameMaster.Moderate(item);
+            GameMaster.Instance.Moderate(item);
 
             yield return null;
 

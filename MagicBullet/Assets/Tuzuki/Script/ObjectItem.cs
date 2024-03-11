@@ -22,6 +22,8 @@ public class ObjectItem
     public Sprite ItemImage;
     [Header("種類▼")]
     public string Type;
+    [Header("拾得時アイテムを削除するか▼")]
+    public bool isGetWithDestroy = false;
     [Header("拾得時技能を使用するか▼")]
     public bool isUsingSkill = true;
     [Header("拾得時の使用技能アイコン▼")]

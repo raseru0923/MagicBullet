@@ -36,20 +36,29 @@ public class Player : MonoBehaviour
 
         if (canOpen && Input.GetKeyDown(KeyCode.F))
         {
-            if (GameMaster.Instance.canFinalBattle && animator.gameObject.GetComponent<ToBattleDoor>() != null)
+            // ƒoƒgƒ‹‘JˆÚ‰Â”\‚ÈŽž
+            if (animator.gameObject.GetComponent<ToBattleDoor>() != null)
             {
-                if (!GameMaster.Instance.isFinalBattle)
-                {
-                    Guide.SetActive(true);
-
-                    GameMaster.Instance.isFinalBattle = true;
-                    return;
-                }
-                animator.gameObject.GetComponent<ToBattleDoor>().ToBattleScene();
+                if (GameMaster.Instance.canFinalBattle) { ToBattleScene(); return; }
+                GameMaster.Instance.Moderate("”à‚ÍŒÅ‚­•Â‚´‚³‚ê‚Ä‚¢‚é");
+                return;
             }
             animator.SetBool("IsOpen", true);
         }
     }
+
+    private void ToBattleScene()
+    {
+        if (!GameMaster.Instance.isFinalBattle)
+        {
+            Guide.SetActive(true);
+
+            GameMaster.Instance.isFinalBattle = true;
+            return;
+        }
+        animator.gameObject.GetComponent<ToBattleDoor>().ToBattleScene();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Door"))

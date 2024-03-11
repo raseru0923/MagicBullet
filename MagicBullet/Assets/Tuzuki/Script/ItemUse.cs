@@ -14,6 +14,7 @@ public class ItemUse : MonoBehaviour, IConfirm
 
     [Header("アイテムが拾われた時のイベント")]
     public UnityEvent onPickUp;
+    public UnityEvent onUseItem;
     public ConfirmButton confirmButton;
 
     private bool isUse;
@@ -87,6 +88,7 @@ public class ItemUse : MonoBehaviour, IConfirm
             var bag = GameObject.Find("Bag").GetComponent<Bag>();
             bag.Content.Remove(ItemManager.ItemData[ItemIndex]);
             GameMaster.Instance.GimmickClear();
+            onUseItem.Invoke();
             this.enabled = false;
         }
         if (this.tag == "Untagged" && !confirmButton.GetButtonActive())

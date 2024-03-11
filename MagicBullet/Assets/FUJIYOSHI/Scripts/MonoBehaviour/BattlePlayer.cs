@@ -37,7 +37,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
 
     private int attackPoint = 0;
 
-    private async void Start()
+    private async void OnEnable()
     {
         // ステータスからHPを設定
         currentHP = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.CON);
@@ -50,9 +50,40 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
         SANBar.fillAmount = 1;
         SANText.text = "SAN : " + StatusManager.Instance.SAN + " / " + StatusManager.Instance.SAN;
 
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Playground" && GameMaster.Instance.canBattle)
+        {
+            await GameMaster.Instance.TurnBattle(this.GetComponent<IBattlePlayer>(), GameObject.Find("Caspard").GetComponent<IEnemy>(), 3);
+            return;
+        }
+
+        if (!GameMaster.Instance.canBattle)
+        {
+            GameMaster.Instance.canBattle = true;
+            return;
+        }
+
         f_Stage stage = GameObject.Find("Stage").GetComponent<f_Stage>();
 
+        await stage.PlayStage(stageData);
 
+        await GameMaster.Instance.TurnBattle(this.GetComponent<IBattlePlayer>(), GameObject.Find("Caspard").GetComponent<IEnemy>());
+    }
+    private async void Start()
+    {
+
+        // ステータスからHPを設定
+        currentHP = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.CON);
+
+        Cursor.lockState = CursorLockMode.None;
+
+
+        HPBar.fillAmount = currentHP / StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.CON);
+        HPText.text = "HP : " + currentHP + " / " + StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.CON);
+        SANBar.fillAmount = 1;
+        SANText.text = "SAN : " + StatusManager.Instance.SAN + " / " + StatusManager.Instance.SAN;
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Playground") { return; }
+
+            f_Stage stage = GameObject.Find("Stage").GetComponent<f_Stage>();
 
         await stage.PlayStage(stageData);
 
@@ -216,15 +247,15 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
         var damageBonus = StatusManager.Instance.DamageP;
 
         // ダメージボーナスの処理はじめ
-        if (damageBonus != 0)
-        {
-            var absBonus = Mathf.Abs(damageBonus);
-            await GameMaster.Instance.informationLabel.PlayLabelTask("ダメージボーナス = " + damageBonus / absBonus + " d " + absBonus);
-            var bonusResult = await GameMaster.Instance.SumDealerDiceRoll(1, absBonus);
-            bonusResult *= damageBonus / absBonus;
-            await GameMaster.Instance.informationLabel.PlayLabelTask(attackPoint + " + " + bonusResult + " = " + (attackPoint + bonusResult));
-            attackPoint += bonusResult;
-        }
+        //if (damageBonus != 0)
+        //{
+        //    var absBonus = Mathf.Abs(damageBonus);
+        //    await GameMaster.Instance.informationLabel.PlayLabelTask("ダメージボーナス = " + damageBonus / absBonus + " d " + absBonus);
+        //    var bonusResult = await GameMaster.Instance.SumDealerDiceRoll(1, absBonus);
+        //    bonusResult *= damageBonus / absBonus;
+        //    await GameMaster.Instance.informationLabel.PlayLabelTask(attackPoint + " + " + bonusResult + " = " + (attackPoint + bonusResult));
+        //    attackPoint += bonusResult;
+        //}
 
 
         isEnd?.Invoke(true);

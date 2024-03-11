@@ -330,7 +330,9 @@ MonoBehaviour:
   Content:
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
     Type: 
+    isUsingSkill: 1
     SkillSprite: {fileID: 0}
     AssessmentSkill: 
     CliticalText: []
@@ -340,7 +342,9 @@ MonoBehaviour:
     FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
     Type: 
+    isUsingSkill: 1
     SkillSprite: {fileID: 0}
     AssessmentSkill: 
     CliticalText: []
@@ -350,7 +354,9 @@ MonoBehaviour:
     FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
     Type: 
+    isUsingSkill: 1
     SkillSprite: {fileID: 0}
     AssessmentSkill: 
     CliticalText: []
@@ -360,7 +366,9 @@ MonoBehaviour:
     FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
     Type: 
+    isUsingSkill: 1
     SkillSprite: {fileID: 0}
     AssessmentSkill: 
     CliticalText: []
@@ -370,7 +378,9 @@ MonoBehaviour:
     FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
     Type: 
+    isUsingSkill: 1
     SkillSprite: {fileID: 0}
     AssessmentSkill: 
     CliticalText: []
@@ -380,7 +390,9 @@ MonoBehaviour:
     FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
     Type: 
+    isUsingSkill: 1
     SkillSprite: {fileID: 0}
     AssessmentSkill: 
     CliticalText: []
@@ -390,7 +402,9 @@ MonoBehaviour:
     FlavorText: []
   - Name: "\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
     Type: 
+    isUsingSkill: 1
     SkillSprite: {fileID: 0}
     AssessmentSkill: 
     CliticalText: []
@@ -831,6 +845,14 @@ PrefabInstance:
       propertyPath: StageData
       value: 
       objectReference: {fileID: 11400000, guid: 40bd0a3f4a6710645942ee9a14295918, type: 2}
+    - target: {fileID: 802551379556991701, guid: bdf8cfa00c9e85547ae663a1c99094ed, type: 3}
+      propertyPath: magicBullet
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 802551379556991701, guid: bdf8cfa00c9e85547ae663a1c99094ed, type: 3}
+      propertyPath: canMagickBulletAvoid
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5109300066286281961, guid: bdf8cfa00c9e85547ae663a1c99094ed, type: 3}
       propertyPath: m_Name
       value: DiceCanvasPrefab

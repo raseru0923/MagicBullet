@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 public class ItemSearch : MonoBehaviour
@@ -107,7 +106,7 @@ public class ItemSearch : MonoBehaviour
     {
         var item = GetNearItem();
 
-        if (item == null)
+        if (item == null || !item.CompareTag("Item"))
         {
             SkillImage.gameObject.SetActive(false);
             return;
@@ -124,7 +123,7 @@ public class ItemSearch : MonoBehaviour
             DescriptionMessage thisItem = item.GetComponent<DescriptionMessage>();
             SkillImage.sprite = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillSprite;
         }
-        else
+        else if(item.GetComponent<Item>() != null)
         {
             Item thisItem = item.GetComponent<Item>();
             SkillImage.sprite = thisItem.ItemManager.ItemData[thisItem.ItemIndex].SkillSprite;

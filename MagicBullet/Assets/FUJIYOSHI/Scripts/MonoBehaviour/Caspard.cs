@@ -63,7 +63,7 @@ public class Caspard : MonoBehaviour, IEnemy
     }
 
     // Œø‰Ê‚Ì‚ ‚é•Ší‚È‚Ì‚©Šm”F
-    bool IsPassSkill(string passSkill)
+    public bool IsPassSkill(string passSkill)
     {
         bool isPass = false;
 

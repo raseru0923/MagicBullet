@@ -32,13 +32,8 @@ public class Item : MonoBehaviour
 
         if (item.isUsingSkill)
         {
-            item = await GameMaster.Instance.AssessmentDiceRoll(item, item.SkillSprite.name);
-
-            // 理解度が低いとき鑑定のチャンスが与えられる
-            if ((int)item.Comprehension >= 2)
-            {
-                item.canAssessment = true;
-            }
+            var result = await GameMaster.Instance.AssessmentDiceRoll(item, item.SkillSprite.name);
+            item = result;
         }
         else
         {
@@ -55,8 +50,18 @@ public class Item : MonoBehaviour
             }
         }
 
+        // 理解度が低いとき鑑定のチャンスが与えられる
+        if ((int)item.Comprehension >= 2)
+        {
+            item.canAssessment = true;
+        }
+
         GameObject.Find("Bag").GetComponent<Bag>().Content.Add(item);
         onPickUp.Invoke();
+        if (item.isGetWithDestroy)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
 

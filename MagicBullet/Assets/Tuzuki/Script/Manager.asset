@@ -17,18 +17,26 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u9283"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u535A\u7269\u5B66"
     CliticalText:
-    - "@Name\u3060\u3063\u305F\u3002"
-    - "\u2026\u2026\u305F\u3060\u306A\u3089\u306C\u6C17\u914D\u3092\u611F\u3058\u308B\u3002"
+    - "\u731F\u9283\u3060\u3063\u305F\u3002"
+    - "\u3010\u30D6\u30E9\u30C3\u30C7\u30A3\u30AF\u30ED\u30B9\u3011\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
+    - "\u58CA\u308C\u3066\u3044\u308B\u305F\u3081\u4F7F\u7528\u3067\u304D\u306A\u3044\u3002"
     SuccessText:
     - "\u731F\u9283\u3060\u3063\u305F\u3002"
+    - "\u3010\u30D6\u30E9\u30C3\u30C7\u30A3\u30AF\u30ED\u30B9\u3011\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
+    - "\u58CA\u308C\u3066\u3044\u308B\u305F\u3081\u4F7F\u7528\u3067\u304D\u306A\u3044\u3002"
     FailText:
-    - "\u9283\u3060\u3002"
+    - "@Type\u3060\u3002"
+    - "\u3010\u30D6\u30E9\u30C3\u30C7\u30A3\u30AF\u30ED\u30B9\u3011\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
+    - "\u58CA\u308C\u3066\u3044\u308B\u305F\u3081\u4F7F\u7528\u3067\u304D\u306A\u3044\u3002"
     FambleText:
     - "@Type\u3060\u3002"
+    - "\u3010\u30D6\u30E9\u30C3\u30C7\u30A3\u30AF\u30ED\u30B9\u3011\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
+    - "\u58CA\u308C\u3066\u3044\u308B\u305F\u3081\u4F7F\u7528\u3067\u304D\u306A\u3044\u3002"
     - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
     - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
     FlavorText:
@@ -37,6 +45,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u9283"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u535A\u7269\u5B66"
@@ -44,7 +53,7 @@ MonoBehaviour:
     - "@Name\u3060\u3063\u305F\u3002"
     - "\u2026\u2026\u305F\u3060\u306A\u3089\u306C\u6C17\u914D\u3092\u611F\u3058\u308B\u3002"
     SuccessText:
-    - "\u30ED\u30B1\u30C3\u30C8\u30E9\u30F3\u30C1\u30E3\u30FC\u3060\u3063\u305F\u3002"
+    - "@Name\u3060\u3063\u305F\u3002"
     FailText:
     - "@Type\u3060\u3002"
     FambleText:
@@ -53,10 +62,11 @@ MonoBehaviour:
     - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
     FlavorText:
     - "\u3010\u30C7\u30B9\u30DA\u30E9\u30FC\u30C9\u3011\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
-  - Name: "\u30CF\u30F3\u30C9\u30AC\u30F3"
+  - Name: "\u30EA\u30DC\u30EB\u30D0\u30FC"
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u9283"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u535A\u7269\u5B66"
@@ -64,7 +74,7 @@ MonoBehaviour:
     - "@Name\u3060\u3063\u305F\u3002"
     - "\u2026\u2026\u305F\u3060\u306A\u3089\u306C\u6C17\u914D\u3092\u611F\u3058\u308B\u3002"
     SuccessText:
-    - "\u30CF\u30F3\u30C9\u30AC\u30F3\u3060\u3063\u305F\u3002"
+    - "@Name\u3060\u3063\u305F\u3002"
     FailText:
     - "\u9283\u3060\u3002"
     FambleText:
@@ -73,10 +83,11 @@ MonoBehaviour:
     - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
     FlavorText:
     - "\u3010\u30AF\u30ED\u30B9\u30C9\u30DF\u30CD\u30FC\u30BF\u30FC\u3011\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
-  - Name: "\u30EA\u30DC\u30EB\u30D0\u30FC"
+  - Name: "\u30B9\u30CA\u30A4\u30D1\u30FC\u30E9\u30A4\u30D5\u30EB"
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u9283"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u535A\u7269\u5B66"
@@ -84,7 +95,7 @@ MonoBehaviour:
     - "@Name\u3060\u3063\u305F\u3002"
     - "\u2026\u2026\u305F\u3060\u306A\u3089\u306C\u6C17\u914D\u3092\u611F\u3058\u308B\u3002"
     SuccessText:
-    - "\u30EA\u30DC\u30EB\u30D0\u30FC\u3060\u3063\u305F\u3002"
+    - "@Name\u3060\u3063\u305F\u3002"
     FailText:
     - "@Type\u3060\u3002"
     FambleText:
@@ -97,6 +108,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u9283"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u535A\u7269\u5B66"
@@ -108,7 +120,7 @@ MonoBehaviour:
     FailText:
     - "\u9283\u3060\u3002"
     FambleText:
-    - "@Type\u3060\u3002"
+    - "\u9283\u3060\u3002"
     - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
     - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
     FlavorText:
@@ -117,6 +129,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u9283"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u535A\u7269\u5B66"
@@ -124,9 +137,9 @@ MonoBehaviour:
     - "@Name\u3060\u3063\u305F\u3002"
     - "\u2026\u2026\u305F\u3060\u306A\u3089\u306C\u6C17\u914D\u3092\u611F\u3058\u308B\u3002"
     SuccessText:
-    - "\u30E9\u30A4\u30C8\u30DE\u30B7\u30F3\u30AC\u30F3\u3060\u3063\u305F\u3002"
+    - "@Name\u3060\u3063\u305F\u3002"
     FailText:
-    - "@Type\u3060\u3002"
+    - "\u9283\u3060\u3002"
     FambleText:
     - "@Type\u3060\u3002"
     - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
@@ -137,6 +150,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u5F3E\u4E38"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: 
@@ -156,6 +170,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -179,6 +194,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -202,6 +218,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -223,6 +240,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -245,6 +263,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -267,6 +286,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -289,6 +309,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -313,6 +334,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -334,6 +356,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -356,6 +379,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -378,6 +402,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u7D75"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: 
@@ -394,6 +419,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u7D75"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: 
@@ -410,6 +436,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u7D75"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: 
@@ -426,6 +453,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u7D75"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: 
@@ -442,6 +470,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u7D75"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: 
@@ -458,6 +487,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u7D75"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: 
@@ -474,6 +504,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u672C"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -518,6 +549,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u7BB1"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -536,6 +568,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u673A"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -554,6 +587,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u68DA"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -572,6 +606,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u673A"
+    isGetWithDestroy: 0
     isUsingSkill: 1
     SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -590,6 +625,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 21300000, guid: d767f669c7f9ddc40bbe1b5524d4927d, type: 3}
     Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
     isUsingSkill: 0
     SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -609,6 +645,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 21300000, guid: 09bcb3158100a2f42acc08f1f7eda6df, type: 3}
     Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
     isUsingSkill: 0
     SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -628,6 +665,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 21300000, guid: f9265ad66264eac45bd67c20b36fd37d, type: 3}
     Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
     isUsingSkill: 0
     SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -647,6 +685,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 21300000, guid: bd0542c72340b754aac24e56b0e6b13d, type: 3}
     Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
     isUsingSkill: 0
     SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -666,6 +705,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 21300000, guid: 256c43bdd9e52844484681b166d8a015, type: 3}
     Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
     isUsingSkill: 0
     SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -685,6 +725,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u673A"
+    isGetWithDestroy: 0
     isUsingSkill: 0
     SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -703,6 +744,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u90E8\u5C4B"
+    isGetWithDestroy: 0
     isUsingSkill: 0
     SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -721,6 +763,7 @@ MonoBehaviour:
     ItemBody: {fileID: 0}
     ItemImage: {fileID: 0}
     Type: "\u90E8\u5C4B"
+    isGetWithDestroy: 0
     isUsingSkill: 0
     SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
     AssessmentSkill: "\u56F3\u66F8\u9928"
@@ -803,3 +846,189 @@ MonoBehaviour:
     - "\u6FC0\u6012\u3057\u305F\u9818\u4E3B\u306F\u30DE\u30C3\u30AF\u30B9\u306B\u8FFD\u653E\u3092\u5BA3\u544A\u3059\u308B\u304C"
     - "\u305D\u3053\u306B\u96A0\u8005\u304C\u767B\u5834\u3057\n\u30DE\u30C3\u30AF\u30B9\u306E\u904E\u3061\u3092\u8A31\u3059\u3088\u3046\u306B\u9818\u4E3B\u306B\u8AED\u3059\u3002"
     - "\u9818\u4E3B\u306F\u305D\u308C\u306B\u5F93\u3044\u30011\u5E74\u306E\u57F7\u884C\u7336\u4E88\u306E\u5F8C\u306B\n\u30DE\u30C3\u30AF\u30B9\u3068\u30A2\u30AC\u30FC\u30C6\u3068\u306E\u7D50\u5A5A\u3092\u8A31\u3057\u305F\u3002\r"
+  - Name: "\u82B1\u51A0"
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
+    Type: "\u82B1\u51A0"
+    isGetWithDestroy: 0
+    isUsingSkill: 0
+    SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
+    AssessmentSkill: "\u56F3\u66F8\u9928"
+    CliticalText: []
+    SuccessText: []
+    FailText: []
+    FambleText: []
+    FlavorText:
+    - "\u3042\u308B\u4E59\u5973\u3092\u51F6\u5F3E\u304B\u3089\u8B77\u3063\u305F\u4F1D\u8AAC\u306E\u82B1\u51A0\u3002"
+  - Name: "\u82B1\u74F6\u306B\u6DFB\u3048\u3089\u308C\u305F\u7D19"
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
+    Type: "\u7D19"
+    isGetWithDestroy: 0
+    isUsingSkill: 1
+    SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
+    AssessmentSkill: "\u56F3\u66F8\u9928"
+    CliticalText:
+    - "\u82B1\u74F6\u3068\u7D19\u304C\u7F6E\u304B\u308C\u3066\u3044\u308B\r\u3002"
+    - "\u82B1\u74F6\u306B\u306F\u4E00\u51DB\u306E\u82B1\u304C\u633F\u3055\u308C\u3066\u3044\u308B"
+    - "\u7D19\u306B\u306F\u3001\u300C\u53CD\u65D7\u305B\u3088\u3002\u4E3B\u3092\u6BBA\u305B\u3002\u300D\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
+    SuccessText:
+    - "\u82B1\u74F6\u3068\u7D19\u304C\u7F6E\u304B\u308C\u3066\u3044\u308B\r\u3002"
+    - "\u82B1\u74F6\u306B\u306F\u4E00\u51DB\u306E\u82B1\u304C\u633F\u3055\u308C\u3066\u3044\u308B"
+    - "\u7D19\u306B\u306F\u3001\u300C\u53CD\u65D7\u305B\u3088\u3002\u4E3B\u3092\u6BBA\u305B\u3002\u300D\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
+    FailText:
+    - "\u82B1\u74F6\u3068\u7D19\u304C\u7F6E\u304B\u308C\u3066\u3044\u308B\r\u3002"
+    - "\u82B1\u74F6\u306B\u306F\u4E00\u51DB\u306E\u82B1\u304C\u633F\u3055\u308C\u3066\u3044\u308B"
+    - "\u7D19\u306B\u306F\u3001\u300C\u53CD\u65D7\u305B\u3088\u3002\u4E3B\u3092\u6BBA\u305B\u3002\u300D\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
+    FambleText:
+    - "\u82B1\u74F6\u3068\u7D19\u304C\u7F6E\u304B\u308C\u3066\u3044\u308B\r\u3002"
+    - "\u82B1\u74F6\u306B\u306F\u4E00\u51DB\u306E\u82B1\u304C\u633F\u3055\u308C\u3066\u3044\u308B"
+    - "\u7D19\u306B\u306F\u3001\u300C\u53CD\u65D7\u305B\u3088\u3002\u4E3B\u3092\u6BBA\u305B\u3002\u300D\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
+    - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
+    - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
+    FlavorText:
+    - "\u300C\u53CD\u65D7\u305B\u3088\u3002\u4E3B\u3092\u6BBA\u305B\u3002\u300D\u3068\u66F8\u304B\u308C\u3066\u3044\u308B"
+  - Name: "\u8AAC\u660E\u66F8"
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
+    Type: "\u8AAC\u660E\u66F8"
+    isGetWithDestroy: 0
+    isUsingSkill: 1
+    SkillSprite: {fileID: 21300000, guid: 4d1ae1c7b60944640b2cf1f1309f464a, type: 3}
+    AssessmentSkill: "\u56F3\u66F8\u9928"
+    CliticalText:
+    - "@Name\u3060\u3063\u305F\u3002"
+    SuccessText:
+    - "\u8AAC\u660E\u66F8\u3060\u3063\u305F\u3002"
+    FailText:
+    - "@Name\u3060\u3063\u305F\u3002"
+    FambleText:
+    - "@Name\u3060\u3063\u305F\u3002"
+    - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
+    - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
+    FlavorText:
+    - "\uFF5E\u8AAC\u660E\u66F8\uFF5E"
+    - "\u30FBF\u30AD\u30FC\u3067\u6249\u3092\u958B\u304F\u3001\u30E2\u30CE\u3092\u8ABF\u3079\u308B\u3002"
+    - "\u30FB\u6301\u3061\u7269\u6B04\u3067\u30AF\u30EA\u30C3\u30AF\u3059\u308B\u3068\n\u8A73\u7D30\u3092\u898B\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u3002"
+    - "\u30FB\u6301\u3061\u7269\u6B04\u3067\u30AF\u30EA\u30C3\u30AF\u3059\u308B\u3068\n\u7406\u89E3\u5EA6\u304C\u4F4E\u3044\u3068\u304D\u3001\u9451\u5B9A\u304C\u3067\u304D\u308B\u3002"
+    - "\u30FB\u6301\u3061\u7269\u306F\u7406\u89E3\u5EA6\u306B\u3088\u3063\u3066\n\u540D\u524D\u304C\u5909\u5316\u3059\u308B\u3053\u3068\u304C\u3042\u308B\u3002"
+  - Name: "\u26613"
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 21300000, guid: 3f72235d4a7e41f489fc6b5014a47943, type: 3}
+    Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
+    isUsingSkill: 0
+    SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
+    AssessmentSkill: "\u56F3\u66F8\u9928"
+    CliticalText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    SuccessText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    FailText:
+    - "@Type\u3060\u3002"
+    FambleText:
+    - "@Type\u3060\u3002"
+    - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
+    - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
+    FlavorText:
+    - '@Name'
+  - Name: "\u2661Q"
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 21300000, guid: 2d18d9aea70d9a74390beaff62fed230, type: 3}
+    Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
+    isUsingSkill: 0
+    SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
+    AssessmentSkill: "\u56F3\u66F8\u9928"
+    CliticalText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    SuccessText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    FailText:
+    - "@Type\u3060\u3002"
+    FambleText:
+    - "@Type\u3060\u3002"
+    - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
+    - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
+    FlavorText:
+    - '@Name'
+  - Name: "\u2662Q"
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 21300000, guid: efa6a714fed7ddf4d9ee0e8721a0a917, type: 3}
+    Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
+    isUsingSkill: 0
+    SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
+    AssessmentSkill: "\u56F3\u66F8\u9928"
+    CliticalText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    SuccessText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    FailText:
+    - "@Type\u3060\u3002"
+    FambleText:
+    - "@Type\u3060\u3002"
+    - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
+    - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
+    FlavorText:
+    - '@Name'
+  - Name: "\u26627"
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 21300000, guid: f821faa5da3e37b4b9710d1ee0c6d8cc, type: 3}
+    Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
+    isUsingSkill: 0
+    SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
+    AssessmentSkill: "\u56F3\u66F8\u9928"
+    CliticalText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    SuccessText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    FailText:
+    - "@Type\u3060\u3002"
+    FambleText:
+    - "@Type\u3060\u3002"
+    - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
+    - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
+    FlavorText:
+    - '@Name'
+  - Name: "\u26632"
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 21300000, guid: 6461e0f7c5ecdfc4c8a99a5abf61c43e, type: 3}
+    Type: "\u30AB\u30FC\u30C9"
+    isGetWithDestroy: 1
+    isUsingSkill: 0
+    SkillSprite: {fileID: 21300000, guid: 546b6800b811c9647ae66b4930eb1fb4, type: 3}
+    AssessmentSkill: "\u56F3\u66F8\u9928"
+    CliticalText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    SuccessText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    FailText:
+    - "@Type\u3060\u3002"
+    FambleText:
+    - "@Type\u3060\u3002"
+    - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
+    - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
+    FlavorText:
+    - '@Name'
+  - Name: "\u30B6\u30DF\u30A8\u30EB"
+    ItemBody: {fileID: 0}
+    ItemImage: {fileID: 0}
+    Type: "\u60AA\u9B54"
+    isGetWithDestroy: 1
+    isUsingSkill: 0
+    SkillSprite: {fileID: 21300000, guid: 6067713b2515e714b9ade24020020b3d, type: 3}
+    AssessmentSkill: "\u795E\u8A71"
+    CliticalText:
+    - "Tab\u30AD\u30FC\u3067\u30A2\u30A4\u30C6\u30E0\u3092\u898B\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u3059\u3002"
+    - "\u8A73\u3057\u304F\u306F\u3010\u8AAC\u660E\u66F8\u3011\u3092\u3054\u89A7\u304F\u3060\u3055\u3044\u3002"
+    SuccessText:
+    - "@Name\u3092\u624B\u306B\u5165\u308C\u305F"
+    FailText:
+    - "@Type\u3060\u3002"
+    FambleText:
+    - "@Type\u3060\u3002"
+    - "\u2026\u2026\u3088\u304F\u898B\u308B\u3068\u8840\u304C\u3064\u3044\u3066\u3044\u308B\uFF01"
+    - "SAN\u5024\u30C1\u30A7\u30C3\u30AF"
+    FlavorText: []

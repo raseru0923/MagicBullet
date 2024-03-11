@@ -5,4 +5,9 @@ using UnityEngine;
 public class Operation : MonoBehaviour
 {
     public bool isOperation = false;
+
+    public void SetOperation(bool isOperation)
+    {
+        this.isOperation = isOperation;
+    }
 }

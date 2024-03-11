@@ -9,12 +9,14 @@ public class LookAtTargetOffset : MonoBehaviour
 
     // ターゲットのTransform
     public Transform _target;
+    private Transform beforetarget;
 
     // 前方の基準となるローカル空間ベクトル
     [SerializeField] private Vector3 _forward = Vector3.forward;
 
     private void OnEnable()
     {
+        beforetarget = _target;
         _self = this.transform;
     }
 
@@ -32,6 +34,7 @@ public class LookAtTargetOffset : MonoBehaviour
 
             // 回転補正→ターゲット方向への回転の順に、自身の向きを操作する
             _self.rotation = lookAtRotation * offsetRotation;
+            beforetarget = _target;
         }
     }
 
