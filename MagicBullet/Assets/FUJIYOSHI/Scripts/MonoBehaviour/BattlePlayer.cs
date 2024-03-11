@@ -39,6 +39,12 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
 
     private async void OnEnable()
     {
+        await BattleSet();
+    }
+
+    public async UniTask BattleSet()
+    {
+        while (StatusManager.Instance == null) { await UniTask.WaitForFixedUpdate(); }
         // ステータスからHPを設定
         currentHP = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.CON);
 
@@ -50,8 +56,16 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
         SANBar.fillAmount = 1;
         SANText.text = "SAN : " + StatusManager.Instance.SAN + " / " + StatusManager.Instance.SAN;
 
+        while (GameMaster.Instance == null)
+        {
+            await UniTask.WaitForFixedUpdate();
+        }
+
+        Debug.Log(GameMaster.Instance.canBattle);
+
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Playground" && GameMaster.Instance.canBattle)
         {
+            Debug.Log("耐久戦！");
             await GameMaster.Instance.TurnBattle(this.GetComponent<IBattlePlayer>(), GameObject.Find("Caspard").GetComponent<IEnemy>(), 3);
             return;
         }
@@ -68,8 +82,10 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
 
         await GameMaster.Instance.TurnBattle(this.GetComponent<IBattlePlayer>(), GameObject.Find("Caspard").GetComponent<IEnemy>());
     }
+
     private async void Start()
     {
+        GameMaster.Instance.BattlePlayerObject = this.gameObject;
 
         // ステータスからHPを設定
         currentHP = StatusManager.Instance.BasicStatusTypeValue(StatusManager.BasicStatusType.CON);
@@ -83,7 +99,7 @@ public class BattlePlayer : MonoBehaviour, IBattlePlayer
         SANText.text = "SAN : " + StatusManager.Instance.SAN + " / " + StatusManager.Instance.SAN;
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Playground") { return; }
 
-            f_Stage stage = GameObject.Find("Stage").GetComponent<f_Stage>();
+        f_Stage stage = GameObject.Find("Stage").GetComponent<f_Stage>();
 
         await stage.PlayStage(stageData);
 

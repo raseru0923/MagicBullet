@@ -30,7 +30,7 @@ public class f_Label : MonoBehaviour
 
     IEnumerator PrintLabel(string text)
     {
-        audioSource.PlayOneShot(ClickClip);
+        if (audioSource != null && ClickClip != null) { audioSource.PlayOneShot(ClickClip); }
 
         MainLabel.SetActive(true);
 

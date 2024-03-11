@@ -29,9 +29,10 @@ public class Player : MonoBehaviour
             GameMaster.Instance.IsSelectItem = false;
             MyBag.CallInventory();
         }
+        //if (Input.GetKeyDown(KeyCode.B)) { UnityEngine.SceneManagement.SceneManager.LoadScene("Battle"); }
 
-        // ドアの開閉処理はじめ
-        if (Animators == null)
+            // ドアの開閉処理はじめ
+            if (Animators == null)
         {
             return;
         }

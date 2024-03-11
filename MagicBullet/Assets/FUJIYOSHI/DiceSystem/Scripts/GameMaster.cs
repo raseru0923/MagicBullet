@@ -37,6 +37,7 @@ public class GameMaster : f_Dealer
     public bool canBattle = false;
 
     [HideInInspector] public GameObject BattleObject;
+    [HideInInspector] public GameObject BattlePlayerObject;
 
     public ItemScriptableObject ItemManager;
     [HideInInspector] public int ItemIndex;
@@ -48,11 +49,16 @@ public class GameMaster : f_Dealer
 
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance != null || UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Battle")
         {
-            this.canMagickBulletAvoid = Instance.canMagickBulletAvoid;
-            this.canBattle = Instance.canBattle;
-            Destroy(Instance.gameObject);
+            Debug.Log("引継ぎ");
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            this.canMagickBulletAvoid = GameMaster.Instance.canMagickBulletAvoid;
+            this.canBattle = GameMaster.Instance.canBattle;
+            Destroy(GameMaster.Instance.gameObject);
         }
         Instance = this;
         return;
@@ -61,6 +67,7 @@ public class GameMaster : f_Dealer
     // 司会進行
     public void Moderate(string printText)
     {
+        if(GameMaster.Instance == null) { return; }
         if (canModerator)
         {
             canModerator = false;
@@ -243,6 +250,7 @@ public class GameMaster : f_Dealer
     // ターン性バトル開始！
     public async UniTask TurnBattle(IBattlePlayer battlePlayer, IEnemy enemy, int TurnLimit = 0)
     {
+        Debug.Log("バトル開始！");
         BattleObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
 

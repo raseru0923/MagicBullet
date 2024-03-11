@@ -10,10 +10,19 @@ public class f_BattleInitialization : MonoBehaviour
 {
     [SerializeField] private GameObject BattleDisplay;
     // Start is called before the first frame update
-    void OnEnable()
+    async void OnEnable()
     {
+        Debug.Log("バトル起動！");
+
+        while (GameMaster.Instance == null)
+        {
+            await UniTask.WaitForFixedUpdate();
+        }
+
         GameMaster.Instance.BattleObject = this.gameObject;
         BattleDisplay.GetComponent<f_ImageAnimation>().StartAniamtion();
+
+        if (!GameMaster.Instance.canBattle) { await GameObject.Find("Player").GetComponent<BattlePlayer>().BattleSet(); }
     }
 
     private void Start()
